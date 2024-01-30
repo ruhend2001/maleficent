@@ -20,8 +20,8 @@
     "readme2": "botNumber adalah nomor yang mau di jadikan bot",
     "botNumber": 62831228865243,
     "group": {
-        "adReply": false,
-        "limit_adReply": false,
+        "adReply": true,
+        "limit_adReply": true,
         "link": "https://chat.whatsapp.com/L9HIN2afpUkG2zeVaLTR49",
         "bye": "Bye 🐽\n%user \nHas Left From %subject Group",
         "welcome": "Selamat Datang Babi 🐷\n%user \nDi 🚾 %subject"
