@@ -1,0 +1,29 @@
+{
+    "owner": "6285863648047@s.whatsapp.net",
+    "ownerNumber": [
+        "6288975984776@s.whatsapp.net",
+        "62831228865242@s.whatsapp.net"
+    ],
+    "readme": "isi nomornya ownerNumber sesuai ada berapa no kalian mau banyak nomor juga bisa, jangan lupa tanda koma nya harus pas biar ga eror , install modul pake npm i yah jangan yarn, yarn gaje",
+    "contact": "6285863648047",
+    "botName": "Maleficent Bot - MD ❤️",
+    "ownerName": "Ruly Henderson",
+    "footer": "© Ruhend ",
+    "sosmed": "your Instagram url",
+    "thumbnail": "https://qu.ax/SpGe.jpeg",
+    "music": "https://files.catbox.moe/3cm6wn.mp3",
+    "ram": 800,
+    "auto_dl": false,
+    "self": false,
+    "qr": false,
+    "pairing": true,
+    "readme2": "botNumber adalah nomor yang mau di jadikan bot",
+    "botNumber": 62831228865243,
+    "group": {
+        "adReply": false,
+        "limit_adReply": false,
+        "link": "https://chat.whatsapp.com/L9HIN2afpUkG2zeVaLTR49",
+        "bye": "Bye 🐽\n%user \nHas Left From %subject Group",
+        "welcome": "Selamat Datang Babi 🐷\n%user \nDi 🚾 %subject"
+    }
+}
