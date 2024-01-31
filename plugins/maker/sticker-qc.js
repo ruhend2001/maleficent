@@ -12,7 +12,36 @@ export default {
       let pack = setting.botName
       let own = setting.footer
       if (!text) return m.reply(`Kirim perintah ${prefix+command} teksnya`)
-      const _0x3043e9=_0x424c;(function(_0xd66d9,_0x438110){const _0x33b465=_0x424c,_0x405450=_0xd66d9();while(!![]){try{const _0x4baf99=parseInt(_0x33b465(0x197))/(-0x3d7+-0x65*0x4+0x2b6*0x2)+-parseInt(_0x33b465(0x1b1))/(-0x39*-0x99+-0x823*0x1+-0x19ec)*(-parseInt(_0x33b465(0x1c2))/(0x7cf*-0x5+-0x10e6+-0x37f4*-0x1))+-parseInt(_0x33b465(0x1a0))/(0x5b2+0xafd+0x10ab*-0x1)+parseInt(_0x33b465(0x19b))/(0x1d0f+-0x1039*-0x1+0x1*-0x2d43)+parseInt(_0x33b465(0x1a9))/(0x287*-0x1+0x140c*0x1+-0x117f)*(-parseInt(_0x33b465(0x19f))/(0x773*0x5+0x26b6+0x2*-0x25f7))+parseInt(_0x33b465(0x195))/(-0x67*0xb+0x13*0xd3+0x59a*-0x2)*(parseInt(_0x33b465(0x1c3))/(-0x1b6*0x3+-0x379*-0x2+-0x1c7))+-parseInt(_0x33b465(0x1bd))/(-0xd*0xb5+-0x467+-0xa*-0x15d);if(_0x4baf99===_0x438110)break;else _0x405450['push'](_0x405450['shift']());}catch(_0x53bac2){_0x405450['push'](_0x405450['shift']());}}}(_0x3fd2,0xdb5ce+0x72dd7+-0x2f831*0x3));function _0x3fd2(){const _0xb16b8a=['#ca86b0','10395260mMoTJa','profilePic','tureUrl','#530101','ate','364467JFkcdI','27ARHOrX','#2f3641','image','#133700','#ef1a11','#722f37','#863434','#e6e6fa','#5d8d7f','1291088tsnwcr','post','1538113HwQDCr','#80bd76','#8a496b','sender','4392840iIbrny','uote/gener','quote','length','28805ETHaAt','2765948KsCykC','n/json','#e7a6cb','floor','#660000','thumbnail','png','https://bo','#83a3ee','738spxuYf','#013337','random','#ffe7f7','#0fc163','#ffa500','#e9f6ff','#6a84bd','2aeSjEm','#abcc88','#64c987','t.lyo.su/q','pushName','#87a96b','#7c4848','#89cff0','#cc4291','applicatio','catch'];_0x3fd2=function(){return _0xb16b8a;};return _0x3fd2();}let randomColor=[_0x3043e9(0x190),_0x3043e9(0x1b8),_0x3043e9(0x1a4),_0x3043e9(0x1b6),_0x3043e9(0x1af),_0x3043e9(0x1ac),_0x3043e9(0x1bc),_0x3043e9(0x1a8),_0x3043e9(0x1b2),_0x3043e9(0x198),_0x3043e9(0x1b0),_0x3043e9(0x194),_0x3043e9(0x1c0),_0x3043e9(0x192),_0x3043e9(0x1aa),_0x3043e9(0x18f),_0x3043e9(0x1c4),_0x3043e9(0x1b9),_0x3043e9(0x1b7),_0x3043e9(0x199),_0x3043e9(0x191),_0x3043e9(0x1ad),_0x3043e9(0x1c4),_0x3043e9(0x1a2),_0x3043e9(0x1b3),_0x3043e9(0x193),_0x3043e9(0x1ae)];function _0x424c(_0x3ccfe5,_0x1120db){const _0x4d03e2=_0x3fd2();return _0x424c=function(_0x489afe,_0x5e6391){_0x489afe=_0x489afe-(-0x24a9*0x1+-0x25*0x1+0x7*0x57b);let _0x33608c=_0x4d03e2[_0x489afe];return _0x33608c;},_0x424c(_0x3ccfe5,_0x1120db);}const apiColor=randomColor[Math[_0x3043e9(0x1a3)](Math[_0x3043e9(0x1ab)]()*randomColor[_0x3043e9(0x19e)])];let pp=await conn[_0x3043e9(0x1be)+_0x3043e9(0x1bf)](m[_0x3043e9(0x19a)],_0x3043e9(0x1c5))[_0x3043e9(0x1bb)](_0x4d03e2=>setting[_0x3043e9(0x1a5)]),nama=await m[_0x3043e9(0x1b5)],obj={'type':_0x3043e9(0x19d),'format':_0x3043e9(0x1a6),'backgroundColor':apiColor,'width':0x200,'height':0x300,'scale':0x2,'messages':[{'entities':[],'avatar':!![],'from':{'id':0x1,'name':nama,'photo':{'url':pp}},'text':text,'replyMessage':{}}]},json=await axios[_0x3043e9(0x196)](_0x3043e9(0x1a7)+_0x3043e9(0x1b4)+_0x3043e9(0x19c)+_0x3043e9(0x1c1),obj,{'headers':{'Content-Type':_0x3043e9(0x1ba)+_0x3043e9(0x1a1)}});
+      let randomColor = ['#ef1a11', '#89cff0', '#660000', '#87a96b', '#e9f6ff', '#ffe7f7', '#ca86b0', '#83a3ee', '#abcc88', '#80bd76', '#6a84bd', '#5d8d7f', '#530101', '#863434', '#013337', '#133700', '#2f3641', '#cc4291', '#7c4848', '#8a496b', '#722f37', '#0fc163', '#2f3641', '#e7a6cb', '#64c987', '#e6e6fa', '#ffa500'];
+      const apiColor = randomColor[Math.floor(Math.random() * randomColor.length)];
+      let pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => setting.thumbnail)
+      let nama = await m.pushName
+      let obj = {
+         "type": "quote",
+         "format": "png",
+         "backgroundColor": apiColor,
+         "width": 512,
+         "height": 768,
+         "scale": 2,
+         "messages": [{
+            "entities": [],
+            "avatar": true,
+            "from": {
+               "id": 1,
+               "name": nama,
+               "photo": {
+                  "url": pp
+               }
+            },
+            "text": text,
+            "replyMessage": {}
+         }]
+      }
+      let json = await axios.post('https://bot.lyo.su/quote/generate', obj, {
+         headers: {
+            'Content-Type': 'application/json'
+         }
+      })
       m.adReply(mess.wait, setting.thumbnail, m.chat)
       let buffer = await Buffer.from(json.data.result.image, 'base64')
       conn.sendImageAsSticker(m.chat, buffer, m, {
