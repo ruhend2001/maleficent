@@ -11,7 +11,7 @@ export default {
       quoted,
       Format
    }) => {
-      if (/video/.test(mime) || m.mtype === 'videoMessage' || m.mtype === 'documentMessage' || m.mtype === 'audioMessage') {
+      if (/audio|video/.test(mime) || m.mtype === 'videoMessage' || m.mtype === 'documentMessage' || m.mtype === 'audioMessage') {
          if (!quoted) return
          let buffer = await quoted.download();
          m.adReply(mess.wait, setting.thumbnail, m.chat)
