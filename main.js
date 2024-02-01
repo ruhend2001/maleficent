@@ -34,11 +34,9 @@ async function startWhatsApp() {
             console.log(`Bad Session File, Please Delete Session and Scan Again`);
             conn.logout();
          } else if (reason === DisconnectReason.connectionClosed) {
-            console.log("Connection closed\nreconnecting....");
-            startWhatsApp();
+            console.log("Connection closed\nreconnecting....");            
          } else if (reason === DisconnectReason.connectionLost) {
             console.log("Connection Lost from Server.\nreconnecting...");
-            startWhatsApp();
          } else if (reason === DisconnectReason.connectionReplaced) {
             console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
             conn.logout();
