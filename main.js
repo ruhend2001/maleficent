@@ -48,7 +48,7 @@ async function startWhatsApp() {
             console.log("Restart Required, Restarting..."); startWhatsApp();
          } else if (reason === DisconnectReason.timedOut) {
             console.log("Connection TimedOut, Reconnecting..."); startWhatsApp();
-         } else console.log(`Disconnected: ${reason} ${connection}`)
+         } else console.log(`Disconnected: ${reason} ${lastDisconnect.error.output.payload.error}\n${lastDisconnect.error.output.payload.message}`); startWhatsApp();
       }
    })   
    conn.ws.on('CB:call', (_call) => {
