@@ -6,7 +6,6 @@ export default {
       conn,
       prefix,
       command,
-      args,
       mime,
       quoted,
       Format
