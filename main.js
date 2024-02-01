@@ -55,7 +55,7 @@ async function startWhatsApp() {
       auto_BlockCaller(conn, _call)
    });      
   } catch(e) {
-    console.error(e)
+    return console.error(e)
   }
 }
 startWhatsApp();
