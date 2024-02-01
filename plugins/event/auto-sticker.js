@@ -3,9 +3,10 @@ export let m = {
       conn,
       quoted,
       User,
-      command
+      command,
+      autodl
    }) => {
-      if (m.mtype === 'imageMessage') {
+      if (autodl && m.mtype === 'imageMessage') {
          let ignore = ['remini', 'hd'];
          if (ignore.includes(command)) {
             return m.react('❎', m.chat)
