@@ -25,7 +25,7 @@ async function startWhatsApp() {
          connection,
          lastDisconnect
       } = update;
-      if (connection == 'open') {
+      if (connection === 'open') {
          console.log(`Connection :`, connection)
       }
       if (connection === 'close') {
