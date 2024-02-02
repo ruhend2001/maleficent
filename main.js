@@ -32,14 +32,12 @@ async function startWhatsApp() {
          let reason = new Boom(lastDisconnect?.error)?.output.statusCode
          if (reason === DisconnectReason.badSession) {
             console.log(`Bad Session File, Please Delete Session and Scan Again`);
-            conn.logout();
          } else if (reason === DisconnectReason.connectionClosed) {
             console.log("Connection closed\nreconnecting....");            
          } else if (reason === DisconnectReason.connectionLost) {
             console.log("Connection Lost from Server.\nreconnecting...");
          } else if (reason === DisconnectReason.connectionReplaced) {
             console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
-            conn.logout();
          } else if (reason === DisconnectReason.loggedOut) {
             console.log("Device Logged Out, Please Scan Again And Run.")
          } else if (reason === DisconnectReason.restartRequired) {
