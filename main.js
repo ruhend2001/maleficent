@@ -25,27 +25,12 @@ async function startWhatsApp() {
          connection,
          lastDisconnect
       } = update;
-      if (connection == "open") {
+      if (connection == 'open') {
          console.log(`Connection :`, connection)
       }
-      if (connection == "close") {
-         let reason = new Boom(lastDisconnect?.error)?.output.statusCode
-         if (reason === DisconnectReason.badSession) {
-            console.log(`Bad Session File, Please Delete Session and Scan Again`);
-         } else if (reason === DisconnectReason.connectionClosed) {
-            console.log("Connection closed\nreconnecting....");            
-         } else if (reason === DisconnectReason.connectionLost) {
-            console.log("Connection Lost from Server.\nreconnecting...");
-         } else if (reason === DisconnectReason.connectionReplaced) {
-            console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
-         } else if (reason === DisconnectReason.loggedOut) {
-            console.log("Device Logged Out, Please Scan Again And Run.")
-         } else if (reason === DisconnectReason.restartRequired) {
-            console.log("Restart Required, Restarting..."); startWhatsApp();
-         } else if (reason === DisconnectReason.timedOut) {
-            console.log("Connection TimedOut, Reconnecting..."); startWhatsApp();
-         } else console.log(`Disconnected: ${reason} ${lastDisconnect.error.output.payload.error}\n${lastDisconnect.error.output.payload.message}`); startWhatsApp();
-      }
+      if (connection === 'close') {
+         lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startWhatsApp() : console.log('Koneksi Terputus...')
+      }     
    })   
    conn.ws.on('CB:call', (_call) => {
       auto_BlockCaller(conn, _call)
