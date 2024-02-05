@@ -1,3 +1,8 @@
+/**
+ * pada plugin kasih premium atau tidak bebas suka suka engkau, mau bikin fitur plugin baru dan kasih premium: true 
+ * true = premium (fitur hanya untuk user yang berstatus premium)
+ * false = tidak (fitur itu bisa di gunakan untuk semua)
+ */
 export default {
    names: ['Main Menu'],
    tags: ['infopremium', 'listpremium'],
