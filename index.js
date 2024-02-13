@@ -21,7 +21,7 @@ const start = () => {
             console.log('🕒 Restarting Meleficent . . .')
             p.kill();
          }
-         if (res == 'uptime') {
+         if (data == 'uptime') {
             p.send(process.uptime())
          }
       })
