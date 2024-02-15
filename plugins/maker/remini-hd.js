@@ -25,7 +25,7 @@ export default {
          m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
       }
    },
-   limit: 15,//banyakin limitnya ke enakan usernya nanti kalo limit kecil kan bisa beli premium usernya ke elu :)
+   limit: 20,//banyakin limitnya ke enakan usernya nanti kalo limit kecil kan bisa beli premium usernya ke elu :)
    premium: false,
    disable: false
 };
