@@ -17,7 +17,7 @@ export default {
          m.adReply(mess.wait, setting.thumbnail, m.chat)
          conn.sendImageAsSticker(m.chat, buffer, m, {
             packname: pack,
-            author: `${own}\ncreated : \n${waktu.tanggal}\n${waktu.jam} ${waktu.suasana}`
+            author: `${own}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
          });
       } else {
          m.reply(`Kirim gambar atau video dengan caption ${prefix + command} atau balas gambar yang sudah dikirim`);
