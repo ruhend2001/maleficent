@@ -6,17 +6,18 @@ export default {
       conn,
       prefix,
       text,
-      command
+      command,
+      Format
    }) => {
       let pack = setting.botName
       let own = setting.footer
-      if (!text) return m.reply(`Kirim perintah ${prefix+command} text\ncontoh: ${prefix+command} ${setting.botName}`)
-      let media = 'https://vihangayt.me/maker/text2gif?q=' + text
-      m.adReply(mess.wait, setting.thumbnail, m.chat)
-      let buffer = await media
-      conn.sendImageAsSticker(m.chat, buffer, m, {
-         packname: pack,
-         author: own
+      if (!text) return m.reply(`Kirim perintah ${prefix+command} text\ncontoh: ${prefix+command} ${setting.botName}`);
+      let result = await Format.attp(text);
+      m.adReply(mess.wait, setting.thumbnail, m.chat).then(async () => {            
+         conn.sendImageAsSticker(m.chat, result, m, {
+           packname: pack,
+           author: `${own}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
+         });
       })
    },
    limit: true
