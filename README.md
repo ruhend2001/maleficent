@@ -1,15 +1,12 @@
-# Update version 5.0.2
+# Update version 5.0.3
 • fix attp or ttp <br>
 
-just update depencies to 5.0.2<br>
-and update file<br>
-•helper.js<br>
-•cache.js<br>
-•other.js<br>
-•exif.js<br>
-•sock.js<br>
-•package.json<br>
-•main.js<br>
+just update depencies to 5.0.3<br>
+and update all file in folder lib<br>
+* update package.json<br>
+* update main.js<br>
+* update config.json<br>
+just little bit 
 
 or re git clone 
 
