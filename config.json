@@ -1,33 +1,34 @@
 {
-    "owner": "6285863648047@s.whatsapp.net",
-    "ownerNumber": [
-        "6288975984776@s.whatsapp.net",
-        "628xxx@s.whatsapp.net",
-        "628xxxx@s.whatsapp.net"
-    ],
-    "readme": "isi nomornya ownerNumber sesuai ada berapa no kalian mau banyak nomor juga bisa, jangan lupa tanda koma nya harus pas biar ga eror , install modul pake npm i yah jangan yarn, yarn gaje",
-    "contact": "6285863648047",
-    "botName": "Melficent Bot - MD ❤️",
-    "ownerName": "Ruly Henderson",
-    "footer": "© Ruhend ",
-    "sosmed": "your Instagram url",
-    "thumbnail": "https://qu.ax/SpGe.jpeg",
-    "music": "https://files.catbox.moe/3cm6wn.mp3",
-    "ram": 800,
-    "auto_dl": false,
-    "typing": true,
-    "recording": false,
-    "read": false,
-    "self": false,
-    "qr": false,
-    "pairing": true,
-    "readme2": "botNumber adalah nomor yang mau di jadikan bot",
-    "botNumber": 6285863648047,
-    "group": {
-        "adReply": true,
-        "limit_adReply": true,
-        "link": "https://chat.whatsapp.com/L9HIN2afpUkG2zeVaLTR49",
-        "bye": "Bye 🐽\n%user \nHas Left From %subject Group",
-        "welcome": "Selamat Datang Babi 🐷\n%user \nDi 🚾 %subject"
-    }
+  "owner": "6281563372282@s.whatsapp.net",
+  "ownerNumber": [
+    "6288975984776@s.whatsapp.net",
+    "628xx@s.whatsapp.net",
+    "628xxx@s.whatsapp.net"
+  ],
+  "readme": "isi nomornya ownerNumber sesuai ada berapa no kalian mau banyak nomor juga bisa, jangan lupa tanda koma nya harus pas biar ga eror , install modul pake npm i yah jangan yarn, yarn gaje",
+  "contact": "6281563372282",
+  "botName": "Maleficent Bot ❤️",
+  "ownerName": "Ruly Henderson",
+  "footer": "© Ruhend",
+  "sosmed": "your Instagram url",
+  "thumbnail": "https://files.catbox.moe/ku30iz.jpeg",
+  "music": "https://qu.ax/gaVZ.mp3",
+  "ram": 800,
+  "auto_dl": false,
+  "typing": true,
+  "recording": false,
+  "read": true,
+  "self": false,
+  "qr": false,
+  "pairing": true,
+  "readme2": "botNumber adalah nomor yang mau di jadikan bot",
+  "botNumber": 6281563372282,
+  "group": {
+    "adReply": true,
+    "limit_adReply": false,
+    "limit_message": true,
+    "link": "https://chat.whatsapp.com/JofmQZXxUn2Fo0UH3qndXr",
+    "bye": "Bye 🐽\n%user \nHas Left From %subject Group",
+    "welcome": "*Selamat Datang Babi imut 🐷*\n*%user* \n*Di 🚾 %subject*\n*Kenalan dulu yuk*\n*Nama:*\n*Umur:*\n*Asal Kota:*\n*Hoby:*\n*Merek HP:*\n"
+  }
 }
