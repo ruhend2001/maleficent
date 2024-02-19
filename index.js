@@ -5,7 +5,6 @@ import path, {
 import {
    spawn
 } from 'child_process'
-import fs from 'fs'
 import {
    fileURLToPath
 } from 'url'
