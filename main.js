@@ -15,9 +15,6 @@ import {
 import {
    signalGroup
 } from 'maleficent-bot';
-import {
-   auto_BlockCaller
-} from "./lib/call.js";
 const startWhatsApp = async () => {
    const store = makeInMemoryStore({
       logger: Pino().child({
@@ -40,9 +37,6 @@ const startWhatsApp = async () => {
       console.log(update);
    });
    store.bind(conn.ev);
-   conn.ev.on('creds.update', saveCreds);
-   conn.ws.on('CB:call', (_call) => {
-      auto_BlockCaller(conn, _call)
-   });
+   conn.ev.on('creds.update', saveCreds);   
 };
 startWhatsApp();
