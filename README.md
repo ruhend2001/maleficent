@@ -9,5 +9,5 @@ and update all file in folder lib<br>
 just little bit 
 
 or re git clone / gitclone ulang<br>
-jika bug atau nanya hal sesuatu silakan chat saya saja atau taro di issue
+jika bug atau sesuatu silakan chat saya saja atau taro di issue
 
