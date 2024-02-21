@@ -8,6 +8,6 @@ and update all file in folder lib<br>
 * update config.json<br>
 just little bit 
 
-or re git clone / gitclone ulang
-jika bug atau nanya hal sesuatu silakan chat saya saja  
+or re git clone / gitclone ulang<br>
+jika bug atau nanya hal sesuatu silakan chat saya saja atau taro di issue
 
