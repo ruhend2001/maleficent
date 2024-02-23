@@ -14,15 +14,15 @@ export default {
       let { Upload, Download } = await Format.statistic();
       let title = `${setting.botName}\n${setting.footer}`;
       let music = setting.music;
-      let header = '┌───⭓';
+      let header = '┌───' + javi
       let middle = '│';
       let pointer = '⭓';
-      let bottom = '└──────────⭓';
+      let bottom = '└───────' + javi
       let num = conn.decodeJid(setting.owner);
       let info = `Hey Bangsat @${m.sender.split('@')[0]} 🐽\n`
       info += `${star} Simple WhatsApp Bot \nBy ${setting.footer}\n`
       info += `📚 Library : baileys-wa@latest\n`
-      info += `👤 Owner @${num.split('@')[0]}\n`
+      info += `👤 Owner : wa.me/${num.split('@')[0]}\n`
       info += ` 📸 Instagram: ${sosmed}\n\n`
       info += ` _Network Bot Usage_ :\n📥 Download: ${Download}\n📤 Upload: ${Upload}\n\n${jembut}`
       m.react('🐽', m.chat)
