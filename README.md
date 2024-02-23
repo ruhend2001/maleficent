@@ -1,7 +1,7 @@
 # Update version 5.0.4
-• fix / removing mention owner or owner tag ✅<br>
-• memperbaiki / menghapus nomor owner ke tag ✅<br>
-I'm sorry I'm not careful that was my fault 😪<br>
+• fix / removing mention owner or owner tag on adReply and adsReply✅<br>
+• memperbaiki / menghapus nomor owner ke tag di adReply dan adsReply✅<br>
+😪<br>
 just update depencies to 5.0.4<br>
 update saja depensi ke 5.0.4<br>
 * update package.json<br>
