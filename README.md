@@ -6,7 +6,7 @@ just update depencies to 5.0.4<br>
 update saja depensi ke 5.0.4<br>
 * update package.json<br>
 or re git clone / gitclone ulang<br>
-npm i<br>
-npm start or node index.js<br>
+* npm i<br>
+* npm start or node index.js<br>
 jika bug atau sesuatu silakan chat saya saja atau taro di issue
 
