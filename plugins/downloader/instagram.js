@@ -14,7 +14,7 @@ export default {
       m.adReply(loading, setting.thumbnail, m.chat);
       let data = await res.data;
       for (let media of data) {
-         await new Promise(resolve => setTimeout(resolve, 2000));
+         new Promise(resolve => setTimeout(resolve, 2000));
          conn.sendFile(m.chat, media.url, {
             quoted: m
          });
