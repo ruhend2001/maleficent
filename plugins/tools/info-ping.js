@@ -15,7 +15,7 @@ export default {
       runtime += `🟢 Bot Aktif Selama :\n`
       runtime += `${muptime}\n`
       runtime += `${response}`
-      m.edReply(runtime, 500);
+      m.edReply(runtime, 100);
       //conn.reply(m.chat, runtime, m);
    }
 }
