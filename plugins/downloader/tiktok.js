@@ -11,6 +11,7 @@ export default {
    }) => {
       if (!text) return m.reply(`Masukan Tiktok contoh\n${prefix+command}` + ' https://vt.tiktok.com/ZSFA2Bh4G/')
       let { title, name, username, published, like, comment, share, views, bookmark, video, duration } = await ttdl(text);
+      m.adReply(loading, setting.thumbnail, m.chat);
       let Tiktok = ` 𝐓𝐈𝐊𝐓𝐎𝐊\n`
       Tiktok += ` ⭔ Name : ${name}\n`
       Tiktok += ` ⭔ Judul : ${title}\n`
@@ -22,11 +23,9 @@ export default {
       Tiktok += ` ⭔ Views : ${views}\n`
       Tiktok += ` ⭔ Bookmark : ${bookmark}\n`
       Tiktok += ` ⭔ Duration : ${duration}`
-      m.adReply(loading, setting.thumbnail, m.chat).then(() => {
-         conn.sendFile(m.chat, video, {
-            caption: Tiktok,
-            quoted: m
-         })
+      conn.sendFile(m.chat, video, {
+         caption: Tiktok,
+         quoted: m
       })
    },
    limit: 5,
