@@ -1,4 +1,4 @@
-import { ttdl, fbdl } from '../../lib/download.js'
+import fetch from 'node-fetch';
 export default {
    names: ['Downloader'],
    tags: ['tiktok', 'titit'],
@@ -9,32 +9,22 @@ export default {
       prefix,
       command
    }) => {
-      try {
-         if (!text) return m.reply(`Masukan Tiktok contoh\n${prefix+command}` + ' https://vm.Tiktok.com/ZSNYfYdLj/')
-         let { title, name, username, published, like, comment, share, views, bookmark, video, duration } = await ttdl(text)
-         m.adReply(loading, setting.thumbnail, m.chat)
-         let Tiktok = ` ${javi} 𝐓𝐈𝐊𝐓𝐎𝐊\n`
-         Tiktok += ` ⭔ Name : ${name}\n`
-         Tiktok += ` ⭔ Judul : ${title}\n`
-         Tiktok += ` ⭔ User Name : ${username}\n`
-         Tiktok += ` ⭔ Published : ${published}\n`
-         Tiktok += ` ⭔ Like : ${like}\n`
-         Tiktok += ` ⭔ Comment : ${comment}\n`
-         Tiktok += ` ⭔ Share : ${share}\n`
-         Tiktok += ` ⭔ Views : ${views}\n`
-         Tiktok += ` ⭔ Bookmark : ${bookmark}\n`
-         Tiktok += ` ⭔ Duration : ${duration}`
+      let res = await (await fetch(`https://vihangayt.me/download/tiktok?url=${text}`)).json();
+      let data = res.data;
+      let author = data.author;
+      let name = data.author_name;
+      let video = data.play_url;
+      let desc = data.desc;
+      let cover = data.cover;
+      let caption = `*Judul :* ${desc}\n`
+      caption += `*name :* ${name}\n`
+      caption += `*author :* ${author}\n`
+      m.adReply(caption, cover, m.chat).then(() => {
          conn.sendFile(m.chat, video, {
-            caption: Tiktok,
+            caption: `𝐓𝐈𝐊𝐓𝐎𝐊\n${caption}`,
             quoted: m
          })
-      } catch {
-         let { video } = await fbdl(text)
-         conn.sendFile(m.chat, video, {
-            caption: `𝐓𝐈𝐊𝐓𝐎𝐊`,
-            quoted: m
-         })
-      }
+      })
    },
    limit: 3,
    premium: false
