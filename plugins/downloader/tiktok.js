@@ -9,6 +9,7 @@ export default {
       prefix,
       command
    }) => {
+      if (!text) return m.reply("masukan link kontolnya");
       let res = await (await fetch(`https://vihangayt.me/download/tiktok?url=${text}`)).json();
       let data = res.data;
       let author = data.author;
