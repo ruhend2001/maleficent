@@ -1,3 +1,4 @@
+//nama file masih harus ga pake spasi tapi masih berfungsi, pasti di fix
 export default {
    names: ['Maker'],
    tags: ['todocument'],
