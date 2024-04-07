@@ -16,7 +16,7 @@ export default {
       runtime += `${muptime}\n`
       runtime += `${response}`
       //m.edReply(runtime, 250);
-      //conn.reply(m.chat, runtime, m);
-      m.adReply(runtime, setting.thumbnail, m.chat);
+      conn.reply(m.chat, runtime, m);
+      //m.adReply(runtime, setting.thumbnail, m.chat);
    }
 }
