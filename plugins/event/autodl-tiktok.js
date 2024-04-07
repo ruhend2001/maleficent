@@ -8,6 +8,7 @@ export let m = {
    }) => {
       let tR = /(http(?:s)?:\/\/)?(?:www\.)?(?:tiktok\.com\/@[^\/]+\/video\/(\d+))|(http(?:s)?:\/\/)?vm\.tiktok\.com\/([^\s&]+)|(http(?:s)?:\/\/)?vt\.tiktok\.com\/([^\s&]+)/g;
       if (autodl && tR.test(budy)) {
+         if (budy.includes('.tt') && budy.includes('.tiktok')) return
          if (User.checkLimitUser(m.sender) <= 0) {
             return m.reply(mess.limit);
          }
