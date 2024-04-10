@@ -27,8 +27,9 @@ export let m = {
                m.reply(`Media tidak ditemukan`);
             }
          } catch (error) {
+            if (m.isBaileys) return;
             console.log(error);
-            m.reply(`Terjadi kesalahan saat mengambil data Instagram\n${error}`);
+            return m.reply(`Terjadi kesalahan saat mengambil data Instagram\n${error}`);
          }
       }
    }
