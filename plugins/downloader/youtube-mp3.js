@@ -15,13 +15,7 @@ export default {
       m.adReply(loading, setting.thumbnail, m.chat);
       let buffer = await Format.getBuffer(video);
       let result = await Format.mp3(buffer);
-      conn.sendMessage(m.chat, {
-         document: result,
-         mimetype: 'audio/mpeg',
-         fileName: `${title}~Ruhend-MD.mp3`
-      }, {
-         quoted: m
-      });
+      conn.sendMessage(m.chat, { document: result, fileName: `${title}~Ruhend-MD.mp3`, mimetype: 'audio/mpeg' }, { quoted : m });
    },
    limit: 5,
    premium: false
