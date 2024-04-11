@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import { igdl } from '../../lib/download.js';
 export let m = {
    start: async (m, {
       conn,
@@ -7,29 +7,24 @@ export let m = {
       User
    }) => {
       let domain = budy.match(/(https?:\/\/(?:www\.)?instagram\.[a-z\.]{2,6}\/[\w\-\.]+(\/[^\s]*)?)/g);
-      let exc = budy.includes('User')
-      if (autodl && !exc && domain && domain.length > 0) {
+      if (autodl && domain) {
+         if (budy.includes('.ig')) return;
+         if (budy.match(/\.instagram\s/)) return;
          if (User.checkLimitUser(m.sender) <= 0) {
             return m.reply(mess.limit);
          };
-         try {
-            let res = await fetch(`https://vihangayt.me/download/instagram?url=${domain[0]}`);
-            let igeh = await res.json();
-            m.react('🕒', m.chat)
-            if (igeh.data && igeh.data.data.length > 0) {
-               for (let i of igeh.data.data) {
-                  conn.sendFile(m.chat, i.url, {
-                     quoted: m
-                  });
-               }
-               User.Limit(m, m.sender, 5);
-            } else {
-               m.reply(`Media tidak ditemukan`);
+         m.react('🕘', m.chat)
+         let res = await igdl(`${domain[0]}`);
+         let data = await res.data;
+         if (data.length > 0) {
+            for (let i of data) {
+               conn.sendFile(m.chat, i.url, {
+                  quoted: m
+               });
             }
-         } catch (error) {
-            if (m.isBaileys) return;
-            console.log(error);
-            return m.reply(`Terjadi kesalahan saat mengambil data Instagram\n${error}`);
+            User.Limit(m, m.sender, 2);
+         } else {
+            return m.reply(`Media tidak ditemukan`);
          }
       }
    }
