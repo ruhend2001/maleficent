@@ -7,7 +7,7 @@ export let m = {
       autodl
    }) => {
       if (autodl && m.mtype === 'imageMessage') {
-         let ignore = ['remini', 'hd'];
+         let ignore = ['remini', 'hd', 'sticker', 's', 'stiker'];
          if (ignore.includes(command)) {
             return m.react('❎', m.chat)
          };
