@@ -1,9 +1,8 @@
-# Update version 5.0.4
-• fix / removing mention owner or owner tag on adReply and adsReply✅<br>
-• memperbaiki / menghapus nomor owner ke tag di adReply dan adsReply✅<br>
-😪<br>
-just update depencies to 5.0.4<br>
-update saja depensi ke 5.0.4<br>
+# Update version 5.0.5
+• fix issue (self) not working which is when welcome and leave message still there
+<br>
+just update depencies to 5.0.5<br>
+update saja depensi ke 5.0.5<br>
 * update package.json<br>
 or re git clone / gitclone ulang<br>
 * npm i<br>
