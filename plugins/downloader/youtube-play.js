@@ -1,6 +1,5 @@
 import fetch from 'node-fetch'
 import { ytmp4, ytsearch } from '../../lib/download.js'
-
 export default {
    names: ['Downloader'],
    tags: ['play', 'song', 'lagu'],
@@ -29,26 +28,29 @@ export default {
       m.adsReply(play, thumbnail, m.chat)
       let { video } = await ytmp4(url);
       let media = await Format.getBuffer(video);
-      let result = await Format.mp3v2(media);
-      conn.sendMessage(m.chat, {
-         audio: result,
-         mimetype: 'audio/mp4',
-         ptt: true,
-         fileName: title,
-         contextInfo: {
-            externalAdReply: {
-               mediaType: 2,
-               mediaUrl: url,
-               title: title,
-               body: setting.botName,
-               sourceUrl: url,
-               thumbnail: await (await fetch(thumbnail)).buffer()
+      let data = await Format.mp3(media);
+      let result = await Format.mp3v2(data);
+      if (result) {
+         return await conn.sendMessage(m.chat, {
+            audio: result,
+            mimetype: 'audio/mp4',
+            ptt: true,
+            fileName: title,
+            contextInfo: {
+               externalAdReply: {
+                  mediaType: 2,
+                  mediaUrl: url,
+                  title: title,
+                  body: setting.botName,
+                  sourceUrl: url,
+                  thumbnail: await (await fetch(thumbnail)).buffer()
+               }
             }
-         }
-      }, {
-         quoted: m
-      })
+         }, {
+            quoted: m
+         })
+      }
    },
-   limit: 6,
+   limit: 5,
    premium: false
-};
+}
