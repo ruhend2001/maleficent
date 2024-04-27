@@ -14,7 +14,7 @@ export default {
       if (!text) return m.reply(`Masukan Lagu Yang Ingin Di Cari\ncontoh ${prefix+command} papinka sana sini aku rindu atau .play linknya https://youtu.be/uNkO9WWIzHE`);
       let vid = (await ytsearch(text)).video[0]
       let { title, description, thumbnail, videoId, durationH, viewH, publishedTime } = vid;
-      m.reply(loading)
+      m.reply(loading);
       if (!vid) return m.reply('Tidak di temukan, coba untuk membalikkan judul dan author nya')
       let url = 'http://youtu.be/' + videoId;
       let play = `🎧 〔 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐏𝐋𝐀𝐘 〕\n`
@@ -28,14 +28,13 @@ export default {
       m.adsReply(play, thumbnail, m.chat)
       let { video } = await ytmp4(url);
       let media = await Format.getBuffer(video);
-      let data = await Format.mp3(media);
-      let result = await Format.mp3v2(data);
-      if (result) {
-         return await conn.sendMessage(m.chat, {
-            audio: result,
+      let data = await Format.mp3v2(media);
+      if (data) {
+         return conn.sendFile(m.chat, data, {
             mimetype: 'audio/mp4',
             ptt: true,
             fileName: title,
+            quoted: m,
             contextInfo: {
                externalAdReply: {
                   mediaType: 2,
@@ -43,11 +42,9 @@ export default {
                   title: title,
                   body: setting.botName,
                   sourceUrl: url,
-                  thumbnail: await (await fetch(thumbnail)).buffer()
+                  thumbnail: await (await fetch(setting.thumbnail)).buffer()
                }
             }
-         }, {
-            quoted: m
          })
       }
    },
