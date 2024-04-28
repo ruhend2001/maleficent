@@ -1,7 +1,7 @@
 export default {
    names: ['Maker'],
    tags: ['toaudio'],
-   command: ['tomp3', 'toaudio'],
+   command: ['tomp3', 'toaudio', 'toptt', 'tovn'],
    start: async (m, {
       conn,
       prefix,
