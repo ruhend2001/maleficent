@@ -9,12 +9,12 @@ export default {
       prefix,
       command
    }) => {
-      if (!text) return m.reply(`Masukan agram contoh ${prefix+command} https://www.instagram.com/p/C1Ad3suiZRu/?igsh=MTV4dHF6a2Jubmhxdw==`);
+      if (!text) return m.reply(`Masukan agram contoh ${prefix+command} https://www.instagram.com/p/C1Ck8sENM94/?igsh=amY1ajd4Nm1vMTBw`);
       let res = await igdl(text);
       m.adReply(loading, setting.thumbnail, m.chat);
       let data = await res.data;
       for (let media of data) {
-         new Promise(resolve => setTimeout(resolve, 2000));
+         await new Promise(resolve => setTimeout(resolve, 2500));
          conn.sendFile(m.chat, media.url, {
             quoted: m
          });
