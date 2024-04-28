@@ -1,8 +1,9 @@
 # Update version 5.0.6
 • added smart upgrade for components module automatic update so that don't need to upgrade manually anymore<br>
 • ditambahkan upgrade pintar untuk modul komponen update otomatis 
-jadi tidak perlu upgrade secara manual lagi
+jadi tidak perlu upgrade secara manual lagi <br> (tenang tidak termasuk plugins karena plugins untuk kalian kostuminasi atau edit sendiri)
 <br>
+
 
 - just update depencies to 5.0.6<br>
 update saja depensi ke 5.0.6<br>
