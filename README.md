@@ -8,7 +8,7 @@ jadi tidak perlu upgrade secara manual lagi <br>
 
 - just update depencies to 5.0.6<br>
 update saja depensi ke 5.0.6<br>
-- untuk selanjutnya setelah 5.0.6 tidak usah update dependensi manual lagi karna sudah otomatis<br>
+- untuk selanjutnya setelah 5.0.6 tidak usah update dependensi manual lagi karna sudah updgrade otomatis<br>
 
 * update package.json<br>
 * update lib/cache.js<br>
