@@ -17,5 +17,7 @@ or re git clone / gitclone ulang<br>
 * npm i<br>
 * npm start or node index.js<br>
 
-!sc ini tidak ada eror yah jika terjadi eror mungkin kalian ada kesalahan saat mengedit kode <br>jika bug atau sesuatu silakan chat saya 085161326436 saja atau taro di issue
+sc ini tidak ada eror yah jika terjadi eror mungkin kalian ada kesalahan saat mengedit kode <br>jika bug atau sesuatu/ bantuan silakan chat saya 085161326436 saja atau taro di issue
+Group Bot<br>
+https://chat.whatsapp.com/HHzpoOfzdO80vPzXSPCYGT
 
