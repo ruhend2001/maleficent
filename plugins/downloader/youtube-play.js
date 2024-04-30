@@ -42,7 +42,7 @@ export default {
                   title: title,
                   body: setting.botName,
                   sourceUrl: url,
-                  thumbnail: await (await fetch(setting.thumbnail)).buffer()
+                  thumbnail: await (await fetch(thumbnail)).buffer()
                }
             }
          })
