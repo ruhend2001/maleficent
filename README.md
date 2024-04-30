@@ -16,5 +16,5 @@ update saja depensi ke 5.0.6<br>
 or re git clone / gitclone ulang<br>
 * npm i<br>
 * npm start or node index.js<br>
-jika bug atau sesuatu silakan chat saya saja atau taro di issue
+sc ini tidak ada eror yah jika terjadi eror mungkin kalian ada kesalahan saat mengedit kode <br>jika bug atau sesuatu silakan chat saya 085161326436 saja atau taro di issue
 
