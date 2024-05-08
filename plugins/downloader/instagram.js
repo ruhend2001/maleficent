@@ -13,8 +13,8 @@ export default {
       let res = await igdl(text);
       m.adReply(loading, setting.thumbnail, m.chat);
       let data = await res.data;
-      for (let media of data) {
-         await new Promise(resolve => setTimeout(resolve, 2500));
+      for (let i = 0; i < data.length; i++) {
+         let media = data[i];
          conn.sendFile(m.chat, media.url, {
             quoted: m
          });
@@ -22,4 +22,4 @@ export default {
    },
    limit: 5,
    premium: false
-};
+}
