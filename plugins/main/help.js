@@ -14,12 +14,12 @@ export default {
       let { Upload, Download } = await Format.statistic();
       let title = `${setting.botName}\n${setting.footer}`;
       let music = setting.music;
-      let header = '┌────✦'
-      let middle = '│'
-      let pointer = '⭓'
-      let bottom = '└────────✦'
+      let header = '❏═┅═━๑'
+      let middle = '┊'
+      let pointer = '☃︎'
+      let bottom = '❏═━═┅═━–––๑'
       let num = conn.decodeJid(setting.owner);
-      let info = `Selamat ${waktu.suasana} Bangsat\n@${m.sender.split('@')[0]} 🐽\n`
+      let info = `Selamat ${waktu.suasana} bangsat\n@${m.sender.split('@')[0]} 🐽\n`
       info += `${star} Simple WhatsApp Bot \nBy ${setting.footer}\n`
       info += `📚 Library : baileys-wa@latest\n`
       info += `👤 Owner : wa.me/${num.split('@')[0]}\n`
