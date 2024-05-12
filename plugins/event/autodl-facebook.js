@@ -7,6 +7,8 @@ export let m = {
       User
    }) => {
       if (autodl && /(?:https?:\/\/)?(?:www\.)?(?:facebook\.com|fb\.gg)\/[^\s/]+(?:\/videos\/\d+\/?)?/.test(budy)) {
+         if (budy.includes('.fb')) return;
+         if (budy.match(/\.facebook\s/)) return;
          if (m.isBaileys) return;
          if (User.checkLimitUser(m.sender) <= 0) {
             return m.reply(mess.limit);
