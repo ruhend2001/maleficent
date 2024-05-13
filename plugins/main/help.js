@@ -1,3 +1,4 @@
+import fetch from 'node-fetch'
 export default {
    names: ['Main Menu'],
    tags: ['menu'],
@@ -29,6 +30,19 @@ export default {
       let { menu } = await Format.Plugins(header, middle, pointer, bottom, prefix);
       let picture = await User.profilePicture(conn, m)
       m.adsReply(`${info}\n\n${menu}`, picture, m.chat)
-      //conn.sendFile(m.chat, music, { ptt : true, quoted : m })
+      conn.sendFile(m.chat, music, {
+         mimetype: 'audio/mp4',
+         ptt: true,
+         quoted: m,
+         contextInfo: {
+            externalAdReply: {
+               mediaType: 1,
+               mediaUrl: '',
+               title: 'Menunya Kak :)',
+               sourceUrl: setting.group.link,
+               thumbnail: await (await fetch(picture)).buffer()
+            }
+         }
+      })
    }
 };
