@@ -47,7 +47,7 @@ export default {
       let Tiktok = await import('tiktokapi-src');
       await Tiktok.Downloader(url, {
          version: "v2"
-      }).then(async (res) => {
+      }).then((res) => {
          let data = res.result
          let video = data.video
          let author = data.author.nickname
