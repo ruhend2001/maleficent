@@ -9,9 +9,10 @@ export default {
       prefix,
       command
    }) => {
-      if (!text) return m.reply(`Masukan Tiktok contoh\n${prefix+command}` + ' https://vt.tiktok.com/ZSFynAYGJ/')
+      if (!text) return m.reply(`Masukan Tiktok contoh\n${prefix+command}` + ' https://vt.tiktok.com/ZSFW35yJk/')
       let { title, name, username, published, like, comment, share, views, bookmark, video, duration } = await ttdl(text);
       m.adReply(loading, setting.thumbnail, m.chat);
+      let b1 = ['🎧 Audio', '.ttmp3 ' + text]
       let Tiktok = ` 𝐓𝐈𝐊𝐓𝐎𝐊\n`
       Tiktok += ` ⭔ Name : ${name}\n`
       Tiktok += ` ⭔ Judul : ${title}\n`
@@ -23,10 +24,7 @@ export default {
       Tiktok += ` ⭔ Views : ${views}\n`
       Tiktok += ` ⭔ Bookmark : ${bookmark}\n`
       Tiktok += ` ⭔ Duration : ${duration}`
-      conn.sendFile(m.chat, video, {
-         caption: Tiktok,
-         quoted: m
-      })
+      conn.sendButton(m.chat, video, Tiktok, b1, m)
    },
    limit: 5,
    premium: false
