@@ -61,13 +61,9 @@ export default {
          caption += `⭔ Like : ${like}\n`
          caption += `⭔ Comment : ${comment}\n`
          caption += `⭔ Share : ${share}`
-         conn.sendMessage(m.chat, {
-            video: {
-               url: video
-            },
-            caption: caption
-         }, {
-            quoted: m
+         conn.sendFile(m.chat, video, {
+            caption: caption,
+            quoted: m 
          })
       })
    },
