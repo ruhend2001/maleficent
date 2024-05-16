@@ -50,12 +50,14 @@ export default {
       }).then((res) => {
          let data = res.result
          let video = data.video
+         let desc = data.desc
          let author = data.author.nickname
          let like = data.statistics.likeCount
          let comment = data.statistics.commentCount
          let share = data.statistics.shareCount
          let caption = `𝐓𝐈𝐊𝐓𝐎𝐊\n`
          caption += `⭔ Author : ${author}\n`
+         caption += `⭔ Description : ${desc}\n`
          caption += `⭔ Like : ${like}\n`
          caption += `⭔ Comment : ${comment}\n`
          caption += `⭔ Share : ${share}`
