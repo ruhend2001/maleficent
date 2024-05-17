@@ -11,7 +11,7 @@ export default {
    }) => {
       text = text || 'contoh'
       /*
-      bahan kirim pake button saya batas sampai 6 ya biar ga riweh dan kostum sendiri ke plugin file js lain sesuka hati itu 
+      bahan kirim pake button i batas sampai 6 ya biar ga riweh dan kostum sendiri ke plugin file js lain sesuka hati itu 
       contoh nya di bawah
       kalo ngirim command bareng text dari user atau mau text sendiri setelah command pake satu spasi dalem button nya biar work
       contoh b1 ['Tes', '.ping ' + text]
