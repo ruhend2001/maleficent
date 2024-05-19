@@ -14,7 +14,7 @@ export default {
       let umur = text.split(".")[1];
       let sender = m.sender;
       if (!nama || !umur) {
-         return m.reply(`Akses ditolak! Masukkan nama dan umur yang benar. \ncontoh ${prefix+command} nadia omara.100`);
+         return m.reply(`Akses ditolak! Masukkan nama dan umur yang benar. \ncontoh ${prefix+command} nadia omara.50`);
       }
       let sn = Format.makeid(10);
       let user = {
@@ -25,8 +25,7 @@ export default {
          seri: sn
       };
       await User.registering(user);
-      await User.addLimitUser(m.sender, 15);
-      await Format.sleep(2500)
+      await User.addLimitUser(m.sender, 15);      
       let Verify = `Berhasil Daftar √\n\n`
       Verify += ` Nama: ${nama}\n`
       Verify += ` Umur: ${umur}\n`
