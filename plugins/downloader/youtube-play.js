@@ -27,9 +27,8 @@ export default {
       play += ` *Loading audio sedang dikirim...*`
       m.adsReply(play, thumbnail, m.chat);    
       let { video } = await ytmp4(url);      
-      let audio = await Format.getBuffer(video);
-      let data = await Format.mp3v2(audio); 
-      conn.sendFile(m.chat, data, {
+      let audio = await Format.mp3v2(conn, video, 'mp4', m);
+      conn.sendFile(m.chat, audio, {
          mimetype: 'audio/mp4',
          ptt: true,
          fileName: title,
@@ -48,4 +47,4 @@ export default {
    },
    limit: 5,
    premium: false
-}
+         }
