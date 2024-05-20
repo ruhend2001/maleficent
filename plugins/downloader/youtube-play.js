@@ -47,4 +47,4 @@ export default {
    },
    limit: 5,
    premium: false
-         }
+}
