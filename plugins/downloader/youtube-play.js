@@ -30,7 +30,6 @@ export default {
       let audio = await Format.mp3v2(conn, video, 'mp4', m);
       conn.sendFile(m.chat, audio, {
          mimetype: 'audio/mp4',
-         ptt: true,
          fileName: title,
          quoted: m,
          contextInfo: {
