@@ -13,7 +13,7 @@
   "author": "Ruly Henderson",
   "license": "ISC",
   "dependencies": {
-    "@adiwajshing/baileys": "npm:baileys-wa",
+    "@adiwajshing/baileys": "npm:baileys-wa@10.0.2",
     "ruhend-scraper": "latest",
     "file-type": "^18.0.0",
     "tiktokapi-src": "^1.2.0",
