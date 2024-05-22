@@ -2,7 +2,9 @@ export default {
    names: ['Group Menu'],
    tags: ['resetlink', 'revoke'],
    command: ['resetlink', 'revoke'],
-   start: async (m) => {
+   start: async (m, {
+      conn
+   }) => {
       conn.groupRevokeInvite(m.chat)
       m.reply(`Sukses`)
    },
