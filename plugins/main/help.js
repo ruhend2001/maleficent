@@ -15,10 +15,12 @@ export default {
       let { Upload, Download } = await Format.statistic();
       let title = `${setting.botName}\n${setting.footer}`;
       let music = setting.music;
-      let header = '❏═┅═━๑'
+      let header = '❏═┅═'
       let middle = '┊'
       let pointer = '☃︎'
-      let bottom = '❏═━═┅═━–––๑'
+      let bottom = '❏═━═┅═┅═┅═┅═❏'
+      let left = '『'
+      let right = '』'      
       let num = conn.decodeJid(setting.owner);
       let info = `Selamat ${waktu.suasana} bangsat\n@${m.sender.split('@')[0]} 🐽\n`
       info += `${star} Simple WhatsApp Bot \nBy ${setting.footer}\n`
@@ -27,7 +29,8 @@ export default {
       info += ` 📸 Instagram: ${sosmed}\n\n`
       info += ` Network Bot Usage :\n📥 Download: ${Download}\n📤 Upload: ${Upload}\n\n${jembut}`
       m.react('🐽', m.chat)
-      let { menu } = await Format.Plugins(header, middle, pointer, bottom, prefix);
+      let top = { left, right }
+      let { menu } = await Format.Plugins(header, middle, pointer, bottom, prefix, top);
       let picture = await User.profilePicture(conn, m)
       m.adsReply(`${info}\n\n${menu}`, picture, m.chat)
       conn.sendFile(m.chat, music, {
