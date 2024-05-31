@@ -1,7 +1,7 @@
 export default {
    names: ['Tools'],
-   tags: ['delete', 'del'],
-   command: ['delete', 'del'],
+   tags: ['delete'],
+   command: ['delete', 'del', 'd'],
    start: async (m, {
       conn,
    }) => {
