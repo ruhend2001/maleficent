@@ -1,6 +1,4 @@
-import fs from 'fs'
 import fetch from 'node-fetch'
-
 export default {
    names: ['Maker'],
    tags: ['stickermix', 'emojimix', 'emomix'],
