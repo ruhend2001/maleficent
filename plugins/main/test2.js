@@ -12,7 +12,7 @@ export default {
       text = text || 'contoh'
       let pesan = `Hay Ka @${m.sender.split('@')[0]}` // Pesan nya atau caption
       let media = setting.thumbnail; //media photo or video 
-      //button disini hanya contoh saya dan bisa kalian buat sesuai keinginan ke plugins lagi
+      //button disini hanya contoh saja dan bisa kalian buat sesuai keinginan dan terapkan ke plugins lain
       let b1 = ['One', '.ping']
       let b2 = ['Two', '.ping ' + text] //text dari user atau yang lain   
       let b3 = ['Three', '.daftar saya anjing.30'] //text dari kita sendiri
