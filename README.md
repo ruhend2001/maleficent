@@ -1,7 +1,7 @@
 ## Maleficent Bot
 
 <p align="center">
-<img src="https://pomf2.lain.la/f/5xiiwv5z.jpg" alt="Millie Bot-Md" width="500"/>
+<img src="https://files.catbox.moe/ku30iz.jpeg" alt="Maleficent Bot-Md" width="500"/>
 
  
 Bagaimana mnambah fitur atau plugin baru?<br>
