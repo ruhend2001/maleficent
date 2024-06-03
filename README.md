@@ -6,7 +6,7 @@
  
 Bagaimana mnambah fitur atau plugin baru?<br>
 How to add features or new plugins ?<br>
-```
+```ts
 export default {
    names: ['Tittle'], //Judul Kategori yang akan di tampikan di menu
    tags: ['title'], //perintah yang akan tampil di menu
@@ -33,7 +33,7 @@ export default {
 ```
 
 untuk menjalankan langsung tanpa command atau event message
-```
+```ts
 export let m = {
    start: async (m, {
       conn,
