@@ -8,7 +8,7 @@ Bagaimana mnambah fitur atau plugin baru?<br>
 How to add features or new plugins ?<br>
 ```
 export default {
-   names: ['Tittle'], //Judul yang alan di tampikan di menu
+   names: ['Tittle'], //Judul yang akan di tampikan di menu
    tags: ['title'], //category yang akan tampil di menu
    command: ['title'], //perintah untuk menjalankan plugins plugins nya
    start: async (m, { //memulai perintah dari command
