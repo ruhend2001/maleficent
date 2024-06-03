@@ -45,8 +45,8 @@ export let m = {
    }
 };
 ```
+
 next learn by your self follow plugins that they were already had
----
 
 
 ## Bugs and Request Fitur
