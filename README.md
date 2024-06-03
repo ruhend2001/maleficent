@@ -50,7 +50,7 @@ next learn by yourself follow plugins that they were already
 
 ## Bugs and Request Fitur
 * Jika kamu menemukan bug bisa lapor ke owner dan juga request fitur
-* Info Lebih Lanjut, Chat [Owner-Maleficent](https://wa.me/623112005221)
+* Info Lebih Lanjut, Chat [Owner-Maleficent](https://wa.me/6283112005221)
 
 # Requirements
 * [Node.js](https://nodejs.org/en/)
