@@ -5,7 +5,8 @@
 
  
 Bagaimana mnambah fitur atau plugin baru?<br>
-How to add features or new plugins ?<br>
+How to add features or new plugins?
+pastikan kalian edit kode atau plugins dengan hati hatinya agar tidak error <br>
 ```ts
 export default {
    names: ['Tittle'], //Judul Kategori yang akan di tampikan di menu
