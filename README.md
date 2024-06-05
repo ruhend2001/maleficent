@@ -3,8 +3,7 @@
 <p align="center">
 <img src="https://files.catbox.moe/ku30iz.jpeg" alt="Maleficent Bot-Md" width="500"/>
 
- 
-Bagaimana mnambah fitur atau plugin baru?<br>
+ Bagaimana mnambah fitur atau plugin baru?<br>
 How to add features or new plugins?<br>
 pastikan kalian edit kode atau plugins dengan hati hatinya agar tidak error karna sc ini awal tidak ada eror dan pasti nya sudah di cek copy atau ambil saja saja plugins lain<br>
 
@@ -26,16 +25,26 @@ export default {
    limit: true
 }
 ```
-names: ['Tittle']//Judul Kategori yang akan di tampikan di menu
-tags: ['title'] //perintah yang akan tampil di menu
-command: ['title'] //perintah untuk menjalankan plugins plugins nya   
-limit: true //true = 1 atau bisa kasih nilai angka
-premium: false //true jika ingin plugins fiturnya hanya bida di akses premium user
-owner: false // true hanya dapat di akses owner
-admin: false // true hanya dapat di akses admin
-group: false // true hanya dapat di akses dalam group saja
-private: false // true hanya dapat di akses di chat pribadi
-disable: false // true jika tidak ingin di akses siapapun dan selanjut ada pada contoh plugins lain
+names: ['Tittle']<br>
+//Judul Kategori yang akan di tampikan di menu<br>
+tags: ['title']<br>
+//perintah yang akan tampil di menu<br>
+command: ['title']<br>
+//perintah untuk menjalankan plugins plugins nya<br>
+limit: true<br>
+//true = 1 atau bisa kasih nilai angka<br>
+premium: false<br>
+//true jika ingin plugins fiturnya hanya bida di akses premium user<br>
+owner: false<br>
+//true hanya dapat di akses owner<br>
+admin: false<br>
+// true hanya dapat di akses admin<br>
+group: false<br>
+// true hanya dapat di akses dalam group saja<br>
+private: false<br>
+// true hanya dapat di akses di chat pribadi<br>
+disable: false<br> 
+// true jika tidak ingin di akses siapapun dan selanjut ada pada contoh plugins lain<br>
 
 untuk menjalankan langsung tanpa command atau event message
 
@@ -52,8 +61,8 @@ export let m = {
 };
 ```
 
-next learn by yourself follow plugins that they were already
-selanjutnya boelj
+next learn by yourself follow plugins that they were already<br>
+selanjutnya pelajari oleh kamu sendiri ikuti plugin yang sudah ada<br>
 ## Bugs and Request Fitur
 * Jika kamu menemukan bug bisa lapor ke owner dan juga request fitur atau bantuan lain
 * Info Lebih Lanjut, Chat [Owner-Maleficent](https://wa.me/6283112005221)
