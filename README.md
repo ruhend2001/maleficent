@@ -27,25 +27,34 @@ export default {
 ```
 names: ['Tittle']<br>
 //Judul Kategori yang akan di tampikan di menu<br>
+<br>
 tags: ['title']<br>
 //perintah yang akan tampil di menu<br>
+<br>
 command: ['title']<br>
 //perintah untuk menjalankan plugins plugins nya<br>
+<br>
 limit: true<br>
 //true = 1 atau bisa kasih nilai angka<br>
+<br>
 premium: false<br>
 //true jika ingin plugins fiturnya hanya bida di akses premium user<br>
+<br>
 owner: false<br>
 //true hanya dapat di akses owner<br>
+<br>
 admin: false<br>
 // true hanya dapat di akses admin<br>
+<br>
 group: false<br>
 // true hanya dapat di akses dalam group saja<br>
+<br>
 private: false<br>
 // true hanya dapat di akses di chat pribadi<br>
+<br>
 disable: false<br> 
 // true jika tidak ingin di akses siapapun dan selanjut ada pada contoh plugins lain<br>
-
+<br>
 untuk menjalankan langsung tanpa command atau event message
 
 ```ts
