@@ -16,12 +16,12 @@ export default {
          let image = await conn.downloadAndSaveMediaMessage(quoted);
          m.reply(`Process...`);
          let { url } = await Format.upload(image);
-         User.changeThumb({ 
+         await User.changeThumb({ 
             thumbnail: url 
          });
          console.log(url);
          m.reply(`Sukses Mengganti Thumbnail Bot\n\nRestarting....`);
-         await Format.sleep(2000);
+         await Format.sleep(3000);
          process.send('reset');
       } else {
          return m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
