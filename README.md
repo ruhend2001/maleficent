@@ -50,7 +50,7 @@ export let m = {
 next learn by yourself follow plugins that they were already
 
 ## Bugs and Request Fitur
-* Jika kamu menemukan bug bisa lapor ke owner dan juga request fitur
+* Jika kamu menemukan bug bisa lapor ke owner dan juga request fitur atau bantuan lain
 * Info Lebih Lanjut, Chat [Owner-Maleficent](https://wa.me/6283112005221)
 
 # Requirements
