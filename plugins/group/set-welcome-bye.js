@@ -1,5 +1,5 @@
 export default {
-   names: ['Group'],
+   names: ['Group Menu'],
    tags: ['setwelcome', 'setbye'],
    command: ['setwelcome', 'setbye'],
    start: async (m, {
