@@ -1,9 +1,9 @@
 {
   "owner": "6281563372282@s.whatsapp.net",
   "ownerNumber": [
-    "628xxxx@s.whatsapp.net",
-    "628xx@s.whatsapp.net",
-    "628xxx@s.whatsapp.net"
+    "628xxxx",
+    "628xx",
+    "628xxx"
   ],
   "readme": "isi nomornya ownerNumber sesuai ada berapa no kalian mau banyak nomor juga bisa, jangan lupa tanda koma nya harus pas biar ga eror , install modul pake npm i yah jangan yarn, yarn gaje",
   "contact": "6281563372282",
