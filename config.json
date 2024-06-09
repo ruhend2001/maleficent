@@ -24,6 +24,7 @@
   "readme2": "botNumber adalah nomor yang mau di jadikan bot",
   "botNumber": 6281563372282,
   "group": {
+    "only": false,
     "adReply": true,
     "limit_adReply": false,
     "limit_message": true,
