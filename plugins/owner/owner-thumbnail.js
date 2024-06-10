@@ -16,9 +16,7 @@ export default {
          let image = await conn.downloadAndSaveMediaMessage(quoted);
          m.reply(`Process...`);
          let link = await Format.upload2(image);
-         await User.changeThumb({ 
-            thumbnail: link
-         });
+         await User.changeThumb({ thumbnail: link });
          console.log(link);
          m.reply(`Sukses Mengganti Thumbnail Bot\n\nRestarting....`);
          await Format.sleep(3000);
