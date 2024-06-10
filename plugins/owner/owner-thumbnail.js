@@ -15,11 +15,11 @@ export default {
       if (/image/.test(mime) || m.mtype === 'imageMessage') {
          let image = await conn.downloadAndSaveMediaMessage(quoted);
          m.reply(`Process...`);
-         let { url } = await Format.upload(image);
+         let link = await Format.upload2(image);
          await User.changeThumb({ 
-            thumbnail: url 
+            thumbnail: link
          });
-         console.log(url);
+         console.log(link);
          m.reply(`Sukses Mengganti Thumbnail Bot\n\nRestarting....`);
          await Format.sleep(3000);
          process.send('reset');
