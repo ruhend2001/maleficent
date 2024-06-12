@@ -9,14 +9,16 @@ export default {
       command,
       mime,
       quoted,
-      Format
+      Format,
+      isOwner
    }) => {
       if (/image/.test(mime) || m.mtype === 'imageMessage') {
          if (!quoted) return m.reply(`Balas Atau Kirim image dengan caption ${prefix + command}`)
          m.react('🕒', m.chat);
-         let content = await quoted.download();
+         let content = await conn.downloadAndSaveMediaMessage(quoted);
          m.adReply(mess.wait, setting.thumbnail, m.chat);
-         let data = await Format.HD(content);         
+         let ran = await Format.getRandom('.png');
+         let data = await Format.HD2(content, ran);         
          conn.sendFile(m.chat, data, {
             caption: star + ' Berhasil Di Tingkatkan',
             quoted: m
@@ -25,7 +27,7 @@ export default {
          m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
       }
    },
-   limit: 25,//banyakin limitnya ke enakan usernya nanti kalo limit kecil kan bisa beli premium usernya ke elu :)
+   limit: 8,//banyakin limitnya ke enakan usernya nanti kalo limit kecil kan bisa beli premium usernya ke elu :)
    premium: false,
    disable: false
 };
