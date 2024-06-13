@@ -13,12 +13,13 @@ export default {
       isOwner
    }) => {
       if (/image/.test(mime) || m.mtype === 'imageMessage') {
+         let gcbot = (m.chat === "120363279412295576@g.us" || isOwner)        
+         if (!gcbot) return m.adReply('Wrong Group', setting.thumbnail, m.chat);
          if (!quoted) return m.reply(`Balas Atau Kirim image dengan caption ${prefix + command}`)
          m.react('🕒', m.chat);
-         let content = await conn.downloadAndSaveMediaMessage(quoted);
+         let content = await quoted.download();
          m.adReply(mess.wait, setting.thumbnail, m.chat);
-         let ran = await Format.getRandom('.png');
-         let data = await Format.HD2(content, ran);         
+         let data = await Format.HD(content);         
          conn.sendFile(m.chat, data, {
             caption: star + ' Berhasil Di Tingkatkan',
             quoted: m
@@ -27,7 +28,7 @@ export default {
          m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
       }
    },
-   limit: 8,//banyakin limitnya ke enakan usernya nanti kalo limit kecil kan bisa beli premium usernya ke elu :)
+   limit: 25,//banyakin limitnya ke enakan usernya nanti kalo limit kecil kan bisa beli premium usernya ke elu :)
    premium: false,
    disable: false
 };
