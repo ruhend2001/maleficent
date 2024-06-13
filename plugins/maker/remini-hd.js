@@ -13,8 +13,6 @@ export default {
       isOwner
    }) => {
       if (/image/.test(mime) || m.mtype === 'imageMessage') {
-         let gcbot = (m.chat === "120363279412295576@g.us" || isOwner)        
-         if (!gcbot) return m.adReply('Wrong Group', setting.thumbnail, m.chat);
          if (!quoted) return m.reply(`Balas Atau Kirim image dengan caption ${prefix + command}`)
          m.react('🕒', m.chat);
          let content = await quoted.download();
