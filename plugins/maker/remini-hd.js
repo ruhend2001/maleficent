@@ -9,8 +9,7 @@ export default {
       command,
       mime,
       quoted,
-      Format,
-      isOwner
+      Format
    }) => {
       if (/image/.test(mime) || m.mtype === 'imageMessage') {
          if (!quoted) return m.reply(`Balas Atau Kirim image dengan caption ${prefix + command}`)
