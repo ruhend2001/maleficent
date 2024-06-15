@@ -1,7 +1,7 @@
 export default {
    names: ['Owner'],
-   tags: ['hapustoko'],
-   command: ['hapustoko'],
+   tags: ['hapustoko', 'deltoko'],
+   command: ['hapustoko', 'deltoko'],
    start: async (m, {
       text,
       prefix,
