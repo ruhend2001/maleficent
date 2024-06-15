@@ -10,8 +10,8 @@ export default {
       participants
    }) => {
       if (!text) return m.reply(`Contoh ${prefix+command} Hi Ka Save Ya Namaku Jembut`);
-      let users = await participants.map(a => a.id);
-      let delay = 5000 // 5000 = 5 detik
+      let users = participants.map(a => a.id);
+      let delay = 10000 // 10000 = 10 detik
       m.reply('Hold On Sir Doing Your Command...')
       for (let i = 0; i < users.length; i++) {
          setTimeout(async () => {
