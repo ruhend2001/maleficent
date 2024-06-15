@@ -4,13 +4,11 @@ export default {
    command: ['db', 'database', 'getdb'],
    start: async (m, {
       conn,
-      User,
-      Format
+      User
    }) => {
-      let { data, name, mime } = await User.getDB()
-      m.reply(`Tunggu sedang mengambil file database...`)
-      await Format.sleep(3500);
-      conn.sendMessage(m.chat, { document: { url: data }, caption: 'Berhasil Backup database', mimetype: mime, fileName: name }, { quoted: m });
+      let { data, name, mime } = await User.getDB();
+      m.reply(`Tunggu sedang mengambil file database...`);    
+      conn.sendMessage(m.chat, { document: data, caption: 'Berhasil Backup database', mimetype: mime, fileName: name }, { quoted: m });
    },
    owner: true
 }
