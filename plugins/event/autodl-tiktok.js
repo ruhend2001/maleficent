@@ -14,13 +14,17 @@ export let m = {
          }
          let tiktokLinks = budy.match(tR)
          for (let tiktokLink of tiktokLinks) {
-            let { name, title, video } = await ttdl(tiktokLink)
-            m.react('🕒', m.chat)
-            let Tiktok = `🎗 *TIKTOK* \n`
-            Tiktok += `⭔ Name : ${name}\n`
-            Tiktok += `⭔ Caption : ${title}`
+            let { desc, name, like, comment, share, video } = await ttdl(tiktokLink);      
+            m.react('🕒', m.chat);
+            let caption = `🎗 𝐓𝐈𝐊𝐓𝐎𝐊\n`
+            caption += `⭔ Name: ${name}\n`
+            caption += `⭔ Description : ${desc}\n`
+            caption += `⭔ Like: ${like}\n`
+            caption += `⭔ Comment: ${comment}\n`
+            caption += `⭔ Share: ${share}\n\n`
+            caption += `${star} ${setting.botName}`
             conn.sendFile(m.chat, video, {
-               caption: Tiktok,
+               caption: caption,
                quoted: m
             })
             User.Limit(m, m.sender, 3);
