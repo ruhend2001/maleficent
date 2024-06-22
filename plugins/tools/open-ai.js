@@ -13,7 +13,7 @@ export default {
       try {
          let { GPT } = await import('free-gpt-turbo');                  
          let data = await GPT(text);
-         m.edReply('Waiting Response...', 100).then(() => {
+         await m.edReply('Waiting Response...', 100).then(() => {
             m.adReply(data, setting.thumbnail, m.chat);
          });
       } catch {
