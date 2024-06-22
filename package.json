@@ -1,5 +1,5 @@
 {
-  "name": "maleficent bot",
+  "name": "maleficent-bot",
   "version": "5.2.3",
   "description": "Bot Wea Simple Mudah Di Gunakan ",
   "main": "index.js",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@adiwajshing/baileys": "npm:baileys-wa@11.0.0",
     "ruhend-scraper": "*",
+    "free-gpt-turbo": "^1.0.1",
     "file-type": "^18.0.0",
     "node-os-utils": "^1.3.7",
     "form-data": "^4.0.0",
