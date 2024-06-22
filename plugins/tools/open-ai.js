@@ -11,14 +11,16 @@ export default {
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
       try {
-         m.adReply(mess.wait, setting.thumbnail, m.chat)
-         let { response } = await Format.Beheaded(text);
-         await m.adReply(response, setting.thumbnail, m.chat);
-      } catch {
-         let { GPT } = await import('free-gpt-turbo');
-         m.reply(`${loading} v2`);
+         let { GPT } = await import('free-gpt-turbo');                  
          let data = await GPT(text);
-         return m.adReply(data, setting.thumbnail, m.chat);  
+         m.edReply('Waiting Response...', 100).then(() => {
+            m.adReply(data, setting.thumbnail, m.chat);
+         });
+      } catch {
+         let { response } = await Format.Beheaded(text);
+         m.adReply(mess.wait, setting.thumbnail, m.chat).then(() => {         
+            return m.adReply(response, setting.thumbnail, m.chat);      
+         });
       }
    },
    limit: 5,
