@@ -5,8 +5,8 @@ export default {
    start: async (m, {
       User
    }) => {
-      let { bannedUsers } = await User.getBannedUser();
-      let listBanned = await Promise.all(bannedUsers.map(bannedUser => ` \n${bannedUser}`))
+      let { bannedUsers } = await User.getBannedUser({ reasonMap: 'Alasan di banned' });
+      let listBanned = await Promise.all(bannedUsers.map(bannedUser => `\n ${bannedUser}`))
       let text = `Berikut Adalah List Pengguna Terbanned ${setting.botName}\n`
       text += `${listBanned.join('\n')}`
       m.adReply(text, setting.thumbnail, m.chat);
