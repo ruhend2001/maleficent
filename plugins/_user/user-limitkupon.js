@@ -3,11 +3,10 @@ export default {
    tags: ['tukarkupon', 'kupon'],
    command: ['tukarkupon', 'kupon'],
    start: async (m, {
-      conn,
       text,
       User      
-   }) => {
-      if (!text) return m.reply(`Masukkan Parameter contoh: .tukarkupon 1`);
+   }) => {      
+      if (!text) return m.adReply(`Masukkan Parameter contoh: .tukarkupon 1\n\nKupon Kamu Tersisa ${User.getProfileData(m.sender).kupon}`, setting.thumbnail, m.chat);
       if (User.cekkupon(m.sender)) return m.reply(`Kupon kamu tidak cukup atau habis untuk menukar kupon ke limit\nsilahkan bayar hutang kupon kalo minus punya hutang\nketik .claimkupon untuk mendapatkan kupon\natau Ketik .my untuk cek sisa kupon`);
       let deduct;
       let upgrade;
