@@ -13,7 +13,7 @@
   "author": "Ruly Henderson",
   "license": "ISC",
   "dependencies": {
-    "@adiwajshing/baileys": "npm:baileys-wa@11.0.0",
+    "@adiwajshing/baileys": "npm:baileys-wa",
     "ruhend-scraper": "*",
     "free-gpt-turbo": "^1.0.2",
     "file-type": "^18.0.0",
