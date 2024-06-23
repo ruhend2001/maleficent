@@ -13,7 +13,7 @@ export default {
       let reg = isRegister ? 'Sudah Daftar' : 'Belum Daftar';
       let limitUser = User.checkLimitUser(m.sender);
       let userData = User.getProfileData(m.sender);
-      if (!m.fromMe && userData) {
+      if (userData) {
          let Profile = `👤 *Profile*\n\n`
          Profile += `🏷 Terdaftar: ${reg}\n`
          Profile += `📌 Premium: ${prem}\n`
@@ -25,9 +25,7 @@ export default {
          Profile += `🛍 Kupon: ${userData.kupon}\n`
          m.adsReply(Profile, picture, m.chat)
       } else {
-         if (!m.fromMe) {
-            m.reply('Profil tidak ditemukan');
-         }
+         return m.reply('Profil tidak ditemukan');
       }
    }
 };
