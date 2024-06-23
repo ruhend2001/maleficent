@@ -10,20 +10,12 @@ export default {
       Format
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
-      try {
-         m.react('🔄', m.chat);
-         let { GPT } = await import('free-gpt-turbo');                  
-         let data = await GPT(text);
-         await m.edReply('Waiting Response...', 100).then(() => {
-            m.adReply(data, setting.thumbnail, m.chat);
-         })
-      } catch {
-         let { response } = await Format.Beheaded(text);
-         m.adReply(mess.wait, setting.thumbnail, m.chat).then(() => {         
-            return m.adReply(response, setting.thumbnail, m.chat);      
-         });
-      }
+      m.react('🔁', m.chat);     
+      let { response } = await Format.Beheaded(text);
+      m.adReply(loading, setting.thumbnail, m.chat).then(() => {      
+         m.adsReply(response, setting.thumbnail, m.chat);
+      });
    },
-   limit: 4,
+   limit: 5,
    register: true
 };
