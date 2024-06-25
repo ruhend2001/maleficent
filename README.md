@@ -77,8 +77,8 @@ support termux, vps, panel , panel butut bisa minimal ram 500MB<br>
 
 # support npm i 
 <br> 
-*termux must main directory $HOME <br>
-* don't move or copy to /sdcard before install node_modules<br>
+* termux must main directory $HOME <br>
+* if u wanna run in /sdcard. don't move or copy to /sdcard before install node_modules<br>
 * zip after node_modules installed. 
 just google how to zip and copy file in termux <br>
 * make it easy 
