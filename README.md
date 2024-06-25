@@ -78,8 +78,9 @@ support termux, vps, panel , panel butut bisa minimal ram 500MB<br>
 # support npm i 
 <br> 
 *termux must main directory $HOME <br>
-*don't move to /sdcard before install node_modules<br>
-* zip after node_modules installed<br>
+* don't move or copy to /sdcard before install node_modules<br>
+* zip after node_modules installed. 
+just google how to zip and copy file in termux <br>
 * make it easy 
 
 <img src="https://small.fileditchstuff.me/s12/NDEKXREcgEIHqhGXvtd.jpg" alt="Maleficent Bot-Md" width="500"/>
