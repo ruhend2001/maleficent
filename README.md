@@ -72,6 +72,14 @@ export let m = {
 
 next learn by yourself follow plugins that they were already<br>
 selanjutnya pelajari oleh kamu sendiri ikuti plugin yang sudah ada<br>
+
+# support npm i <br> (termux must main directory)
+<img src="https://small.fileditchstuff.me/s12/NDEKXREcgEIHqhGXvtd.jpg" alt="Maleficent Bot-Md" width="500"/>
+<br>
+<br>
+# support yarn <br>
+<img src="https://small.fileditchstuff.me/s12/PvybFjPSFPHQExNAGAo.jpg" alt="Maleficent Bot-Md" width="500"/>
+<br>
 ## Bugs and Request Fitur
 * Jika kamu menemukan bug bisa lapor ke owner dan juga request fitur atau bantuan lain
 * Info Lebih Lanjut, Chat [Owner-Maleficent](https://wa.me/6283112005221)
