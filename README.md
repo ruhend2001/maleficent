@@ -77,12 +77,13 @@ selanjutnya pelajari oleh kamu sendiri ikuti plugin yang sudah ada<br>
 <img src="https://small.fileditchstuff.me/s12/NDEKXREcgEIHqhGXvtd.jpg" alt="Maleficent Bot-Md" width="500"/>
 <br>
 <br>
-# support yarn <br>
+# support yarn
 <img src="https://small.fileditchstuff.me/s12/PvybFjPSFPHQExNAGAo.jpg" alt="Maleficent Bot-Md" width="500"/>
 <br>
-## Bugs and Request Fitur
-* Jika kamu menemukan bug bisa lapor ke owner dan juga request fitur atau bantuan lain
-* Info Lebih Lanjut, Chat [Owner-Maleficent](https://wa.me/6283112005221)
+## Bugs and Request Fitur 
+<br>
+* Jika kamu menemukan bug bisa lapor ke owner dan juga request fitur atau bantuan lain<br>
+* Info Lebih Lanjut, Chat [Owner-Maleficent(https://wa.me/6283112005221)
 
 # Requirements
 * [Node.js](https://nodejs.org/en/)
