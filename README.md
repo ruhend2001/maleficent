@@ -75,7 +75,13 @@ selanjutnya pelajari oleh kamu sendiri ikuti plugin yang sudah ada<br>
 
 support termux, vps, panel , panel butut bisa minimal ram 500MB<br>
 
-# support npm i <br> (termux must main directory)
+# support npm i 
+<br> 
+*termux must main directory $HOME <br>
+*don't move to /sdcard before install node_modules<br>
+* zip after node_modules installed<br>
+* make it easy 
+
 <img src="https://small.fileditchstuff.me/s12/NDEKXREcgEIHqhGXvtd.jpg" alt="Maleficent Bot-Md" width="500"/>
 <br>
 <br>
