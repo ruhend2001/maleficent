@@ -17,9 +17,11 @@ export default {
          return m.reply(`Akses ditolak! Masukkan nama dan umur yang benar. \ncontoh ${prefix+command} nadia omara.50`);
       }
       let sn = Format.makeid(10);
+      let date = `${waktu.tanggal} ${waktu.time} ${waktu.suasana}`;
       let user = {
          id: sender,
          registered: true,
+         registerTime: date,
          nama: nama,
          umur: umur,
          seri: sn
