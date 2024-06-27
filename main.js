@@ -30,11 +30,13 @@ const startWhatsApp = async () => {
          lastDisconnect
       } = update;
       if (connection === 'open') {
-         console.log(`Connection :`, connection)
+         console.log(`🟢 online`)
+      } else if (connection === 'connecting') {
+         console.log(`🟡 reconnecting`)
       } else if (connection === 'close') {
+         console.log(`🔴 disconnected`)
          lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startWhatsApp() : console.log('Koneksi Terputus...')
       }
-      console.log(update);
    });
    store.bind(conn.ev);
    conn.ev.on('creds.update', saveCreds);   
