@@ -14,8 +14,10 @@ export default {
       let limitUser = User.checkLimitUser(m.sender);
       let userData = User.getProfileData(m.sender);
       if (userData) {
-         let Profile = `👤 *Profile*\n\n`
+         let Regtime = `${userData.registerTime === "" ? "" : '\n ‎ ‎ ‎ ‎ ‎ ‎ ' + userData.registerTime}`;
+         let Profile = `👤 *User Profile* @${m.sender.split('@')[0]}\n\n`
          Profile += `🏷 Terdaftar: ${reg}\n`
+         Profile += `🗓 Waktu Daftar:${Regtime}\n`
          Profile += `📌 Premium: ${prem}\n`
          Profile += `📍 Nama: ${userData.nama}\n`
          Profile += `💋 Umur: ${userData.umur}\n`
