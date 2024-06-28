@@ -8,7 +8,7 @@ export default {
       command,
       User
    }) => {
-      if (!text) return m.reply(`Masukkan Nomornya. Contoh: ${prefix+command} nomor\nContoh: ${prefix+command} 62xxxxx`);
+      if (!text) return m.reply(`Masukkan Nomornya. Contoh: ${prefix+command} nomor\nContoh: ${prefix+command} 62xxxxx \n\nkamu bisa lihat di .listbanned\n\nterus salin nomornya lalu tempel`);
       let user = `${text}@s.whatsapp.net`
       User.addBannedUser(user, false);
       User.bannedReason(user, '');
