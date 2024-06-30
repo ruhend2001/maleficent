@@ -25,6 +25,8 @@
   "botNumber": 6281563372282,
   "group": {
     "only": false,
+    "only_message": false,
+    "readme3": "only_message is response message groupOnly when group mode is active in private chat. true if wanna respond with groupOnly message, false if don't wanna respond message groupOnly in private chat ketik .set ada penjelasan nya atau lihat plugins/owner/owner-set.js",
     "adReply": true,
     "limit_adReply": false,
     "limit_message": true,
