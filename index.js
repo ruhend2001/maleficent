@@ -29,7 +29,7 @@ const start = () => {
    })
    .on('exit', code => {
       console.error('Exited with code:', code)
-      p.kill(); __on(); start();                  
+      p.kill(), __on(), start();
    })
 };
-__on(); start();
+__on(), start();
