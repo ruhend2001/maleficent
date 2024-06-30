@@ -25,7 +25,7 @@ const startWhatsApp = async () => {
    const { state, saveCreds } = await useMultiFileAuthState('./sessions');      
    const conn = await signalGroup(state, store);
    conn.ev.on('connection.update', (update) => {
-      let {
+      const {
          connection,
          lastDisconnect
       } = update;
@@ -35,7 +35,7 @@ const startWhatsApp = async () => {
          console.log(`🟡 Reconnecting`)
       } else if (connection === 'close') {
          console.log(`🔴 Disconnected`)
-         lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startWhatsApp() : console.log('Koneksi Terputus...')
+         lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startWhatsApp() : startWhatsApp();
       }
    });
    store.bind(conn.ev);
