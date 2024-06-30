@@ -1,8 +1,8 @@
-var boot = () => process.send('reset');
+const boot = () => process.send('reset');
 export default {
    names: ['Owner'],
-   tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode'],
-   command: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode'],
+   tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
+   command: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
    start: async (m, {
       text,
       prefix,
@@ -20,7 +20,8 @@ export default {
          caption += `.setram atau .ram \nUntuk mengganti nilai ram \n\n` 
          caption += `.setthumb atau setthumbnail atau .sthumb \nUntuk mengganti thumbnail utama bot \n\n`
          caption += `.setlink atau setlinkgc \nUntuk mengganti setting link group\n\n`
-         caption += `.setgroupmode atau .setgcmode\nUntuk mengganti akses bot ke mode group atau keduanya private and group`
+         caption += `.setgroupmode atau .setgcmode\nUntuk mengganti akses bot ke mode group atau keduanya private and group\n\n`
+         caption += `.setrespononlygroup atau .setrespononlygc\nUntuk mematikan dan mengaktifkan respon message groupOnly`
          return m.reply(caption);
       } else if (/setnamebot|setbotname/.test(command)) {
          if (!text) return m.reply(`Masukan Nama Bot nya! \nContoh\n${prefix+command} Maleficent-bot`);
@@ -83,22 +84,35 @@ export default {
          boot();
       } else if (/setgroupmode|setgcmode/.test(command)) {         
          if (!text) return m.reply(`masukan parameternya contoh \n${prefix+command} on atau off`);
-         let active = true
-         let deactive = false
          if (text.toLowerCase() == 'on') {
-            User.changeGroupMode(active);
+            User.changeGroupMode(true);
             m.reply(`Sukses Mengubah Ke Group Mode \nPrivate Chat Tidak Bisa Di Akses Kecuali Aku , Owner Dan Premium\n\nRestarting....`);
             await Format.sleep(2000);
             boot();
          } else if (text.toLowerCase() == 'off') {
-            User.changeGroupMode(deactive);
+            User.changeGroupMode(false);
             m.reply(`Sukses Mematikan Group Mode Sekarang Private Chat Dapat Diakses\n\nRestarting....`);
             await Format.sleep(2000);
             boot();
          } else {
             return m.reply(`Masukan parameter yang valid on/off \nContoh\n${prefix+command} on\nAtau\n${prefix+command} off`);                
          } 
-      }      
+      } else if (/setrespononlygroup|setrespononlygc/.test(command)) {         
+         if (!text) return m.reply(`masukan parameternya contoh \n${prefix+command} on atau off`);
+         if (text.toLowerCase() == 'on') {
+            User.changeOnlyMessageGroup(true);
+            m.reply(`Sukses Mengaktifkan Respon ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Akan Merespon ${mess.groupOnly}\n\nRestarting....`);
+            await Format.sleep(2000);
+            boot();
+         } else if (text.toLowerCase() == 'off') {
+            User.changeOnlyMessageGroup(false);
+            m.reply(`Sukses Mematikan Respon Pesan ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Sama Sekali Tidak Akan Merespon Apapun\n\nRestarting....`);
+            await Format.sleep(2000);
+            boot();
+         } else {
+            return m.reply(`Masukan parameter yang valid on/off \nContoh\n${prefix+command} on\nAtau\n${prefix+command} off`);                
+         }
+      }
    },
    owner: true
 };
