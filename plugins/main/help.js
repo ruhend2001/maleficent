@@ -17,13 +17,14 @@ export default {
       let music = setting.music;
       let header = '❏═┅═'
       let middle = '┊'
-      let pointer = '☃︎'
+      let pointer = '⭔︎'
       let bottom = '❏═━═┅═┅═┅═┅═❏'
       let left = '『'
       let right = '』'      
       let num = conn.decodeJid(setting.owner);
-      let info = `Selamat ${waktu.suasana} bangsat\n@${m.sender.split('@')[0]} 🐽\n`
-      info += `${star} Simple WhatsApp Bot \nBy ${setting.footer}\n`
+      let info = `${star} Simple WhatsApp Bot \nBy ${setting.footer}\n\n`
+      info += `Selamat ${waktu.suasana} bangsat\n@${m.sender.split('@')[0]} 🐽\n`
+      info += `📝 Total Penggunaan Perintah\n ‎ ‎ ‎ ‎ ‎ ‎ Bot Kamu: ${User.getProfileData(m.sender).hitCmd} Kali\n`
       info += `📚 Library : baileys-wa@latest\n`
       info += `👤 Owner : wa.me/${num.split('@')[0]}\n`
       info += ` 📸 Instagram: ${sosmed}\n\n`
