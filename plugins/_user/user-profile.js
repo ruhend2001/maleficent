@@ -30,6 +30,7 @@ export default {
          try {
             let _regtime = `${userTag.registerTime === "" ? "" : '\n ‎ ‎ ‎ ‎ ‎ ‎ ' + userTag.registerTime}`;
             let Other = `👤 *User Profile* @${numTag}\n`
+            Other += `📝 Total Penggunaan Perintah\n ‎ ‎ ‎ ‎ ‎ ‎ Bot: ${userTag.hitCmd} Kali\n`
             Other += `🏷 Terdaftar: ${regTag}\n`
             Other += `🗓 Waktu Daftar:${_regtime}\n`
             Other += `📌 Premium: ${premTag}\n`
@@ -48,6 +49,7 @@ export default {
       } else if (!tag) {
          let Regtime = `${userData.registerTime === "" ? "" : '\n ‎ ‎ ‎ ‎ ‎ ‎ ' + userData.registerTime}`;
          let Profile = `👤 *User Profile* @${m.sender.split('@')[0]}\n`
+         Profile += `📝 Total Penggunaan Perintah\n ‎ ‎ ‎ ‎ ‎ ‎ Bot: ${userData.hitCmd} Kali\n`
          Profile += `🏷 Terdaftar: ${reg}\n`
          Profile += `🗓 Waktu Daftar:${Regtime}\n`
          Profile += `📌 Premium: ${prem}\n`
