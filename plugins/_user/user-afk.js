@@ -48,7 +48,7 @@ export let m = {
                   let tag = [z];
                   let m_tag = [m.sender];
                   let tags = parseMention(e) || `@${m.sender.split('@')[0]}`
-                  let isTags = m_tag.concat(tag).concat(tags) || m_tag;                  
+                  let isTags = m_tag.concat(tag).concat(tags) || m_tag;
                   conn.sendMessage(m.chat, {
                      text: caption,
                      mentions: isTags
@@ -57,7 +57,7 @@ export let m = {
                   });
                })
             }
-         });        
+         });
          let userAfks = parseMention(budy);
          userAfks.forEach(i => {
             let _timeAfk;
@@ -78,7 +78,7 @@ export let m = {
                   let tag = [z];
                   let m_tag = [m.sender];
                   let tags = parseMention(e) || `@${m.sender.split('@')[0]}`
-                  let isTags = m_tag.concat(tag).concat(tags) || m_tag;                  
+                  let isTags = m_tag.concat(tag).concat(tags) || m_tag;
                   conn.sendMessage(m.chat, {
                      text: caption,
                      mentions: isTags
