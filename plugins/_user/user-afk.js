@@ -44,7 +44,6 @@ export let m = {
                   let d = User.getProfileData(z).afkTime;
                   let e = User.getProfileData(z).afkReason;
                   let caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:* ${clockString(new Date() - d)}`
-                  let caption2 = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:* ${clockString(new Date() - d)}`
                   let tag = [z];
                   let m_tag = [m.sender];
                   let tags = parseMention(e) || `@${m.sender.split('@')[0]}`
@@ -74,7 +73,6 @@ export let m = {
                   let d = User.getProfileData(z).afkTime;
                   let e = User.getProfileData(z).afkReason;
                   let caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:* ${clockString(new Date() - d)}`
-                  let caption2 = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:* ${clockString(new Date() - d)}`
                   let tag = [z];
                   let m_tag = [m.sender];
                   let tags = parseMention(e) || `@${m.sender.split('@')[0]}`
