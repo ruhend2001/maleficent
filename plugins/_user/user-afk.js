@@ -2,8 +2,7 @@ export let m = {
    start: async (m, {
       conn,
       budy,
-      User,
-      mentionByReply
+      User
    }) => {
       if (m.sender) {
          let timeAfk = User.getProfileData(m.sender).afkTime;
