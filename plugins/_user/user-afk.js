@@ -12,7 +12,7 @@ export let m = {
             if (m.isBaileys) return;
             let caption = `*Kamu Berhenti AFK*\n*Setelah:* ${reasonAfk === "" ? "" : `*${reasonAfk}*`}\n*Selama:* ${clockString(new Date() - timeAfk)}`
             let m_tag = [m.sender]
-            let tags = parseMention(reasonAfk) || `@${m.sender.split('@')[0]}`
+            let tags = parseMention(reasonAfk) || [`@${m.sender.split('@')[0]}`];
             let isTags = m_tag.concat(tags) || m_tag;
             conn.sendMessage(m.chat, {
                text: caption,
@@ -45,7 +45,7 @@ export let m = {
                   let caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:* ${clockString(new Date() - d)}`
                   let tag = [z];
                   let m_tag = [m.sender];
-                  let tags = parseMention(e) || `@${m.sender.split('@')[0]}`
+                  let tags = parseMention(e) || [`@${m.sender.split('@')[0]}`];
                   let isTags = m_tag.concat(tag).concat(tags) || m_tag;
                   conn.sendMessage(m.chat, {
                      text: caption,
@@ -74,7 +74,7 @@ export let m = {
                   let caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:* ${clockString(new Date() - d)}`
                   let tag = [z];
                   let m_tag = [m.sender];
-                  let tags = parseMention(e) || `@${m.sender.split('@')[0]}`
+                  let tags = parseMention(e) || [`@${m.sender.split('@')[0]}`];
                   let isTags = m_tag.concat(tag).concat(tags) || m_tag;
                   conn.sendMessage(m.chat, {
                      text: caption,
@@ -105,7 +105,7 @@ export default {
       User.afkReason(m.sender, reason);
       let caption = `*Kamu Sekarang AFK Dengan Alasan ${reason}*`
       let tag = [m.sender]
-      let tags = parseMention(text) || `@${m.sender.split('@')[0]}`
+      let tags = parseMention(text) || [`@${m.sender.split('@')[0]}`];
       let isTags = tag.concat(tags) || tag;
       conn.sendMessage(m.chat, {
          text: caption,
