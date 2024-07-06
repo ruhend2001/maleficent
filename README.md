@@ -90,10 +90,7 @@ just google how to zip and copy file in termux <br>
 # support yarn
 <img src="https://small.fileditchstuff.me/s12/PvybFjPSFPHQExNAGAo.jpg" alt="Maleficent Bot-Md" width="500"/>
 <br>
-## Bugs and Request Fitur 
-<br>
-* Jika kamu menemukan bug bisa lapor ke owner dan juga request fitur atau bantuan lain<br>
-* Info Lebih Lanjut, Chat [Owner-Maleficent(https://wa.me/6283112005221)
+
 
 # Requirements
 * [Node.js](https://nodejs.org/en/)
