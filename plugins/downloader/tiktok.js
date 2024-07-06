@@ -7,8 +7,7 @@ export default {
       conn,
       text,
       prefix,
-      command,
-      Format
+      command
    }) => {
       if (!text) return m.reply(`Masukan Tiktok contoh\n${prefix+command}` + ' https://vt.tiktok.com/ZSYfBvx5d/')
       let { desc, avatar, name, like, comment, share, video } = await ttdl(text);
@@ -20,9 +19,8 @@ export default {
       caption += `⭔ Like: ${like}\n`
       caption += `⭔ Comment: ${comment}\n`
       caption += `⭔ Share: ${share}`
-      let _vid = await Format.streamFile(conn, video, 'mp4', m);
-      m.adReply(name, avatar, m.chat).then(async () => {
-         await conn.sendFile(m.chat, _vid, {
+      m.adReply(name, avatar, m.chat).then(() => {
+         conn.sendFile(m.chat, video, {
             caption: caption,
             quoted: m
          })
