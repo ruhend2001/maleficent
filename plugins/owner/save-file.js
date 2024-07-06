@@ -10,13 +10,10 @@ export default {
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} plugins/cinta.js atau file yang ingin kamu save`);
       let path = `${text}`;
-      await Promise.all([
-         fs.writeFileSync(path, m.quoted.text),
-         m.reply(`tersimpan di ${path}`)
-      ]);
-      await setTimeout(() => {
+      await Promise.all([fs.writeFileSync(path, m.quoted.text), m.reply(`tersimpan di ${path}`)]);
+      setTimeout(() => {
          process.send("reset");
-      }, 3000);
+      }, 2000);
    },
    owner: true
 };
