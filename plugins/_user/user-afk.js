@@ -25,7 +25,12 @@ export let m = {
          }
       };
       if (budy) {
-         let user = m.message.extendedTextMessage.contextInfo.participant;
+         let user;
+         try {
+            user = m.message.extendedTextMessage.contextInfo.participant;
+         } catch {
+            return
+         }         
          let _u = '@' + user.substring(0).split('@')[0];
          let __u = parseMention(_u);
          __u.forEach(i => {
