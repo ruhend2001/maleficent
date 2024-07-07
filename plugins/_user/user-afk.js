@@ -14,11 +14,8 @@ export let m = {
             let m_tag = [m.sender]
             let tags = parseMention(reasonAfk) || [`@${m.sender.split('@')[0]}`];
             let isTags = m_tag.concat(tags) || m_tag;
-            conn.sendMessage(m.chat, {
-               text: caption,
+            m.adsReply(caption, setting.thumbnail, m.chat, {
                mentions: isTags
-            }, {
-               quoted: m
             }).then(() => {
                User.afkBack(m.sender);
             });
@@ -52,11 +49,8 @@ export let m = {
                   let m_tag = [m.sender];
                   let tags = parseMention(e) || [`@${m.sender.split('@')[0]}`];
                   let isTags = m_tag.concat(tag).concat(tags) || m_tag;
-                  conn.sendMessage(m.chat, {
-                     text: caption,
-                     mentions: isTags
-                  }, {
-                     quoted: m
+                  m.adsReply(caption, setting.thumbnail, m.chat, {
+                     mentions: isTags           
                   });
                })
             }
@@ -81,11 +75,8 @@ export let m = {
                   let m_tag = [m.sender];
                   let tags = parseMention(e) || [`@${m.sender.split('@')[0]}`];
                   let isTags = m_tag.concat(tag).concat(tags) || m_tag;
-                  conn.sendMessage(m.chat, {
-                     text: caption,
-                     mentions: isTags
-                  }, {
-                     quoted: m
+                  m.adsReply(caption, setting.thumbnail, m.chat, {
+                     mentions: isTags           
                   });
                })
             }
@@ -108,15 +99,12 @@ export default {
       if (!senderAfk) return
       let reason = text ? text : 'Ngewe'
       User.afkReason(m.sender, reason);
-      let caption = `*Kamu Sekarang AFK Dengan Alasan ${reason}*`
+      let caption = `*Kamu Sekarang AFK Dengan Alasan: ${reason}*`
       let tag = [m.sender]
       let tags = parseMention(text) || [`@${m.sender.split('@')[0]}`];
-      let isTags = tag.concat(tags) || tag;
-      conn.sendMessage(m.chat, {
-         text: caption,
+      let isTags = tag.concat(tags) || tag;      
+      m.adsReply(caption, setting.thumbnail, m.chat, {
          mentions: isTags
-      }, {
-         quoted: m
       }).then(() => {
          User.dbPlus(m.sender, {
             afkTime: +new Date
@@ -125,9 +113,11 @@ export default {
    },
    group: true
 };
+
 const parseMention = (text = '') => {
    return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
 }
+
 const clockString = (ms) => {
    let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
    let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
