@@ -1,6 +1,6 @@
 {
   "name": "maleficent-bot",
-  "version": "5.3.2",
+  "version": "5.3.3",
   "description": "Bot Wea Simple Mudah Di Gunakan ",
   "main": "index.js",
   "type": "module",
@@ -8,7 +8,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js --pairing"
   },
   "author": "Ruly Henderson",
   "license": "GNU",
@@ -17,9 +17,9 @@
     "@vitalets/google-translate-api": "^8.0.0",
     "ruhend-scraper": "*",
     "chalk": "^4.1.2",
-    "colors": "^1.4.0",    
+    "colors": "^1.4.0",
     "moment-timezone": "^0.5.34",
-    "maleficent-bot": "^5.3.2",
+    "maleficent-bot": "^5.3.3",
     "performance-now": "^2.1.0",
     "human-readable": "^0.2.1",
     "file-type": "^18.0.0",
