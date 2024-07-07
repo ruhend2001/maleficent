@@ -1,6 +1,6 @@
 {
   "name": "maleficent-bot",
-  "version": "5.3.4",
+  "version": "5.3.5",
   "description": "Bot Wea Simple Mudah Di Gunakan ",
   "main": "index.js",
   "type": "module",
@@ -19,7 +19,7 @@
     "chalk": "^4.1.2",
     "colors": "^1.4.0",
     "moment-timezone": "^0.5.34",
-    "maleficent-bot": "^5.3.4",
+    "maleficent-bot": "^5.3.5",
     "performance-now": "^2.1.0",
     "human-readable": "^0.2.1",
     "file-type": "^18.0.0",
