@@ -9,10 +9,6 @@ import {
    DisconnectReason
 } from '@adiwajshing/baileys'
 import {
-   nocache,
-   uncache
-} from './lib/cache.js';
-import {
    signalGroup
 } from 'maleficent-bot';
 const startWhatsApp = async () => {
