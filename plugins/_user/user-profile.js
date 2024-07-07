@@ -41,7 +41,7 @@ export default {
             Other += `💰 Uang: ${userTag.uang}\n`
             Other += `🛍 Kupon: ${userTag.kupon}\n`
             m.adsReply(Other, pictureTag, m.chat, {
-               mentions: mention
+               mentions: [mention]
             });
          } catch {
             return m.reply('Profile Not Active');
