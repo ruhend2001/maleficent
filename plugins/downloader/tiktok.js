@@ -10,13 +10,20 @@ export default {
       command
    }) => {
       if (!text) return m.reply(`Masukan Tiktok contoh\n${prefix+command}` + ' https://vt.tiktok.com/ZSYfBvx5d/')
-      let { author, avatar, description, music, video, video2, video_hd, video_wm } = await ttdl(text);
+      let { title, author, username, published, like, comment, share, views, bookmark, video, cover, duration, music, profilePicture } = await ttdl(text);
       m.adReply(loading, setting.thumbnail, m.chat);      
       let caption = `${star} 𝐓𝐈𝐊𝐓𝐎𝐊 ${star} \n`
       caption += `${setting.botName}\n`
       caption += `⭔ Author: ${author}\n`
-      caption += `⭔ Description : ${description}`
-      m.adReply(author, avatar, m.chat).then(() => {
+      caption += `⭔ Username: ${username}\n`
+      caption += `⭔ Description : ${title}\n`
+      caption += `⭔ Published: ${published}\n`
+      caption += `⭔ Like: ${like}\n`
+      caption += `⭔ Comment: ${comment}\n`
+      caption += `⭔ Views: ${views}\n`
+      caption += `⭔ Bookmark: ${bookmark}\n`
+      caption += `⭔ Duration: ${duration}`      
+      m.adReply(author, cover, m.chat).then(() => {
          conn.sendFile(m.chat, video, {
             caption: caption,
             quoted: m
