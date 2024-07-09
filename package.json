@@ -14,8 +14,8 @@
   "license": "GNU",
   "dependencies": {
     "@adiwajshing/baileys": "npm:baileys-wa",
-    "@vitalets/google-translate-api": "^8.0.0",
     "@ruhend/scraper": "npm:ruhend-scraper",
+    "@vitalets/google-translate-api": "^8.0.0",    
     "chalk": "^4.1.2",
     "colors": "^1.4.0",
     "moment-timezone": "^0.5.34",
