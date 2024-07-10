@@ -11,7 +11,6 @@ pastikan kalian edit kode atau plugins dengan hati hatinya agar tidak error karn
 Kalo mau pake masukin nomor manual untuk pairing pake npm start atau node index.js --pairing<br><br>
 kalo mau langsung ke pairing edit nomor botnya di botNumber config.json<br>
 dan jangan lupa masukin ownerNumber nya biar nanti gampang edit edit lewat bot<br>
-
 ```ts
 export default {
    names: ['Tittle'],
