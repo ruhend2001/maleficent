@@ -10,6 +10,8 @@ How to add features or new plugins?<br>
 pastikan kalian edit kode atau plugins dengan hati hatinya agar tidak error karna sc ini awal tidak ada eror dan pasti nya sudah di cek copy atau ambil saja saja plugins lain<br><br>
 Kalo mau pake masukin nomor manual untuk pairing pake npm start atau node index.js --pairing<br><br>
 kalo mau langsung ke pairing edit nomor botnya di botNumber config.json<br>
+dan jangan lupa masukin ownerNumber nya biar nanti gampang edit edit lewat bot<br>
+
 ```ts
 export default {
    names: ['Tittle'],
