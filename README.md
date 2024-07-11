@@ -77,6 +77,7 @@ next learn by yourself follow plugins that they were already<br>
 selanjutnya pelajari oleh kamu sendiri ikuti plugin yang sudah ada<br>
 
 support termux, vps, panel , panel butut bisa minimal ram 500MB<br>
+tidak di sarankan run di vps windows karna kalo ada update os windows ga support, kalo mau run di os windows hapus dan ada update hapus dulu node_modulesnya dan package-lock.json nya install lagi npm install atau yarn
 
 # support npm i 
 <br> 
