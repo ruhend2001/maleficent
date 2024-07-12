@@ -1,5 +1,5 @@
 export default {
-   names: ['Maon Menu'],
+   names: ['Main Menu'],
    tags: ['list'],
    command: ['list'],
    start: async (m, {
@@ -9,7 +9,7 @@ export default {
       command,
       Format
    }) => {
-      //kalo mau buat list message contohnya kaya gini kostum sendiri ke plugin lain lib/helper.js di update filenya copy ajh yang baru di Github
+      //kalo mau buat list message contohnya kaya gini kostum sendiri ke plugin lain
       let caption = `👋 Hai @${m.sender.split('@')[0]}\n` //your text
       caption += `This Is Example List Message`
       let sections = [{
