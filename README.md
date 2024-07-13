@@ -1,7 +1,8 @@
 ## Maleficent Bot
 
 <p align="center">
-<img src="https://files.catbox.moe/ku30iz.jpeg" alt="Maleficent Bot-Md" width="500"/>
+<img src="https://files.catbox.moe/ku30iz.jpeg" alt="Maleficent Bot-Md" width="500"/><br>
+
 silahkan install ulang node modules nya kalo ada yang eror (kalo ada) kalo g ya g usah 😎
 yarn atau npm i
 Kalo mau pake masukin nomor manual untuk pairing pake npm start atau node index.js --pairing<br><br>
