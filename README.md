@@ -78,9 +78,9 @@ selanjutnya pelajari oleh kamu sendiri ikuti plugin yang sudah ada<br>
 
 support termux, vps, panel , panel butut bisa minimal ram 500MB<br>
 
-belum di sarankan run di rdp windows karna kalo ada update otomatis , os windows ga support, kalo mau run di os windows / rdp , dan kalo ada update versi hapus dulu node_modulesnya dan package-lock.json nya lalu install lagi npm install atau yarn tapi ini akan segera di update dan bisa configurasi nya sudah jadi mungkin di versi berikutan
+belum di sarankan run di rdp windows karna kalo ada update otomatis , os windows ga support, kalo mau run di os windows / rdp , dan kalo ada update versi hapus dulu node_modulesnya dan package-lock.json nya lalu install lagi npm install atau yarn tapi ini akan segera di update dan bisa configurasi nya sudah jadi nanti di versi berikutnya
 
-# support npm i 
+# suppoberikut
 <br> 
 * termux must main directory $HOME <br>
 * if u wanna run in /sdcard. don't move or copy to /sdcard before install node_modules<br>
