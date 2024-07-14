@@ -1,6 +1,6 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 process.on('uncaughtException', console.error);
-import 'maleficent-bot/index.js';
+import 'maleficent-utility/index.js';
 import Pino from 'pino';
 import './lib/other.js'
 import {
@@ -10,7 +10,7 @@ import {
 } from '@adiwajshing/baileys'
 import {
    signalGroup
-} from 'maleficent-bot';
+} from 'maleficent-utility';
 const startWhatsApp = async () => {
    const store = makeInMemoryStore({
       logger: Pino().child({
