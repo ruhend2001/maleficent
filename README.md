@@ -3,7 +3,7 @@
 <p align="center">
 <img src="https://files.catbox.moe/ku30iz.jpeg" alt="Maleficent Bot-Md" width="500"/><br>
 
-silahkan install ulang node modules nya kalo ada yang eror (kalo ada karna modul eror) 
+silahkan install ulang node modules nya kalo ada notif terjadi kesalahn pembaharuan atau git clone ulang ajh backup file config.json, message.json, other.js atau file file yang kalian udh edit 
 yarn atau npm i
 Kalo mau pake masukin nomor manual untuk pairing pake npm start atau node index.js --pairing<br><br>
 kalo mau langsung ke pairing edit nomor botnya di botNumber config.json<br>
@@ -80,7 +80,7 @@ selanjutnya pelajari oleh kamu sendiri ikuti plugin yang sudah ada<br>
 
 support termux, vps, panel , panel butut bisa minimal ram 500MB<br>
 
-belum di sarankan run di rdp windows karna kalo ada update otomatis , os windows ga support, kalo mau run di os windows / rdp , dan kalo ada update versi hapus dulu node_modulesnya dan package-lock.json nya lalu install lagi npm install atau yarn tapi ini akan segera di update dan bisa configurasi nya sudah jadi nanti di versi berikutnya
+support rdp atau vps windows atau run di windows 
 
 # support termos
 <br> must be main directory $HOME <br>
