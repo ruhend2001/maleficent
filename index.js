@@ -10,7 +10,7 @@ import {
 } from 'url'
 import { 
    __on
-} from 'maleficent-bot/lib/__on.js'; 
+} from 'maleficent-utility/lib/__on.js'; 
 process.on('uncaughtException', console.log);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const start = () => {
