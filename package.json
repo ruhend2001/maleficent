@@ -1,6 +1,6 @@
 {
   "name": "maleficent-bot",
-  "version": "5.4.3",
+  "version": "5.4.4",
   "description": "Bot Wea Simple Mudah Di Gunakan ",
   "main": "index.js",
   "type": "module",
@@ -14,12 +14,11 @@
   "license": "GNU",
   "dependencies": {
     "@adiwajshing/baileys": "npm:baileys-wa",
-    "@ruhend/scraper": "npm:ruhend-scraper",
     "@vitalets/google-translate-api": "^8.0.0",
-    "chalk": "^4.1.2",
+    "ruhend-scraper": "*",    
     "colors": "^1.4.0",
     "moment-timezone": "^0.5.34",
-    "maleficent-bot": "^5.4.3",
+    "maleficent-utility": "^5.4.4",
     "performance-now": "^2.1.0",
     "human-readable": "^0.2.1",
     "file-type": "^18.0.0",
