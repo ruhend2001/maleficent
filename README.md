@@ -3,8 +3,7 @@
 <p align="center">
 <img src="https://files.catbox.moe/ku30iz.jpeg" alt="Maleficent Bot-Md" width="500"/><br>
 
-silahkan install ulang node modules nya kalo ada notif terjadi kesalahn pembaharuan atau git clone ulang ajh backup file config.json, message.json, other.js atau file file yang kalian udh edit 
-yarn atau npm i
+
 Kalo mau pake masukin nomor manual untuk pairing pake npm start atau node index.js --pairing<br><br>
 kalo mau langsung ke pairing edit nomor botnya di botNumber config.json<br>
 dan jangan lupa masukin ownerNumber nya biar nanti gampang edit edit lewat bot<br>
