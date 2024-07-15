@@ -10,19 +10,11 @@ export default {
       Format
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
-      try {
-         m.react('🟡', m.chat);     
-         let chat = await Format.openAI(text);
-         m.adReply(loading, setting.thumbnail, m.chat).then(() => {      
-            m.adReply(chat, setting.thumbnail, m.chat);
-         });
-      } catch {        
-         m.react('🟢', m.chat);     
-         let { response } = await Format.Beheaded(text);
-         m.adReply(loading, setting.thumbnail, m.chat).then(() => {      
-            return m.adReply(response, setting.thumbnail, m.chat);
-         });
-      }
+      m.react('🕒', m.chat);
+      let result = await Format.openAI(text);
+      m.adReply(loading, setting.thumbnail, m.chat).then(() => {      
+         m.adReply(`${result}`, setting.thumbnail, m.chat);
+      });
    },
    limit: 3,
    register: true
