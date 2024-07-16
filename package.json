@@ -15,7 +15,8 @@
   "dependencies": {
     "@adiwajshing/baileys": "npm:baileys-wa",
     "@vitalets/google-translate-api": "^8.0.0",
-    "ruhend-scraper": "*",    
+    "apk-dl": "0.0.1",
+    "ruhend-scraper": "*",
     "colors": "^1.4.0",
     "moment-timezone": "^0.5.34",
     "maleficent-utility": "^5.4.7",
