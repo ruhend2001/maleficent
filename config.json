@@ -19,8 +19,6 @@
   "recording": false,
   "read": true,
   "self": false,
-  "qr": false,
-  "pairing": true,
   "readme2": "botNumber adalah nomor yang mau di jadikan bot",
   "botNumber": 6285861056069,
   "group": {
