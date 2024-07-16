@@ -1,12 +1,12 @@
 {
-  "owner": "6285861056069@s.whatsapp.net",
+  "owner": "62895321735547@s.whatsapp.net",
   "ownerNumber": [
     "6284263937980",
     "628xx",
     "628xxx"
   ],
   "readme": "isi nomornya ownerNumber sesuai ada berapa no kalian mau banyak nomor juga bisa, jangan lupa tanda koma nya harus pas biar ga eror , install modul pake npm i atau yarn",
-  "contact": "6281563372282",
+  "contact": "62895321735547",
   "botName": "Maleficent Bot ❤️",
   "ownerName": "Ruly Henderson",
   "footer": "© Ruhend",
@@ -20,7 +20,7 @@
   "read": true,
   "self": false,
   "readme2": "botNumber adalah nomor yang mau di jadikan bot",
-  "botNumber": 6285861056069,
+  "botNumber": 62895321735547,
   "group": {
     "only": false,
     "only_message": false,
