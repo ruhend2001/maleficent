@@ -5,7 +5,6 @@ RUN apt-get update && \
   nodejs \
   ffmpeg \
   zip \
-  unzip \
   imagemagick \
   webp && \
   apt-get upgrade -y && \
