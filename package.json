@@ -13,7 +13,8 @@
   "author": "Ruly Henderson",
   "license": "GNU",
   "dependencies": {
-    "@adiwajshing/baileys": "npm:baileys-wa",
+    "@adiwajshing/baileys": "npm:@whiskeysockets/baileys",
+    "@adiwajshing/keyed-db": "^0.2.4",
     "@vitalets/google-translate-api": "^8.0.0",
     "ruhend-scraper": "*",
     "aptoide-scraper": "1.0.1",
@@ -27,6 +28,6 @@
     "moment-timezone": "^0.5.34",
     "node-os-utils": "^1.3.7",
     "node-webpmux": "^3.1.1",
-    "performance-now": "^2.1.0"    
+    "performance-now": "^2.1.0"
   }
 }
