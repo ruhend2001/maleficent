@@ -6,6 +6,7 @@ RUN apt-get update && \
   python \
   ffmpeg \
   zip \
+  git \
   imagemagick \
   webp && \
   apt-get upgrade -y && \
