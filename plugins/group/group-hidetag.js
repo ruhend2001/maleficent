@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Group Menu'],
    tags: ['hidetag'],
    command: ['ht', 'hidetag'],
@@ -9,14 +9,11 @@ export default {
    }) => {
       let mem = [];
       participants.map(i => mem.push(i.id))
-      conn.sendMessage(m.chat, {
-         text: text ? text : '',
+      await conn.adReply(m.chat, text ? text : '', cover, m, {
+         showAds: true,
          mentions: mem
-      }, {
-         quoted: m
-      });
+      })
    },
    group: true,
-   admin: true,
-   owner: true
+   admin: true
 };

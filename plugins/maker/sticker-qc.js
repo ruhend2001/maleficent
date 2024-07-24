@@ -1,5 +1,5 @@
-import axios from 'axios'
-export default {
+const axios = require('axios');
+exports.default = {
    names: ['Maker'],
    tags: ['qc'],
    command: ['qc'],
@@ -42,12 +42,13 @@ export default {
             'Content-Type': 'application/json'
          }
       })
-      m.adReply(mess.wait, setting.thumbnail, m.chat)
       let buffer = await Buffer.from(json.data.result.image, 'base64')
-      conn.sendImageAsSticker(m.chat, buffer, m, {
-         packname: pack,
-         author: own
-      });
+      conn.adReply(m.chat, loading, cover, m).then(() => {
+         conn.sendImageAsSticker(m.chat, buffer, m, {
+            packname: pack,
+            author: own
+         })
+      })
    },
    limit: 3,
    premium: false

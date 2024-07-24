@@ -1,11 +1,11 @@
-export default {
+exports.default = {
    names: ['Tools'],
    tags: ['delete'],
    command: ['delete', 'del', 'd'],
-   start: async (m, {
+   start: (m, {
       conn,
    }) => {
-      conn.removeMessage(m);
+      conn.removeMessage(m)
    },
    premium: true
 };

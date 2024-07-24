@@ -1,6 +1,5 @@
-import { exec } from 'child_process'
-import util from 'util'
-export default {
+const { exec } = require('child_process');
+exports.default = {
    names: ['Owner'],
    tags: ['getplugins'],
    command: ['gp', 'getplugins'],
@@ -13,7 +12,7 @@ export default {
       let path = `${text}`;
       exec(`cat ${path}`, (x, y) => {
          if (x) return m.reply(`${path}\ntidak ada`);
-         if (y) return m.reply(util.format(y));
+         if (y) return m.reply(y.toString());
       })      
    },
    owner: true

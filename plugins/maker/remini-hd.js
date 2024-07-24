@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Maker'],
    tags: ['remini', 'hd'],
    command: ['remini', 'hd', 'hdr'],
@@ -12,20 +12,20 @@ export default {
       Format
    }) => {
       if (/image/.test(mime) || m.mtype === 'imageMessage') {
-         if (!quoted) return m.reply(`Balas Atau Kirim image dengan caption ${prefix + command}`)
-         m.react('🕒', m.chat);
+         m.react('🕒');
          let content = await quoted.download();
-         m.adReply(mess.wait, setting.thumbnail, m.chat);
+         conn.adReply(m.chat, loading, cover, m);
          let data = await Format.HD(content);         
          conn.sendFile(m.chat, data, {
             caption: star + ' Berhasil Di Tingkatkan',
             quoted: m
          })
       } else {
-         m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
+        return m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
       }
    },
-   limit: 25,//banyakin limitnya ke enakan usernya nanti kalo limit kecil kan bisa beli premium usernya ke elu :)
+   limit: 10,//banyakin limitnya ke enakan usernya nanti kalo limit kecil kan bisa beli premium usernya ke elu :)
    premium: false,
+   resgister: true,
    disable: false
 };

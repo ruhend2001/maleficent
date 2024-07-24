@@ -1,28 +1,9 @@
-let tebakbendera = {}
 let rewards = {
    limit: 25,
    uang: 50
 }
 
-export let m = {
-   start: async (m, {
-      budy,
-      User
-   }) => {
-      if (tebakbendera.hasOwnProperty(m.sender.split('@')[0]) && budy && !budy.includes('.tebakbendera') && !m.isBaileys) {
-         let jawaban = tebakbendera[m.sender.split('@')[0]]
-         if (budy.toLowerCase() == jawaban) {
-            User.dbPlus(m.sender, rewards);
-            await m.adReply(`🎮 Tebak Bendera \n\nJawaban Benar 🎉\nHadiah :\n+${rewards.limit} limit 🎟\n+${rewards.uang} uang 💰`, setting.thumbnail, m.chat);
-            delete tebakbendera[m.sender.split('@')[0]]
-         } else {
-            m.adReply('Salah', setting.thumbnail, m.chat);
-         }
-      }
-   }
-};
-
-export default {
+exports.default = {
    names: ['Games'],
    tags: ['tebakbendera'],
    command: ['tebakbendera'],
@@ -41,7 +22,7 @@ export default {
       })
       await Format.sleep(60000);
       if (tebakbendera.hasOwnProperty(m.sender.split('@')[0])) {
-         m.adReply(`Waktu Habis\nJawaban:  ${tebakbendera[m.sender.split('@')[0]]}\n`, result.img, m.chat);
+         conn.adReply(m.chat, `Waktu Habis\nJawaban:  ${tebakbendera[m.sender.split('@')[0]]}\n`, result.img, m);
          delete tebakbendera[m.sender.split('@')[0]]
       }
    }

@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Owner'],
    tags: ['resetlimit'],
    command: ['resetlimit'],
@@ -12,7 +12,7 @@ export default {
       if (!text) return m.reply(`Masukan Nilai Limit Yang Ingin Di Reset Ke Semua Pengguna\ncontoh ${prefix+command} 25`);
       await User.resetLimits(text);
       let caption = `Berhasil Mereset Limit\n${text} Per User`;
-      m.adReply(caption, setting.thumbnail, m.chat);
+      conn.adReply(m.chat, caption, cover, m);
    },
    owner: true
 };

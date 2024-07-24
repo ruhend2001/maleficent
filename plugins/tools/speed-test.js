@@ -1,13 +1,13 @@
-import { exec } from 'child_process';
-import util from 'util';
-export default {
+const { exec } = require('child_process');
+const util = require('util');
+exports.default = {
    names: ['Main Menu'],
    tags: ['speedtest'],
    command: ['speedtest', 'testspeed', 'tes', 'ot', 'speed'],
    start: async (m, {
       conn
    }) => {
-      m.reply('*_Testing Speed..._*')
+      m.reply('*Testing Speed...*')
       await exec('python3 lib/speed.py', async (x, y) => {
          const result = await util.format(y)
          await conn.reply(m.chat, result, m)

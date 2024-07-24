@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Maker'],
    tags: ['toaudio'],
    command: ['tomp3', 'toaudio', 'toptt', 'tovn'],
@@ -11,7 +11,7 @@ export default {
       Format
    }) => {
       if (/audio|video/.test(mime) || m.mtype === 'videoMessage' || m.mtype === 'documentMessage' || m.mtype === 'audioMessage') {
-         m.adReply(mess.wait, setting.thumbnail, m.chat)
+         conn.adReply(m.chat, loading, cover, m);
          let media = await quoted.download()
          let audio = await Format.mp3(media);
          conn.sendFile(m.chat, audio, {

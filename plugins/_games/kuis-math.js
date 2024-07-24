@@ -1,30 +1,8 @@
-let kuismath = {}
 let rewards = {
    limit: 10,
    uang: 30
 }
-
-export let m = {
-   start: async (m, {
-      budy,
-      User
-   }) => {
-      if (kuismath.hasOwnProperty(m.sender.split('@')[0]) && budy && !budy.includes('.kuishmath') && !budy.includes('.math') && !budy.includes('.matematika') && !m.isBaileys) {
-         let jawaban = kuismath[m.sender.split('@')[0]];
-         if (budy.toLowerCase() == jawaban) {
-            m.adReply(`*Kuis Matematika*\n\nJawaban Benar\nHadiah :\n *+${rewards.limit} Limit*\n *+${rewards.uang} Uang*\n\nIngin bermain lagi? \nketik .math mode\nPilih Mode:\n- ${Object.keys(modes).join(' \n- ')}\n\nContoh penggunaan:\n\n.math easy`, setting.thumbnail, m.chat).then(async () => {
-               await User.dbPlus(m.sender, rewards);
-               delete kuismath[m.sender.split('@')[0]];
-            });
-         } else {
-            m.reply('Salah!');
-         }
-      } 
-   }
-};
-                    
-                    
-export default {
+exports.default = {
    names: ['Games'],
    tags: ['kuismath', 'math', 'matematika'],
    command: ['kuismath', 'math', 'matematika'],
@@ -38,7 +16,7 @@ export default {
       if (kuismath.hasOwnProperty(m.sender.split('@')[0])) return m.reply("Masih Ada Sesi Yang Belum Diselesaikan!")      
       if (!text) return m.reply(`Pilih Mode:\n- ${Object.keys(modes).join(' \n- ')}\n\nContoh penggunaan: ${prefix+command} medium`)
       let result = await genMath(text.toLowerCase())
-      m.adReply(`*Berapa hasil dari: ${result.soal.toLowerCase()}*?\n\nWaktu: ${(result.waktu / 1000).toFixed(2)} detik\n\n*Hadiah* :\n *+${rewards.limit} Limit*\n *+${rewards.uang} Uang*`, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiz5Y0ncO0gQpNj1N3UrQ-2hx85TaSu_8f8w&usqp=CAU', m.chat).then(() => {
+      conn.adReply(m.chat, `*Berapa hasil dari: ${result.soal.toLowerCase()}*?\n\nWaktu: ${(result.waktu / 1000).toFixed(2)} detik\n\n*Hadiah* :\n *+${rewards.limit} Limit*\n *+${rewards.uang} Uang*`, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiz5Y0ncO0gQpNj1N3UrQ-2hx85TaSu_8f8w&usqp=CAU', m).then(() => {
          kuismath[m.sender.split('@')[0]] = result.jawaban
          console.log(kuismath)
       });

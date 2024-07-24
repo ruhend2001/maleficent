@@ -1,5 +1,5 @@
-import fetch from 'node-fetch'
-export default {
+const fetch = require('node-fetch');
+exports.default = {
    names: ['Tools'],
    tags: ['fetch'],
    command: ['fetch', 'get'],
@@ -30,5 +30,6 @@ export default {
          m.reply(txt.slice(0, 65536) + '')
       }
    },
-   limit: 3
+   limit: 3,
+   register: true
 };

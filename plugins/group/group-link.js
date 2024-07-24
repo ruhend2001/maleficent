@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Group Menu'],
    tags: ['linkgc', 'link', 'linkgroup'],
    command: ['linkgc', 'link', 'linkgroup'],
@@ -10,7 +10,7 @@ export default {
       if (!url) return
       if (url) {
          url = 'https://chat.whatsapp.com/' + url;
-         m.reply(`Link Group ${groupName}\n${url}`);
+         return m.reply(`Link Group ${groupName}\n${url}`);
       }
    },
    group: true

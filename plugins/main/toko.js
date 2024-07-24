@@ -1,8 +1,9 @@
 /**
  * send with media use conn.sendFile or conn.sendButton or Whatever instead that was just an example.
- * .addtoko or .deltoko
+ * .addtoko or .deltoko 
+ * bisa tambahin plugin baru kaya gini dan buat command nya sesuka kalian
  */
-export default {
+exports.default = {
    names: ['Main Menu'],
    tags: ['toko', 'shop'],
    command: ['toko', 'shop'],
@@ -10,7 +11,8 @@ export default {
       conn,
       User
    }) => {
-      let toko = await User.Toko()[0];
+      let toko = await User.Toko()
+      let media = cover //your photo or video url/link
       let shop1 = toko.toko1;
       let shop2 = toko.toko2;
       let shop3 = toko.toko3;
@@ -32,6 +34,12 @@ export default {
       caption += `${shop8}\n\n`
       caption += `${shop9}\n\n`
       caption += `${shop10}\n\n`
-      m.adsReply(caption.trim(), setting.thumbnail, m.chat);     
+      /*conn.sendFile(m.chat, media, {
+         caption: caption,
+         quoted: m
+      })*/
+      conn.adReply(m.chat, caption.trim(), media, m, {
+         showAds: true
+      })             
    }
 };

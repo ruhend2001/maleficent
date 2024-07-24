@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Owner'],
    tags: ['database'],
    command: ['db', 'database', 'getdb'],

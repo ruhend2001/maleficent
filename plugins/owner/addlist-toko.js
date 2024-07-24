@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Owner'],
    tags: ['addtoko', 'addlist'],
    command: ['addtoko', 'addlist'],

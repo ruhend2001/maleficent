@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Group Menu'],
    tags: ['tagall'],
    command: ['tagall'],
@@ -8,17 +8,16 @@ export default {
       participants
    }) => {
       let teks_tagall = `〘 *Tag All* 〙\n\nDi Perintahkan Oleh\n@${m.sender.split('@')[0]}\n\nKata Dia\n${text ? text : ''}\n\n`;
+      let mem = [];
+      participants.map(i => mem.push(i.id))
       for (let mem of participants) {
          teks_tagall += `• @${mem.id.split('@')[0]}\n`;
-      }
-      conn.sendMessage(m.chat, {
-         text: teks_tagall,
-         mentions: participants.map(a => a.id)
-      }, {
-         quoted: m
-      });
+      }      
+      await conn.adReply(m.chat, teks_tagall, cover, m, {
+         showAds: true,
+         mentions: mem
+      })
    },
    group: true,
-   admin: true,
-   owner: true
+   admin: true
 };

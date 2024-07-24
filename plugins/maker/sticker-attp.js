@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Maker'],
    tags: ['attp', 'ttp'],
    command: ['attp', 'ttp'],
@@ -13,11 +13,11 @@ export default {
       let own = setting.footer
       if (!text) return m.reply(`Kirim perintah ${prefix+command} text\ncontoh: ${prefix+command} ${setting.botName}`);
       let result = await Format.attp(text);
-      m.adReply(mess.wait, setting.thumbnail, m.chat).then(async () => {            
+      conn.adReply(m.chat, loading, cover, m).then(() => {            
          conn.sendImageAsSticker(m.chat, result, m, {
            packname: pack,
            author: `${own}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
-         });
+         })
       })
    },
    limit: true

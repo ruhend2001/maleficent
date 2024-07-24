@@ -1,5 +1,5 @@
-export let m = {
-   start: async (m, {
+module.exports = {
+   start: (m, {
       conn
    }) => {   
       if (!m.fromMe && m.isBaileys && m.msg.ptt) {

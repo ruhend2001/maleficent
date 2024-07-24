@@ -1,6 +1,7 @@
-import { exec } from 'child_process';
-import util from 'util';
-export default {
+//file yang udah di edit edit backup dulu sebelum melakukan perintah ini karena akan tertambal
+const { exec } = require('child_process');
+const util = require('util');
+exports.default = {
    names: ['Owner'],
    tags: ['cekupdate', 'update'],
    command: ['cekupdate', 'update'],

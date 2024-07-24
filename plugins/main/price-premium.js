@@ -1,5 +1,5 @@
 //Sesuaikan Kalian Saja :v run bot jadi bot , panel vps blabalabal
-export default {
+exports.default = {
    names: ['Main Menu'],
    tags: ['harga', 'premium', 'price', 'sewa'],
    command: ['harga', 'premium', 'price', 'sewa', 'sewabot'],
@@ -18,7 +18,10 @@ export default {
       sewa += `• 2 minggu 8000 bonus +2000 limit (3 Groups Maximal)\n`
       sewa += `• 3 minggu 12000 bonus +5000 limit (5 Groups Maximal)\n`
       sewa += `• 4 minggu 15000 bonus +10000 limit++ (10 Groups Maximal)\n\n`
-      let hub = `*📢 Hubungi Owner* \n*wa.me/${setting.owner.split("@")[0]}*\n`
-      m.adsReply(price + '\n' + sewa + hub, setting.thumbnail, m.chat)
+      let hub = `*📢 Hubungi Owner* \n@${setting.contact}\n`
+      conn.adReply(m.chat, price + '\n' + sewa + hub, cover, m, {
+         showAds: true,
+         mentions: [`${setting.contact}@s.whatsapp.net`]
+      });
    }
 };

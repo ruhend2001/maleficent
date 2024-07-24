@@ -1,5 +1,5 @@
-import { ytmp4 } from '../../lib/download.js'
-export let m = {
+const { ytmp4 } = require('ruhend-scraper');
+module.exports = {
    start: async (m, {
       conn,
       budy,
@@ -12,23 +12,21 @@ export let m = {
       if (autodl && Links.test(budy) || ShortsLinks.test(budy)) {
          if (ExLyt) return
          if (m.isBaileys) return
-         if (User.checkLimitUser(m.sender) <= 0) {
-            return m.reply(mess.limit);
-         }
+         if (User.checkLimitUser(m.sender) <= 0) return m.reply(mess.limit);
          let youtubeLinks = budy.match(Links) || budy.match(ShortsLinks);
          for (let youtubeLink of youtubeLinks) {
-            m.react('🕙', m.chat)
+            m.react('🕙')
             let { title, video, quality, thumbnail, size } = await ytmp4(youtubeLink);
-            m.react('🕒', m.chat)
-            let Youtube = `🍌 Youtube Video\n`
-            Youtube += `${java} Judul : ${title}\n`
-            Youtube += `${java} Kualitas : ${quality}\n`
-            Youtube += `${java} Size : ${size}`
+            m.react('🐽')
+            let caption = `🍌 Youtube Video\n`
+            caption += `${java} Judul : ${title}\n`
+            caption += `${java} Kualitas : ${quality}\n`
+            caption += `${java} Size : ${size}`
             conn.sendFile(m.chat, video, {
-               caption: Youtube,
+               caption: caption,
                quoted: m
             });
-            User.Limit(m, m.sender, 6);
+            User.Limit(conn, 4, m);
          }
       }
    }

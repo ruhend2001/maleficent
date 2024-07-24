@@ -1,16 +1,16 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 process.on('uncaughtException', console.error);
-import 'maleficent-utility/index.js';
-import Pino from 'pino';
-import './lib/other.js'
-import {
+require('utility-mf/index.js');
+require('./lib/other.js')
+const Pino = require('pino');
+const {
    makeInMemoryStore,
    useMultiFileAuthState,
    DisconnectReason
-} from '@adiwajshing/baileys'
-import {
+} = require('@adiwajshing/baileys');
+const {
    signalGroup
-} from 'maleficent-utility';
+} = require('utility-mf');
 const startWhatsApp = async () => {
    const store = makeInMemoryStore({
       logger: Pino().child({
@@ -35,6 +35,6 @@ const startWhatsApp = async () => {
       }
    });
    store.bind(conn.ev);
-   conn.ev.on('creds.update', saveCreds);   
+   conn.ev.on('creds.update', saveCreds); 
 };
 startWhatsApp();

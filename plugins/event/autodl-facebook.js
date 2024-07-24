@@ -1,5 +1,5 @@
-import { igdl } from '../../lib/download.js'
-export let m = {
+const { igdl } = require('ruhend-scraper');
+module.exports = {
    start: async (m, {
       conn,
       budy,
@@ -10,11 +10,9 @@ export let m = {
          if (budy.includes('.fb')) return;
          if (budy.match(/\.facebook\s/)) return;
          if (m.isBaileys) return;
-         if (User.checkLimitUser(m.sender) <= 0) {
-            return m.reply(mess.limit);
-         };
-         let res = await igdl(budy);
-         m.react('🕒', m.chat)
+         if (User.checkLimitUser(m.sender) <= 0) return m.reply(mess.limit);
+         m.react('🕒');
+         let res = await igdl(budy);         
          let data = res.data;
          for (let video of data) {
             conn.sendFile(m.chat, video.url, {
@@ -22,7 +20,7 @@ export let m = {
                quoted: m
             });
          }
-         User.Limit(m, m.sender, 3);
+         User.Limit(conn, 3, m);
       }
    }
 };

@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Main Menu'],
    tags: ['list'],
    command: ['list'],
@@ -31,14 +31,16 @@ export default {
          title: 'Select Here',
          sections
       }
-      /* isMedia: true with media
+      /* isMedia: true 
+       * with media
+       * isMedia:
        * false just list
        */
       conn.sendList(m.chat, caption, listMessage, m, {
          isMedia: true,
          media: {
             image: { //image or video
-               url: setting.thumbnail //your url example 'https://photo.jpg'
+               url: cover //your url example 'https://photo.jpg'
             }
          }
       })

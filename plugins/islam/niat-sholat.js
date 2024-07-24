@@ -1,15 +1,15 @@
-export default {
+exports.default = {
    names: ['Islam'],
    tags: ['niatsholat'],
    command: ['niatsholat'],
-   start: async (m, {
+   start: (m, {
       conn
    }) => {
-      conn.reply(m.chat, niatsholat, m)
+      conn.adReply(m.chat, niatsholat, cover, m);
    }
 };
 
-let niatsholat = ` 
+const niatsholat = ` 
 *Niat Sholat*
 
 1. *Niat Sholat Subuh*

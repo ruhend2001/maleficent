@@ -1,15 +1,15 @@
-export default {
+exports.default = {
    names: ['Islam'],
    tags: ['bacaansholat'],
    command: ['bacaansholat'],
-   start: async (m, {
+   start: (m, {
       conn
    }) => {
-      conn.reply(m.chat, bacaansholat, m)
+      conn.adReply(m.chat, bacaansholat, cover, m);
    }
 };
 
-let bacaansholat = `
+const bacaansholat = `
 1. Takhbiratul ikhram
 
 *Allâhu Akbar*

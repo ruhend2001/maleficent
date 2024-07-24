@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Maker'],
    tags: ['tomp4', 'tovideo'],
    command: ['tomp4', 'tovideo'],
@@ -10,9 +10,8 @@ export default {
       command,
       Format
    }) => {
-      if (!quoted) return m.reply('Reply Stiker Gif')
       if (!/webp/.test(mime)) return m.reply(`balas stiker dengan caption *${prefix + command}*`)
-      m.adReply(mess.wait, setting.thumbnail, m.chat)
+      conn.adReply(m.chat, loading, cover, m);
       let media = await conn.downloadAndSaveMediaMessage(quoted)
       let webpToMp4 = await Format.webp2mp4File(media)
       conn.sendFile(m.chat, webpToMp4.result, {

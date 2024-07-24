@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Owner'],
    tags: ['addowner', 'delowner'],
    command: ['addowner', 'addown', 'delowner', 'delown'],

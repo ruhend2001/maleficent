@@ -1,5 +1,5 @@
-import fs from 'fs';
-export default {
+const fs = require('fs');
+exports.default = {
    names: ['Owner'],
    tags: ['simpan'],
    command: ['sf', 'simpan'],
@@ -10,10 +10,10 @@ export default {
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} plugins/cinta.js atau file yang ingin kamu save`);
       let path = `${text}`;
-      await Promise.all([fs.writeFileSync(path, m.quoted.text), m.reply(`tersimpan di ${path}`)]);
+      await Promise.all([fs.writeFileSync(path, m.quoted.text), await m.reply(`tersimpan di ${path}`)]);
       setTimeout(() => {
          process.send("reset");
-      }, 2000);
+      }, 1000);
    },
    owner: true
 };

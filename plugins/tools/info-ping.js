@@ -1,6 +1,6 @@
-export default {
+exports.default = {
    names: ['Main Menu'],
-   tags: ['ping', 'runtime', 'p'],
+   tags: ['ping', 'runtime'],
    command: ['ping', 'runtime', 'p'],
    start: async (m, {
       conn,
@@ -14,9 +14,7 @@ export default {
       runtime += `🌐 Statistic Usage Network Bot :\n📤  Upload: ${Upload}\n📥  Download: ${Download}\n\n`
       runtime += `🟢 Bot Aktif Selama :\n`
       runtime += `${muptime}\n`
-      runtime += `${response}`
-      //m.edReply(runtime, 250);
+      runtime += `${response}` 
       conn.reply(m.chat, runtime, m);
-      //m.adReply(runtime, setting.thumbnail, m.chat);
    }
 }

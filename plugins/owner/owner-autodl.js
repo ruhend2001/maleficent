@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Owner'],
    tags: ['autodownload'],
    command: ['autodownload', 'autodl'],
@@ -9,21 +9,17 @@ export default {
       command
    }) => {
       if (!text) return m.reply(`Masukkan Parameternya contoh ${prefix+command} on/off`);
-      let change;
       if (text.toLowerCase() === "on") {
-         change = {
-            auto_dl: true
-         };
+         setting.auto_dl = true
+         save_setting()
          m.reply(`auto download berhasil diaktifkan`);
       } else if (text.toLowerCase() === "off") {
-         change = {
-            auto_dl: false
-         };
+         setting.auto_dl = false
+         save_setting()
          m.reply(`auto download berhasil dimatikan `);
       } else {
          return m.reply(`Masukkan Parameter yang valid on/off`);
       }
-      User.autoDownload(change);
    },
    owner: true
 };

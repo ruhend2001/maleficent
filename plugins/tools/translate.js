@@ -1,9 +1,10 @@
-import translate from '@vitalets/google-translate-api'
-export default {
+const translate = require('@vitalets/google-translate-api')
+exports.default = {
    names: ['Tools'],
    tags: ['translate'],
    command: ['translate', 'tr'],
    start: async (m, {
+      conn,
       args,
       prefix,
       text,
@@ -22,7 +23,7 @@ export default {
       }).catch(_ => null)
       if (!res) m.reply(`Error : Bahasa"${lang}" Tidak Support`)
       var Translate = `*Terdeteksi Bahasa:* ${res.from.language.iso}\n*Ke Bahasa:* ${lang}\n\n*Terjemahan:* ${res.text}`.trim()
-      m.adReply(Translate, setting.thumbnail, m.chat)
+      conn.adReply(m.chat, Translate, cover, m);
    },
-   limit: true
+   limit: 2
 };

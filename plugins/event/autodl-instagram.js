@@ -1,20 +1,17 @@
-import { igdl } from '../../lib/download.js';
-export let m = {
+const { igdl } = require('ruhend-scraper');
+module.exports = {
    start: async (m, {
       conn,
       budy,
       autodl,
       User
    }) => {
-      let domain = budy.match(/(https?:\/\/(?:www\.)?instagram\.[a-z\.]{2,6}\/[\w\-\.]+(\/[^\s]*)?)/g);
-      if (autodl && domain) {
+      if (autodl && budy.match(/(https?:\/\/(?:www\.)?instagram\.[a-z\.]{2,6}\/[\w\-\.]+(\/[^\s]*)?)/g)) {
          if (budy.includes('.ig')) return;
          if (budy.match(/\.instagram\s/)) return;
-         if (User.checkLimitUser(m.sender) <= 0) {
-            return m.reply(mess.limit);
-         };
-         m.react('🕘', m.chat)
-         let res = await igdl(`${domain[0]}`);
+         if (User.checkLimitUser(m.sender) <= 0) return m.reply(mess.limit);
+         m.react('🕘')
+         let res = await igdl(budy);
          let data = await res.data;
          if (data.length > 0) {
             for (let i of data) {
@@ -22,7 +19,7 @@ export let m = {
                   quoted: m
                });
             }
-            User.Limit(m, m.sender, 2);
+            User.Limit(conn, 3, m);
          } else {
             return m.reply(`Media tidak ditemukan`);
          }

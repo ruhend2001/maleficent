@@ -1,18 +1,15 @@
-export default {
+exports.default = {
    names: ['Islam'],
    tags: ['solatjumat'],
    command: ['solatjumat', 'sojum'],
-   start: async (m, {
+   start: (m, {
       conn
    }) => {
-      conn.sendFile(m.chat, 'https://akuislam.com/wp-content/uploads/2023/01/Niat-Solat-Jumaat@2x-768x321.png', {
-         caption: sojum,
-         quoted: m
-      });
+      conn.adReply(m.chat, sojum, 'https://akuislam.com/wp-content/uploads/2023/01/Niat-Solat-Jumaat@2x-768x321.png', m);
    }
 };
 
-let sojum = `Apakah solat Jumaat?
+const sojum = `Apakah solat Jumaat?
 Solat jumaat adalah solat fardhu, dua rakaat yang dilakukan pada hari Jumaat untuk menggantikan solat Zuhur. Niat solat jumaat juga berbeza dengan solat fardhu yang lain. Ia haruslah dilakukan secara berjemaah selepas mendengar khutbah Jumaat.
 
 *Syarat wajib solat Jumat*

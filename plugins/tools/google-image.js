@@ -1,7 +1,6 @@
-import cheerio from 'cheerio';
-import got from 'got';
-
-export default {
+const cheerio = require('cheerio');
+const got = require('got');
+exports.default = {
    names: ['Tools'],
    tags: ['googleimage', 'gimage', 'gambar', 'image'],
    command: ['googleimage', 'gimage', 'gambar', 'image'],
@@ -13,18 +12,18 @@ export default {
    }) => {
       if (!text) return m.reply(`Use example ${prefix}${command} Janda Gila\nMasukkan Text Yang Ingin Dicari !`)
       let res = await googleImage(text)
-      m.adReply(mess.wait, setting.thumbnail, m.chat)
+      conn.adReply(m.chat, loading, cover, m);
       let Index = Math.floor(Math.random() * res.length);
       let image = res[Index];
-      let Gimage = `${javi} 𝐆𝐎𝐎𝐆𝐋𝐄 𝐈𝐌𝐀𝐆𝐄\n`
-      Gimage += `${java} 🔎 *Pencarian:* ${text}\n`
-      Gimage += `${java} 🌎 *Sumber:* Google`
+      let gimage = `${javi} 𝐆𝐎𝐎𝐆𝐋𝐄 𝐈𝐌𝐀𝐆𝐄\n`
+      gimage += `${java} 🔎 *Pencarian:* ${text}\n`
+      gimage += `${java} 🌎 *Sumber:* Google`
       conn.sendFile(m.chat, image, {
-         caption: Gimage,
+         caption: gimage,
          quoted: m
       })
    },
-   limit: 5,
+   limit: 3,
    register: true
 };
 

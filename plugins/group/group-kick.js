@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Group Menu'],
    tags: ['kick', 'tendang'],
    command: ['kick', 'tendang', '-'],
@@ -8,13 +8,13 @@ export default {
       mentionByReply
    }) => {
       if (mentionUser.length !== 0) {
-         conn.groupParticipantsUpdate(m.chat, [mentionUser[0]], "remove");
+         await conn.groupParticipantsUpdate(m.chat, [mentionUser[0]], "remove");
          m.reply(`Berhasil Menghapus ${mentionUser} Dari Grup Ini`)
       } else if (mentionByReply) {
-         conn.groupParticipantsUpdate(m.chat, [mentionByReply], "remove");
+         await conn.groupParticipantsUpdate(m.chat, [mentionByReply], "remove");
          m.reply(`Berhasil Menghapus ${mentionByReply} Dari Grup Ini`)
       } else {
-         m.reply(`Tag Yang Mau Di Kick`)
+         return m.reply(`Tag Yang Mau Di Kick`)
       }
    },
    group: true,

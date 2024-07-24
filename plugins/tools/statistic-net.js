@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Main Menu'],
    tags: ['statistic'],
    command: ['statistic', 'statistik', 'bandwith', 'net'],
@@ -6,7 +6,7 @@ export default {
       conn,
       Format
    }) => {
-      let { Upload, Download } = await Format.statistic();
+      const { Upload, Download } = await Format.statistic();
       m.reply('Download: ' + Download + '\nUpload: ' + Upload);
    }
 };

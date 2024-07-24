@@ -1,7 +1,7 @@
-export default {
+exports.default = {
    names: ['Owner'],
-   tags: ['self'],
-   command: ['self', 'respon'],
+   tags: ['self', 'public'],
+   command: ['self', 'public'],
    start: async (m, {
       conn,
       text,
@@ -9,28 +9,21 @@ export default {
       command,
       User
    }) => {
-      if (!text) return m.reply(`Masukkan Parameternya contoh ${prefix+command} on/off`);
-      let change;
-      if (text.toLowerCase() === "on") {
-         change = {
-            self: true
-         };
-         await m.reply(`Mode self berhasil diaktifkan. Hanya aku, owner, dan premium yang dapat mengakses bot ini \nmemulai ulang bot...`);
-         setTimeout(() => {
-            process.send('reset');
-         }, 1000);
-      } else if (text.toLowerCase() === "off") {
-         change = {
-            self: false
-         };
+      if (command == 'public') {
+         setting.self = false
+         save_setting()
          await m.reply(`Mode self berhasil dimatikan. Sekarang semua orang dapat mengakses bot ini \nmemulai ulang bot...`);
          setTimeout(() => {
             process.send('reset');
          }, 1000);
-      } else {
-         return m.reply(`Masukkan Parameter yang valid: on/off`);
+      } else if (command == 'self') {
+         setting.self = true
+         save_setting()
+         await m.reply(`Mode self berhasil diaktifkan. Hanya aku, owner, dan premium yang dapat mengakses bot ini \nmemulai ulang bot...`);
+         setTimeout(() => {
+            process.send('reset');
+         }, 1000);
       }
-      User.changeSelf(change);
    },
    owner: true
 };

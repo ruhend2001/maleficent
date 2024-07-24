@@ -1,26 +1,31 @@
-import got from 'got'
-import cheerio from 'cheerio'
-
-export default {
+const got = require('got');
+const cheerio = require('cheerio');
+exports.default = {
    names: ['Tools'],
    tags: ['lyric', 'lirik'],
    command: ['lyric', 'lirik', 'lyrics'],
    start: async (m, {
+      conn,
+      text,
       prefix,
-      text,     
       command
    }) => {
       if (!text) return m.reply(`Use example ${prefix}${command} heaven when i held`)
       if (m.isBaileys) return
-      m.adReply(mess.wait, setting.thumbnail, m.chat)
-      let result = await lyricsv2(text).catch(async _ => await lyrics(text))
-      let Lyric = `${java} Lyrics *${result.title}*\n`
-      Lyric += `${java} Author ${result.author}\n\n\n`
-      Lyric += `${result.lyrics}\n\n\n`
-      Lyric += `${java} Url ${result.link}`
-      m.adReply(Lyric, setting.thumbnail, m.chat)
+      conn.adReply(m.chat, loading, cover, m);
+      let result;
+      try {
+         result = await lyricsv2(text);
+      } catch {
+         result = await lyrics(text);
+      }
+      let lyric = `${java} Lyrics *${result.title}*\n`
+      lyric += `${java} Author ${result.author}\n\n\n`
+      lyric += `${result.lyrics}\n\n\n`
+      lyric += `${java} Url ${result.link}`
+      conn.adReply(m.chat, lyric, cover, m);
    },
-   limit: true,
+   limit: 2,
    premium: false
 };
 
@@ -102,7 +107,7 @@ class ScraperError extends Error {
       this.date = new Date();
       this.message =
          message +
-         '\n\nIf this is bug pls report to https://github.com/menu20/Millie-Bot';
+         'Undefined';
    }
    static createError(message, options) {
       return new ScraperError(message, options);

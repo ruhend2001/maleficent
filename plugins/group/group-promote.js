@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Group Menu'],
    tags: ['jadiadmin', 'promote'],
    command: ['jadiadmin', 'promote'],
@@ -7,10 +7,10 @@ export default {
       mentionUser
    }) => {
       if (mentionUser.length !== 0) {
-         conn.groupParticipantsUpdate(m.chat, [mentionUser[0]], "promote");
+         await conn.groupParticipantsUpdate(m.chat, [mentionUser[0]], "promote");
          m.reply(`Sekarang ${mentionUser} Jadi Admin`)
       } else {
-         m.reply(`Tag Yang Mau Di Promote`)
+         return m.reply(`Tag Yang Mau Di Promote`)
       }
    },
    group: true,

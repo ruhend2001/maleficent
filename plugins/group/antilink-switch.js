@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Group Menu'],
    tags: ['antilink'],
    command: ['antilink'],
@@ -28,6 +28,5 @@ export default {
       User.switchGroup(m.chat, change);
    },
    group: true,
-   admin: true,
-   owner: true
+   admin: true   
 };

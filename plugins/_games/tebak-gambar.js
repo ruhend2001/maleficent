@@ -1,33 +1,10 @@
-import fs from 'fs';
-import { exec } from 'child_process';
-let tebakgambar = {}
+const fs = require('fs');
+const { exec } = require('child_process');
 let rewards = {
    limit: 10,
    uang: 20
 }
-let mistaken = Math.floor(Math.random() * 3);
-let message = ['💩 Salah', '🐽 Kurang Tepat', '🍌 Belum Benar'][mistaken];
-
-export let m = {
-   start: async (m, {
-      budy,
-      User
-   }) => {
-      if (tebakgambar.hasOwnProperty(m.sender.split('@')[0]) && budy && !m.isBaileys) {
-         let jawaban = tebakgambar[m.sender.split('@')[0]]
-         if (budy.toLowerCase() === jawaban) {
-            m.adReply(`Benar 🌈\nkamu mendapatkan:\n+Limit ${rewards.limit}\n+Uang ${rewards.uang} `, setting.thumbnail, m.chat)
-            User.dbPlus(m.sender, rewards);
-            delete tebakgambar[m.sender.split('@')[0]];
-            console.log(tebakgambar);
-         } else {
-            m.adReply(message, setting.thumbnail, m.chat)
-         }
-      }
-   }
-};
-
-export default {
+exports.default = {
    names: ['Games'],
    tags: ['tebakgambar'],
    command: ['tebakgambar'],
@@ -54,7 +31,7 @@ export default {
       await Format.sleep(60000);
       if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) {
          console.log("Jawaban: " + result.jawaban)
-         m.adReply(`Waktu Habis\nJawaban: ${tebakgambar[m.sender.split('@')[0]]}`, setting.thumbnail, m.chat)
+         conn.adReply(m.chat, `Waktu Habis\nJawaban: ${tebakgambar[m.sender.split('@')[0]]}`, setting.thumbnail, m)
          delete tebakgambar[m.sender.split('@')[0]]
          console.log(tebakgambar);
       }

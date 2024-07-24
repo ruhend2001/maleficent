@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Tools'],
    tags: ['ai', 'chatgpt', 'openai'],
    command: ['ai', 'chatgpt', 'openai'],
@@ -10,12 +10,14 @@ export default {
       Format
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
-      m.react('🕒', m.chat);
-      let result = await Format.openAI(text);
-      m.adReply(loading, setting.thumbnail, m.chat).then(() => {      
-         m.adReply(`${result}`, setting.thumbnail, m.chat);
+      m.react('🕒');
+      let result = await Format.GPT(text);
+      conn.adReply(m.chat, loading, cover, m).then(() => {      
+         conn.adReply(m.chat, `${result}`, cover, m, {
+            showAds: true
+         });
       });
    },
-   limit: 3,
+   limit: 2,
    register: true
 };

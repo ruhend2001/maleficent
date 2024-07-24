@@ -1,5 +1,5 @@
-import fs from 'fs';
-export default {
+const fs = require('fs');
+exports.default = {
    names: ['Tools'],
    tags: ['tourl', 'upload'],
    command: ['tourl', 'upload'],
@@ -15,7 +15,7 @@ export default {
          /audio/.test(mime) || m.mtype === 'audioMessage' ||
          /webp/.test(mime) || m.mtype === 'stickerMessage' ||
          /video/.test(mime) || m.mtype === 'videoMessage') {
-         let mediaType; let fileExt;
+         let mediaType, fileExt;
          if (/webp/.test(mime) || m.mtype === 'stickerMessage') {
             mediaType = 'sticker';
             fileExt = '.webp';
@@ -30,7 +30,7 @@ export default {
             fileExt = '.mp4';
          } 
          let media = await conn.downloadAndSaveMediaMessage(quoted)
-         m.adReply(loading, setting.thumbnail, m.chat);
+         conn.adReply(m.chat, loading, cover, m);
          let buffer_up = fs.readFileSync(media);
          let rand2 = `tmp/` + Format.getRandom(`${fileExt}`);
          fs.writeFileSync(`./${rand2}`, buffer_up);
@@ -41,12 +41,12 @@ export default {
          caption += `${java} *Name :* ${name}\n`
          caption += `${java} *Size :* ${sizeNy}\n`
          caption += `${java} *Type:* ${mediaType.charAt(0).toUpperCase() + mediaType.slice(1)}`
-         m.adReply(caption, setting.thumbnail, m.chat)
+         conn.adReply(m.chat, caption, cover, m);
       } else {
          return m.reply(`Balas Media Atau Kirim Media Dengan Caption ${prefix}upload atau ${prefix}tourl`);
       }
    },
-   limit: 15,
+   limit: 5,
    register: true,
    premium: false
 };

@@ -1,5 +1,5 @@
-import { downloadContentFromMessage } from '@adiwajshing/baileys'
-export default {
+const { downloadContentFromMessage } = require('@adiwajshing/baileys');
+exports.default = {
    names: ['Tools'],
    tags: ['rvo', 'readviewonce', 'lihat'],
    command: ['rvo', 'readviewonce', 'lihat'],

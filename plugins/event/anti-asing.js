@@ -1,4 +1,4 @@
-export let m = {
+module.exports = {
    start: async (m, {
       conn,
       User

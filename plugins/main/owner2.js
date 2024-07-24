@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Main Menu'],
    tags: ['owner'],
    command: ['owner', 'pemilik', 'creator'],

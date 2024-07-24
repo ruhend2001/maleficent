@@ -1,8 +1,8 @@
-export default {
+exports.default = {
    names: ['Group Menu'],
    tags: ['setwelcome', 'setbye'],
    command: ['setwelcome', 'setbye'],
-   start: async (m, {
+   start: (m, {
       conn,
       text,
       prefix,
@@ -26,6 +26,6 @@ export default {
          m.reply(`Caption Bye Berhasil Di Ganti Di Group ${groupName}`);
       }
    },
-   admin: true, //owner allowed
+   admin: true,
    group: true
 }

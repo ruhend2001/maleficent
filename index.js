@@ -1,27 +1,17 @@
 console.log('🕒 Starting Meleficent . . .');
-import path, {
-   dirname
-} from 'path'
-import {
-   spawn
-} from 'child_process'
-import {
-   fileURLToPath
-} from 'url'
-import { 
-   __on
-} from 'maleficent-utility/lib/__on.js'; 
-process.on('uncaughtException', console.log);
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const path = require('path');
+const { spawn } = require('child_process');
+const __on = require('utility-mf/lib/__on.js');
+process.on('uncaughtException', console.error);
 const start = () => {
-   let args = [path.join(__dirname, 'main.js'), ...process.argv.slice(2)]
-   let p = spawn(process.argv[0], args, {
+   const args = [path.join(__dirname, 'main.js'), ...process.argv.slice(2)]
+   const p = spawn(process.argv[0], args, {
       stdio: ['inherit', 'inherit', 'inherit', 'ipc']
    })
    .on('message', data => {
       if (data == 'reset') {
          console.log('🕒 Restarting Meleficent . . .')
-         p.kill();
+         p.kill(), delete p;         
       }
       if (data == 'uptime') {
          p.send(process.uptime())
@@ -29,7 +19,7 @@ const start = () => {
    })
    .on('exit', code => {
       console.error('Exited with code:', code)
-      p.kill(), __on(), start();
+      p.kill(), delete p, __on(), start();
    })
 };
 __on(), start();

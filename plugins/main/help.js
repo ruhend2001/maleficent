@@ -1,5 +1,5 @@
-import fetch from 'node-fetch'
-export default {
+const fetch = require('node-fetch');
+exports.default = {
    names: ['Main Menu'],
    tags: ['menu'],
    command: ['menu', 'help', 'allmenu', 'command', 'm', 'all'],
@@ -20,20 +20,21 @@ export default {
       let pointer = '⭔︎'
       let bottom = '❏═━═┅═┅═┅═┅═❏'
       let left = '『'
-      let right = '』'      
-      let num = conn.decodeJid(setting.owner);
+      let right = '』'
       let info = `${star} Simple WhatsApp Bot \nBy ${setting.footer}\n\n`
       info += `Selamat ${waktu.suasana} bangsat\n@${m.sender.split('@')[0]} 🐽\n`
       info += `📝 Total Penggunaan Perintah\n ‎ ‎ ‎ ‎ ‎ ‎ Bot Kamu: ${User.getProfileData(m.sender).hitCmd} Kali\n`
       info += `📚 Library : baileys-wa@latest\n`
-      info += `👤 Owner : wa.me/${num.split('@')[0]}\n`
+      info += `👤 Owner : wa.me/${setting.owner}\n`
       info += ` 📸 Instagram: ${sosmed}\n\n`
       info += ` Network Bot Usage :\n📥 Download: ${Download}\n📤 Upload: ${Upload}\n\n${jembut}`
       m.react('🐽', m.chat)
       let top = { left, right }
       let { menu } = await Format.Plugins(header, middle, pointer, bottom, prefix, top);
       let picture = await User.profilePicture(conn, m)
-      m.adsReply(`${info}\n\n${menu}`, picture, m.chat)
+      conn.adReply(m.chat, `${info}\n\n${menu}`, picture, m, {
+         showAds: true
+      })
       conn.sendFile(m.chat, music, {
          mimetype: 'audio/mp4',
          ptt: true,
@@ -41,7 +42,6 @@ export default {
          contextInfo: {
             externalAdReply: {
                mediaType: 1,
-               mediaUrl: '',
                title: 'Menunya Kak :)',
                sourceUrl: setting.group.link,
                thumbnail: await (await fetch(picture)).buffer()

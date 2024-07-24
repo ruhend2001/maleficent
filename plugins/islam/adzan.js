@@ -1,15 +1,15 @@
-export default {
+exports.default = {
    names: ['Islam'],
    tags: ['adzan'],
    command: ['adzan'],
-   start: async (m, {
+   start: (m, {
       conn
    }) => {
-      conn.reply(m.chat, adzan, m)
+      conn.adReply(m.chat, adzan, cover, m);
    }
 };
 
-let adzan = `
+const adzan = `
 Arab:
 
 (٢x) اَللهُ اَكْبَرُ،اَللهُ اَكْبَرُ

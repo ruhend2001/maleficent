@@ -1,9 +1,9 @@
-export default {
+exports.default = {
    names: ['Owner'],
    tags: ['off welcome'],
    command: ['off'],
    owner: true,
-   start: async (m, {
+   start: (m, {
       conn,
       text,
       prefix,
@@ -19,6 +19,5 @@ export default {
       m.reply(`Welcome Berhasil Di Matikan Di Group ${groupName}`)
    },
    admin: true,
-   owner: true,
    group: true
 };

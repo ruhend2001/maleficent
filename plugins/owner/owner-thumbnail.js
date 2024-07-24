@@ -1,4 +1,4 @@
-export default {
+exports.default = {
    names: ['Owner'],
    tags: ['setthumbnail', 'setthumb', 'sthumb'],
    command: ['setthumbnail', 'setthumb', 'sthumb'],
@@ -16,11 +16,12 @@ export default {
          let image = await conn.downloadAndSaveMediaMessage(quoted);
          m.reply(`Process...`);
          let link = await Format.upload2(image);
-         await User.changeThumb({ thumbnail: link });
-         console.log(link);
-         m.reply(`Sukses Mengganti Thumbnail Bot\n\nRestarting....`);
-         await Format.sleep(3000);
-         process.send('reset');
+         setting.thumbnail = link
+         save_setting()
+         await m.reply(`Sukses Mengganti Thumbnail Bot\n\nRestarting....`);
+         setTimeout(() => {
+            process.send('reset');
+         }, 1000);
       } else {
          return m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
       }
