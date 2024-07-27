@@ -1,7 +1,6 @@
 module.exports = {
    start: async (m, {
-      conn,
-      User
+      conn
    }) => {
       if (m.sender.startsWith('93') || 
          m.sender.startsWith('212') || 
@@ -14,8 +13,6 @@ module.exports = {
          m.sender.startsWith('94') || 
          m.sender.startsWith('256')) {
          conn.updateBlockStatus(m.sender, 'block');
-         //optional wanna ban and block that users or not
-         //User.addBannedUser(m.sender, true);
       }
    }
 };

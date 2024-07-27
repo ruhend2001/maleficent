@@ -22,5 +22,5 @@ exports.default = {
          return m.reply(`Kirim gambar atau video dengan caption ${prefix + command} atau balas gambar yang sudah dikirim`);
       }
    },
-   limit: true
+   limit: 2
 };

@@ -3,10 +3,9 @@ exports.default = {
    tags: ['limit'],
    command: ['limit', 'ceklimit'],
    start: async (m, {
-     conn,
-     User
+     conn
    }) => {
-      let limitUser = User.checkLimitUser(m.sender);
+      let limitUser = db.users[m.sender].limit
       if (m.isBaileys) return;
       if (limitUser !== undefined) {
          let Limit = `Kamu Memiliki ${limitUser} Limit Tersisya`

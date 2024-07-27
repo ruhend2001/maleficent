@@ -9,7 +9,6 @@ exports.default = {
       command,
       mime,
       quoted,
-      User,
       Format
    }) => {
       if (/image/.test(mime) || m.mtype === 'imageMessage') {

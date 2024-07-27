@@ -6,7 +6,7 @@ module.exports = {
    start: async (m, {
       conn,
       budy,
-      User
+      Format
    }) => {
       if (('family100' + m.chat in family100) && budy && !budy.includes('.family100') && !budy.includes('.family') && !m.isBaileys) {
          let room = family100['family100' + m.chat]
@@ -35,8 +35,9 @@ module.exports = {
          let users = parseMention(caption)
          let givingAway = async () => {
             for (let i of users) {
-               await new Promise(resolve => setTimeout(resolve, 2000));
-               User.dbPlus(i, rewards);
+               await Format.sleep(2000)
+               db.users[i].limit += rewards.limit
+               db.users[i].uang += rewards.uang
             }
          }   
          if (isWin) {

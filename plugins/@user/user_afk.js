@@ -4,14 +4,12 @@ exports.default = {
    command: ['afk'],
    start: async (m, {
       text,
-      conn,
-      User
+      conn
    }) => {
-      let isAfk = User.getProfileData(m.sender).afkTime
-      let senderAfk = isAfk === -1;
-      if (!senderAfk) return
+      let isAfk = db.users[m.sender].afkTime
+      let senderAfk = isAfk === -1
       let reason = text ? text : 'Ngewe'
-      User.afkReason(m.sender, reason);
+      db.users[m.sender].afkReason = reason
       let caption = `*Kamu Sekarang AFK Dengan Alasan: ${reason}*`
       let tag = [m.sender]
       let tags = conn.parseMention(text) || [`@${m.sender.split('@')[0]}`];
@@ -20,10 +18,8 @@ exports.default = {
          mentions: isTags,
          showAds: false
       }).then(() => {
-         User.dbPlus(m.sender, {
-            afkTime: +new Date
-         });
-      });
+         db.users[m.sender].afkTime = +new Date
+      })
    },
    group: true
 };

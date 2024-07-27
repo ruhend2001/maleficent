@@ -14,7 +14,7 @@ exports.default = {
       if ('family100' + m.chat in family100) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!'); // throw false
       let anu = await Format._axios('https://raw.githubusercontent.com/BochilTeam/database/master/games/family100.json')
       let random = anu[Math.floor(Math.random() * anu.length)]
-      let hasil = `*Jawablah Pertanyaan Berikut :*\n\n${random.soal}\n\nTerdapat *${random.jawaban.length}* Jawaban ${random.jawaban.find(v => v.includes(' ')) ? `(beberapa Jawaban Terdapat Spasi)\n` : ''}`.trim()
+      let hasil = `*Jawablah Pertanyaan Berikut :*\n\n${random.soal}\n\nTerdapat *${random.jawaban.length}* Jawaban ${random.jawaban.find(v => v.includes(' ')) ? `(beberapa Jawaban Terdapat Spasi)\n` : ''}`.trim(); console.log(random.jawaban)
       family100['family100' + m.chat] = {
          id: 'family100' + m.chat,
          pesan: await conn.sendText(m.chat, hasil, m),

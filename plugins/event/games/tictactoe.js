@@ -6,8 +6,7 @@ let rewards = {
 module.exports = {
    start: async (m, {
       conn,
-      budy,
-      User
+      budy
    }) => {
       let room = Object.values(tictactoe).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')      
       let parseMention = (text = '') => {
@@ -65,7 +64,8 @@ module.exports = {
          })
          if (isTie || isWin) {
             if (isWin) {
-               User.dbPlus(winner, rewards)
+               db.users[winner].limit += rewards.limit
+               db.users[winner].uang += rewards.uang
             }
             delete tictactoe[room.id]
          }

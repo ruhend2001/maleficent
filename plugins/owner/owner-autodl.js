@@ -5,7 +5,6 @@ exports.default = {
    start: async (m, {
       text,
       prefix,
-      User,
       command
    }) => {
       if (!text) return m.reply(`Masukkan Parameternya contoh ${prefix+command} on/off`);

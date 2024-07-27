@@ -2,9 +2,7 @@ const { ytmp4 } = require('ruhend-scraper');
 module.exports = {
    start: async (m, {
       conn,
-      budy,
-      autodl,
-      User
+      budy
    }) => {
       let Links = /(http(?:s)?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^\s&]+)/g;
       let ShortsLinks = /(http(?:s)?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([^\s&]+)/g;
@@ -12,12 +10,11 @@ module.exports = {
       if (autodl && Links.test(budy) || ShortsLinks.test(budy)) {
          if (ExLyt) return
          if (m.isBaileys) return
-         if (User.checkLimitUser(m.sender) <= 0) return m.reply(mess.limit);
+         if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
          let youtubeLinks = budy.match(Links) || budy.match(ShortsLinks);
          for (let youtubeLink of youtubeLinks) {
             m.react('🕙')
             let { title, video, quality, thumbnail, size } = await ytmp4(youtubeLink);
-            m.react('🐽')
             let caption = `🍌 Youtube Video\n`
             caption += `${java} Judul : ${title}\n`
             caption += `${java} Kualitas : ${quality}\n`
@@ -26,7 +23,8 @@ module.exports = {
                caption: caption,
                quoted: m
             });
-            User.Limit(conn, 4, m);
+            db.users[m.sender].limit -= 4
+            m.reply(limit_message.replace('%limit', 4))
          }
       }
    }

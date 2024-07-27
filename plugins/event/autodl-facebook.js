@@ -2,15 +2,13 @@ const { igdl } = require('ruhend-scraper');
 module.exports = {
    start: async (m, {
       conn,
-      budy,
-      autodl,
-      User
+      budy
    }) => {
       if (autodl && /(?:https?:\/\/)?(?:www\.)?(?:facebook\.com|fb\.gg)\/[^\s/]+(?:\/videos\/\d+\/?)?/.test(budy)) {
          if (budy.includes('.fb')) return;
          if (budy.match(/\.facebook\s/)) return;
          if (m.isBaileys) return;
-         if (User.checkLimitUser(m.sender) <= 0) return m.reply(mess.limit);
+         if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
          m.react('🕒');
          let res = await igdl(budy);         
          let data = res.data;
@@ -20,7 +18,8 @@ module.exports = {
                quoted: m
             });
          }
-         User.Limit(conn, 3, m);
+         db.users[m.sender].limit -= 3
+         m.reply(limit_message.replace('%limit', 3))
       }
    }
-};
+}

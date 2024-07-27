@@ -7,7 +7,6 @@ exports.default = {
       conn,
       prefix,
       command,
-      User,
       Format
    }) => {
       let sosmed = `${setting.sosmed}`;
@@ -16,22 +15,22 @@ exports.default = {
       let title = `${setting.botName}\n${setting.footer}`;
       let music = setting.music;
       let header = '❏═┅═'
-      let middle = '┊'
-      let pointer = '⭔︎'
-      let bottom = '❏═━═┅═┅═┅═┅═❏'
+      let middle = '│'
+      let pointer = '︎⭓'
+      let bottom = '│\n❏═━═┅═┅═┅═┅═⭓'
       let left = '『'
-      let right = '』'
+      let right = '』\n│'      
+      let bigHeader = true
+      let top = { left, right , bigHeader}
       let info = `${star} Simple WhatsApp Bot \nBy ${setting.footer}\n\n`
       info += `Selamat ${waktu.suasana} bangsat\n@${m.sender.split('@')[0]} 🐽\n`
-      info += `📝 Total Penggunaan Perintah\n ‎ ‎ ‎ ‎ ‎ ‎ Bot Kamu: ${User.getProfileData(m.sender).hitCmd} Kali\n`
-      info += `📚 Library : baileys-wa@latest\n`
-      info += `👤 Owner : wa.me/${setting.owner}\n`
+      info += `📝 Total Penggunaan Perintah\n ‎ ‎ ‎ ‎ ‎ ‎ Bot Kamu: ${db.users[m.sender].hitCmd} Kali\n`
+      info += `👤 Owner : wa.me/${setting.contact}\n`
       info += ` 📸 Instagram: ${sosmed}\n\n`
       info += ` Network Bot Usage :\n📥 Download: ${Download}\n📤 Upload: ${Upload}\n\n${jembut}`
-      m.react('🐽', m.chat)
-      let top = { left, right }
+      m.react('🐽')      
       let { menu } = await Format.Plugins(header, middle, pointer, bottom, prefix, top);
-      let picture = await User.profilePicture(conn, m)
+      let picture = await conn.profilePictureUrl(m.sender, 'image').catch(_ => setting.thumbnail);
       conn.adReply(m.chat, `${info}\n\n${menu}`, picture, m, {
          showAds: true
       })

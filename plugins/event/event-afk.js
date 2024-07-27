@@ -1,12 +1,11 @@
 module.exports = {
    start: async (m, {
       conn,
-      budy,
-      User
+      budy
    }) => {
       if (m.sender) {
-         let timeAfk = User.getProfileData(m.sender).afkTime;
-         let reasonAfk = User.getProfileData(m.sender).afkReason;
+         let timeAfk = db.users[m.sender].afkTime
+         let reasonAfk = db.users[m.sender].afkReason
          let senderBackAfk = timeAfk === -1;
          if (!senderBackAfk && budy) {
             if (m.isBaileys) return;
@@ -17,7 +16,8 @@ module.exports = {
             conn.adReply(m.chat, caption, cover, m, {
                mentions: isTags
             }).then(() => {
-               User.afkBack(m.sender);
+               db.users[m.sender].afkTime = -1
+               db.users[m.sender].afkReason = ''
             });
          }
       };
@@ -33,7 +33,7 @@ module.exports = {
          __u.forEach(i => {
             let _timeAfk;
             try {
-               _timeAfk = User.getProfileData(i).afkTime;
+               _timeAfk = db.users[i].afkTime
             } catch {
                return
             }
@@ -42,8 +42,8 @@ module.exports = {
                let x = [i];
                x.forEach((z) => {
                   if (m.isBaileys) return;
-                  let d = User.getProfileData(z).afkTime;
-                  let e = User.getProfileData(z).afkReason;
+                  let d = db.users[z].afkTime
+                  let e = db.users[z].afkReason;
                   let caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:* ${clockString(new Date() - d)}`
                   let tag = [z];
                   let m_tag = [m.sender];
@@ -59,7 +59,7 @@ module.exports = {
          userAfks.forEach(i => {
             let _timeAfk;
             try {
-               _timeAfk = User.getProfileData(i).afkTime;
+               _timeAfk = db.users[i].afkTime
             } catch {
                return
             }
@@ -68,8 +68,8 @@ module.exports = {
                let x = [i];
                x.forEach((z) => { 
                   if (m.isBaileys) return            
-                  let d = User.getProfileData(z).afkTime;
-                  let e = User.getProfileData(z).afkReason;
+                  let d = db.users[z].afkTime
+                  let e = db.users[z].afkReason;
                   let caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:* ${clockString(new Date() - d)}`
                   let tag = [z];
                   let m_tag = [m.sender];

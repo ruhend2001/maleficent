@@ -1,13 +1,12 @@
 module.exports = {
    start: async (m, {
       conn,
-      group,
       budy,
       Format,
       isAdmins,
       isOwner
    }) => {
-      if (group && group.antilink && !m.fromMe && !m.isBaileys) {
+      if (db.chats[m.chat].antilink && !m.fromMe && !m.isBaileys) {
          if (budy.includes('https://chat.whatsapp.com/')) {
             if (isAdmins) return m.reply('You have the authority to send the link as an admin.');
             if (isOwner) return m.reply('Sending the link is something you are free to do since you are my owner.');

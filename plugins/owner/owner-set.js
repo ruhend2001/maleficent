@@ -7,7 +7,6 @@ exports.default = {
       text,
       prefix,
       command,
-      User,
       Format
    }) => {      
       if (command == 'set') {

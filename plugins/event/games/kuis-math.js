@@ -5,14 +5,14 @@ let rewards = {
 module.exports = {
    start: async (m, {
       conn,
-      budy,
-      User
+      budy
    }) => {
       if (kuismath.hasOwnProperty(m.sender.split('@')[0]) && budy && !budy.includes('.kuishmath') && !budy.includes('.math') && !budy.includes('.matematika') && !m.isBaileys) {
          let jawaban = kuismath[m.sender.split('@')[0]];
          if (budy.toLowerCase() == jawaban) {
             conn.adReply(m.chat, `*Kuis Matematika*\n\nJawaban Benar\nHadiah :\n *+${rewards.limit} Limit*\n *+${rewards.uang} Uang*\n\nIngin bermain lagi? \nketik .math mode\nPilih Mode:\n- ${Object.keys(modes).join(' \n- ')}\n\nContoh penggunaan:\n\n.math easy`, setting.thumbnail, m).then(async () => {
-               User.dbPlus(m.sender, rewards);
+               db.users[m.sender].limit += rewards.limit
+               db.users[m.sender].uang += rewards.uang
                delete kuismath[m.sender.split('@')[0]];
             });
          } else {

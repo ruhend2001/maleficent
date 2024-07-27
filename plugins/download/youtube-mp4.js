@@ -21,6 +21,6 @@ exports.default = {
          conn.docFile(m.chat, media, `${title}-${quality}~Ruhend-MD.mp4`, '', 'video/mp4', m);
       }) 
    },
-   limit: 5,
+   limit: 3,
    premium: false
 };

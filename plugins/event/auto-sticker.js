@@ -2,22 +2,20 @@ module.exports = {
    start: async (m, {
       conn,
       quoted,
-      User,
-      command,
-      autodl
+      command
    }) => {
       if (autodl && m.mtype === 'imageMessage') {
          let ignore = ['remini', 'hd', 'sticker', 's', 'stiker'];
-         if (ignore.includes(command)) return m.react('❎', m.chat);
-         if (User.checkLimitUser(m.sender) <= 0) return m.adReply(mess.limit, setting.thumbnail, m.chat);
+         if (ignore.includes(command) && !m.fromMe) return m.react('❎', m.chat);
+         if (!m.fromMe && db.users[m.sender].limit < 0) return m.reply(mess.limit);
          m.react('🐽');
          let buffer = await quoted.download();
-         m.react('🕒');
          conn.sendImageAsSticker(m.chat, buffer, m, {
             packname: setting.botName,
             author: setting.footer
          });
-         User.Limit(conn, 2, m);
+         db.users[m.sender].limit -= 2
+         m.reply(limit_message.replace('%limit', 2))
       }
    }
 };

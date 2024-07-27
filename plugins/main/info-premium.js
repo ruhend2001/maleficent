@@ -8,13 +8,19 @@ exports.default = {
    tags: ['infopremium', 'listpremium'],
    command: ['infopremium', 'listpremium', 'listprem'],
    start: async (m, {
-      conn,
-      User
+      conn
    }) => {
-      let { premiumUsers } = await User.getPremiumUser();
-      let listPremium = await Promise.all(premiumUsers.map(premiumUser => ` \n${premiumUser}`))
-      let text = `Berikut Adalah List Premium ${setting.botName}\n`
-      text += `${listPremium.join('\n')}`
-      conn.adReply(m.chat, text, cover, m);     
+      let users = Object.entries(db.users).filter(user => user[1].premiumTiime);
+      let premiumUsers = users.map(([jid, user]) => {
+         return {
+            jid: jid,
+            reason: user.premiumTime || ''
+         };
+      });
+      let premiumList = premiumUsers.map(user => `${user.jid.split('@')[0]}\nPremium Sampai: ${user.reason}`).join('\n');
+      let text = `Berikut Adalah List Pengguna Premium ${setting.botName}\n`;
+      text += `Total : ${premiumUsers.length}\n`;
+      text += `User: ${premiumList ? '\n' + PremiumList : ''}`;
+      conn.adReply(m.chat, text, cover, m);
    }
 };

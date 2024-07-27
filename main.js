@@ -1,7 +1,7 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 process.on('uncaughtException', console.error);
-require('utility-mf/index.js');
-require('./lib/other.js')
+require('./lib/other.js');
+require('utils-mf/index.js');
 const Pino = require('pino');
 const {
    makeInMemoryStore,
@@ -10,7 +10,7 @@ const {
 } = require('@adiwajshing/baileys');
 const {
    signalGroup
-} = require('utility-mf');
+} = require('utils-mf');
 const startWhatsApp = async () => {
    const store = makeInMemoryStore({
       logger: Pino().child({

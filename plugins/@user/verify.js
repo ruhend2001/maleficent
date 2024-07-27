@@ -1,39 +1,35 @@
 exports.default = {
    names: ['User Menu'],
    tags: ['daftar'],
-   command: ['daftar', 'verify', 'v'],
+   command: ['daftar', 'verified', 'v'],
    start: async (m, {
       conn,
       text,
       prefix,
       command,
-      User,
       Format
    }) => {
-      if (User.checkRegisteredUser(m.sender)) return m.reply(mess.registered);
+      if (db.users[m.sender].registered) return m.reply(mess.registered);
       let nama = text.split(".")[0];
       let umur = text.split(".")[1];
       let sender = m.sender;
       if (!nama || !umur) return m.reply(`Akses ditolak! Masukkan nama dan umur yang benar. \ncontoh ${prefix+command} nadia omara.50`);
       let sn = Format.makeid(10);
       let date = `${waktu.tanggal} ${waktu.time} ${waktu.suasana}`;
-      let user = {
-         id: sender,
-         registered: true,
-         registerTime: date,
-         nama: nama,
-         umur: umur,
-         seri: sn
-      };
-      await User.registering(user);
-      await User.addLimitUser(m.sender, 15);      
-      let Verify = `Berhasil Daftar √\n\n`
-      Verify += ` Nama: ${nama}\n`
-      Verify += ` Umur: ${umur}\n`
-      Verify += ` Serial Number: ${user.seri}\n\n`
-      Verify += ` kamu mendapatkan 15 limit\n`
-      Verify += ` setelah mendaftar\n`
-      Verify += ` silahkan Ketik .meni`
-      conn.adReply(m.chat, Verify, cover, m)
+      let user = db.users[m.sender]      
+      user.registered = true
+      user.registeredTime = date
+      user.name = nama
+      user.umur = umur
+      user.seri = sn           
+      user.limit += 15     
+      let verified = `Berhasil Daftar √\n\n`
+      verified += `Nama: ${nama}\n`
+      verified += `Umur: ${umur}\n`
+      verified += `Serial Number: ${sn}\n\n`
+      verified += `kamu mendapatkan 15 limit\n`
+      verified += `setelah mendaftar\n`
+      verified += `silahkan Ketik .meni`
+      conn.adReply(m.chat, verified, cover, m)
    }
 };

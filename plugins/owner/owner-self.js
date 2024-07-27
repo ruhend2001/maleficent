@@ -6,8 +6,7 @@ exports.default = {
       conn,
       text,
       prefix,
-      command,
-      User
+      command
    }) => {
       if (command == 'public') {
          setting.self = false

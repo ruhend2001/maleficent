@@ -13,8 +13,8 @@ exports.default = {
       let reason = text.split(".")[1]
       if (!reason) return m.reply(`Masukan Alasannya \nContoh: ${prefix+command} nomor.alasan\nContoh: ${prefix+command} 62xxxxx.karena dia toxic atau menghina bot`)
       let num = `${number.replace("@", "").replace("-", "").replace("-", "").replace("+62 ", "62").trim()}@s.whatsapp.net`
-      User.addBannedUser(num, true);
-      User.bannedReason(num, reason);
+      db.users[num].banned = true
+      db.users[num].bannedReason = reason
       m.reply(`Nomor ${num.split('@')[0]} berhasil di banned\nSekarang Nomor Itu Tidak Bisa Menggunakan Bot Ini\n\nAlasan Di Banned:\n${reason} \n\nUntuk melihat daftar banned ketik .listbanned`);
    },
    owner: true

@@ -3,10 +3,9 @@ exports.default = {
    tags: ['ceksn'],
    command: ['sn', 'ceksn'],
    start: async (m, {
-     conn,
-     User
+     conn
    }) => {
-      let Serial = User.getProfileData(m.sender).seri;
+      let Serial = db.users[m.sender].seri
       if (Serial !== "") {
          await Promise.all([await conn.adReply(m.chat, `itu adalah serial number kamu silahkan salin`, cover, m), await m.reply(Serial)])
       } else {

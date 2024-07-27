@@ -30,5 +30,5 @@ exports.default = {
          })
       })
    },
-   limit: 3
+   limit: 2
 };

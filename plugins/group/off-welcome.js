@@ -7,15 +7,11 @@ exports.default = {
       conn,
       text,
       prefix,
-      User,
       command,
       groupName
    }) => {
       if (!text) return m.reply(`Masukan Parameternya contoh ${prefix+command} welcome`)
-      const change = {
-         welcome: false
-      }
-      User.switchGroup(m.chat, change);
+      db.chats[m.chat].welcome = false
       m.reply(`Welcome Berhasil Di Matikan Di Group ${groupName}`)
    },
    admin: true,

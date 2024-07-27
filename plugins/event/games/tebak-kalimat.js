@@ -8,13 +8,13 @@ let imat = ['Salah', 'Kurang Tepat ', 'Belum Benar '][kal];
 module.exports = {
    start: async (m, {
       conn,
-      budy,
-      User
+      budy
    }) => {
       if (tebakkalimat.hasOwnProperty(m.sender.split('@')[0]) && budy && !budy.includes('.tebakkalimat') && !m.isBaileys) {
          let jawaban = tebakkalimat[m.sender.split('@')[0]].trim();
          if (budy.toLowerCase() === jawaban) {
-            User.dbPlus(m.sender, rewards);
+            db.users[m.sender].limit += rewards.limit
+            db.users[m.sender].uang += rewards.uang
             conn.adReply(m.chat, `Jawaban Benar 🎉\nHadiah :\n+${rewards.limit} limit 🎟\n+${rewards.uang} uang 💰`, setting.thumbnail, m);
             delete tebakkalimat[m.sender.split('@')[0]]
          } else {

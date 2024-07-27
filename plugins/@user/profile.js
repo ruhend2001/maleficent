@@ -7,34 +7,33 @@ exports.default = {
       text,
       prefix,
       command,
-      User
+      isPremium
    }) => {
-      let isPremium = User.checkPremiumUser(m.sender);
-      let picture = await User.profilePicture(conn, m);
+      let picture = await conn.profilePictureUrl(m.sender, 'image').catch(_ => setting.thumbnail);
       let prem = isPremium ? 'Aktif' : 'Tidak';
-      let isRegister = User.checkRegisteredUser(m.sender);
+      let isRegister = db.users[m.sender].registered
       let reg = isRegister ? 'Sudah Daftar' : 'Belum Daftar';
-      let limitUser = User.checkLimitUser(m.sender);
-      let userData = User.getProfileData(m.sender);
+      let limitUser = db.users[m.sender].limit
+      let userData = db.users[m.sender]
       let tag = text.match(/@/g);
-      let numTag = text.replace('@', '').replace(prefix, '').replace(command, '').trim();
-      let mention = `${numTag}@s.whatsapp.net`
-      let pictureTag = await conn.profilePictureUrl(mention, 'image').catch(_ => setting.thumbnail);
-      let userTag = await User.getProfileData(mention);
-      let isRegisterTag = User.checkRegisteredUser(mention);
-      let limitUserTag = User.checkLimitUser(mention);
-      let regTag = isRegisterTag ? 'Sudah Daftar' : 'Belum Daftar';
-      let isPremiumTag = User.checkPremiumUser(mention);
-      let premTag = isPremiumTag ? 'Aktif' : 'Tidak';
       if (tag) {
          try {
-            let _regtime = `${userTag.registerTime === "" ? "" : '\n ‎ ‎ ‎ ‎ ‎ ‎ ' + userTag.registerTime}`;
+            let numTag = text.replace('@', '').replace(prefix, '').replace(command, '').trim();
+            let mention = `${numTag}@s.whatsapp.net`
+            let pictureTag = await conn.profilePictureUrl(mention, 'image').catch(_ => setting.thumbnail);
+            let userTag = db.users[mention]
+            let isRegisterTag = db.users[mention].registered
+            let limitUserTag = db.users[mention].limit
+            let regTag = isRegisterTag ? 'Sudah Daftar' : 'Belum Daftar';
+            let isPremiumTag = db.users[mention].premium
+            let premTag = isPremiumTag ? 'Aktif' : 'Tidak';
+            let _regtime = `${userTag.registeredTime === "" ? "" : '\n ‎ ‎ ‎ ‎ ‎ ‎ ' + userTag.registeredTime}`;
             let Other = `👤 *User Profile* @${numTag}\n`
             Other += `📝 Total Penggunaan Perintah\n ‎ ‎ ‎ ‎ ‎ ‎ Bot: ${userTag.hitCmd} Kali\n`
             Other += `🏷 Terdaftar: ${regTag}\n`
             Other += `🗓 Waktu Daftar:${_regtime}\n`
             Other += `📌 Premium: ${premTag}\n`
-            Other += `📍 Nama: ${userTag.nama}\n`
+            Other += `📍 Nama: ${userTag.name}\n`
             Other += `💋 Umur: ${userTag.umur}\n`
             Other += `📎 Seri: ${userTag.seri}\n`
             Other += `🔖 Limit: ${limitUserTag}\n`
@@ -45,16 +44,16 @@ exports.default = {
                showAds: true
             });
          } catch {
-            return m.reply('Profile Not Active');
+            throw 'Profile Not Active'
          }
       } else if (!tag) {
-         let Regtime = `${userData.registerTime === "" ? "" : '\n ‎ ‎ ‎ ‎ ‎ ‎ ' + userData.registerTime}`;
+         let Regtime = `${userData.registeredTime === "" ? "" : '\n ‎ ‎ ‎ ‎ ‎ ‎ ' + userData.registeredTime}`;
          let Profile = `👤 *User Profile* @${m.sender.split('@')[0]}\n`
          Profile += `📝 Total Penggunaan Perintah\n ‎ ‎ ‎ ‎ ‎ ‎ Bot: ${userData.hitCmd} Kali\n`
          Profile += `🏷 Terdaftar: ${reg}\n`
          Profile += `🗓 Waktu Daftar:${Regtime}\n`
          Profile += `📌 Premium: ${prem}\n`
-         Profile += `📍 Nama: ${userData.nama}\n`
+         Profile += `📍 Nama: ${userData.name}\n`
          Profile += `💋 Umur: ${userData.umur}\n`
          Profile += `📎 Seri: ${userData.seri}\n`
          Profile += `🔖 Limit: ${limitUser}\n`
