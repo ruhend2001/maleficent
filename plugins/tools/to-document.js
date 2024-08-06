@@ -1,5 +1,5 @@
 exports.default = {
-   names: ['Maker'],
+   names: ['Tools'],
    tags: ['todocument'],
    command: ['todocument', 'todoc', 'todokument'],
    start: async (m, {

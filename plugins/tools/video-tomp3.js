@@ -1,5 +1,5 @@
 exports.default = {
-   names: ['Maker'],
+   names: ['Tools'],
    tags: ['toaudio'],
    command: ['tomp3', 'toaudio', 'toptt', 'tovn'],
    start: async (m, {

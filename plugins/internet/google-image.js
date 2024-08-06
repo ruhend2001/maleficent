@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 exports.default = {
-   names: ['Tools'],
+   names: ['Internet'],
    tags: ['googleimage', 'gimage', 'gambar', 'image'],
    command: ['googleimage', 'gimage', 'gambar', 'image'],
    start: async (m, {

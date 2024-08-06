@@ -1,5 +1,5 @@
 exports.default = {
-   names: ['Tools'],
+   names: ['Internet'],
    tags: ['ai', 'chatgpt', 'openai'],
    command: ['ai', 'chatgpt', 'openai'],
    start: async (m, {

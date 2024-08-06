@@ -1,6 +1,6 @@
 exports.default = {
    names: ['Main Menu'],
-   tags: ['statistic'],
+   tags: ['Info'],
    command: ['statistic', 'statistik', 'bandwith', 'net'],
    start: async (m, {
       conn,

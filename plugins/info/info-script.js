@@ -1,5 +1,5 @@
 exports.default = {
-   names: ['Main Menu'],
+   names: ['Info'],
    tags: ['script'],
    command: ['script', 'sc', 'repo', 'repositori'],
    start: (m, {

@@ -1,7 +1,7 @@
 const got = require('got');
 const cheerio = require('cheerio');
 exports.default = {
-   names: ['Tools'],
+   names: ['Internet'],
    tags: ['lyric', 'lirik'],
    command: ['lyric', 'lirik', 'lyrics'],
    start: async (m, {

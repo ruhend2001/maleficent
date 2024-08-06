@@ -1,7 +1,7 @@
 const { exec } = require('child_process');
 const util = require('util');
 exports.default = {
-   names: ['Main Menu'],
+   names: ['Info'],
    tags: ['speedtest'],
    command: ['speedtest', 'testspeed', 'tes', 'ot', 'speed'],
    start: async (m, {

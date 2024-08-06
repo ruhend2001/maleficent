@@ -1,5 +1,5 @@
 exports.default = {
-   names: ['Main Menu'],
+   names: ['Info'],
    tags: ['ping', 'runtime'],
    command: ['ping', 'runtime', 'p'],
    start: async (m, {

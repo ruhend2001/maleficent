@@ -1,5 +1,5 @@
 exports.default = {
-   names: ['Maker'],
+   names: ['Tools'],
    tags: ['remini', 'hd'],
    command: ['remini', 'hd', 'hdr'],
    start: async (m, {

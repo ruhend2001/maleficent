@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 exports.default = {
-   names: ['Tools'],
+   names: ['Internet'],
    tags: ['fetch'],
    command: ['fetch', 'get'],
    start: async (m, {
