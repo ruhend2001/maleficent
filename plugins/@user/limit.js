@@ -8,7 +8,7 @@ exports.default = {
       let limitUser = db.users[m.sender].limit
       if (m.isBaileys) return;
       if (limitUser !== undefined) {
-         let Limit = `Kamu Memiliki ${limitUser} Limit Tersisya`
+         let Limit = `Kamu Memiliki ${limitUser} Limit Tersisa`
          conn.adReply(m.chat, Limit, cover, m, {
             showAds: true
          })

@@ -18,7 +18,7 @@ module.exports = {
             conn.adReply(m.chat, `Jawaban Benar 🎉\nHadiah :\n+${rewards.limit} limit 🎟\n+${rewards.uang} uang 💰`, setting.thumbnail, m);
             delete tebakkalimat[m.sender.split('@')[0]]
          } else {
-            return conn.adReply(m.chat, imat, setting.thumbnail, m)
+            return m.reply(imat)
          }
       }
    }

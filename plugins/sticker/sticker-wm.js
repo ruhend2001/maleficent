@@ -10,8 +10,8 @@ exports.default = {
       mime,
       quoted
    }) => {
-      let pack = text.split('|')[0] ? text.split('|')[0] : '•'
-      let own = text.split('|')[1] ? text.split('|')[1] : '•'
+      let pack = text.split('|')[0] ? text.split('|')[0] : ' ‎'
+      let own = text.split('|')[1] ? text.split('|')[1] : ' ‎'
       if (/webp/.test(mime) || m.mtype === 'stickerMessage') {
          let buffer = await quoted.download();
          conn.adReply(m.chat, loading, cover, m);

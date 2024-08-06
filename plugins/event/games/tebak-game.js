@@ -15,7 +15,7 @@ module.exports = {
             conn.adReply(m.chat, `🎮 Tebak Game \n\nJawaban Benar 🎉\nHadiah :\n+${rewards.limit} limit 🎟\n+${rewards.uang} uang 💰`, setting.thumbnail, m);
             delete tebakgame[m.sender.split('@')[0]]
          } else {
-            return conn.adReply(m.chat, 'Salah ❎', setting.thumbnail, m);
+            return m.reply('Salah ❌')
          }
       }
    }

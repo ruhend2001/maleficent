@@ -16,7 +16,7 @@ module.exports = {
             conn.adReply(m.chat, `🎮 Tebak Bendera \n\nJawaban Benar 🎉\nHadiah :\n+${rewards.limit} limit 🎟\n+${rewards.uang} uang 💰`, setting.thumbnail, m);
             delete tebakbendera[m.sender.split('@')[0]]
          } else {
-            return conn.adReply(m.chat, 'Salah', setting.thumbnail, m);
+            return m.reply('Salah')
          }
       }
    }

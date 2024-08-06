@@ -20,7 +20,7 @@ module.exports = {
             delete caklontong[m.sender.split('@')[0]]
             delete caklontong_desk[m.sender.split('@')[0]]
          } else {
-            return conn.adReply(m.chat, te, setting.thumbnail, m);     
+            return m.reply(te)
          }
       }
    }

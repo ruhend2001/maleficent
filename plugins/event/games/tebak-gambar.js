@@ -19,7 +19,7 @@ module.exports = {
             delete tebakgambar[m.sender.split('@')[0]];
             console.log(tebakgambar);
          } else {
-            return conn.adReply(m.chat, message, setting.thumbnail, m)
+            return m.reply(message)
          }
       }
    }

@@ -11,7 +11,7 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
       m.react('🕒');
-      let result = await Format.GPT(text);
+      const result = await Format.GPT(text)
       conn.adReply(m.chat, loading, cover, m).then(() => {      
          conn.adReply(m.chat, `${result}`, cover, m, {
             showAds: true
@@ -20,4 +20,4 @@ exports.default = {
    },
    limit: 2,
    register: true
-};
+}

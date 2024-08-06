@@ -19,7 +19,7 @@ module.exports = {
             delete susunkata[m.sender.split('@')[0]];
             console.log(susunkata);
          } else {
-           return conn.adReply(m.chat, wrong, setting.thumbnail, m);
+           return m.reply(wrong)
          }
       }
    }

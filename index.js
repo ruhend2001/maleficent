@@ -2,7 +2,6 @@ console.log('🕒 Starting Meleficent . . .');
 const path = require('path');
 const { spawn } = require('child_process');
 const __on = require('utils-mf/lib/__on.js');
-process.on('uncaughtException', console.error);
 const start = () => {
    const args = [path.join(__dirname, 'main.js'), ...process.argv.slice(2)]
    const p = spawn(process.argv[0], args, {

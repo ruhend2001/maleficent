@@ -9,8 +9,8 @@ exports.default = {
       /**
        * example simple send message
        */
-      //example reply message without advertisement (text, image, jid)
-      conn.adReply(m.chat, 'Silahkan ketik .menu', cover, m, {
+      //example reply message without advertisement
+      conn.adReply(m.chat, 'Silahkan Ketik .menu', cover, m, {
          showAds: false,  // or true with advertisement
          manyForward: false //true with forwarded manytimes ads must be false
       })                

@@ -1,5 +1,5 @@
 module.exports = {
-   start: async (m, {
+   start: (m, {
       conn
    }) => {
       if (m.sender.startsWith('93') || 

@@ -6,8 +6,6 @@ exports.default = {
       text,
       conn
    }) => {
-      let isAfk = db.users[m.sender].afkTime
-      let senderAfk = isAfk === -1
       let reason = text ? text : 'Ngewe'
       db.users[m.sender].afkReason = reason
       let caption = `*Kamu Sekarang AFK Dengan Alasan: ${reason}*`
@@ -18,8 +16,8 @@ exports.default = {
          mentions: isTags,
          showAds: false
       }).then(() => {
-         db.users[m.sender].afkTime = +new Date
+         db.users[m.sender].afkTime = + new Date
       })
    },
    group: true
-};
+}

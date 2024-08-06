@@ -10,11 +10,11 @@ module.exports = {
          if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
          let tiktokLinks = budy.match(tR);
          for (let tiktokLink of tiktokLinks) {
-            let { desc, name, like, comment, share, video } = await ttdl(tiktokLink);           
+            let { title, author, like, comment, share, video } = await ttdl(tiktokLink);           
             m.react('🕒');
             let caption = `🎗 𝐓𝐈𝐊𝐓𝐎𝐊\n`
-            caption += `⭔ Name: ${name}\n`
-            caption += `⭔ Description : ${desc}\n`
+            caption += `⭔ Name: ${author}\n`
+            caption += `⭔ Description : ${title}\n`
             caption += `⭔ Like: ${like}\n`
             caption += `⭔ Comment: ${comment}\n`
             caption += `⭔ Share: ${share}\n`

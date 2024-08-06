@@ -1,4 +1,3 @@
-const reboot = () => process.send('reset');
 exports.default = {
    names: ['Owner'],
    tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
@@ -26,37 +25,27 @@ exports.default = {
          if (!text) return m.reply(`Masukan Nama Bot nya! \nContoh\n${prefix+command} Maleficent-bot`);         
          setting.botName = text
          save_setting();
-         await m.reply(`Sukses mengganti nama bot menjadi ${text}\n\nRestarting....`);
-         await Format.sleep(1000);
-         reboot();
+         await m.reply(`Sukses mengganti nama bot menjadi ${text}\n`);         
       } else if (/setnameowner|setnameown/.test(command)) {
          if (!text) return m.reply(`Masukan Nama Nya! \nContoh\n${prefix+command} Ruly Henderson`);
          setting.ownerName = text
          save_setting();
-         await m.reply(`Sukses Mengganti Nama Owner Bot Menjadi ${text}\n\nRestarting....`);
-         await Format.sleep(1000);
-         reboot();
+         await m.reply(`Sukses Mengganti Nama Owner Bot Menjadi ${text}\n`);         
       } else if (/setfooter|setwm/.test(command)) {
          if (!text) return m.reply(`Masukan nama footer atau watermark nya! \nContoh\n${prefix+command} © Ruhend`);
          setting.footer = text
          save_setting();
-         await m.reply(`Sukses Mengganti Footer atau Watermark Bot Menjadi ${text}\n\nRestarting....`);
-         await Format.sleep(1000);
-         reboot();
+         await m.reply(`Sukses Mengganti Footer atau Watermark Bot Menjadi ${text}\n`);
       } else if (/setsosmed/.test(command)) {
          if (!text) return m.reply(`Masukan link sosmed nya! \nContoh\n${prefix+command} www.instagram.com/ru_hend_`);
          setting.sosmed = text
          save_setting();
-         await m.reply(`Sukses Mengganti Link Sosmed Menjadi ${text}\n\nRestarting....`);
-         await Format.sleep(1000);
-         reboot();
+         await m.reply(`Sukses Mengganti Link Sosmed Menjadi ${text}\n`);
       } else if (/setmusic/.test(command)) {
          if (!text) return m.reply(`Masukan link musicnya nya! \nContoh\n${prefix+command} https://MyMusic.mp3 \natau upload music menjadi url`);
          setting.music = text
          save_setting();
-         await m.reply(`Sukses Mengganti Link Music Menjadi ${text}\n\nRestarting....`);
-         await Format.sleep(1000);
-         reboot();
+         await m.reply(`Sukses Mengganti Link Music Menjadi ${text}\n`);         
       } else if (/setram|ram/.test(command)) {
          /**
          nilai ram ini penting untuk mencegah terjadinya overload 
@@ -66,30 +55,22 @@ exports.default = {
          if (!text) return m.reply(`Masukan nilai ram nya! \nContoh\n${prefix+command} 800`);
          setting.ram = parseInt(text);
          save_setting();
-         await m.reply(`Sukses Mengganti Nilai RAM Menjadi ${text}\n\nRestarting....`);
-         await Format.sleep(1000);
-         reboot();
+         await m.reply(`Sukses Mengganti Nilai RAM Menjadi ${text}\n`);         
       } else if (/setlink|setlinkgc/.test(command)) {
          if (!text) return m.reply(`Masukan link group nya! \nContoh\n${prefix+command} ${setting.group.link}\nAtau link lain juga bisa`);
          setting.group.link = text
          save_setting();
-         await m.reply(`Sukses Mengganti Link Setting Menjadi ${text}\n\nRestarting....`);
-         await Format.sleep(1000);
-         reboot();
+         await m.reply(`Sukses Mengganti Link Setting Menjadi ${text}\n`);         
       } else if (/setgroupmode|setgcmode/.test(command)) {         
          if (!text) return m.reply(`masukan parameternya contoh \n${prefix+command} on atau off`);
          if (text.toLowerCase() == 'on') {
             setting.group.only = true
             save_setting();
-            await m.reply(`Sukses Mengubah Ke Group Mode \nPrivate Chat Tidak Bisa Di Akses Kecuali Aku , Owner Dan Premium\n\nRestarting....`);
-            await Format.sleep(1000);
-            reboot();
+            await m.reply(`Sukses Mengubah Ke Group Mode \nPrivate Chat Tidak Bisa Di Akses Kecuali Aku , Owner Dan Premium\n`);            
          } else if (text.toLowerCase() == 'off') {
             setting.group.only = false
             save_setting();
-            await m.reply(`Sukses Mematikan Group Mode Sekarang Private Chat Dapat Diakses\n\nRestarting....`);
-            await Format.sleep(1000);
-            reboot();
+            await m.reply(`Sukses Mematikan Group Mode Sekarang Private Chat Dapat Diakses\n`);            
          } else {
             return m.reply(`Masukan parameter yang valid on/off \nContoh\n${prefix+command} on\nAtau\n${prefix+command} off`);                
          } 
@@ -98,15 +79,11 @@ exports.default = {
          if (text.toLowerCase() == 'on') {
             setting.group.only_message = true
             save_setting();
-            await m.reply(`Sukses Mengaktifkan Respon ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Akan Merespon ${mess.groupOnly}\n\nRestarting....`);
-            await Format.sleep(1000);
-            reboot();
+            await m.reply(`Sukses Mengaktifkan Respon ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Akan Merespon ${mess.groupOnly}\n`);            
          } else if (text.toLowerCase() == 'off') {
             setting.group.only_message = false
             save_setting();
-            await m.reply(`Sukses Mematikan Respon Pesan ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Sama Sekali Tidak Akan Merespon Apapun\n\nRestarting....`);
-            await Format.sleep(1000);
-            reboot();
+            await m.reply(`Sukses Mematikan Respon Pesan ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Sama Sekali Tidak Akan Merespon Apapun\n`);            
          } else {
             return m.reply(`Masukan parameter yang valid on/off \nContoh\n${prefix+command} on\nAtau\n${prefix+command} off`);                
          }

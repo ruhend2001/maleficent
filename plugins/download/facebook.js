@@ -1,4 +1,4 @@
-const { igdl } = require('ruhend-scraper');
+const { fbdl } = require('ruhend-scraper');
 exports.default = {
    names: ['Downloader'],
    tags: ['facebook'],
@@ -10,7 +10,7 @@ exports.default = {
       command
    }) => {
       if (!text) return m.reply(`Masukan link facebook nya! \nContoh: ${prefix+command} https://www.facebook.com/reel/3677168492551989?mibextid=rS40aB7S9Ucbxw6v`);
-      let res = await igdl(text);
+      let res = await fbdl(text);
       let result = res.data;
       let data;
       try {

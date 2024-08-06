@@ -16,7 +16,7 @@ module.exports = {
             conn.adReply(m.chat, `Teka Teki 🎮\n\nJawaban Benar 🎉\nHadiah :\n+${rewards.limit} limit 🎟\n+${rewards.uang} uang 💰`, setting.thumbnail, m);
             delete tekateki[m.sender.split('@')[0]]
          } else {
-            return m.reply('salah');
+            return m.reply('Salah ❎');
          }
       }
    }

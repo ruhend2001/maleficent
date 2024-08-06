@@ -19,5 +19,6 @@ exports.default = {
          caption: caption,
          quoted: m
       })
-   }
+   },
+   limit: 5
 };

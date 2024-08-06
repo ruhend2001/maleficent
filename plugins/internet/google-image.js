@@ -18,9 +18,13 @@ exports.default = {
       let gimage = `${javi} 𝐆𝐎𝐎𝐆𝐋𝐄 𝐈𝐌𝐀𝐆𝐄\n`
       gimage += `${java} 🔎 *Pencarian:* ${text}\n`
       gimage += `${java} 🌎 *Sumber:* Google`
-      conn.sendButton(m.chat, gimage, image, m, [
-         ['⚪ Lanjut', `.gimage ${text}`]
-      ]);
+      conn.sendFile(m.chat, image, {
+         quoted: m
+      }).then(() => {
+         conn.sendButton(m.chat, '', null, m, [
+            ['⚪ Lanjut', `.gimage ${text}`]
+         ])         
+      })
    },
    limit: 2
 };
