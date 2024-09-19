@@ -29,7 +29,7 @@ exports.default = {
             quoted: m
          }) :    
          conn.sendButton(m.chat, pinterest, res, m, [
-         ['⚪ Lanjut', `.pin ${text}`]
+         ['🔵 Lanjut', `.pin ${text}`]
       ]);
    },
    limit: 2,

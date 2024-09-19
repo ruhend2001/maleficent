@@ -3,7 +3,7 @@ const util = require('util');
 exports.default = {
    names: ['Info'],
    tags: ['speedtest'],
-   command: ['speedtest', 'testspeed', 'tes', 'ot', 'speed'],
+   command: ['speedtest', 'testspeed', 'tes', 'speed'],
    start: async (m, {
       conn
    }) => {

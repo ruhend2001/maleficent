@@ -37,7 +37,7 @@ exports.default = {
             "replyMessage": {}
          }]
       }
-      let json = await axios.post('https://quotly.netorare.codes/generate', obj, {
+      let json = await axios.post('https://bot.lyo.su/quote/generate', obj, {
          headers: {
             'Content-Type': 'application/json'
          }

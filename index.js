@@ -1,4 +1,4 @@
-console.log('🕒 Starting Meleficent . . .');
+console.log('🕒 Starting Maleficent . . .');
 const path = require('path');
 const { spawn } = require('child_process');
 const __on = require('utils-mf/lib/__on.js');

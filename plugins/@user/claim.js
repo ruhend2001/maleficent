@@ -18,7 +18,7 @@ exports.default = {
             db.users[m.sender].lastClaim = new Date().toJSON();
             const claim = `Claim berhasil. Kamu dapat ${give} Limit\nKamu Bisa melakukan claim lagi dalam 24 jam mendatang.`
             conn.adReply(m.chat, claim, cover, m).then(() => {
-               conn.sendButton(m.chat, 'Ingin Tukar Kupon?', cover, m, [
+               conn.sendButton(m.chat, 'Ingin Tukar Kupon?', null, m, [
                   ['Tukar Kupon', '.tukarkupon']
                ])
             })
@@ -28,5 +28,5 @@ exports.default = {
          return m.reply(`Kamu sudah melakukan claim dalam 24 jam terakhir. Tunggu ${remainingTime} Jam lagi sebelum dapat melakukan claim kembali.\nkamu juga bisa claim uang  ketik .claimuang`);
       }
    },
-   register: true
+   register: false
 };

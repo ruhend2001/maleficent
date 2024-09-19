@@ -13,9 +13,9 @@ exports.default = {
    }) => {
       if (/image/.test(mime) || m.mtype === 'imageMessage') {
          m.react('🕒');
-         let content = await quoted.download();
+         let content = await conn.downloadAndSaveMediaMessage(quoted);
          conn.adReply(m.chat, loading, cover, m);
-         let data = await Format.HD(content);         
+         let data = await Format.HD2(content);         
          conn.sendFile(m.chat, data, {
             caption: star + ' Berhasil Di Tingkatkan',
             quoted: m
@@ -24,7 +24,7 @@ exports.default = {
         return m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
       }
    },
-   limit: 10,//banyakin limitnya ke enakan usernya nanti kalo limit kecil kan bisa beli premium usernya ke elu :)
+   limit: 5,
    premium: false,
    resgister: true,
    disable: false

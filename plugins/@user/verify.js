@@ -1,7 +1,7 @@
 exports.default = {
    names: ['User Menu'],
    tags: ['daftar'],
-   command: ['daftar', 'verified', 'v'],
+   command: ['daftar', 'verify', 'v', 'register', 'reg'],
    start: async (m, {
       conn,
       text,

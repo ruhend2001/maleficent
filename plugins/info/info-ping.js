@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Info'],
    tags: ['ping', 'runtime'],
-   command: ['ping', 'runtime', 'p'],
+   command: ['ping', 'runtime', 'rt', 'p'],
    start: async (m, {
       conn,
       Format

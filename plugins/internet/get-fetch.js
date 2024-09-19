@@ -30,6 +30,6 @@ exports.default = {
          m.reply(txt.slice(0, 65536) + '')
       }
    },
-   limit: 3,
-   register: true
+   limit: 5,
+   register: false
 };

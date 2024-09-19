@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { ytmp3, ytsearch } = require('ruhend-scraper');
+const { ytmp3v3, ytsearch } = require('ruhend-scraper');
 exports.default = {
    names: ['Downloader'],
    tags: ['play', 'song', 'lagu'],
@@ -25,7 +25,7 @@ exports.default = {
       play += ` ⬡ Link: ${url}\n\n`
       play += ` *Loading audio sedang dikirim...*`
       m.reply(title).then(() => conn.adReply(m.chat, play, thumbnail, m));
-      let { audio } = await ytmp3(url);
+      let { audio } = await ytmp3v3(url);
       let pretty = await Format.mp3v2(conn, audio, 'mp3', m);
       let thumb = await (await fetch(thumbnail)).buffer();
       conn.sendFile(m.chat, pretty, {

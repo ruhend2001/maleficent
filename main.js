@@ -18,7 +18,7 @@ const startWhatsApp = async () => {
          stream: 'store'
       })
    });
-   const { state, saveCreds } = await useMultiFileAuthState('./sessions');      
+   const { state, saveCreds } = await useMultiFileAuthState('./sessions');
    const conn = await signalGroup(state, store);
    conn.ev.on('connection.update', (update) => {
       const {
@@ -26,15 +26,15 @@ const startWhatsApp = async () => {
          lastDisconnect
       } = update;
       if (connection === 'open') {
-         console.log(`🟢 Online`)       
-      } else if (connection === 'connecting') {        
-        console.log(`🟡 Reconnecting`)
+         console.log(`🟢 Online`)
+      } else if (connection === 'connecting') {
+         console.log(`🟡 Reconnecting`)
       } else if (connection === 'close') {
          console.log(`🔴 Disconnected`)
          lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startWhatsApp() : startWhatsApp();
       }
    });
    store.bind(conn.ev);
-   conn.ev.on('creds.update', saveCreds); 
+   conn.ev.on('creds.update', saveCreds);   
 };
 startWhatsApp();

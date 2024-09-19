@@ -9,9 +9,10 @@ exports.default = {
    }) => {
       if (/addowner|addown/.test(command)) {
          if (!text) return m.reply(`Masukkan Nomornya contoh\n${prefix+command} 62xxxx`);
-         setting.ownerNumber.push(text);
+         let num = `${text.replace("@", "").replace("-", "").replace("-", "").replace("+62 ", "62").trim()}`;
+         setting.ownerNumber.push(num);
          save_setting()
-         m.reply(`Sukses Menambahkan ${text} sebagai owner`);
+         m.reply(`Sukses Menambahkan ${num} sebagai owner`);
       } else if (/delowner|delown/.test(command)) {
          if (!text) return m.reply(`Masukkan Nomor yang ingin dihapus dari daftar owner.`);
          let index = setting.ownerNumber.indexOf(text);

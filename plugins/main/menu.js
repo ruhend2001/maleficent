@@ -10,7 +10,7 @@ exports.default = {
       Format
    }) => {
       let sosmed = `${setting.sosmed}`;
-      let jembut = ` ꒦ ͝ ꒷ ͝ ꒦ ͝ ꒷ ͝ ꒦ ͝ ꒷ ͝ ꒦ ͝ ꒷ ͝ ꒦ ͝ ꒷ ͝ ꒦ ͝ ꒷ ͝ ꒦ ` // hiasan atas
+      //let jembut = ` ꒦ ͝ ꒷ ͝ ꒦ ͝ ꒷ ͝ ꒦ ͝ ꒷ ͝ ꒦ ͝ ꒷ ͝ ꒦ ͝ ꒷ ͝ ꒦ ͝ ꒷ ͝ ꒦ ` // hiasan atas
       let garis = ` ══════════════════`
       let { Upload, Download } = await Format.statistic();
       let title = `${setting.botName}\n${setting.footer}`;
@@ -20,7 +20,7 @@ exports.default = {
       let header = `┌───`
       let middle = `│`
       let pointer = `⭓`
-      let bottom = `└───────────⭓` + '\n'
+      let bottom = `└──────────⭓\n`
       let left = `『`
       let right = `』`    
       let bigHeader = false
@@ -31,8 +31,8 @@ exports.default = {
       info += `👤 Owner : wa.me/${setting.contact}\n`
       info += ` 📸 Instagram: ${sosmed}\n${garis}\n`
       info += ` Network Bot Usage :\n📥 Download: ${Download}\n📤 Upload: ${Upload}\n${garis}\n`
-      info += `${lolim} = Limit\n${loprem} = Premium\n\n`
-      info += `${jembut}`
+      info += `${lolim} = Limit\n${loprem} = Premium\n`
+      info += `${garis}`
       m.react('🐽')
       let { menu } = await Format.Plugins(header, middle, pointer, bottom, prefix, top);
       let picture = await conn.profilePictureUrl(m.sender, 'image').catch(_ => setting.thumbnail);
@@ -40,17 +40,8 @@ exports.default = {
          showAds: true
       });
       conn.sendFile(m.chat, music, {
-         mimetype: 'audio/mp4',
          ptt: true,
-         quoted: m,
-         contextInfo: {
-            externalAdReply: {
-               mediaType: 1,
-               title: 'Menunya Kak :)',
-               sourceUrl: setting.group.link,
-               thumbnail: await (await fetch(picture)).buffer()
-            }
-         }
+         quoted: m
       })
    }
 }
