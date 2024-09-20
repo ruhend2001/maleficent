@@ -1,5 +1,5 @@
 exports.default = {
-   names: ['Main Menu'],
+   names: ['Info'],
    tags: ['listbanned', 'listban'],
    command: ['listbanned', 'listban'],
    start: async (m, {

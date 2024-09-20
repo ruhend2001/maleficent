@@ -4,7 +4,7 @@
  * false = tidak (fitur itu bisa di gunakan untuk semua)
  */
 exports.default = {
-   names: ['Main Menu'],
+   names: ['Info'],
    tags: ['infopremium', 'listpremium'],
    command: ['infopremium', 'listpremium', 'listprem'],
    start: async (m, {

@@ -18,6 +18,5 @@ exports.default = {
          });
       });
    },
-   limit: 2,
-   register: true
+   limit: 2
 }
