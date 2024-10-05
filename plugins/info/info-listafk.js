@@ -17,17 +17,18 @@ exports.default = {
          let toString = [`*${h} Jam*`, `*${m} Menit*`, `*${s} Detik*`].map(v => v.toString().padStart(2, 0)).join(': ')
          return `${toString}`
       };
-      const users = afk.map(([jid, user], i) => {
+      const users = afk.map(([jid, user]) => {
          return {
             jid: jid,
             name: user.name,
             timeAfk: clockString(new Date() - db.users[jid].afkTime),
-            num: i + 1
+            reason: user.afkReason
          };
       });
-      const data = users.map(user => `${user.num}. ${user.name}\n Nomor:\n@${user.jid.split('@')[0]}\n AFK Selama:\n${user.timeAfk}\n`).join('\n');
+      const data = users.map(user => `• ${user.name}\n Nomor: @${user.jid.split('@')[0]}\n AFK Selama:\n ${user.timeAfk}\n Alasan: ${user.reason}\n`).join('\n');
       const jid = conn.parseMention(data);
-      conn.adReply(m.chat, `*List User AFK*\n*${setting.botName}*\n\n${data}`.trim(), cover, m, {
+      const text = ` *List User AFK*\n *${setting.botName}*\n\n${data.trim()}`
+      conn.adReply(m.chat, text, cover, m, {
          mentions: jid
       })
    }

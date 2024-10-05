@@ -66,12 +66,14 @@ exports.default = {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(cmd)) {
                setting.auto_dl = true
-               save_setting()
-               m.reply(`auto download berhasil diaktifkan`);
+               await save_setting()
+               await m.reply(`auto download berhasil diaktifkan\nrestarting...`);
+               reset();
             } else if (cmd_off.includes(cmd)) {
                setting.auto_dl = false
-               save_setting()
-               m.reply(`auto download berhasil matikan`);
+               await save_setting()
+               await m.reply(`auto download berhasil matikan\nrestarting...`);
+               reset();
             }
          }
          break

@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Owner'],
-   tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
-   command: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
+   tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
+   command: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
    start: async (m, {
       text,
       prefix,
@@ -12,6 +12,7 @@ exports.default = {
          var caption = `*SETTING OWNER* \n*Perintah tersedia untuk mengatur setting hanya ada berikut ini*\n\n\n`
          caption += `.setnamebot atau .setbotname \nUntuk mengganti nama bot \n\n`
          caption += `.setnameowner atau .setnameown \nUntuk mengganti nama owner \n\n`
+         caption += `.setmenu\nUntuk Mengganti Gaya Menu \n\n`
          caption += `.setfooter atau .setwm \nUntuk mengganti watermark atau footer \n\n`
          caption += `.setsosmed \nUntuk mengganti link sosmed \n\n`
          caption += `.setmusic \nUntuk mengganti link music \n\n`
@@ -86,6 +87,15 @@ exports.default = {
             await m.reply(`Sukses Mematikan Respon Pesan ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Sama Sekali Tidak Akan Merespon Apapun\n`);            
          } else {
             return m.reply(`Masukan parameter yang valid on/off \nContoh\n${prefix+command} on\nAtau\n${prefix+command} off`);                
+         }
+      } else if (/setmenu/.test(command)) {         
+         if (!text) return m.reply(`masukan parameternya contoh \n${prefix+command} 1`);
+         const available = ['1', '2', '3']
+         if (available.includes(text)) {
+            db.settings.menu_type = parseInt(text);
+            m.reply(`Sukses Ganti Menu Type Ke ${text}`);
+         } else {
+            return m.reply(`Opsi Menu Type ${text} Tidak Tersedia`);
          }
       }
    },

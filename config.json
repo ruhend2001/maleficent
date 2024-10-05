@@ -7,18 +7,21 @@
   ],
   "readme": "isi nomornya ownerNumber sesuai ada berapa no kalian mau banyak nomor juga bisa, jangan lupa tanda koma nya harus pas biar ga eror , install modul pake npm i atau yarn",
   "contact": "6285702234012",
-  "botName": "Maleficent Bot ??",
+  "botName": "Maleficent Bot ❤️",
   "ownerName": "Ruly Henderson",
-  "footer": "? Ruhend",
+  "footer": "© Ruhend",
   "sosmed": "https://www.instagram.com/ru_hend_",
   "thumbnail": "https://telegra.ph/file/0aa662111090f4a70c8f4.jpg",
   "music": "https://qu.ax/fRjY.opus",
   "ram": 800,
-  "auto_dl": false,
-  "typing": false,
-  "recording": true,
-  "read": true,
   "self": false,
+  "auto_dl": false,
+  "read_group": true,
+  "read_private": true,
+  "typing_group": true,
+  "typing_private": true,
+  "recording_group": false,
+  "recording_private": false,
   "readme2": "botNumber adalah nomor yang mau di jadikan bot",
   "botNumber": 6285702234012,
   "group": {
@@ -28,8 +31,8 @@
     "adReply": true,
     "limit_adReply": false,
     "limit_message": true,
-    "link": "https://chat.whatsapp.com/DsfigXafW4XAxlmmS2vW2R",
+    "link": "https://chat.whatsapp.com/GsjjvL6wk9p6tRBfTdeURE",
     "bye": "Bye \n%user \nHas Left From %subject Group",
-    "welcome": "*Selamat Datang Babi imut ?*\n*%user* \n*Di %subject*\n*Kenalan dulu yuk*\n*Nama:*\n*Umur:*\n*Asal Kota:*\n*Hoby:*\n*Merek HP:*\n"
+    "welcome": "*Selamat Datang Babi imut 🐷*\n*%user* \n*Di %subject*\n*Kenalan dulu yuk*\n*Nama:*\n*Umur:*\n*Asal Kota:*\n*Hoby:*\n*Merek HP:*\n"
   }
 }

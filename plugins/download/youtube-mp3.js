@@ -1,4 +1,4 @@
-const { ytmp3v3 } = require('ruhend-scraper');
+const { ytmp3 } = require('ruhend-scraper');
 exports.default = {
    names: ['Downloader'],
    tags: ['ytmp3'],
@@ -11,12 +11,12 @@ exports.default = {
       Format
    }) => {
       if (!text) return m.reply(`Masukan kontolnya! \nContoh: ${prefix+command} https://youtu.be/MvsAesQ-4zA`);
-      let { title, audio } = await ytmp3v3(text);
+      let { title, audio } = await ytmp3(text);
       m.react("🕗");
       let buffer = await Format.getBuffer(audio);
-      let result = await Format.mp3(buffer);
+      let media = await Format.mp3(buffer);
       conn.adReply(m.chat, loading, cover, m).then(() => {         
-         conn.sendMessage(m.chat, { document: result, fileName: `${title}~Ruhend-MD.mp3`, mimetype: 'audio/mpeg' }, { quoted: m });
+         conn.sendMessage(m.chat, { document: media, fileName: `${title}~Ruhend-MD.mp3`, mimetype: 'audio/mpeg' }, { quoted: m });
       })
    },
    limit: 3,
