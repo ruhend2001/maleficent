@@ -1,4 +1,4 @@
-const translate = require('@vitalets/google-translate-api')
+const translate = require('../../lib/src/translate/translate.js');
 exports.default = {
    names: ['Tools'],
    tags: ['translate'],
@@ -21,7 +21,7 @@ exports.default = {
          to: lang,
          autoCorrect: true
       }).catch(_ => null)
-      if (!res) m.reply(`Error : Bahasa"${lang}" Tidak Support`)
+      if (!res) return m.reply(`Error : Bahasa "${lang}" Tidak Support`)
       var Translate = `*Terdeteksi Bahasa:* ${res.from.language.iso}\n*Ke Bahasa:* ${lang}\n\n*Terjemahan:* ${res.text}`.trim()
       conn.adReply(m.chat, Translate, cover, m);
    },

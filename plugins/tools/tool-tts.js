@@ -1,4 +1,4 @@
-const tts = require('google-tts-api');
+const tts = require('../../lib/src/tts/index.js');
 const host = 'https://translate.google.com';
 exports.default = {
    names: ['Tools'],
@@ -10,7 +10,7 @@ exports.default = {
       prefix,
       command
    }) => {
-      if (!text) throw `Masukan suara negara (optional) dan teksnya (titik) . pemisah Contoh:\n${prefix + command} id.aku cinta kamu`;
+      if (!text) throw `Masukan suara negara (optional) dan teksnya (titik) . sebagai pemisah\ncontoh: ${prefix + command} id.aku cinta kamu`;
       let parts = text.split(".");
       let region, write;
       if (parts.length > 1 && parts.length === 2) {
