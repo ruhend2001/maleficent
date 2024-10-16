@@ -17,7 +17,7 @@ exports.default = {
          conn.adReply(m.chat, loading, cover, m);
          let data = await Format.HD2(content);         
          conn.sendFile(m.chat, data, {
-            caption: star + ' Berhasil Di Tingkatkan',
+            caption: `${star} Berhasil`,
             quoted: m
          })
       } else {

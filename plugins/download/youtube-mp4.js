@@ -1,3 +1,9 @@
+/**
+  * kalo fitur downloader ytmp4 ytmp3 itu ada bacaan forbidden berarti ip address kamu di block cloudflare 
+  * biasanya itu kamu gunain panel atau vps digital ocean ( selain itu yang lain aman)
+  * solusi ? lewat API ajah 😂 Bisa kan
+  * cari website API yang bagus
+ **/
 const { ytmp4 } = require('ruhend-scraper');
 exports.default = {
    names: ['Downloader'],

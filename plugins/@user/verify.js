@@ -13,7 +13,7 @@ exports.default = {
       let nama = text.split(".")[0];
       let umur = text.split(".")[1];
       let sender = m.sender;
-      if (!nama || !umur) return m.reply(`Akses ditolak! Masukkan nama dan umur yang benar. \ncontoh ${prefix+command} nadia omara.50`);
+      if (!nama || !umur) return m.reply(`Masukkan nama dan umur yang benar. \ncontoh ${prefix+command} nadia.50`);
       let sn = Format.makeid(10);
       let date = `${waktu.tanggal} ${waktu.time} ${waktu.suasana}`;
       let user = db.users[m.sender]      

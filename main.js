@@ -2,6 +2,7 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 process.on('uncaughtException', console.error);
 require('./lib/other.js');
 require('utils-mf/index.js');
+//require('./mongo.js')
 const Pino = require('pino');
 const {
    makeInMemoryStore,
