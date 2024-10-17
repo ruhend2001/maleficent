@@ -16,6 +16,7 @@ exports.default = {
       let limitUser = db.users[m.sender].limit
       let userData = db.users[m.sender]
       let tag = text.match(/@/g);
+      m.react('😂')
       if (tag) {
          try {
             let numTag = text.replace('@', '').replace(prefix, '').replace(command, '').trim();

@@ -5,11 +5,15 @@ module.exports = {
       command,
       Format
    }) => {
-      let isMean = await Format.command_plugins();
-      if (command && isMean && !m.isBaileys) {
-         let mean = await Format.command_mean(command, isMean);
+      const is_mean = await Format.command_plugins();
+      if (command && is_mean && !m.isBaileys) {
+         let mean = await Format.command_mean(command, is_mean);
          if (mean && !(mean === command)) {
-            return m.reply(`*❗mungkin maksud kamu:*\n ${java} *${prefix+mean}* `)
+            if (prefix === undefined || prefix === '') {
+               return false
+            } else if (!(prefix === '')) {
+               return m.reply(`*❗mungkin maksud kamu:*\n ${java} *${prefix+mean}*`)
+            }      
          }
       }
    }

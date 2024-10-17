@@ -1,18 +1,17 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-process.on('uncaughtException', console.error);
+process.on('uncaughtException', console.error)
+const Pino = require('pino');
 require('./lib/other.js');
 require('utils-mf/index.js');
-//require('./mongo.js')
-const Pino = require('pino');
+const { 
+   signalGroup
+} = require('utils-mf');
 const {
    makeInMemoryStore,
    useMultiFileAuthState,
    DisconnectReason
 } = require('@adiwajshing/baileys');
-const {
-   signalGroup
-} = require('utils-mf');
-const startWhatsApp = async () => {
+const startWhatsApp = async () => {   
    const store = makeInMemoryStore({
       logger: Pino().child({
          level: 'silent',

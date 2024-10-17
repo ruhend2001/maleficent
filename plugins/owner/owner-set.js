@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Owner'],
-   tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
-   command: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
+   tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setprefix', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
+   command: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setprefix', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
    start: async (m, {
       text,
       prefix,
@@ -13,6 +13,7 @@ exports.default = {
          caption += `.setnamebot atau .setbotname \nUntuk mengganti nama bot \n\n`
          caption += `.setnameowner atau .setnameown \nUntuk mengganti nama owner \n\n`
          caption += `.setmenu\nUntuk Mengganti Gaya Menu \n\n`
+         caption += `.setprefix\nUntuk Mengganti Type Penggunaan Prefix\n\n` 
          caption += `.setfooter atau .setwm \nUntuk mengganti watermark atau footer \n\n`
          caption += `.setsosmed \nUntuk mengganti link sosmed \n\n`
          caption += `.setmusic \nUntuk mengganti link music \n\n`
@@ -96,6 +97,17 @@ exports.default = {
             m.reply(`Sukses Ganti Menu Type Ke ${text}`);
          } else {
             return m.reply(`Opsi Menu Type ${text} Tidak Tersedia`);
+         }
+      } else if (/setprefix/.test(command)) {         
+         if (!text) return m.reply(`masukan parameternya contoh \n${prefix+command} multi`);         
+         if (text === 'single') {
+            db.settings.prefix = 'single'
+            m.reply(`Sukses Ganti Prefix Type Ke single`);
+         } else if (text === 'multi') {
+            db.settings.prefix = 'multi'
+            m.reply(`Sukses Ganti Prefix Type Ke multi`);     
+         } else {
+            return m.reply(`Opsi Prefix Type ${text} Tidak Tersedia\nYang Tersedia single dan multi`);
          }
       }
    },
