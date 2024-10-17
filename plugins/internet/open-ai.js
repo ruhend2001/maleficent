@@ -12,10 +12,10 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
       m.react('🕒');
-      let url = `https://api.ryzendesu.vip/api/ai/chatgpt?text=${text}`
+      let url = `https://api.nyxs.pw/ai/gpt?text=${text}`
       let data = await (await fetch(url)).json();
       conn.adReply(m.chat, loading, cover, m).then(() => {
-         conn.adReply(m.chat, `${data.response}`, cover, m, {
+         conn.adReply(m.chat, `${data.result}`, cover, m, {
             showAds: true
          });
       });
