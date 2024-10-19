@@ -11,8 +11,9 @@ exports.default = {
          m.reply(response)         
       } else if (command == 'restore') {
          const response = await Restore();
-         await m.reply(response + '\nRestarting...');
-         process.send('reset');
+         m.reply(response.log + '\nRestarting...').then(() => {
+            reset()
+         })         
       }
    },
    owner: true
