@@ -3,6 +3,7 @@ process.on('uncaughtException', console.error)
 const Pino = require('pino');
 require('./lib/other.js');
 require('utils-mf/index.js');
+require('./lib/src/mongo/mongo-info.js');
 const { 
    signalGroup
 } = require('utils-mf');
