@@ -1,7 +1,3 @@
-/** 
- * ga usah di pasang cfont cfont segala langsung start ajh log biasa
- * emank siapa yang mau liatin console log lu walaupun lu hias hias :v
- **/
 console.log('🕒 Starting Maleficent . . .');
 const path = require('path');
 const { spawn } = require('child_process');

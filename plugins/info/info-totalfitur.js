@@ -7,7 +7,7 @@ exports.default = {
       Format
    }) => {
       const fitur = await Format.totalFitur();
-      const caption = `Total fitur ${setting.botName} saat ini adalah ${fitur} fitur`;
+      const caption = `Total Fitur ${setting.botName} saat ini adalah ${fitur} Fitur`;
       conn.adReply(m.chat, caption, cover, m);
    }
 }

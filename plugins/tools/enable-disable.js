@@ -1,3 +1,4 @@
+const fs = require('fs');
 exports.default = {
    names: ['Tools'],
    tags: ['on', 'off'],
@@ -21,9 +22,10 @@ exports.default = {
       caption += v + `antilink \n`
       caption += v + `viewonce / once \n`
       caption += v + `autodl / autodown \n`
+      caption += v + `autobackup \n`
       caption += v + `antitoxic / toxic`
       if (!text) return m.reply(caption);
-      switch (text) {
+      switch (text.toLowerCase()) {
          case 'welcome': {
             if (!m.isGroup) return m.reply(mess.OnlyGroup);
             if (!oa) return m.reply(mess.GrupAdmin);
@@ -58,6 +60,27 @@ exports.default = {
             } else if (cmd_off.includes(cmd)) {
                db.chats[m.chat].viewOnce = false
                m.reply(`View Once berhasil dimatikan di grup ${groupName}`);
+            }
+         }
+         break
+         case 'autobackup': {         
+            if (!isOwner) return m.reply(mess.OnlyOwner);
+            if (cmd_on.includes(cmd)) {
+               global.auto_backup = true
+               const __global = './lib/other.js'
+               const other = fs.readFileSync(__global).toString();
+               const _other = other.replace(/global\.auto_backup = false/, 'global.auto_backup = true');
+               fs.writeFileSync(__global, _other);
+               await m.reply('auto backup database berhasil di aktifkan\nrestarting...')
+               reset()
+            } else if (cmd_off.includes(cmd)) {
+               global.auto_backup = false
+               const __global = './lib/other.js'
+               const other = fs.readFileSync(__global).toString();
+               const _other = other.replace(/global\.auto_backup = true/, 'global.auto_backup = false');
+               fs.writeFileSync(__global, _other);
+               await m.reply('auto backup database berhasil di matikan\nrestarting...')
+               reset()
             }
          }
          break
