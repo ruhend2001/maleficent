@@ -36,6 +36,6 @@ const startWhatsApp = async () => {
       }
    });
    store.bind(conn.ev);
-   conn.ev.on('creds.update', saveCreds);   
+   conn.ev.on('creds.update', saveCreds);
 }
 startWhatsApp();

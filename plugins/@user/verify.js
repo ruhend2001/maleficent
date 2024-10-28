@@ -9,7 +9,7 @@ exports.default = {
       command,
       Format
    }) => {
-      if (db.users[m.sender].registered) return m.reply(mess.registered);
+      if (db.users[m.sender].registered) return m.reply(`❗Kamu Sudah Daftar`);
       let nama = text.split(".")[0];
       let umur = text.split(".")[1];
       let sender = m.sender;

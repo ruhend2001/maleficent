@@ -28,10 +28,9 @@ exports.default = {
       let { audio } = await ytmp3(url);
       let pretty = await Format.mp3v2(conn, audio, 'mp3', m);
       let thumb = await (await fetch(thumbnail)).buffer();
-      conn.sendFile(m.chat, pretty, {
+      conn.sendFile(m.chat, pretty, title, m, {
          mimetype: 'audio/mp4',
          fileName: title,
-         quoted: m,
          contextInfo: {
             externalAdReply: {
                mediaType: 2,

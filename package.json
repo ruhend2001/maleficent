@@ -1,6 +1,6 @@
 {
   "name": "maleficent-bot",
-  "version": "9.1.9",
+  "version": "9.2.3",
   "description": "Bot Wea Simple Mudah Di Gunakan ",
   "main": "index.js",
   "directories": {
@@ -12,7 +12,7 @@
   "author": "Ruly Henderson",
   "license": "ISC",
   "dependencies": {
-    "@adiwajshing/baileys": "npm:baileys",
+    "@adiwajshing/baileys": "npm:@baileys-md/stable",
     "ruhend-scraper": "*",
     "axios": "1.7.7",
     "chalk": "2.4.2",
@@ -22,8 +22,7 @@
     "fluent-ffmpeg": "2.1.1",
     "form-data": "4.0.0",
     "human-readable": "0.2.1",
-    "jimp": "0.16.2",
-    "utils-mf": "^9.1.9",
+    "utils-mf": "^9.2.3",
     "moment-timezone": "0.5.34",
     "mongo-client-db": "0.0.2",
     "node-fetch": "2.6.1",
