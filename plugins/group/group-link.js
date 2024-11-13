@@ -13,5 +13,6 @@ exports.default = {
          return m.reply(`Link Group ${groupName}\n${url}`);
       }
    },
-   group: true
+   group: true,
+   botAdmin: true
 };

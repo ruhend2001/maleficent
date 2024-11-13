@@ -11,8 +11,7 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`Masukan link facebook nya! \nContoh: ${prefix+command} https://www.facebook.com/reel/3677168492551989?mibextid=rS40aB7S9Ucbxw6v`);
       let res = await fbdl(text);
-      let result = res.data;
-      let data;
+      let result = res.data, data;
       try {
          data = result.find(i => i.resolution === "720p (HD)");
          m.reply(`Data Found!`);       
@@ -28,6 +27,6 @@ exports.default = {
          });
       });
    },
-   limit: 5,
+   limit: 2,
    premium: false
 };

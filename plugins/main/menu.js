@@ -16,7 +16,7 @@ exports.default = {
       let music = setting.music;
       let lolim = logo_limit || 'Ⓛ';
       let loprem = logo_premium || 'Ⓟ';
-      let select  = 'SELECT HERE';
+      let select = 'SELECT HERE';
       let header_sub = `LIST MENU`;
       let header = `┌───`;
       let middle = `│`;
@@ -34,13 +34,13 @@ exports.default = {
       info += ` 📸 Instagram: ${sosmed}\n${garis}\n`;
       info += ` Network Bot Usage :\n📥 Download: ${Download}\n📤 Upload: ${Upload}\n${garis}\n`;
       info += `${lolim} = Limit \n${loprem} = Premium`;
-      info += `${garis}`;      
+      info += garis
       if (type === 1) {
-        m.react('🐽');
-        const all_menu = await Format.Menu(header, middle, pointer, bottom, prefix, top);
-        conn.adReply(m.chat, `${info}\n\n${all_menu}`, cover, m, {
-           showAds: true
-        });
+         m.react('🐽');
+         const all_menu = await Format.Menu(header, middle, pointer, bottom, prefix, top);
+         conn.adReply(m.chat, `${info}\n\n${all_menu}`, cover, m, {
+            showAds: true
+         });
       } else if (type === 2) {
          m.react('🖕');
          const sub_menu = await Format.Menu(header, middle, pointer, bottom, prefix, top);
@@ -49,8 +49,18 @@ exports.default = {
          });
       } else if (type === 3) {
          m.react('🥶');
-         const { menu, message } = await Format.Menu(header, middle, pointer, bottom, prefix, top);
-         if (!text) {
+         const opts = [{
+            title: 'Owner',
+            id: '.owner'
+         }, {
+            title: 'Sewa',            
+            id: '.sewa'
+         }, {
+            title: 'Source Code',
+            id: '.sc'
+         }]
+         const { menu, message } = await Format.Menu(header, middle, pointer, bottom, prefix, top, opts);
+         if (!text) {           
             conn.sendList(m.chat, info, message, m, {
                isMedia: true,
                media: {

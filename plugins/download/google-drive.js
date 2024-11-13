@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Downloader'],
    tags: ['googledrive'],
-   command: ['gdrive', 'googledrive'],
+   command: ['gdrive', 'googledrive', 'drive'],
    start: async (m, {
       conn,
       text,
@@ -17,9 +17,13 @@ exports.default = {
       drive += ` ${java} Type: ${res.mimetype}\n`
       drive += ` ${java} Size: ${res.fileSize}\n`
       conn.adReply(m.chat, drive, cover, m).then(() => {
-         conn.docUrl(m.chat, res.downloadUrl, res.fileName, '', res.mimetype, m);
-      });
+         conn.sendFile(m.chat, res.downloadUrl, '', m, {
+            document: true,
+            fileName: res.fileName,
+            mimetype: res.mimetype
+         })
+      })
    },
-   limit: 20,
+   limit: 5,
    premium: false
 };

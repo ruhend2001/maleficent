@@ -7,7 +7,7 @@ module.exports = {
    }) => {
       const is_mean = await Format.command_plugins();
       if (command && is_mean && !m.isBaileys) {
-         let mean = await Format.command_mean(command, is_mean);
+         const mean = await Format.command_mean(command, is_mean);
          if (mean && !(mean === command)) {
             if (prefix === undefined || prefix === '') {
                return false

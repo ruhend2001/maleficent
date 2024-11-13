@@ -2,15 +2,15 @@ exports.default = {
    names: ['Fun'],
    tags: ['jadian'],
    command: ['jadian'],
-   start: (m, {
+   start: async (m, {
       conn,
       participants
    }) => {
-      const _user = participants.map(v => v.id);
-      const x = pickRandom(_user);
-      const y = pickRandom(_user);
-      const mentions = [x, y]
-      conn.adReply(m.chat, `Jadian 😋\n@${x.split('@')[0]}  ❤️ @${y.split('@')[0]}`, cover, m, {
+      const user = participants.map(v => v.id);
+      const user_1 = pickRandom(user);
+      const user_2 = pickRandom(user);
+      const mentions = [user_1, user_2]
+      conn.adReply(m.chat, `Jadian 😋\n@${user_1.split('@')[0]}  ❤️ @${user_1.split('@')[0]}`, cover, m, {
          mentions: mentions,
          showAds: true
       })

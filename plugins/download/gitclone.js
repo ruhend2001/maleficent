@@ -21,7 +21,11 @@ exports.default = {
          method: 'HEAD'
       })).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
       conn.adReply(m.chat, `*Mohon tunggu*\n*sedang mengirim repository...*`, cover, m).then(() => {
-         conn.sendMessage(m.chat, { document: { url: url }, fileName: filename, mimetype: 'application/zip' }, { quoted: m });
+         conn.sendFile(m.chat, url, '', m, {
+            document: true,
+            fileName: filename, 
+            mimetype: 'application/zip'
+         })
       })
    },
    limit: true,

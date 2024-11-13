@@ -1,7 +1,7 @@
 const toxic = ['kontol', 'anj', 'kntl', 'anjing', 'bngst', 'bgst', 'bangsat', 'memek', 'mmk', 'njir', 'najis', 'anjir', 'jing', 'njing', 'kntl', 'kontol', 'babi', 'monyet', 'mnyt', 'jembut', 'jmbt', 'lol', 'tolol'];
 const agree = ['lanjut', 'loli']
 module.exports = {
-   start: async (m, {
+   start: (m, {
       conn,
       budy
    }) => {

@@ -20,15 +20,15 @@ exports.default = {
       let pinterest = ` ${javi} 𝐏𝐈𝐍𝐓𝐄𝐑𝐄𝐒𝐓\n`
       pinterest += ` ${java} Result From ${text}` 
       text.match(URL_REGEX) ?
-         conn.sendMessage(m.chat, {
-            [mime.split('/')[0]]: {
-               url: res
-            },
-            caption: `Succes Download: ${await shortUrl(res)}`
-         }, {
-            quoted: m
-         }) :    
-         conn.sendButton(m.chat, pinterest, res, m, [
+      conn.sendMessage(m.chat, {
+         [mime.split('/')[0]]: {
+            url: res
+      },
+         caption: `Succes Download: ${await shortUrl(res)}`
+      }, {
+         quoted: m
+      }) :    
+      conn.sendButton(m.chat, pinterest, res, m, [
          ['🔵 Lanjut', `.pin ${text}`]
       ]);
    },

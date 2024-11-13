@@ -12,11 +12,15 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`Masukan kontolnya! \nContoh: ${prefix+command} https://youtu.be/MvsAesQ-4zA`);
       m.react("🕗");
-      let { title, audio, thumbnail } = await ytmp3(text);
-      let buffer = await Format.getBuffer(audio);
-      let media = await Format.mp3(buffer);
+      const { title, audio, thumbnail } = await ytmp3(text);
+      const buffer = await Format.getBuffer(audio);
+      const media = await Format.mp3(buffer);
       conn.adReply(m.chat, loading, thumbnail || cover, m).then(() => {
-         conn.sendMessage(m.chat, { document: media, fileName: `${title}~Ruhend-MD.mp3`, mimetype: 'audio/mpeg' }, { quoted: m });
+         conn.sendFile(m.chat, media, '', m, {
+            document: true,
+            fileName: `${title}~Ruhend-MD.mp3`,
+            mimetype: 'audio/mpeg'
+         })
       })
    },
    limit: 3,

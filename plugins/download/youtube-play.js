@@ -11,11 +11,11 @@ exports.default = {
       command,
       Format
    }) => {
-      if (!text) return m.reply(`Masukan Lagu Yang Ingin Di Cari\ncontoh ${prefix+command} papinka sana sini aku rindu atau .play linknya https://youtu.be/uNkO9WWIzHE`);
-      let vid = (await ytsearch(text)).video[0]
-      let { title, description, thumbnail, videoId, durationH, viewH, publishedTime } = vid; 
+      if (!text) return m.reply(`Masukan Lagu Yang Ingin Di Cari\ncontoh ${prefix+command} papinka sana sini aku rindu atau .play linknya https://youtu.be/A5Jj6Ib91zA`);
+      const vid = (await ytsearch(text)).video[0]
+      const { title, description, thumbnail, videoId, durationH, viewH, publishedTime } = vid; 
       if (!vid) return m.reply('Tidak di temukan, coba untuk membalikkan judul dan author nya');
-      let url = 'http://youtu.be/' + videoId;
+      const url = 'http://youtu.be/' + videoId;
       let play = `🎧 〔 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐏𝐋𝐀𝐘 〕\n`
       play += ` ${javi} *Data Di Temukan*\n`
       play += ` ⬡ Judul: ${title}\n`
@@ -24,25 +24,10 @@ exports.default = {
       play += ` ⬡ Upload: ${publishedTime}\n`
       play += ` ⬡ Link: ${url}\n\n`
       play += ` *Loading audio sedang dikirim...*`
-      m.reply(title).then(() => conn.adReply(m.chat, play, thumbnail, m));
-      let { audio } = await ytmp3(url);
-      let pretty = await Format.mp3v2(conn, audio, 'mp3', m);
-      let thumb = await (await fetch(thumbnail)).buffer();
-      conn.sendFile(m.chat, pretty, title, m, {
-         mimetype: 'audio/mp4',
-         fileName: title,
-         contextInfo: {
-            externalAdReply: {
-               mediaType: 2,
-               mediaUrl: url,
-               title: title,
-               body: setting.botName,
-               sourceUrl: url,
-               thumbnail: thumb
-            }
-         }
-      })
+      conn.sendFile(m.chat, `https://i.ytimg.com/vi/${videoId}/0.jpg`, play, m);
+      const { audio } = await ytmp3(url);
+      const pretty = await Format.mp3v2(conn, audio, 'mp3', m);
+      conn.sendFile(m.chat, pretty, title, m);
    },
-   limit: 3,
-   premium: false
+   limit: 3
 }

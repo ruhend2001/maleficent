@@ -5,8 +5,7 @@ module.exports = {
       budy
    }) => {
       if (autodl && budy.match(/(https?:\/\/(?:www\.)?instagram\.[a-z\.]{2,6}\/[\w\-\.]+(\/[^\s]*)?)/g)) {
-         if (budy.includes('.ig')) return
-         if (budy.match(/\.instagram\s/)) return
+         if (m.isBaileys || budy.includes('.ig') || budy.match(/\.instagram\s/) || budy.match('ig' + ' ') || budy.match('instagram' + ' ')) return
          if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
          m.react('🕘')
          let res = await igdl(budy);
@@ -17,8 +16,8 @@ module.exports = {
                   quoted: m
                });
             }
-            db.users[m.sender].limit -= 3
-            m.reply(limit_message.replace('%limit', 3))
+            db.users[m.sender].limit -= 4
+            m.reply(limit_message.replace('%limit', 4))
          } else {
             return m.reply(`Media tidak ditemukan`);
          }

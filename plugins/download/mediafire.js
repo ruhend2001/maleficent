@@ -19,7 +19,11 @@ exports.default = {
       mediaFire += ` Type : ${filetype} ${ext}\n\n`
       mediaFire += ` Sending File...\n`
       conn.adReply(m.chat, mediaFire, cover, m).then(() => {
-         conn.docUrl(m.chat, link || link2, name, '', isType, m);
+         conn.sendFile(m.chat, link || link2, '', m, {
+            document: true,
+            fileName: name,
+            mimetype: isType
+         })
       })
    },
    limit: 5,

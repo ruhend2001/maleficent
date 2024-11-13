@@ -27,8 +27,12 @@ exports.default = {
       conn.adReply(m.chat, caption, icon, m, {
          showAds: true
       }).then(() => {
-         conn.sendMessage(m.chat, { document: { url: file }, fileName: nama + '.apk', mimetype: 'application/vnd.android.package-archive' }, { quoted: m });
-      });
+         conn.sendFile(m.chat, file, '', m, {
+            document: true,
+            fileName: nama + '.apk', 
+            mimetype: 'application/vnd.android.package-archive'
+         })
+      })
    },
    limit: 5,
    premium: false

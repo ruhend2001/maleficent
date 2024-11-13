@@ -1,9 +1,9 @@
 module.exports = {
-   start: async (m, {
+   start: (m, {
       conn
    }) => {   
       if (!m.fromMe && m.isBaileys && m.msg.ptt) {
-         return await conn.sendMessage(m.chat, {
+         return conn.sendMessage(m.chat, {
             delete: {
                remoteJid: m.chat,
                fromMe: false,
