@@ -11,9 +11,9 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
       m.react('🕒');
-      let data = await JSON_URL('https://api.nyxs.pw/ai/gpt4o?text=' + text)
+      const data = await JSON_URL('https://api.ryzendesu.vip/api/ai/chatgpt?text=' + text);
       conn.adReply(m.chat, loading, cover, m).then(() => {
-         conn.adReply(m.chat, `${data.result}`, cover, m, {
+         conn.adReply(m.chat, data.response, cover, m, {
             showAds: true
          });
       });

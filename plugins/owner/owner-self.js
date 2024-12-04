@@ -9,19 +9,11 @@ exports.default = {
       command
    }) => {
       if (command == 'public') {
-         setting.self = false
-         save_setting()
-         await m.reply(`Mode self berhasil dimatikan. Sekarang semua orang dapat mengakses bot ini \nmemulai ulang bot...`);
-         setTimeout(() => {
-            process.send('reset');
-         }, 1000);
+         save.global('global.self = true', 'global.self = false');
+         m.reply(`Mode self berhasil dimatikan. Sekarang semua orang dapat mengakses bot ini`);         
       } else if (command == 'self') {
-         setting.self = true
-         save_setting()
-         await m.reply(`Mode self berhasil diaktifkan. Hanya aku, owner, dan premium yang dapat mengakses bot ini \nmemulai ulang bot...`);
-         setTimeout(() => {
-            process.send('reset');
-         }, 1000);
+         save.global('global.self = false', 'global.self = true');
+         m.reply(`Mode self berhasil diaktifkan. Hanya aku, owner, dan premium yang dapat mengakses bot ini`);         
       }
    },
    owner: true

@@ -22,9 +22,9 @@ module.exports = {
          }
       };
       if (budy) {
-         let user;
+         let user
          try {
-            user = m.message.extendedTextMessage.contextInfo.participant;
+            user = m.message.extendedTextMessage.contextInfo.participant || '0@s.whatsapp.net'
          } catch {
             return
          }         
@@ -83,9 +83,8 @@ module.exports = {
          })
       }
    }
-}
-
-const clockString = (ms) => {
+};
+function clockString(ms) {
    let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
    let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
    let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60

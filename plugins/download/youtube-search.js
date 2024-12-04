@@ -11,7 +11,7 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`Masukan Info Yang Ingin Di Cari\ncontoh ${prefix+command} laila canggung`);
       let { video, channel } = await ytsearch(text)      
-      let sthumb = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_NBy_iUphpBnFEgPpNPlwb9h9gm5UR7iQyRE3o0nkuw&s"
+      let sthumb = "https://qu.ax/OcWmv.jpeg"
       let teks = [...video, ...
          channel
       ].map(v => {

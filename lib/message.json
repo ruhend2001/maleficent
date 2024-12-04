@@ -1,7 +1,7 @@
 {
     "wait": "🕒 WAIT || Tunggu Sebentar...",
     "daftar": "Hay Ka Kamu Belum Daftar Nih Untuk Menggunakan Fitur Ini Silahkan Daftar Terlebih Dahulu Ketik .daftar nama.umur\nContoh .daftar nama 1999.24",
-    "limit": "*❗Limit Kamu Sudah Habis Tidak Bisa Gunain Fitur Ini*\n*Untuk Nambah Limit Silahkan Ketik*\n*.claim (untuk claim harian)*\n*.hour (untuk claim perjam)*\n*.claimkupon (untuk claim kupon)*\n*.claimuang (untuk claim uang)*\n*.buylimit jumlah (untuk beli limit)*\n*contoh .buylimit 10*\n*Limit Akan Di Berikan 25 Setiap Jam 23:00 Malam*",
+    "limit": "*❗Limit Kamu Sudah Habis Tidak Bisa Gunain Fitur Ini*\n*Untuk Nambah Limit Silahkan Ketik*\n*.claim (untuk claim harian)*\n*.hour (untuk claim perjam)*\n*.claimkupon (untuk claim kupon)*\n*.claimuang (untuk claim uang)*\n*.buylimit jumlah (untuk beli limit)*\n*contoh .buylimit 10*\n*Limit Akan Di Berikan 20 Setiap Jam 23:00 Malam*",
     "banned": "❌ Kamu Telah Di Banned Tidak Bisa Menggunakan Bot\nSilahkan Konfirmasi Ke Owner",
     "disable": "‍🐽 Fitur Telah Di Matikan Owner\nChat Owner Untuk Menghidupkanya\nKetik .owner",
     "OnlyGroup": "❗Perintah ini hanya bisa digunakan di grup",

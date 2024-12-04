@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Owner'],
-   tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setprefix', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
-   command: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setprefix', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc'],
+   tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setprefix', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc', 'setadreply'],
+   command: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setprefix', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setlinkgc', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc', 'setadreply'],
    start: async (m, {
       text,
       prefix,
@@ -9,19 +9,20 @@ exports.default = {
       Format
    }) => {      
       if (command == 'set') {
-         var caption = `*SETTING OWNER* \n*Perintah tersedia untuk mengatur setting hanya ada berikut ini*\n\n\n`
-         caption += `.setnamebot atau .setbotname \nUntuk mengganti nama bot \n\n`
-         caption += `.setnameowner atau .setnameown \nUntuk mengganti nama owner \n\n`
-         caption += `.setmenu\nUntuk Mengganti Gaya Menu \n\n`
-         caption += `.setprefix\nUntuk Mengganti Type Penggunaan Prefix\n\n` 
-         caption += `.setfooter atau .setwm \nUntuk mengganti watermark atau footer \n\n`
-         caption += `.setsosmed \nUntuk mengganti link sosmed \n\n`
-         caption += `.setmusic \nUntuk mengganti link music \n\n`
-         caption += `.setram atau .ram \nUntuk mengganti nilai ram \n\n` 
-         caption += `.setthumb atau setthumbnail atau .sthumb \nUntuk mengganti thumbnail utama bot \n\n`
-         caption += `.setlink atau setlinkgc \nUntuk mengganti setting link group\n\n`
-         caption += `.setgroupmode atau .setgcmode\nUntuk mengganti akses bot ke mode group atau keduanya private and group\n\n`
-         caption += `.setrespononlygroup atau .setrespononlygc\nUntuk mematikan dan mengaktifkan respon message groupOnly`
+         var caption = zw + ' *SETTING OWNER* \n*Perintah tersedia untuk mengatur setting bot berikut ini*\n\n'
+         caption += '1 .setnamebot atau .setbotname \nUntuk mengganti nama bot \n\n'
+         caption += '2 .setnameowner atau .setnameown \nUntuk mengganti nama owner \n\n'
+         caption += '3 .setmenu\nUntuk Mengganti Gaya Menu \n\n'
+         caption += '4 .setprefix\nUntuk Mengganti Type Penggunaan Prefix\n\n' 
+         caption += '5 .setfooter atau .setwm \nUntuk mengganti watermark atau footer \n\n'
+         caption += '6 .setsosmed \nUntuk mengganti link sosmed \n\n'
+         caption += '7 .setmusic \nUntuk mengganti link music \n\n'
+         caption += '8 .setram atau .ram \nUntuk mengganti nilai ram \n\n' 
+         caption += '9 .setthumb atau setthumbnail atau .sthumb \nUntuk mengganti thumbnail utama bot \n\n'
+         caption += '10 .setlink atau setlinkgc \nUntuk mengganti setting link group\n\n'
+         caption += '11 .setgroupmode atau .setgcmode\nUntuk mengganti akses bot ke mode group atau keduanya private and group\n\n'
+         caption += '12 .setrespononlygroup atau .setrespononlygc\nUntuk mematikan dan mengaktifkan respon message groupOnly\n\n'
+         caption += '13 .setadreply\nUntuk mengaktifkan mode pesan dengan thumbnail atau photo'
          return m.reply(caption);
       } else if (/setnamebot|setbotname/.test(command)) {
          if (!text) return m.reply(`Masukan Nama Bot nya! \nContoh\n${prefix+command} Maleficent-bot`);         
@@ -66,26 +67,33 @@ exports.default = {
       } else if (/setgroupmode|setgcmode/.test(command)) {         
          if (!text) return m.reply(`masukan parameternya contoh \n${prefix+command} on atau off`);
          if (text.toLowerCase() == 'on') {
-            setting.group.only = true
-            save_setting();
-            await m.reply(`Sukses Mengubah Ke Group Mode \nPrivate Chat Tidak Bisa Di Akses Kecuali Aku , Owner Dan Premium\n`);            
+            save.global('global.group_mode = false', 'global.group_mode = true');
+            m.reply(`Sukses Mengubah Ke Group Mode \nPrivate Chat Tidak Bisa Di Akses Kecuali Aku , Owner Dan Premium\n`);            
          } else if (text.toLowerCase() == 'off') {
-            setting.group.only = false
-            save_setting();
-            await m.reply(`Sukses Mematikan Group Mode Sekarang Private Chat Dapat Diakses\n`);            
+            save.global('global.group_mode = true', 'global.group_mode = false');
+            m.reply(`Sukses Mematikan Group Mode Sekarang Private Chat Dapat Diakses\n`);            
+         } else {
+            return m.reply(`Masukan parameter yang valid on/off \nContoh\n${prefix+command} on\nAtau\n${prefix+command} off`);                
+         } 
+      } else if (/setadreply/.test(command)) {         
+         if (!text) return m.reply(`masukan parameternya contoh \n${prefix+command} on atau off`);
+         if (text.toLowerCase() == 'on') {
+            save.global('global.adReply = false', 'global.adReply = true');
+            m.reply(`adReply Berhasil Di Aktifkan`);
+         } else if (text.toLowerCase() == 'off') {
+            save.global('global.adReply = true', 'global.adReply = false');
+            m.reply(`adReply Berhasil Di Matifkan`);
          } else {
             return m.reply(`Masukan parameter yang valid on/off \nContoh\n${prefix+command} on\nAtau\n${prefix+command} off`);                
          } 
       } else if (/setrespononlygroup|setrespononlygc/.test(command)) {         
          if (!text) return m.reply(`masukan parameternya contoh \n${prefix+command} on atau off`);
          if (text.toLowerCase() == 'on') {
-            setting.group.only_message = true
-            save_setting();
-            await m.reply(`Sukses Mengaktifkan Respon ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Akan Merespon ${mess.groupOnly}\n`);            
+            save.global('global.group_only_message = false', 'global.group_only_message = true');            
+            m.reply(`Sukses Mengaktifkan Respon ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Akan Merespon ${mess.groupOnly}\n`);            
          } else if (text.toLowerCase() == 'off') {
-            setting.group.only_message = false
-            save_setting();
-            await m.reply(`Sukses Mematikan Respon Pesan ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Sama Sekali Tidak Akan Merespon Apapun\n`);            
+            save.global('global.group_only_message = true', 'global.group_only_message = false');            
+            m.reply(`Sukses Mematikan Respon Pesan ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Sama Sekali Tidak Akan Merespon Apapun\n`);            
          } else {
             return m.reply(`Masukan parameter yang valid on/off \nContoh\n${prefix+command} on\nAtau\n${prefix+command} off`);                
          }

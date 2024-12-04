@@ -28,9 +28,7 @@ exports.default = {
       }, {
          quoted: m
       }) :    
-      conn.sendButton(m.chat, pinterest, res, m, [
-         ['🔵 Lanjut', `.pin ${text}`]
-      ]);
+      conn.sendFile(m.chat, res, pinterest, m);
    },
    limit: 2,
    premium: false

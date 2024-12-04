@@ -7,6 +7,7 @@ const pino = require('pino');
 const { 
    signalGroup
 } = require('utils-mf');
+const { caller } = require('./lib/other.js');
 const {
    makeInMemoryStore,
    useMultiFileAuthState,
@@ -32,7 +33,8 @@ const startWhatsApp = async () => {
          lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startWhatsApp() : startWhatsApp();
       }
    });
+   caller(conn);
    store.bind(conn.ev);
-   conn.ev.on('creds.update', saveCreds);  
+   conn.ev.on('creds.update', saveCreds);   
 }
 startWhatsApp();

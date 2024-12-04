@@ -48,6 +48,7 @@ exports.default = {
             showAds: true
          });
       } else if (type === 3) {
+         // list message udah g bisa lagi :(
          m.react('🥶');
          const opts = [{
             title: 'Owner',

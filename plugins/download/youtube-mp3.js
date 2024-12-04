@@ -13,8 +13,7 @@ exports.default = {
       if (!text) return m.reply(`Masukan kontolnya! \nContoh: ${prefix+command} https://youtu.be/MvsAesQ-4zA`);
       m.react("🕗");
       const { title, audio, thumbnail } = await ytmp3(text);
-      const buffer = await Format.getBuffer(audio);
-      const media = await Format.mp3(buffer);
+      const media = await Format.mp3(audio);
       conn.adReply(m.chat, loading, thumbnail || cover, m).then(() => {
          conn.sendFile(m.chat, media, '', m, {
             document: true,
