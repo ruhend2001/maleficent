@@ -3,26 +3,25 @@ let rewards = {
    limit: 15,
    uang: 30
 }
-
 exports.default = {
    names: ['Games'],
    tags: ['tictactoe', 'ttt'],
-   command: ['tictactoe', 'ttt', 'ttc', 'delttc', 'delttt'],
+   command: ['tictactoe', 'ttt', 'delttt'],
    start: async (m, {
       conn,
       text,
       prefix,
       command
    }) => {
-      if (command == 'tictactoe' || command == 'ttt' || command == 'ttc') {         
-         tictactoe = tictactoe ? tictactoe : {}
+      if (command == 'tictactoe' || command == 'ttt') {
+         let tictactoe = db.games.tictactoe
          if (Object.values(tictactoe).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) return m.reply('Kamu masih didalam game')
          let room = Object.values(tictactoe).find(room => room.state === 'WAITING' && (text ? room.name === text : true))
          let parseMention = (text = '') => {
-         return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
-      }
-      if (room) {
-            m.reply('Partner ditemukan!')
+            return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
+         }
+         if (room) {
+            await m.reply('Partner ditemukan!')
             room.o = m.chat
             room.game.playerO = m.sender
             room.state = 'PLAYING'
@@ -57,22 +56,14 @@ exports.default = {
                state: 'WAITING'
             }
             if (text) room.name = text
-            m.reply(`\n\nMenunggu partner\natau kamu bisa ajak member lain dengan mengetik ${prefix+command}` + (text ? ` mengetik command dibawah ini ${prefix}${command} ${text}` : ''))
             tictactoe[room.id] = room
+            await m.reply(`Menunggu partner atau kamu bisa ajak member lain dengan mengetik ${prefix+command}` + (text ? ` mengetik command dibawah ini ${prefix}${command} ${text}` : ''))
          }
-      } else if (command == 'delttc' || command == 'delttt') {         
-         tictactoe = tictactoe ? tictactoe : {}
-         try {
-            if (tictactoe) {
-               delete tictactoe
-               tictactoe = {}
-               conn.sendText(m.chat, `Berhasil delete session TicTacToe`, m)
-            } else if (!tictactoe) {
-               m.reply(`Session TicTacToe🎮 tidak ada`)
-            } else throw '?'
-         } catch (e) {
-            return m.reply('Broken')
+      } else if (command == 'delttt') {
+         if (db.games.tictactoe) {            
+            db.games.tictactoe = []
+            conn.reply(m.chat, `Berhasil delete session TicTacToe`, m);
          }
       }
    }
-};
+}

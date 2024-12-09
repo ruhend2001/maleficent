@@ -9,7 +9,7 @@ exports.default = {
       command,
       isPremium
    }) => {
-      let picture = await conn.profilePictureUrl(m.sender, 'image').catch(_ => setting.thumbnail);
+      let picture = await conn.profilePictureUrl(m.sender, 'image').catch(_ => cover);
       let prem = isPremium ? 'Aktif' : 'Tidak';
       let isRegister = db.users[m.sender].registered
       let reg = isRegister ? 'Sudah Daftar' : 'Belum Daftar';
@@ -21,7 +21,7 @@ exports.default = {
          try {
             let numTag = text.replace('@', '').replace(prefix, '').replace(command, '').trim();
             let mention = `${numTag}@s.whatsapp.net`
-            let pictureTag = await conn.profilePictureUrl(mention, 'image').catch(_ => setting.thumbnail);
+            let pictureTag = await conn.profilePictureUrl(mention, 'image').catch(_ => cover);
             let userTag = db.users[mention]
             let isRegisterTag = db.users[mention].registered
             let limitUserTag = db.users[mention].limit

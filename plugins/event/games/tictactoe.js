@@ -2,12 +2,12 @@ let rewards = {
    limit: 15,
    uang: 30
 }
-
 module.exports = {
    start: async (m, {
       conn,
       budy
    }) => {
+      let tictactoe = db.games.tictactoe
       let room = Object.values(tictactoe).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')      
       let parseMention = (text = '') => {
          return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
@@ -26,8 +26,8 @@ module.exports = {
             m.reply({
                '-3': 'Game telah berakhir',
                '-2': 'Invalid',
-               '-1': 'Posisi Invalid',
-               0: 'Posisi Invalid',
+               '-1': 'Posisi Invalid / Salah',
+               0: 'Posisi Invalid / Salah',
             } [ok])
             return !0
          }
@@ -53,7 +53,7 @@ module.exports = {
             isWin = true
          }
          let winner = isSurrender ? room.game.currentTurn : room.game.winner
-         let str = `Room ID: ${room.id}\n${arr.slice(0, 3).join('')}\n${arr.slice(3, 6).join('')}\n${arr.slice(6).join('')}\n${isWin ? `\n\n@${winner.split('@')[0]} Menang!\nGame berakhir\n@${winner.split('@')[0]} Mendapat Hadiah :\n+${rewards.limit} limit 🎟\n+${rewards.uang} uang 💰\n\n` : isTie ? `Game berakhir` : `Giliran ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}\n❌: @${room.game.playerX.split('@')[0]}\n⭕: @${room.game.playerO.split('@')[0]}\nKetik *nyerah* untuk menyerah dan mengakui kekalahan`
+         let str = `Room ID: ${room.id}\n${arr.slice(0, 3).join('')}\n${arr.slice(3, 6).join('')}\n${arr.slice(6).join('')}\n${isWin ? `\n\n@${winner.split('@')[0]} Menang!\nGame berakhir\n@${winner.split('@')[0]} Mendapat Hadiah :\n+${rewards.limit} limit 🎟\n+${rewards.uang} uang 💰\n` : isTie ? `Game berakhir gak ada yang menang / seri` : `Giliran ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}\n❌: @${room.game.playerX.split('@')[0]}\n⭕: @${room.game.playerO.split('@')[0]}\nKetik *nyerah* untuk menyerah dan mengakui kekalahan`
          if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
             room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
          if (room.x !== room.o) await conn.sendText(room.x, str, m, {

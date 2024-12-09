@@ -21,7 +21,8 @@ exports.default = {
       caption += v + `viewonce / once \n`
       caption += v + `autodl / autodown \n`
       caption += v + `autobackup \n`
-      caption += v + `antitoxic / toxic\n`
+      caption += v + `antitoxic / toxic \n`
+      caption += v + `anticall \n`
       caption += v + `autoreadsw / readsw\n`
       caption += v + `autobio / bio`
       if (!text) return m.reply(caption);
@@ -68,11 +69,22 @@ exports.default = {
             if (cmd_on.includes(command)) {
                save.global('global.auto_backup = false', 'global.auto_backup = true');
                await m.reply('auto backup database berhasil di aktifkan\nrestarting...')
-             //  reset()
+               reset()
             } else if (cmd_off.includes(command)) {
                save.global('global.auto_backup = true', 'global.auto_backup = false');
                await m.reply('auto backup database berhasil di matikan\nrestarting...')
-              // reset()
+               reset()
+            }
+         }
+         break
+         case 'anticall': {         
+            if (!isOwner) return m.reply(mess.OnlyOwner);
+            if (cmd_on.includes(command)) {
+               save.global('global.anticall = false', 'global.anticall = true');
+               m.reply('anti call berhasil di aktifkan')
+            } else if (cmd_off.includes(command)) {
+               save.global('global.anticall = true', 'global.anticall = false');
+               m.reply('anti call database berhasil di matikan')
             }
          }
          break

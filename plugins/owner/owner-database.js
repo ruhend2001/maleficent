@@ -6,7 +6,7 @@ exports.default = {
    start: async (m, {
       conn 
    }) => {
-      let file = fs.readFileSync('./database.json');
+      const file = fs.readFileSync('./database.json');
       m.reply(`Tunggu sedang mengambil file database...`);    
       conn.sendMessage(m.chat, { document: file, caption: 'Berhasil Backup database', mimetype: 'application/json', fileName: 'database.json' }, { quoted: m });
    },
