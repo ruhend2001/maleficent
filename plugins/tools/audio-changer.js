@@ -25,13 +25,13 @@ exports.default = {
       if (/slow/.test(command)) set = '-filter:a "atempo=0.7,asetrate=44100"'
       if (/smooth/.test(command)) set = '-filter:v "minterpolate=\'mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120\'"'
       if (/tupai/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
-      if (/audio/.test(mime) || m.mtype === 'documentMessage') {
+      if (/audio|document|video/.test(mime) || m.mtype === 'documentMessage' || m.mtype === 'audioMessage' || m.mtype === 'videoMessage') {
          conn.adReply(m.chat, loading, cover, m)
-         let media = await conn.downloadAndSaveMediaMessage(quoted)
-         let ran = 'tmp/' + Format.getRandom('.mp3')
-         await exec(`ffmpeg -i ${media} ${set} ${ran}`, async (err, stderr, stdout) => {
+         const media = await conn.downloadAndSaveMediaMessage(quoted)
+         const ran = './tmp/' + Format.getRandom('.mp3')
+         exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
             if (err) return m.reply(`${err}`)
-            let buff = await fs.readFileSync(ran)
+            const buff = fs.readFileSync(ran)
             conn.sendFile(m.chat, buff, {
                mimetype: 'audio/mp4',
                ptt: true,
@@ -43,4 +43,4 @@ exports.default = {
       }
    },
    limit: 2
-};
+}

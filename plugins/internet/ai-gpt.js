@@ -11,9 +11,10 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
       m.react('🕒');
-      const data = await JSON_URL('https://api.ryzendesu.vip/api/ai/chatgpt?text=' + text);
+      //https://api.ryzendesu.vip/api/ai/chatgpt?text=
+      const data = await JSON_URL('https://btch.us.kg/openai?text=' + text);
       conn.adReply(m.chat, loading, cover, m).then(() => {
-         conn.adReply(m.chat, data.response, cover, m, {
+         conn.adReply(m.chat, data.result, cover, m, {
             showAds: true
          });
       });

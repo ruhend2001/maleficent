@@ -12,13 +12,13 @@ exports.default = {
       command,
       Format
    }) => {
-      if (!/webp/.test(mime)) return m.reply(`balas stiker dengan caption *${prefix + command}*`);
-      let media = await conn.downloadAndSaveMediaMessage(quoted);
-      let ran = `tmp/${Date.now()}.png`;
+      if (!/webp|image/.test(mime)) return m.reply(`balas stiker dengan caption *${prefix + command}*`);
+      const media = await conn.downloadAndSaveMediaMessage(quoted);
+      const ran = `tmp/${Date.now()}.png`;
       conn.adReply(m.chat, loading, cover, m);
-      await exec(`ffmpeg -i ${media} ${ran}`, (err) => {
+      exec(`ffmpeg -i ${media} ${ran}`, (err) => {
          if (err) return m.reply(`${err}`);
-         let buffer = fs.readFileSync(ran);
+         const buffer = fs.readFileSync(ran);
          conn.sendFile(m.chat, buffer, {
             caption: "Berhasil Ke Image ✔",
             quoted: m
