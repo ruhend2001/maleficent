@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Maker'],
-   tags: ['attp', 'ttp'],
-   command: ['attp', 'ttp'],
+   tags: ['attp', 'ttp', 'brat'],
+   command: ['attp', 'ttp', 'brat'],
    start: async (m, {
       conn,
       prefix,

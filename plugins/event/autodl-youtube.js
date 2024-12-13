@@ -13,11 +13,9 @@ module.exports = {
          let youtubeLinks = budy.match(Links) || budy.match(ShortsLinks);
          for (let youtubeLink of youtubeLinks) {
             m.react('🕙')
-            let { title, video, quality, thumbnail, size } = await ytmp4(youtubeLink);
+            let { title, video, thumbnail } = await ytmp4(youtubeLink);
             let caption = `🍌 Youtube Video\n`
-            caption += `${java} Judul : ${title}\n`
-            caption += `${java} Kualitas : ${quality}\n`
-            caption += `${java} Size : ${size}`
+            caption += `${java} Judul : ${title}`           
             conn.sendFile(m.chat, video, {
                caption: caption,
                quoted: m

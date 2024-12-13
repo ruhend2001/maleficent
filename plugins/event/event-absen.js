@@ -1,5 +1,5 @@
 module.exports = {
-   start: (m, {
+   start: async (m, {
       conn,
       budy
    }) => {

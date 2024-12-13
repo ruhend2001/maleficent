@@ -23,11 +23,11 @@ exports.default = {
             mentions: conn.parseMention(db.chats[m.chat].absen_text)
          })
       } else if (command == 'tutupabsen' || command == 'hapusabsen') {
+         if (!isAdmins) return m.reply('Hanya Admin Yang Dapat Menghapus Absen');
          db.chats[m.chat].absen = false
          db.chats[m.chat].absen_count = 0
          db.chats[m.chat].absen_user = []
          db.chats[m.chat].absen_text = ''
-         if (!isAdmins) return m.reply('Hanya Admin Yang Dapat Menghapus Absen');
          m.reply('Sukses Mengakhiri Absen')
       } else if (command == 'cekabsen') {        
          conn.adReply(m.chat, zw + ` *ABSEN*\n\nketik .absen atau hadir\nuntuk mengakhiri absen ketik .tutupabsen\n\nTotal Hadir: ${db.chats[m.chat].absen_count}\n\n` + db.chats[m.chat].absen_text, 'https://qu.ax/WSojV.jpeg', m, {

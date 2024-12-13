@@ -1,13 +1,21 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 process.on('uncaughtException', console.error);
-require('./lib/other.js');
-require('utils-mf/index.js');
-require('./lib/src/mongo/mongo-info.js');
 const pino = require('pino');
 const { 
    signalGroup
 } = require('utils-mf');
-const { caller } = require('./lib/other.js');
+global.default_db = { 
+   users: {}, 
+   chats: {}, 
+   settings: {}, 
+   games: {}, 
+   menfess: {} 
+};
+require('./lib/settings.js');
+require('utils-mf/index.js');
+require('./lib/system.js');
+require('./lib/src/mongo/mongo-info.js');
+const { caller } = require('./lib/system.js');
 const {
    makeInMemoryStore,
    useMultiFileAuthState,

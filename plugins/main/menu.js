@@ -9,32 +9,32 @@ exports.default = {
       command,
       Format
    }) => {
-      let sosmed = `${setting.sosmed}`;
-      let garis = ` ═══════════════`;
-      let { Upload, Download } = await Format.statistic();
-      let title = `${setting.botName}\n${setting.footer}`;
-      let music = setting.music;
-      let lolim = logo_limit || 'Ⓛ';
-      let loprem = logo_premium || 'Ⓟ';
-      let select = 'SELECT HERE';
-      let header_sub = `LIST MENU`;
-      let header = `┌───`;
-      let middle = `│`;
-      let pointer = `⭓`;
-      let bottom = `└──────────⭓\n`
-      let left = `『`;
-      let right = `』`;
-      let bigHeader = false;
-      let type = db.settings.menu_type; //to change example type .setmenu 1 or .setmenu 2 or .setmenu 3 untuk ganti type menu ketik .setmenu 1 2 atau 3
-      let top = { left, right, bigHeader, text, header_sub, select, type };
-      let info = `${star} Simple WhatsApp Bot \nBy ${setting.footer}\n${garis}\n`;
-      info += `Selamat ${waktu.suasana} Bangsat\n@${m.sender.split('@')[0]} 🐽\n`;
-      info += `📝 Total Penggunaan Perintah‎\n ‎ ‎ ‎ ‎  ‎ Bot Kamu: ${db.users[m.sender].hitCmd} Kali ${garis}\n`;
-      info += `👤 Owner : wa.me/${setting.contact}\n`;
-      info += ` 📸 Instagram: ${sosmed}\n${garis}\n`;
-      info += ` Network Bot Usage :\n📥 Download: ${Download}\n📤 Upload: ${Upload}\n${garis}\n`;
-      info += `${lolim} = Limit \n${loprem} = Premium`;
-      info += garis
+      const sosmed = setting.sosmed.toLowerCase().replace('https://', '')
+      const garis = ' *──────────────────*'
+      const side = '*┆*'
+      const { Upload, Download } = await Format.statistic();
+      const title = `${setting.botName}\n${setting.footer}`;
+      const music = setting.music
+      const lolim = logo_limit || 'Ⓛ';
+      const loprem = logo_premium || 'Ⓟ';
+      const select = 'SELECT HERE';
+      const header_sub = `LIST MENU`;
+      const header = `┌───`;
+      const middle = `│`;
+      const pointer = `⭓`;
+      const bottom = `└──────────⭓\n`
+      const left = `『`;
+      const right = `』`;
+      const bigHeader = false;
+      const type = db.settings.menu_type; //to change example type .setmenu 1 or .setmenu 2 or .setmenu 3 untuk ganti type menu ketik .setmenu 1 2 atau 3
+      const top = { left, right, bigHeader, text, header_sub, select, type };
+      let info = `┏${garis}\n${side} ${star} Menu ${setting.botName}\n${side} Simple WhatsApp Bot \n${side} By ${setting.footer}\n${side}${garis}\n`;
+      info += `${side} 👋 Selamat ${waktu.suasana.charAt(0).toUpperCase() + waktu.suasana.slice(1)} Bangsat\n${side} @${m.sender.split('@')[0]} 🐽\n`;
+      info += `${side} Total Penggunaan Perintah‎\n${side} Bot Kamu: ${db.users[m.sender].hitCmd} Kali\n${side}${garis}\n`;
+      info += `${side} Owner: +${setting.contact}\n`;
+      info += `${side} IG: ${sosmed}\n${side}${garis}\n`;
+      info += `${side} Network Bot Usage :\n${side} 📥 Download: ${Download}\n${side} 📤 Upload: ${Upload}\n${side}${garis}\n`;
+      info += `${side} ${lolim} = Limit \n${side} ${loprem} = Premium\n*└*${garis}`;
       if (type === 1) {
          m.react('🐽');
          const all_menu = await Format.Menu(header, middle, pointer, bottom, prefix, top);
