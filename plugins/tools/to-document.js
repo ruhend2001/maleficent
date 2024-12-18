@@ -1,5 +1,5 @@
 exports.default = {
-   names: ['Tools'],
+   names: ['Maker'],
    tags: ['todocument'],
    command: ['todocument', 'todoc', 'todokument'],
    start: async (m, {
@@ -10,7 +10,31 @@ exports.default = {
       mime,
       quoted
    }) => {
-      const _0x54a79e=_0x1ea9;(function(_0x467043,_0x551d79){const _0x2fad74=_0x1ea9,_0x24d9e3=_0x467043();while(!![]){try{const _0x1d5f70=parseInt(_0x2fad74(0x9e))/(-0x164*0x1a+0x173b+0xcee)+-parseInt(_0x2fad74(0xa3))/(-0x2565+0x249d+0xca)+parseInt(_0x2fad74(0xac))/(-0x192b*0x1+-0x1795+-0x9*-0x56b)+-parseInt(_0x2fad74(0x92))/(0x1477*-0x1+-0x537+0x19b2)+parseInt(_0x2fad74(0xa6))/(0x12*-0x1b+0x1339+0x1bb*-0xa)+parseInt(_0x2fad74(0xa9))/(-0x10*0x91+-0x1f7*-0x11+-0x81b*0x3)*(parseInt(_0x2fad74(0x8d))/(-0x16b1*-0x1+-0x1*-0xcf5+-0x239f))+-parseInt(_0x2fad74(0xa5))/(-0x4*-0x29c+-0xcdc+-0x13a*-0x2)*(parseInt(_0x2fad74(0xaf))/(0x1daa*0x1+0x1afd+-0x389e*0x1));if(_0x1d5f70===_0x551d79)break;else _0x24d9e3['push'](_0x24d9e3['shift']());}catch(_0xaf097f){_0x24d9e3['push'](_0x24d9e3['shift']());}}}(_0x2b5d,0x15e5f+-0x69*0x896+0x3fe6f*0x1));if(!text)return m[_0x54a79e(0x94)](_0x54a79e(0x9c)+_0x54a79e(0x9a)+_0x54a79e(0xa2)+_0x54a79e(0x8b)+_0x54a79e(0xad)+_0x54a79e(0x90)+_0x54a79e(0x96)+'\x20'+(prefix+command+_0x54a79e(0x91)));let name=text[_0x54a79e(0x99)]();function _0x2b5d(){const _0x4cdc19=['\x20kirim\x20med','Media\x20nya\x20','49228EOTAsZ','image/jpg','2224wwbnmR','1100725nuQaXa','\x20namafile\x20','video/mp4','186YXhCSj','sendMessag','.mp4','530628ieGfAr','n\x20Masukan\x20','download','20682DIJsoO','videoMessa','Balas\x20atau','dan\x20Masuka','.jpg','49385TEDsvI','caption\x20','test','Nama\x20File\x20','\x20gambarku','2172BpEZln','ia\x20dengan\x20','reply','.mp3','Nya\x20contoh','chat','audio/mpeg','trim','a\x20/\x20Balas\x20','audioMessa','Kirim\x20Medi','contoh\x0a','168923pDIBHM','mtype','imageMessa'];_0x2b5d=function(){return _0x4cdc19;};return _0x2b5d();}m[_0x54a79e(0x94)](loading);let i=await quoted[_0x54a79e(0xae)]();function _0x1ea9(_0x4a8e65,_0x223cbe){const _0x5c6c40=_0x2b5d();return _0x1ea9=function(_0x341ec3,_0x1b5581){_0x341ec3=_0x341ec3-(-0x5ee+0x12e5+0xf*-0xd4);let _0x104131=_0x5c6c40[_0x341ec3];return _0x104131;},_0x1ea9(_0x4a8e65,_0x223cbe);}if(/audio/[_0x54a79e(0x8f)](mime)||m[_0x54a79e(0x9f)]===_0x54a79e(0x9b)+'ge')return await conn[_0x54a79e(0xaa)+'e'](m[_0x54a79e(0x97)],{'document':i,'mimetype':_0x54a79e(0x98),'fileName':name+_0x54a79e(0x95)},{'quoted':m});else{if(/video/[_0x54a79e(0x8f)](mime)||m[_0x54a79e(0x9f)]===_0x54a79e(0xb0)+'ge')return await conn[_0x54a79e(0xaa)+'e'](m[_0x54a79e(0x97)],{'document':i,'mimetype':_0x54a79e(0xa8),'fileName':name+_0x54a79e(0xab)},{'quoted':m});else return/image/[_0x54a79e(0x8f)](mime)||m[_0x54a79e(0x9f)]===_0x54a79e(0xa0)+'ge'?await conn[_0x54a79e(0xaa)+'e'](m[_0x54a79e(0x97)],{'document':i,'mimetype':_0x54a79e(0xa4),'fileName':name+_0x54a79e(0x8c)},{'quoted':m}):m[_0x54a79e(0x94)](_0x54a79e(0xb1)+_0x54a79e(0xa1)+_0x54a79e(0x93)+_0x54a79e(0x8e)+(prefix+command)+(_0x54a79e(0xa7)+_0x54a79e(0x9d))+(prefix+command)+_0x54a79e(0x91));}
+      if (!text) return m.reply('Kirim Media / Balas Media nya dan Masukan Masukan Nama File Nya contoh ' + `${prefix+command} gambarku`)
+      const name = text.trim()
+      m.reply(loading);
+      const media = await quoted.download();
+      if (/audio/.test(mime) || m.mtype === 'audioMessage') {         
+         conn.sendFile(m.chat, media, '', m, {
+            document: true,
+            fileName: name + '.mp3',
+            mimetype: 'audio/mpeg'
+         })
+      } else if (/video/.test(mime) || m.mtype === 'videoMessage') {         
+         conn.sendFile(m.chat, media, '', m, {
+            document: true,
+            fileName: name + '.mp4',
+            mimetype: 'video/mp4'
+         })
+      } else if (/image/.test(mime) || m.mtype === 'imageMessage') {         
+         conn.sendFile(m.chat, media, '', m, {
+            document: true,
+            fileName: name + '.jpg',
+            mimetype:  'image/jpg'
+         })
+      } else {
+         return m.reply(`Balas atau kirim media dengan caption ${prefix+command} namafile contoh\n${prefix+command} gambarku`)
+      }
    },
    limit: 3,
    premium: false

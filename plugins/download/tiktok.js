@@ -20,7 +20,7 @@ exports.default = {
       caption += `⭔ *Like:* ${like}\n`
       caption += `⭔ *Comment:* ${comment}\n`
       caption += `⭔ *Views:* ${views}\n`
-      caption += `⭔ *Bookmark:* ${bookmark}\n\n`
+      caption += `⭔ *Bookmark:* ${bookmark}\n`
       caption += ` ${zw} ${namebot}\n ${wm}`
       conn.adReply(m.chat, author, picture, m).then(() => {
          conn.sendFile(m.chat, video, {
