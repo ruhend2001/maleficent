@@ -14,4 +14,4 @@ exports.default = {
       conn.sendFile(m.chat, data.data.url.hd || data.data.url.sd, data.data.title || '', m)
    },
    limit: 2
-}
+};
