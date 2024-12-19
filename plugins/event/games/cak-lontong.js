@@ -10,7 +10,7 @@ module.exports = {
       budy
    }) => {
       const caklontong = db.games.caklontong
-      const caklontong_desc = db.games.caklontong_desc
+      const caklontong_desc = db.games.caklon_desc
       if (caklontong.hasOwnProperty(m.sender.split('@')[0]) && budy && !budy.includes('.cak') && !budy.includes('.caklontong') && !m.isBaileys) {
          let jawaban = caklontong[m.sender.split('@')[0]]
          let deskripsi = caklontong_desc[m.sender.split('@')[0]]

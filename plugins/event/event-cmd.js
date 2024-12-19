@@ -2,52 +2,35 @@ const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 const { lookup } = require('mime-types');
 const { URL_REGEX } = require('@adiwajshing/baileys');
-exports.default = {
-   names: ['Downloader'],
-   tags: ['pinterest'],
-   command: ['pinterest', 'pin'],
+module.exports = {
    start: async (m, {
       conn,
-      text,
-      prefix,
-      command
+      budy,      
    }) => {
-      text = text.endsWith('SMH') ? text.replace('SMH', '') : text
-      if (!text) return m.reply(`contoh: ${prefix+command} Input Query / Pinterest Url`)
-      let res = await Pinterest(text);
-      let mime = await lookup(res);
-      conn.adReply(m.chat, loading, cover, m);
-      let pinterest = `${javi} 𝐏𝐈𝐍𝐓𝐄𝐑𝐄𝐒𝐓\n`
-      pinterest += `${java} Result From ${text}\n\n> 1. Lanjut\n> 2. Stop`       
-      const down = async () => {
-         conn.sendMessage(m.chat, {
-            [mime.split('/')[0]]: {
-               url: res
-            },
-            caption: `Succes Download: ${await shortUrl(res)}`
-         }, {
-            quoted: m,
-            ...conn_bind
-         }).then(() => {
-            delete db.users[m.sender].event.pinterest
-         })      
-      };
-      text.match(URL_REGEX) ? down() : conn.sendFile(m.chat, res, pinterest.trim(), m).then(() =>  {
-         db.users[m.sender].event = { 
-            pinterest: {
-               status: true,
-               text: text
-            }
+      const event = db.users[m.sender].event
+      if (event.pinterest) {
+         if (budy.match(/^\s*1\s*$/)) {
+            if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
+            m.react('🔁')
+            const text = event.pinterest.text
+            const res = await Pinterest(text);
+            const mime = await lookup(res);            
+            let pinterest = `${javi} 𝐏𝐈𝐍𝐓𝐄𝐑𝐄𝐒𝐓\n`
+            pinterest += `Result From ${text}\n\n`
+            pinterest += `> 1. Lanjut\n> 2. Stop`     
+            m.reply(limit_message.replace('%limit', 2)).then(() => {               
+               conn.sendFile(m.chat, res, pinterest.trim(), m);
+               db.users[m.sender].limit -= 2
+            });
+         } else if (budy.match(/^\s*2\s*$/)) {
+            m.reply('OK 👍').then(() => delete event.pinterest);
          }
-      })
-   },
-   limit: 2,
-   premium: false
+      }
+   }
 };
-
 async function shortUrl(url) {
    return await (await fetch(`https://tinyurl.com/api-create.php?url=${url}`)).text()
-}
+};
 async function Pinterest(query) {
    if (query.match(URL_REGEX)) {
       let res = await fetch('https://www.expertsphp.com/facebook-video-downloader.php', {
@@ -67,4 +50,4 @@ async function Pinterest(query) {
       if (!data.length) throw `Query "${query}" not found :/`
       return data[~~(Math.random() * (data.length))].images.orig.url
    }
-}
+};

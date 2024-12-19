@@ -16,11 +16,11 @@ require('./lib/system.js');
 require('./lib/src/mongo/mongo-info.js');
 const { caller } = require('./lib/system.js');
 const {
+   makeInMemoryStore,
    useMultiFileAuthState,
    DisconnectReason
 } = require('@adiwajshing/baileys');
 const pino = require('pino');
-const { makeInMemoryStore } = require('@adiwajshing/baileys');
 const store = makeInMemoryStore({
    logger: pino().child({
       level: 'silent', 
