@@ -24,7 +24,8 @@ exports.default = {
       caption += v + `antitoxic / toxic \n`
       caption += v + `anticall \n`
       caption += v + `autoreadsw / readsw\n`
-      caption += v + `autobio / bio`
+      caption += v + `autobio / bio\n`
+      caption += v + `antispam / spam`
       if (!text) return m.reply(caption);
       switch (text.toLowerCase()) {
          case 'welcome': {
@@ -135,6 +136,18 @@ exports.default = {
                db.settings.autobio = false
                await conn.updateProfileStatus(' ‎');
                m.reply(`auto bio/status berhasil dimatikan`);
+            }
+         }
+         break
+         case 'antispam':
+         case 'spam': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
+            if (cmd_on.includes(command)) {
+               db.settings.antispam = true
+               m.reply(`anti spam berhasil diaktifkan`);
+            } else if (cmd_off.includes(command)) {
+               db.settings.antispam = false               
+               m.reply(`anti spam berhasil dimatikan`);
             }
          }
          break

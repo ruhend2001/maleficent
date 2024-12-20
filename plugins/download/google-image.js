@@ -11,19 +11,22 @@ exports.default = {
       command
    }) => {
       if (!text) return m.reply(`Use example ${prefix}${command} Janda Gila\nMasukkan Text Yang Ingin Dicari !`)
-      let res = await googleImage(text)
+      const res = await googleImage(text)
       conn.adReply(m.chat, loading, cover, m);
-      let Index = Math.floor(Math.random() * res.length);
-      let image = res[Index];
+      const Index = Math.floor(Math.random() * res.length);
+      const image = res[Index];
       let gimage = `${javi} 𝐆𝐎𝐎𝐆𝐋𝐄 𝐈𝐌𝐀𝐆𝐄\n`
-      gimage += `${java} 🔎 *Pencarian:* ${text}\n`
-      gimage += `${java} 🌎 *Sumber:* Google`
-      conn.sendFile(m.chat, image, {
-         quoted: m
-      }).then(() => {
-         conn.sendButton(m.chat, '', null, m, [
-            ['⚪ Lanjut', `.gimage ${text}`]
-         ])         
+      gimage += `🔎 *Pencarian:* ${text}\n`
+      gimage += `🌎 *Source:* Google\n\n> 1. Lanjut\n> 2. Stop`
+      conn.sendFile(m.chat, image, gimage, m).then(() => {
+         const event = db.users[m.sender].event_cmd
+         const data = { 
+            gimage: {
+               status: true,
+               search: text
+            }
+         }
+         Object.assign(event, data);
       })
    },
    limit: 2

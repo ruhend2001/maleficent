@@ -25,7 +25,6 @@ exports.default = {
       }
    },
    limit: 5,
-   premium: false,
-   resgister: true,
+   premium: false,   
    disable: false
 };
