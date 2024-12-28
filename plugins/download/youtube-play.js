@@ -27,7 +27,7 @@ exports.default = {
       play += ` *Loading audio sedang dikirim...*`
       conn.adReply(m.chat, play, thumb, m);
       const { audio } = await ytmp3(url);      
-      const pretty = await Format.mp3Play(audio);
+      const pretty = await Format.mp3Play(await (await fetch (audio)).buffer());
       conn.sendFile(m.chat, pretty, title, m, {
          mimetype: 'audio/mp4',
          fileName: title,

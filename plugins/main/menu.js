@@ -10,7 +10,7 @@ exports.default = {
       Format
    }) => {
       const sosmed = setting.sosmed.toLowerCase().replace('https://', '')
-      const garis = ' *──────────────────*'
+      const garis = ' *────────────*'
       const side = '*┆*'
       const { Upload, Download } = await Format.statistic();
       const title = `${setting.botName}\n${setting.footer}`;

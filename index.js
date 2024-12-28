@@ -1,7 +1,6 @@
 console.log('🕒 Starting Maleficent . . .');
 const path = require('path');
 const { spawn } = require('child_process');
-require('utils-mf/lib/__on.js')();
 const start = () => {
    const args = [path.join(__dirname, 'main.js'), ...process.argv.slice(2)];   
    const argv = spawn(process.argv[0], args, {
@@ -10,7 +9,7 @@ const start = () => {
    .on('message', data => {
       if (data == 'reset') {
          console.log('🕒 Restarting Meleficent . . .')
-         argv.kill(), delete argv;
+         argv.kill(), delete argv
       }
       if (data == 'uptime') {         
          argv.send(process.uptime());         
@@ -18,7 +17,7 @@ const start = () => {
    })
    .on('exit', code => {
       console.error('Exited with code:', code);
-      argv.kill(), delete argv, start();
-   });
-};
+      argv.kill(), delete argv, start()
+   })
+}
 start();

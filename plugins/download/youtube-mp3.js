@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const { ytmp3 } = require('ruhend-scraper');
 exports.default = {
    names: ['Downloader'],
@@ -12,9 +13,9 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`Masukan kontolnya! \nContoh: ${prefix+command} https://youtu.be/MvsAesQ-4zA`);
       m.react("🕗");
-      const { title, audio, thumbnail } = await ytmp3(text);
+      const { title, audio, thumbnail } = await ytmp3(text);      
       conn.adReply(m.chat, loading, thumbnail || cover, m);
-      const media = await Format.mp3(audio);      
+      const media = await Format.mp3(await (await fetch (audio)).buffer());   
       conn.sendFile(m.chat, media, '', m, {
          document: true,
          fileName: `${title}~Ruhend-MD.mp3`,
