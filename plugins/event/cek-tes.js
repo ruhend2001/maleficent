@@ -1,7 +1,9 @@
 module.exports = {
-   start: (m, { 
+   start: async (m, { 
       budy
    }) => {
-      if (budy.match(/^\s*tes\s*$/)) m.reply('apa');
-   }
+      if (budy.match(/^\s*tes\s*$/)) {
+         m.reply('Apaan ?');
+      }
+   }   
 }

@@ -2,7 +2,7 @@ exports.default = {
    names: ['Info'],
    tags: ['idgc'],
    command: ['idgc', 'id'],
-   start: (m) => {
+   start: async (m) => {
       m.reply(m.chat);
    }
 }
