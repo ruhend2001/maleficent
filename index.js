@@ -20,4 +20,4 @@ const start = () => {
       argv.kill(), delete argv, start()
    })
 }
-start();
+start()
