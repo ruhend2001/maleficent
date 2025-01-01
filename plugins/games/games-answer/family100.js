@@ -8,7 +8,6 @@ module.exports = {
       budy,
       Format
    }) => {
-      const family100 = db.games.family100
       if (('family100' + m.chat in family100) && budy && !budy.includes('.family100') && !budy.includes('.family') && !m.isBaileys) {
          const room = family100['family100' + m.chat]
          const teks = budy.toLowerCase().replace(/[^\w\s\-]+/, '')

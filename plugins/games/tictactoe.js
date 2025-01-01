@@ -13,8 +13,7 @@ exports.default = {
       prefix,
       command
    }) => {
-      if (command == 'tictactoe' || command == 'ttt') {
-         let tictactoe = db.games.tictactoe
+      if (command == 'tictactoe' || command == 'ttt') {         
          if (Object.values(tictactoe).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) return m.reply('Kamu masih didalam game')
          let room = Object.values(tictactoe).find(room => room.state === 'WAITING' && (text ? room.name === text : true))
          let parseMention = (text = '') => {
@@ -60,8 +59,8 @@ exports.default = {
             await m.reply(`Menunggu partner atau kamu bisa ajak member lain dengan mengetik ${prefix+command}` + (text ? ` mengetik command dibawah ini ${prefix}${command} ${text}` : ''))
          }
       } else if (command == 'delttt') {
-         if (db.games.tictactoe) {            
-            db.games.tictactoe = []
+         if (tictactoe) {            
+            tictactoe = {}
             conn.reply(m.chat, `Berhasil delete session TicTacToe`, m);
          }
       }

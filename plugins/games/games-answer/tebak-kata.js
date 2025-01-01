@@ -2,14 +2,13 @@ const rewards = {
    limit: 20,
    uang: 40
 }
-const kat = Math.floor(Math.random() * 3);
-const ta = ['Salah', 'Kurang Tepat', 'Belum Benar'][kat];
 module.exports = {
    start: async (m, {
       conn,
       budy
    }) => {
-      const tebakkata = db.games.tebakkata
+      const kat = Math.floor(Math.random() * 3);
+      const ta = ['Salah', 'Kurang Tepat', 'Belum Benar'][kat];
       if (tebakkata.hasOwnProperty(m.sender.split('@')[0]) && budy && !budy.includes('.tebakkata') && !budy.includes('.teka') && !m.isBaileys) {
          const jawaban = tebakkata[m.sender.split('@')[0]]
          if (budy.toLowerCase() == jawaban) {

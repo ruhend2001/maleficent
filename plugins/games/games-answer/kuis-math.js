@@ -7,7 +7,6 @@ module.exports = {
       conn,
       budy
    }) => {
-      const kuismath = db.games.kuismath
       if (kuismath.hasOwnProperty(m.sender.split('@')[0]) && budy && !budy.includes('.kuishmath') && !budy.includes('.math') && !budy.includes('.matematika') && !m.isBaileys) {
          const jawaban = kuismath[m.sender.split('@')[0]];
          if (budy.toLowerCase() == jawaban) {

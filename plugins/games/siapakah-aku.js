@@ -11,7 +11,6 @@ exports.default = {
       prefix,
       Format
    }) => {
-      const siapakahaku = db.games.siapakahaku
       if (m.isBaileys) return
       if (siapakahaku.hasOwnProperty(m.sender.split('@')[0])) return m.reply("Masih Ada Soal Yang Belum Terjawab!")
       const anu = await JSON_URL('https://raw.githubusercontent.com/BochilTeam/database/master/games/siapakahaku.json');

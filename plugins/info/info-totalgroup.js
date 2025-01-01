@@ -5,7 +5,8 @@ exports.default = {
    start: async (m, {
       conn,
       store,
-      Format     
+      Format,
+      isOwner
    }) => {  
       m.react('🌀').then(() => m.reply('Obtaining data please wait...'));    
       let group = Object.keys(db.chats);      
@@ -22,10 +23,12 @@ exports.default = {
          }
       };      
       let teks_gc = `*Total Data Chat ${setting.botName}*\nTotal Group: ${count} group\n\n`            
-      for await (let i of Object.keys(db.chats)) {                  
-         const nama = db.chats[i].name
-         teks_gc += `*ID:* ${i}\n*Name:* ${nama}\n\n`         
-      }
+      for await (let i of Object.keys(db.chats)) {  
+         const data = await conn.groupMetadata(i)    
+         const nama = data.subject
+         const desc = data.desc || 'No Description'
+         teks_gc += `*ID:* ${i}\n*Name:* ${nama}\n${isOwner ? `*Description:* ${desc}` : ''}\n\n`         
+      };
       const pc = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
       let teks_pc = `*List Personal Chat*\nTotal Chat : ${pc.length} Chat\n\n`
       for (let i of pc) {

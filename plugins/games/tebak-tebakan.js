@@ -10,7 +10,6 @@ exports.default = {
       conn,
       Format
    }) => {
-      const tebaktebakan = db.games.tebaktebakan
       if (tebaktebakan.hasOwnProperty(m.sender.split('@')[0])) return m.reply("Masih Ada Soal Yang Belum Diselesaikan!");
       const anu = await JSON_URL('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebaktebakan.json');
       const result = anu[Math.floor(Math.random() * anu.length)]

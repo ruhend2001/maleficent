@@ -10,7 +10,6 @@ exports.default = {
       conn,
       Format
    }) => {
-      const tebakgame = db.games.tebakgame
       if (tebakgame.hasOwnProperty(m.sender.split('@')[0])) return m.reply("Masih Ada Soal Yang Belum Diselesaikan!");
       const anu = await JSON_URL('https://raw.githubusercontent.com/qisyana/scrape/main/tebakgame.json');
       const result = anu[Math.floor(Math.random() * anu.length)]

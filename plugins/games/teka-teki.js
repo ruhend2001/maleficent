@@ -10,7 +10,6 @@ exports.default = {
       conn,
       Format
    }) => {
-      const tekateki = db.games.tekateki
       if (tekateki.hasOwnProperty(m.sender.split('@')[0])) return m.reply("Masih Ada Soal Yang Belum Diselesaikan!");
       const anu = await JSON_URL('https://raw.githubusercontent.com/BochilTeam/database/master/games/tekateki.json');
       const result = anu[Math.floor(Math.random() * anu.length)]

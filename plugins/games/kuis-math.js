@@ -13,7 +13,6 @@ exports.default = {
       command,
       Format
    }) => {
-      const kuismath = db.games.kuismath
       if (kuismath.hasOwnProperty(m.sender.split('@')[0])) return m.reply("Masih Ada Sesi Yang Belum Diselesaikan!")      
       if (!text) return m.reply(`Pilih Mode:\n- ${Object.keys(modes).join(' \n- ')}\n\nContoh penggunaan: ${prefix+command} medium`)
       const result = await genMath(text.toLowerCase())

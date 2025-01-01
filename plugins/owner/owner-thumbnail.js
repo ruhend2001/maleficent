@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Owner'],
-   tags: ['setthumbnail', 'setthumb', 'sthumb'],
-   command: ['setthumbnail', 'setthumb', 'sthumb'],
+   tags: ['setthumbnail', 'setthumb', 'sthumb', 'setcover'],
+   command: ['setthumbnail', 'setthumb', 'sthumb', 'setcover'],
    start: async (m, {
       conn,
       text,

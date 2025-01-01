@@ -11,7 +11,6 @@ exports.default = {
       prefix,
       Format
    }) => {
-      const susunkata = db.games.susunkata
       if (susunkata.hasOwnProperty(m.sender.split('@')[0])) return m.reply("Masih Ada Soal Yang Belum Terjawab!")
       const json = await JSON_URL('https://raw.githubusercontent.com/BochilTeam/database/master/games/susunkata.json')
       const result = json[Math.floor(Math.random() * json.length)];

@@ -7,7 +7,6 @@ module.exports = {
       conn,
       budy
    }) => {
-      const siapakahaku = db.games.siapakahaku
       if (siapakahaku.hasOwnProperty(m.sender.split('@')[0]) && budy && !budy.includes('.siapakahaku') && !budy.includes('.siapaaku')&& !m.isBaileys) {
          const jawaban = siapakahaku[m.sender.split('@')[0]]
          if (budy.toLowerCase() === jawaban) {

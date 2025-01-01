@@ -7,7 +7,6 @@ module.exports = {
       conn,
       budy
    }) => {
-      const tekateki = db.games.tekateki
       if (tekateki.hasOwnProperty(m.sender.split('@')[0]) && budy && !budy.includes('.tekateki') && !m.isBaileys) {
          const jawaban = tekateki[m.sender.split('@')[0]]
          if (budy.toLowerCase() == jawaban) {

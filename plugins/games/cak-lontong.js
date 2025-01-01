@@ -10,8 +10,6 @@ exports.default = {
       conn,
       Format
    }) => {
-      const caklontong = db.games.caklontong
-      const caklontong_desc = db.games.caklon_desc
       if (caklontong.hasOwnProperty(m.sender.split('@')[0])) return m.reply("Masih Ada Sesi Yang Belum Diselesaikan!");
       const anu = await JSON_URL('https://raw.githubusercontent.com/BochilTeam/database/master/games/caklontong.json');
       const result = anu[Math.floor(Math.random() * anu.length)]

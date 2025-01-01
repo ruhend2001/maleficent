@@ -7,7 +7,6 @@ module.exports = {
       conn,
       budy
    }) => {
-      let tictactoe = db.games.tictactoe
       let room = Object.values(tictactoe).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')      
       let parseMention = (text = '') => {
          return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')

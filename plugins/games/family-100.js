@@ -10,7 +10,6 @@ exports.default = {
       conn,
       prefix
    }) => {
-      const family100 = db.games.family100
       if ('family100' + m.chat in family100) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!'); // throw false
       const anu = await JSON_URL('https://raw.githubusercontent.com/BochilTeam/database/master/games/family100.json')
       const random = anu[Math.floor(Math.random() * anu.length)]

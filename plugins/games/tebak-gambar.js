@@ -13,7 +13,6 @@ exports.default = {
       prefix,
       Format
    }) => {
-      const tebakgambar = db.games.tebakgambar
       if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) return m.reply("Masih Ada Soal Yang Belum Diselesaikan!")
       const results = await JSON_URL('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakgambar.json')
       const result = results[Math.floor(Math.random() * results.length)];
