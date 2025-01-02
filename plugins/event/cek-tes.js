@@ -3,7 +3,7 @@ module.exports = {
       budy
    }) => {
       if (budy.match(/^\s*tes\s*$/)) {
-         m.reply('apaan ?');
+         await m.reply('Apa Monkey ?');
       }
    }   
 }
