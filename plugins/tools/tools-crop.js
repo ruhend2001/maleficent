@@ -1,4 +1,3 @@
-const fs = require('fs')
 exports.default = {
    names: ['Tools'],
    tags: ['crop', 'resize'],
