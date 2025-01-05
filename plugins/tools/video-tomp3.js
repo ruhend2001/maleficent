@@ -13,7 +13,7 @@ exports.default = {
       if (/audio|video|document/.test(mime) || m.mtype === 'videoMessage' || m.mtype === 'documentMessage' || m.mtype === 'audioMessage') {
          conn.adReply(m.chat, loading, cover, m);
          let media = await quoted.download()
-         let audio = await Format.mp3(media);
+         let audio = await Format.mp3_vn(media);
          conn.sendFile(m.chat, audio, {
             mimetype: 'audio/mp4',
             ptt: true,
