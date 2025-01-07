@@ -2,10 +2,10 @@ exports.default = {
    names: ['Tools'],
    tags: ['delete'],
    command: ['delete', 'del', 'd'],
-   start: (m, {
+   start: async (m, {
       conn,
    }) => {
-      conn.removeMessage(m)
+      await conn.removeMessage(m)
    },
    premium: true
 };
