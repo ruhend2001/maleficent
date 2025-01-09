@@ -30,6 +30,6 @@ exports.default = {
          return m.reply(`Balas Atau Kirim image dengan caption ${prefix + command} text1|text2`)
       }
    },
-   limit: 5,
+   limit: 2,
    premium: false
 };

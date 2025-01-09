@@ -1,5 +1,5 @@
 module.exports = {
-   start: (m, {
+   start: async (m, {
       conn
    }) => {
       if (m.sender.startsWith('93') || 
@@ -12,7 +12,7 @@ module.exports = {
          m.sender.startsWith('95') || 
          m.sender.startsWith('94') || 
          m.sender.startsWith('256')) {
-         conn.updateBlockStatus(m.sender, 'block');
+         await conn.updateBlockStatus(m.sender, 'block');
       }
    }
 };

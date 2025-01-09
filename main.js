@@ -1,5 +1,5 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-process.on('uncaughtException', console.error);
+process.on('uncaughtException', console.log);
 const { 
    signalGroup
 } = require('utils-mf');
@@ -29,14 +29,14 @@ const store = makeInMemoryStore({
 const startWhatsApp = async () => {     
    const { state, saveCreds } = await useMultiFileAuthState('./sessions');   
    const conn = await signalGroup(state, store);   
-   conn.ev.on('connection.update', (update) => {
+   conn.ev.on('connection.update', (update) => {     
       const { connection, lastDisconnect } = update;
       if (connection === 'open') {
-         console.log(`🟢 Online`)
+         console.log(`🟢 ‎Online`)
       } else if (connection === 'connecting') {
-         console.log(`🟡 Reconnecting`)
+         console.log(`🟡 ‎Reconnecting`)
       } else if (connection === 'close') {
-         console.log(`🔴 Disconnected`)
+         console.log(`🔴 ‎Disconnected`)
          lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startWhatsApp() : startWhatsApp();
       }
    });

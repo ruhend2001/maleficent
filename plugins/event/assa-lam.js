@@ -1,9 +1,9 @@
 module.exports = {
-   start: (m, {
+   start: async (m, {
       budy
    }) => {
       if (budy.match('assalamualaikum') || budy.match('assalamu\'alaikum')) {
-         m.reply('Waalaikumsalam')
+         await m.reply('Waalaikumsalam')
       }
    }
 }
