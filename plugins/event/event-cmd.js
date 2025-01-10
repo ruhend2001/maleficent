@@ -8,7 +8,7 @@ module.exports = {
       budy,
    }) => {
       const event = db.users[m.sender].event_cmd
-      if (event.pinterest) {
+      if (event.pinterest && event.pinterest.status) {
          if (budy.match(/^\s*1\s*$/)) {
             if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
             const text = event.pinterest.search;
@@ -16,7 +16,7 @@ module.exports = {
             const mime = await lookup(res);
             let pinterest = `${javi} 𝐏𝐈𝐍𝐓𝐄𝐑𝐄𝐒𝐓\n`
             pinterest += `Result From ${text}\n\n`
-            pinterest += `> 1. Lanjut\n> 2. Stop`
+            pinterest += `1. Lanjut\n2. Stop`
             m.reply(limit_message.replace('%limit', 2)).then(() => {
                db.users[m.sender].limit -= 2
                conn.sendFile(m.chat, res, pinterest.trim(), m);
@@ -24,8 +24,7 @@ module.exports = {
          } else if (budy.match(/^\s*2\s*$/)) {
             return m.reply('OK 👍').then(() => delete event.pinterest);
          }
-      };
-      if (event.gimage) {
+      } else if (event.gimage && event.gimage.status) {
          if (budy.match(/^\s*1\s*$/)) {
             if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
             const text = event.gimage.search;
@@ -35,7 +34,7 @@ module.exports = {
             let gimage = `${javi} 𝐆𝐎𝐎𝐆𝐋𝐄 𝐈𝐌𝐀𝐆𝐄\n`
             gimage += `🔎 *Pencarian:* ${text}\n`
             gimage += `🌎 *Source:* Google\n\n`
-            gimage += `> 1. Lanjut\n> 2. Stop`
+            gimage += `1. Lanjut\n>. Stop`
             m.reply(limit_message.replace('%limit', 2)).then(() => {
                db.users[m.sender].limit -= 2
                conn.sendFile(m.chat, image, gimage.trim(), m);
