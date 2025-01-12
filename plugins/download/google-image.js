@@ -11,27 +11,26 @@ exports.default = {
       command
    }) => {
       if (!text) return m.reply(`Use example ${prefix}${command} Janda Gila\nMasukkan Text Yang Ingin Dicari !`)
-      const res = await googleImage(text)
-      conn.adReply(m.chat, loading, cover, m);
+      const res = await googleImage(text)      
       const Index = Math.floor(Math.random() * res.length);
       const image = res[Index];
       let gimage = `${javi} 𝐆𝐎𝐎𝐆𝐋𝐄 𝐈𝐌𝐀𝐆𝐄\n`
       gimage += `🔎 *Pencarian:* ${text}\n`
-      gimage += `🌎 *Source:* Google\n\n> 1. Lanjut\n> 2. Stop`
-      conn.sendFile(m.chat, image, gimage, m).then(() => {
-         const event = db.users[m.sender].event_cmd
-         const data = { 
-            gimage: {
+      gimage += `🌎 *Source:* Google\n\n1. Lanjut\n2. Stop`
+      conn.adReply(m.chat, loading, cover, m, {
+         manyForward: false
+      }).then(() => {
+         conn.sendFile(m.chat, image, gimage, m).then(() => {
+            const event = db.users[m.sender].event_cmd
+            event.gimage = {
                status: true,
                search: text
             }
-         }
-         Object.assign(event, data);
+         })
       })
    },
-   limit: 2
+   limit: true
 };
-
 async function googleImage(query) {
    const data = await (await fetch(`https://www.google.com/search?q=${query}&tbm=isch`, {
       headers: {

@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Maker'],
-   tags: ['attp', 'ttp'],
-   command: ['attp', 'ttp'],
+   tags: ['brat'],
+   command: ['brat'],
    start: async (m, {
       conn,
       prefix,
@@ -9,10 +9,10 @@ exports.default = {
       command,
       Format
    }) => {
-      let pack = setting.botName
-      let own = setting.footer
       if (!text) return m.reply(`Kirim perintah ${prefix+command} text\ncontoh: ${prefix+command} ${setting.botName}`);
-      let result = await Format.attp(text);
+      const pack = setting.botName
+      const own = setting.footer
+      const result = await Format.brat(text);
       conn.adReply(m.chat, loading, cover, m).then(() => {            
          conn.sendImageAsSticker(m.chat, result, m, {
            packname: pack,
@@ -21,4 +21,4 @@ exports.default = {
       })
    },
    limit: true
-};
+}

@@ -7,6 +7,7 @@ global.default_db = {
    users: {}, 
    chats: {}, 
    settings: {},
+   stores: {},
    menfess: {} 
 };
 require('./lib/settings.js');

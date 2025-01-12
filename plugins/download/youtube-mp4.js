@@ -12,7 +12,7 @@ exports.default = {
       if (!text) return m.reply(`Masukan Link Youtubenya ${prefix+command} https://youtu.be/MvsAesQ-4zA`);
       m.reply(loading);
       const { title, video, author, description, duration, views, upload, thumbnail } = await ytmp4(text);      
-      let caption = `*${zw}* 𝐘𝐎𝐔𝐓𝐔𝐁𝐄\n`
+      let caption = `${head("𝐘𝐎𝐔𝐓𝐔𝐁𝐄")} \n`
       caption += `⭔ *Title:* ${title}\n`
       caption += `⭔ *Author:* ${author}\n`
       caption += `⭔ *Description:* ${description}\n`

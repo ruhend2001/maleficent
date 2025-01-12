@@ -18,7 +18,7 @@ exports.default = {
       const mime = await lookup(res);
       conn.adReply(m.chat, loading, cover, m);
       let pinterest = `${javi} 𝐏𝐈𝐍𝐓𝐄𝐑𝐄𝐒𝐓\n`
-      pinterest += `${java} Result From ${text}\n\n> 1. Lanjut\n> 2. Stop`       
+      pinterest += `${java} Result From ${text}\n\n1. Lanjut\n2. Stop`       
       const down = async () => {
          conn.sendMessage(m.chat, {
             [mime.split('/')[0]]: {
@@ -30,15 +30,13 @@ exports.default = {
             ...conn_bind
          });
       };
-      text.match(URL_REGEX) ? down() : conn.sendFile(m.chat, res, pinterest.trim(), m).then(() =>  {
+      text.match(URL_REGEX) ? down() : 
+      conn.sendFile(m.chat, res, pinterest.trim(), m).then(() =>  {
          const event = db.users[m.sender].event_cmd
-         const data = { 
-            pinterest: {
-               status: true,
-               search: text
-            }
+         event.pinterest = {
+            status: true,
+            search: text
          }
-         Object.assign(event, data);
       })
    },
    limit: 2,
