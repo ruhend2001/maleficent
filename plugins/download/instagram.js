@@ -26,6 +26,6 @@ exports.default = {
          return false
       }
    },
-   limit: 3,
+   limit: true,
    premium: false
 }

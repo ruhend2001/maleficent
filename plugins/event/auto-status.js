@@ -27,7 +27,7 @@ module.exports = {
          const emot4 = `${pickRandom(['⎔', '◈▻', '✦', '⭑', 'ᯬ', '⭔', '◉', '⬟', '᭻', '»', '〆', '々', '⛥', '✗', '⛊', '⚜', '⚝', '⚚', '♪'])}`
          const emot5 = `${pickRandom(['😨','😅','😂','😳','😎', '🥵', '😱', '🐦', '🙄', '🐤','❤️','🐦','🤨','🥴','😐','👆','😔', '👀','👎'])}`
          const bio = `${emot1} Halo ${m.pushName || conn.authState.creds.me.name} ${emot2} Aktif Selama [ ${muptime} ] ${emot3} | Mode: ${global.group_mode ? 'Group' : 'Public'} | Self: ${setting.self ? 'Aktif' : 'Tidak'} | ${emot4} Platform: ${os.platform()} | 🟢 RAM Usage: ${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)} MB | ${emot5} ${wm}`         
-         await Format.sleep(3000).then(async () => {
+         await Format.sleep(2000).then(async () => {
             await conn.updateProfileStatus(bio);
             db.settings.status = + new Date()
          })

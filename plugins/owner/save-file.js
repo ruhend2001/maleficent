@@ -14,13 +14,21 @@ exports.default = {
       if (!m.quoted) return m.reply('Balas Pesan Kode / Plugins yang mau disimpan');
       const path = `${text.trim()}`;
       const code = m.quoted.text;
-      const error = await syntaxError(code, { sourceType: 'commonjs' });
-      if (error) {
-         await m.reply('❗can\'t save code');
-         throw assert.ok(error.length < 1, code + '\n' + error)
-      };
-      fs.writeFileSync(path, code);
-      m.reply(`Tersimpan di ${path}`);
+      try {
+         JSON.parse(code);
+         fs.writeFileSync(path, JSON.parse(JSON.stringify(code, 0, 3)));
+         return m.reply(`tersimpan di ${path}`);
+      } catch {
+         const error = await syntaxError(code, {
+            sourceType: 'commonjs'
+         });
+         if (error) {
+            await m.reply('❗ Tidak dapat menyimpan kode, terdapat kesalahan sintaks.');
+            throw assert.ok(error.length < 1, code + '\n' + error);
+         }
+         fs.writeFileSync(path, code);
+         m.reply(`Tersimpan di ${path}`);
+      }
    },
    owner: true
 };

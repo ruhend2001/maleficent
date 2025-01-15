@@ -27,6 +27,6 @@ exports.default = {
          });
       });
    },
-   limit: 2,
+   limit: true,
    premium: false
 };
