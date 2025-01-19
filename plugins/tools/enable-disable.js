@@ -6,10 +6,11 @@ exports.default = {
       conn,
       text,
       prefix,      
-      command,
-      groupName,
+      command,      
       isOwner,
-      isAdmins
+      isAdmins,
+      isPremium,
+      groupName,
    }) => {
       const cmd_on = ['on', 'enable']
       const cmd_off = ['off', 'disable']
@@ -25,7 +26,8 @@ exports.default = {
       caption += v + `anticall \n`
       caption += v + `autoreadsw / readsw\n`
       caption += v + `autobio / bio\n`
-      caption += v + `antispam / spam`
+      caption += v + `antispam / spam\n`
+      caption += v + `chat_ai / ai`
       if (!text) return m.reply(caption);
       switch (text.toLowerCase()) {
          case 'welcome': {
@@ -148,6 +150,25 @@ exports.default = {
             } else if (cmd_off.includes(command)) {
                db.settings.antispam = false               
                m.reply(`anti spam berhasil dimatikan`);
+            }
+         }
+         break
+         case 'chat_ai':
+         case 'ai': {
+            if (!m.isGroup && !isPremium) return m.reply(mess.premium)
+            if (m.isGroup && !owner_admin) return m.reply(mess.GrupAdmin);
+            if (!m.isGroup && cmd_on.includes(command)) {
+               db.users[m.sender].chat_ai = true
+               m.reply(`Auto Chat AI Berhasil Di Nyalakan`);
+            } else if (m.isGroup && cmd_on.includes(command)) {
+               db.chats[m.chat].chat_ai = true
+               m.reply(`Auto Chat AI Berhasil Di Nyalakan Di Group ${groupName}`);
+            } else if (!m.isGroup && cmd_off.includes(command)) {
+               db.users[m.sender].chat_ai = false              
+               m.reply(`Auto Chat AI Berhasil Di Matikan`);
+            } else if (m.isGroup && cmd_off.includes(command)) {
+               db.chats[m.chat].chat_ai = false              
+               m.reply(`Auto Chat AI Berhasil Di Matikan Di Group ${groupName}`);
             }
          }
          break
