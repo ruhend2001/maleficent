@@ -4,9 +4,12 @@ module.exports = {
       budy,
       Format
    }) => {
-      Format.chat_ai(m, { conn, budy, Format, isPrefix }).then((data) => {
-         m.react('💬');
-         conn.reply(m.chat, data, m)
+      Format.chat_ai(m, { conn, budy, Format, isPrefix }).then(async (data) => {
+         if (data) {
+            m.react('💬').then(() => {
+               conn.reply(m.chat, data, m) 
+            }) 
+         }
       })
    }
 }

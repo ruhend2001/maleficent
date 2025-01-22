@@ -26,11 +26,8 @@ const store = makeInMemoryStore({
    })
 });
 const startWhatsApp = async () => {     
-   const { state, saveCreds } = await useMultiFileAuthState('./sessions');   
-   const data = await signalGroup(state, store);
-   return { data, saveCreds };
-};
-const setupConnection = (conn, saveCreds) => {
+   const { state, saveCreds } = await useMultiFileAuthState('./sessions');
+   const conn = await signalGroup(state, store);
    conn.ev.on('connection.update', (update) => {     
       const { connection, lastDisconnect } = update;
       if (connection === 'open') {
@@ -39,17 +36,11 @@ const setupConnection = (conn, saveCreds) => {
          console.log(`🟡 Reconnecting`);
       } else if (connection === 'close') {
          console.log(`🔴 Disconnected`); 
-         if (lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut) {
-            startWhatsApp().then(sock => {
-               setupConnection(sock.data, sock.saveCreds);
-            });
-         }
+         if (lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut) startWhatsApp();         
       }
    });
    caller(conn);
    store.bind(conn.ev);
    conn.ev.on('creds.update', saveCreds);
 };
-startWhatsApp().then((sock) => {
-   setupConnection(sock.data, sock.saveCreds);
-});
+startWhatsApp()
