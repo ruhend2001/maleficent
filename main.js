@@ -1,11 +1,11 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-process.on('uncaughtException', console.log);
+process.on('uncaughtException', console.error);
 global.default_db = { 
    users: {}, 
    chats: {}, 
-   settings: {},
-   stores: {},   
-   menfess: {} 
+   settings: {}, 
+   stores: {}, 
+   menfess: {}
 };
 require('./lib/settings.js');
 require('utils-mf/index.js');
@@ -36,7 +36,7 @@ const startWhatsApp = async () => {
          console.log(`🟡 Reconnecting`);
       } else if (connection === 'close') {
          console.log(`🔴 Disconnected`); 
-         if (lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut) startWhatsApp();         
+         if (lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut) startWhatsApp();         
       }
    });
    caller(conn);

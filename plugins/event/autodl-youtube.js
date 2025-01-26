@@ -6,7 +6,7 @@ module.exports = {
    }) => {
       let Links = /(http(?:s)?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^\s&]+)/g;
       let ShortsLinks = /(http(?:s)?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([^\s&]+)/g;
-      let ExLyt = budy.includes('.ytv') || budy.includes('.ytmp4') || budy.includes('.yta') || budy.includes('.ytmp3') || budy.includes('.play') || budy.includes('ytv') || budy.includes('ytmp4') || budy.includes('yta') || budy.includes('ytmp3') || budy.includes('play')
+      let ExLyt = budy.includes('.ytv') || budy.includes('.ytmp4') || budy.includes('.yta') || budy.includes('.ytmp3') || budy.includes('.play') || budy.includes('ytv') || budy.includes('ytmp4') || budy.includes('yta') || budy.includes('ytmp3') || budy.includes('play') || budy.includes('ytmp4doc') || budy.includes('ytvdoc');
       if (autodl && Links.test(budy) || ShortsLinks.test(budy)) {
          if (m.isBaileys || ExLyt) return
          if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
