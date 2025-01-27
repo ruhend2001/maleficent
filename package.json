@@ -19,7 +19,7 @@
     "utils-mf": "^9.6.7",
     "human-readable": "^0.2.1",
     "moment-timezone": "^0.5.34",
-    "mongo-client-db": "^0.0.3",
+    "mongo-client-db": "^0.0.4",
     "node-os-utils": "^1.3.7",
     "node-fetch": "^2.7.0",
     "node-webpmux": "3.0.0",

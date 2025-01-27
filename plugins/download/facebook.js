@@ -10,23 +10,15 @@ exports.default = {
       command
    }) => {
       if (!text) return m.reply(`Masukan link facebook nya! \nContoh: ${prefix+command} https://www.facebook.com/reel/3677168492551989?mibextid=rS40aB7S9Ucbxw6v`);
-      let res = await fbdl(text);
-      let result = res.data, data;
-      try {
-         data = result.find(i => i.resolution === "720p (HD)");
-         m.reply(`Data Found!`);       
-      } catch {
-         m.reply(`HD not found switch to SD`);
-         data = result.find(i => i.resolution === "360p (SD)")
-      }
-      let video = data.url      
+      const { data: result } = await fbdl(text);
+      const video = result.find(vid => vid.resolution === "720p (HD)") || result.find(vid => vid.resolution === "360p (SD)");
       conn.adReply(m.chat, loading, cover, m).then(() => {
-         conn.sendFile(m.chat, video, {
+         conn.sendFile(m.chat, video.url, {
             caption: `𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊`,
             quoted: m
-         });
-      });
+         })
+      })
    },
-   limit: true,
+   limit: 1,
    premium: false
-};
+}
