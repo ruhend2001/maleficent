@@ -12,7 +12,7 @@ module.exports = {
             if (prefix === undefined || prefix === '') {
                return false
             } else if (!(prefix === '')) {
-               return m.reply(`*❗mungkin maksud kamu:*\n ${java} *${prefix+mean}*`)
+               return conn.adReply(m.chat, `*❗mungkin maksud kamu:*\n ${java} *${prefix+mean}*`, cover, m);
             }      
          }
       }

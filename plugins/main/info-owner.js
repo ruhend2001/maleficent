@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Main Menu'],
    tags: ['owner'],
-   command: ['owner', 'pemilik'],
+   command: ['owner', 'pemilik', 'creator'],
    start: async (m, {
       conn
    }) => {
@@ -23,9 +23,7 @@ exports.default = {
                }]
             },
             mentions: mn ? mn : []
-         }, {
-            quoted: quoted
-         })
+         }, { ...conn_bind, quoted: quoted })
       }
       for (let i = 0; i < ownerNumbers.length; i++) {
          const number = ownerNumbers[i].replace("@s.whatsapp.net", "");
@@ -43,3 +41,13 @@ exports.default = {
       }
    }
 };
+/*exports.default = {
+   names: ['Main Menu'],
+   tags: ['owner'],
+   command: ['owner', 'pemilik', 'creator'],
+   start: async (m) => {
+      let owner = `Nih Ka Nomor Owner Ku \nwa.me/${setting.contact} \nSilahkan Chat `
+      m.reply(owner)
+   }
+};
+*/

@@ -13,13 +13,13 @@ exports.default = {
       let count = 0;      
       let caption = '';
       for await (let i of group) {
-         try {
+         try {            
             const accept = await conn.groupMetadata(i);
             if (!accept) continue
-            count += 1;
-         } catch (e) {
-            delete db.chats[i]
-            await Format.sleep(5000)
+            count += 1            
+         } catch {
+            delete db.chats[i]   
+            await Format.sleep(5000)       
          }
       };      
       let teks_gc = `*Total Data Chat ${setting.botName}*\nTotal Group: ${count} group\n\n`            

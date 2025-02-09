@@ -19,6 +19,6 @@ exports.default = {
          })
       })
    },
-   limit: 1,
+   limit: true,
    premium: false
 }
