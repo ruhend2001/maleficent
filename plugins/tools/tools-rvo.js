@@ -7,5 +7,5 @@ exports.default = {
    }) => {
       await conn.viewOnce(m, m.chat)
    },
-   limit: 2
+   limit: false
 };

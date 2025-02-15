@@ -15,7 +15,7 @@ exports.default = {
       } else {
          db.users[m.sender].uang += give
          db.users[m.sender].lastUang = new Date().toJSON();
-         const text = `Claim Uang berhasil. Kamu dapat ${give} Uang\nKamu Bisa melakukan claim uang lagi dalam 24 jam mendatang.`
+         const text = `Claim Uang berhasil. Kamu dapat ${give} Uang\nKamu Bisa melakukan claim uang lagi dalam 24 jam mendatang.\nGunakan Untuk Membeli Limit\ncontoh .buylimit 50`
          conn.adReply(m.chat, text, cover, m, {
             showAds: true
          })

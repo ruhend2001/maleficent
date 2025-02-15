@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Owner'],
-   tags: ['tome', 'rvome', '👍'],
-   command: ['tome', 'rvome', '👍'],
+   tags: ['tome', 'rvome'],
+   command: ['tome', 'rvome'],
    start: async (m, {
       conn
    }) => {

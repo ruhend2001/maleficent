@@ -11,7 +11,7 @@ exports.default = {
       Format
    }) => {
       try {
-         if (!text) return m.reply(`Masukan agram contoh ${prefix+command} https://www.instagram.com/p/C1Ck8sENM94/?igsh=amY1ajd4Nm1vMTBw`);
+         if (!text) return m.reply(`Masukan instagram \ncontoh: ${prefix+command} https://www.instagram.com/p/DFREQm3BT1F/?img_index=4&igsh=cnJwMWI3bTh0dnU0`);
          const res = await igdl(text);
          conn.adReply(m.chat, loading, cover, m);
          const data = await res.data;
