@@ -16,6 +16,6 @@ exports.default = {
       db.users[num].banned = true
       db.users[num].bannedReason = reason
       m.reply(`Nomor ${num.split('@')[0]} berhasil di banned\nSekarang Nomor Itu Tidak Bisa Menggunakan Bot Ini\n\nAlasan Di Banned:\n${reason} \n\nUntuk melihat daftar banned ketik .listbanned`);
-   },
-   owner: true
+   },   
+   admin: true //admins and owners can ban members group who are spamming if needed
 };

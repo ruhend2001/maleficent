@@ -1,5 +1,4 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-process.on('uncaughtException', console.error);
 global.default_db = { 
    users: {}, 
    chats: {}, 
@@ -7,6 +6,14 @@ global.default_db = {
    stores: {}, 
    menfess: {}
 };
+process.on('uncaughtException', (e) => { 
+   const error = String(e)
+   if (error.includes('rate-overlimit')) {
+      return false
+   } else {
+      console.error(e)
+   }
+});
 require('./lib/settings.js');
 require('utils-mf/index.js');
 require('./lib/system.js');

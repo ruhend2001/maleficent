@@ -1,5 +1,5 @@
 exports.default = {
-   names: ['Owner'],
+   names: ['Group Menu'],
    tags: ['mute', 'unmute'],
    command: ['mute', 'unmute'],
    start: async (m, {
@@ -13,5 +13,6 @@ exports.default = {
          m.reply('Berhasil unmute di chat ini');
       }
    },
-   owner: true
+   admin: true,
+   group: true
 };

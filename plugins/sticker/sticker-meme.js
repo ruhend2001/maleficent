@@ -27,7 +27,7 @@ exports.default = {
             author: own
          });
       } else {
-         return m.reply(`Balas Atau Kirim image dengan caption ${prefix + command} text1|text2`)
+         return m.reply(`Balas Atau Kirim Gambar dengan caption ${prefix + command} text1|text2`)
       }
    },
    limit: 2,

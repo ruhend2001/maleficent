@@ -13,5 +13,6 @@ exports.default = {
       };
    },
    group: true,
-   admin: true
+   admin: true,
+   botAdmin: true
 };
