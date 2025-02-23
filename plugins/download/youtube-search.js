@@ -1,4 +1,4 @@
-const { ytsearch } = require('ruhend-scraper');
+const search = require("yt-search");
 exports.default = {
    names: ['Downloader'],
    tags: ['ytsearch'],
@@ -10,31 +10,10 @@ exports.default = {
       command
    }) => {
       if (!text) return m.reply(`Masukan Info Yang Ingin Di Cari\ncontoh ${prefix+command} laila canggung`);
-      let { video, channel } = await ytsearch(text)      
-      let sthumb = "https://qu.ax/OcWmv.jpeg"
-      let teks = [...video, ...
-         channel
-      ].map(v => {
-         switch (v.type) {
-            case 'video':
-               return `
-      🎀 *${v.title}* 
-      🔗 ${v.url}
-      🕒 Duration: ${v.durationH}
-      📅 Uploaded ${v.publishedTime}
-      📈 ${v.view} views`.trim()
-            case 'channel':
-               return `
-      ╭──────━• *CHANNEL*
-      │🎀 *${v.channelName}* 
-      │🔗 *${v.url}*
-      │📛 _${v.subscriberH} Subscriber_
-      │🎥 ${v.videoCount} video
-      ┗──────━•`.trim()
-         }
-      }).filter(v => v).join('\n\n───────────────────\n\n');
+      let caption = '', thumb = "https://qu.ax/OcWmv.jpeg", data = await (await search(text)).all;
+      data.forEach(v => caption += `\n\n⭔ ID : ${v.videoId}\n⭔ Title : ${v.title}\n⭔ Views : ${v.views}\n⭔ Duration : ${v.timestamp}\n⭔ Upload At : ${v.ago}\n⭔ Url : ${v.url}\n─────────────────`);
       conn.adReply(m.chat, loading, cover, m).then(() => {
-         conn.adReply(m.chat, `*Salin link youtube nya*\n*terus ketik .ytmp3 linknya*\n*Kalo Mau videonya ketik .ytmp4 linknya*\n\n${javi} 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐒𝐄𝐀𝐑𝐂𝐇 ${javi} \n\n` + teks.trim(), sthumb, m, {
+         conn.adReply(m.chat, `*${zw} 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐒𝐄𝐀𝐑𝐂𝐇*` + caption, thumb, m, {
             showAds: true
          })
       })

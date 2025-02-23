@@ -81,15 +81,9 @@ selanjutnya pelajari oleh kamu sendiri ikuti plugin yang sudah ada<br>
 
 support termux, vps, panel , panel butut bisa minimal ram 500MB<br>
 
-support rdp atau vps windows atau run di windows 
-
 # support termux
-<br>termux must main directory $HOME <br>
-* if u wanna run in /sdcard. don't move or copy to /sdcard before install node_modules<br>
-* zip after node_modules installed. 
-just google how to zip and copy file in termux <br>
-* make it easy 
-
+<br><br>
+* use yarn to install on termux<br>
 <img src="https://small.fileditchstuff.me/s12/NDEKXREcgEIHqhGXvtd.jpg" alt="Maleficent Bot-Md" width="500"/>
 <br>
 <br>

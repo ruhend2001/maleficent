@@ -8,7 +8,7 @@ exports.default = {
       Format,
       isOwner
    }) => {  
-      m.react('🌀').then(() => m.reply('Obtaining data please wait...'));    
+      m.reply('Obtaining data please wait...');
       let group = Object.keys(db.chats);      
       let count = 0;      
       let caption = '';
@@ -19,7 +19,7 @@ exports.default = {
             count += 1            
          } catch {
             delete db.chats[i]   
-            await Format.sleep(5000)       
+            await Format.sleep(3000)       
          }
       };      
       let teks_gc = `*Total Data Chat ${setting.botName}*\nTotal Group: ${count} group\n\n`            

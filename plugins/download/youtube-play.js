@@ -1,5 +1,5 @@
-const fetch = require('node-fetch');
-const { ytmp3, ytsearch } = require('ruhend-scraper');
+const search = require("yt-search");
+const { ytmp3 } = require('ruhend-scraper');
 exports.default = {
    names: ['Downloader'],
    tags: ['play', 'song', 'lagu'],
@@ -12,33 +12,31 @@ exports.default = {
       Format
    }) => {
       if (!text) return m.reply(`Masukan Lagu Yang Ingin Di Cari\ncontoh ${prefix+command} papinka sana sini aku rindu atau .play linknya https://youtu.be/A5Jj6Ib91zA`);
-      const vid = (await ytsearch(text)).video[0]
-      const { title, description, videoId, durationH, viewH, publishedTime } = vid; 
-      if (!vid) return m.reply('Tidak di temukan, coba untuk membalikkan judul dan author nya');
-      const url = `https://youtu.be/${videoId}`;
-      const thumb = `https://i.ytimg.com/vi/${videoId}/0.jpg`;
-      let play = `🎧 〔 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐏𝐋𝐀𝐘 〕\n`
-      play += ` ${javi} *Data Di Temukan*\n`
-      play += ` ⬡ Judul: ${title}\n`
-      play += ` ⬡ Durasi: ${durationH}\n`
-      play += ` ⬡ Views: ${viewH}\n`
-      play += ` ⬡ Upload: ${publishedTime}\n`
-      play += ` ⬡ Link: ${url}\n\n`
-      play += ` *Loading audio sedang dikirim...*`
-      conn.adReply(m.chat, play, thumb, m);
-      const { audio } = await ytmp3(url);      
-      const pretty = await Format.mp3Play(await (await fetch (audio)).buffer());
-      conn.sendFile(m.chat, pretty, title, m, {
+      let data = await search(text), res = data.all, url = data.videos[0], thumb = url.thumbnail, result = '';
+      result += `🎧 〔 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐏𝐋𝐀𝐘 〕\n`
+      result += `⭔ ID: ${url.videoId}\n`
+      result += `⭔ URL: ${url.url}\n`
+      result += `⭔ Title: ${url.title}\n`
+      result += `⭔ Thumbnail: ${url.thumbnail}\n`
+      result += `⭔ Durasi: ${url.timestamp}\n`
+      result += `⭔ Views: ${url.views.toLocaleString()}\n`
+      result += `⭔ Name Channel: ${url.author.name}\n`
+      result += `⭔ URL Channel: ${url.author.url}\n\n`
+      result += ` *Loading audio sedang dikirim...*`      
+      conn.adReply(m.chat, result, thumb, m);
+      const { audio } = await ytmp3(url.url);      
+      const pretty = await Format.mp3Play(await BUFFER_URL(audio));
+      conn.sendFile(m.chat, pretty, url.title, m, {
          mimetype: 'audio/mp4',
-         fileName: title,
+         fileName: url.title,
          contextInfo: {
             externalAdReply: {
                mediaType: 2,
-               mediaUrl: url,
-               title: title,
+               mediaUrl: url.url,
+               title: url.title,
                body: setting.botName,
-               sourceUrl: url,
-               thumbnail: await (await fetch(thumb)).buffer()
+               sourceUrl: url.title,
+               thumbnail: await BUFFER_URL(thumb)
             }
          }
       })
