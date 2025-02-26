@@ -16,12 +16,16 @@ exports.default = {
       let caption = `*Spotify* \n`
       caption += `Album: ${album}\n`
       caption += `Album Artis: ${album_artist}\n`
-      caption += `Album Nams: ${album_name}\n`
+      caption += `Album Name: ${album_name}\n`
       caption += `Artis: ${artist}\n`
       caption += `Username: ${name}\n\n`
       caption += `Sending File...`
-      conn.adReply(m.chat, caption, cover_url, m);
-      conn.sendFile(m.chat, file_url, '', m);      
+      conn.adReply(m.chat, caption, cover_url, m);   
+      conn.sendFile(m.chat, file_url, '', m, {
+         document: true,
+         fileName: `${album_name} • ${album_artist}~Spotify_Ruhend-MD.mp3`,
+         mimetype: 'audio/mpeg'
+      })  
    },
    limit: 2
 };
