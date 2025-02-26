@@ -26,14 +26,14 @@ exports.default = {
    limit: 2
 };
 async function spotify(url) {
-    const download = await axios.post(`https://spotydown.media/api/download-track`, { 
-        url: url 
-    }).then(a => a.data);
-    const metadata = await axios.post(`https://spotydown.media/api/get-metadata`, { 
+   const download = await axios.post(`https://spotydown.media/api/download-track`, { 
        url: url 
-    }).then(a => a.data.apiResponse.data[0]);   
-    return {
-        metadata,
-        download
-    }
-}
+   }).then(a => a.data);
+   const metadata = await axios.post(`https://spotydown.media/api/get-metadata`, { 
+      url: url 
+   }).then(a => a.data.apiResponse.data[0]);   
+   return {
+       metadata,
+       download
+   }
+};

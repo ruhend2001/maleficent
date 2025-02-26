@@ -1,33 +1,29 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-global.default_db = { 
-   users: {}, 
-   chats: {}, 
-   settings: {}, 
-   stores: {}, 
-   menfess: {}
-};
 process.on('uncaughtException', (e) => { 
-   const error = String(e)
-   if (error.includes('rate-overlimit')) {
-      return false
-   } else {
-      console.error(e)
-   }
+   const error = String(e);
+   if (error.includes('rate-overlimit')) return false
+   else console.error(e);
 });
-require('./lib/settings.js');
-require('utils-mf/index.js');
-require('./lib/system.js');
-require('./lib/src/mongo/mongo-info.js');
 const pino = require('pino');
 const {
    makeInMemoryStore,
    useMultiFileAuthState,
    DisconnectReason
 } = require('@adiwajshing/baileys');
-const { signalGroup } = require('utils-mf');
+const { Format, Connect, signalGroup } = require('utils-mf'); 
+const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' })});
+Object.assign(global, {   
+   default_db: { users: {}, chats: {}, settings: {}, stores: {}, menfess: {} },   
+   setting: require('./config.json'),
+   mess: require('./lib/message.json'),
+   Connect: Connect, Format: Format
+});
+require('./lib/settings.js');
+require('utils-mf/index.js');
+require('./lib/system.js');
+require('./lib/src/mongo/mongo-info.js');
 const { caller } = require('./lib/system.js');
 const startWhatsApp = async () => {
-   const store = makeInMemoryStore({ logger: pino().child({ level: 'silent',  stream: 'store' })});
    const { state, saveCreds } = await useMultiFileAuthState('./sessions');
    const conn = await signalGroup(state, store);
    conn.ev.on('connection.update', (update) => {
