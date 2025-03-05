@@ -12,16 +12,14 @@ exports.default = {
       Format
    }) => {
       if (!text) return m.reply(`Masukan Lagu Yang Ingin Di Cari\ncontoh ${prefix+command} papinka sana sini aku rindu atau .play linknya https://youtu.be/A5Jj6Ib91zA`);
-      let data = await search(text), res = data.all, url = data.videos[0], thumb = url.thumbnail, result = '';
-      result += `🎧 〔 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐏𝐋𝐀𝐘 〕\n`
-      result += `⭔ ID: ${url.videoId}\n`
-      result += `⭔ URL: ${url.url}\n`
-      result += `⭔ Title: ${url.title}\n`
-      result += `⭔ Thumbnail: ${url.thumbnail}\n`
-      result += `⭔ Durasi: ${url.timestamp}\n`
-      result += `⭔ Views: ${url.views.toLocaleString()}\n`
-      result += `⭔ Name Channel: ${url.author.name}\n`
-      result += `⭔ URL Channel: ${url.author.url}\n\n`
+      let data = await search(text), res = data.all, url = data.videos[0], thumb = `https://i.ytimg.com/vi/${url.videoId}/0.jpg`, result = '';
+      result += `🎧 〔 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐏𝐋𝐀𝐘 〕\n`      
+      result += `*⭔ Title:* ${url.title}\n`
+      result += `*⭔ Durasi:* ${url.timestamp}\n`
+      result += `*⭔ Views:* ${url.views.toLocaleString()}\n`
+      result += `*⭔ Name Channel:* ${url.author.name}\n`
+      result += `*⭔ Channel:* ${url.author.url}\n`
+      result += `*⭔ URL Video:* ${url.url}\n\n`
       result += ` *Loading audio sedang dikirim...*`      
       conn.adReply(m.chat, result, thumb, m);
       const { audio } = await ytmp3(url.url);      

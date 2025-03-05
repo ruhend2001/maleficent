@@ -1,4 +1,3 @@
-const axios = require('axios');
 exports.default = {
    names: ['Downloader'],
    tags: ['spotify'],
@@ -7,10 +6,11 @@ exports.default = {
       conn,
       text,
       prefix,
-      command
+      command,
+      Format
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} https://open.spotify.com/track/0X9hepyA3YD1qW2zZbet6V?si=iBA644naR3aKiJ2xSZt2Cw`);      
-      const { metadata, download } = await spotify(text);
+      const { metadata, download } = await Format.Scraper.spotify(text);
       const { album, album_artist, album_name, artist, cover_url, name } = metadata;
       const { file_url } = download;
       let caption = `*Spotify* \n`
@@ -28,16 +28,4 @@ exports.default = {
       })  
    },
    limit: 2
-};
-async function spotify(url) {
-   const download = await axios.post(`https://spotydown.media/api/download-track`, { 
-       url: url 
-   }).then(a => a.data);
-   const metadata = await axios.post(`https://spotydown.media/api/get-metadata`, { 
-      url: url 
-   }).then(a => a.data.apiResponse.data[0]);   
-   return {
-       metadata,
-       download
-   }
 };

@@ -11,25 +11,21 @@ exports.default = {
       quoted,
       Format
    }) => {
-      let pack = setting.botName
-      let own = setting.footer
       if (!/webp/.test(mime) || /image/.test(mime) || m.mtype === 'imageMessage') {
          if (!text) return m.reply(`Balas Atau Kirim image dengan caption ${prefix + command} text1|text2`)                  
          if (!quoted) return
-         let up = text.split('|')[0] ? text.split('|')[0] : '-'
-         let down = text.split('|')[1] ? text.split('|')[1] : '-'
-         let content = await conn.downloadAndSaveMediaMessage(quoted)
-         conn.adReply(m.chat, loading, cover, m);
-         let res = await Format.upload2(content)
-         let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(up)}/${encodeURIComponent(down)}.png?background=${res}`
-         conn.sendImageAsSticker(m.chat, smeme, m, {
-            packname: pack,
-            author: own
-         });
+         const up = text.split('|')[0] ? text.split('|')[0] : ' ‎'
+         const down = text.split('|')[1] ? text.split('|')[1] : ' ‎'
+         const media = await quoted.download();
+         const meme = await Format.smeme(media, up, down);
+         conn.sendImageAsSticker(m.chat, meme, m, {
+            packname: setting.botName,
+            author: setting.footer
+         })
       } else {
          return m.reply(`Balas Atau Kirim Gambar dengan caption ${prefix + command} text1|text2`)
       }
    },
-   limit: 2,
+   limit: true,
    premium: false
 };
