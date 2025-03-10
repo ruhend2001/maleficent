@@ -10,15 +10,13 @@ exports.default = {
       Format
    }) => {
       if (!text) return m.reply(`Kirim perintah ${prefix+command} text\ncontoh: ${prefix+command} ${setting.botName}`);
-      const pack = setting.botName
-      const own = setting.footer
-      const result = await Format.brat(text);
+      const result = await BUFFER_URL(`https://aqul-brat.hf.space/?text=${text}`);
       conn.adReply(m.chat, loading, cover, m).then(() => {            
          conn.sendImageAsSticker(m.chat, result, m, {
-           packname: pack,
-           author: `${own}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
+           packname: setting.botName,
+           author: `${setting.footer}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
          })
       })
    },
-   limit: true
+   limit: 2
 }

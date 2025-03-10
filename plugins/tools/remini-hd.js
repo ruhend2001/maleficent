@@ -13,9 +13,9 @@ exports.default = {
    }) => {
       if (/image/.test(mime) || m.mtype === 'imageMessage') {
          m.react('🕒');
-         let content = await conn.downloadAndSaveMediaMessage(quoted);
+         const content = await conn.downloadAndSaveMediaMessage(quoted);
          conn.adReply(m.chat, loading, cover, m);
-         let data = await Format.HD2(content);         
+         const data = await Format.HD2(content);         
          conn.sendFile(m.chat, data, {
             caption: `${star} Berhasil`,
             quoted: m
@@ -24,7 +24,7 @@ exports.default = {
         return m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
       }
    },
-   limit: 3,
+   limit: 5,
    premium: false,   
    disable: false
 };
