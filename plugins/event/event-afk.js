@@ -1,18 +1,25 @@
+const clockString = (ms) => {
+   const d = isNaN(ms) ? '--' : Math.floor(ms / 86400000)
+   const h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+   const m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+   const s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+   return [`*${d} Hari*`, `*${h} Jam*`, `*${m} Menit*`, `*${s} Detik*`].map(v => v.toString().padStart(2, 0)).join(': ')
+};
 module.exports = {
    start: async (m, {
       conn,
       budy
    }) => {
       if (m.sender) {
-         let timeAfk = db.users[m.sender].afkTime
-         let reasonAfk = db.users[m.sender].afkReason
-         let senderBackAfk = timeAfk === -1;
+         const timeAfk = db.users[m.sender].afkTime
+         const reasonAfk = db.users[m.sender].afkReason
+         const senderBackAfk = timeAfk === -1;
          if (!senderBackAfk && budy) {
             if (m.isBaileys) return;
-            let caption = `*Kamu Berhenti AFK*\n*Setelah:* ${reasonAfk === "" ? "" : `*${reasonAfk}*`}\n*Selama:* ${clockString(new Date() - timeAfk)}`
-            let m_tag = [m.sender]
-            let tags = conn.parseMention(reasonAfk) || [`@${m.sender.split('@')[0]}`];
-            let isTags = m_tag.concat(tags) || m_tag;
+            const caption = `*Kamu Berhenti AFK*\n*Setelah:* ${reasonAfk === "" ? "" : `*${reasonAfk}*`}\n*Selama:*\n${clockString(new Date() - timeAfk)}`
+            const m_tag = [m.sender]
+            const tags = conn.parseMention(reasonAfk) || [`@${m.sender.split('@')[0]}`];
+            const isTags = m_tag.concat(tags) || m_tag;
             conn.adReply(m.chat, caption, cover, m, {
                mentions: isTags
             }).then(() => {
@@ -28,8 +35,8 @@ module.exports = {
          } catch {
             return
          }         
-         let _u = '@' + user.substring(0).split('@')[0];
-         let __u = conn.parseMention(_u);
+         const _u = '@' + user.substring(0).split('@')[0];
+         const __u = conn.parseMention(_u);
          __u.forEach(i => {
             let _timeAfk;
             try {
@@ -37,25 +44,25 @@ module.exports = {
             } catch {
                return
             }
-            let v = (_timeAfk !== -1);
+            const v = (_timeAfk !== -1);
             if (v) {
-               let x = [i];
+               const x = [i];
                x.forEach((z) => {
-                  if (m.isBaileys) return;
-                  let d = db.users[z].afkTime
-                  let e = db.users[z].afkReason;
-                  let caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:* ${clockString(new Date() - d)}`
-                  let tag = [z];
-                  let m_tag = [m.sender];
-                  let tags = conn.parseMention(e) || [`@${m.sender.split('@')[0]}`];
-                  let isTags = m_tag.concat(tag).concat(tags) || m_tag;
+                  if (m.isBaileys) return
+                  const d = db.users[z].afkTime
+                  const e = db.users[z].afkReason;
+                  const caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:*\n${clockString(new Date() - d)}`
+                  const tag = [z];
+                  const m_tag = [m.sender];
+                  const tags = conn.parseMention(e) || [`@${m.sender.split('@')[0]}`];
+                  const isTags = m_tag.concat(tag).concat(tags) || m_tag;
                   conn.adReply(m.chat, caption, cover, m, {
                      mentions: isTags           
                   });
                })
             }
          });
-         let userAfks = conn.parseMention(budy);
+         const userAfks = conn.parseMention(budy);
          userAfks.forEach(i => {
             let _timeAfk;
             try {
@@ -63,18 +70,18 @@ module.exports = {
             } catch {
                return
             }
-            let v = (_timeAfk !== -1);
+            const v = (_timeAfk !== -1);
             if (v) {
-               let x = [i];
+               const x = [i];
                x.forEach((z) => { 
                   if (m.isBaileys) return            
-                  let d = db.users[z].afkTime
-                  let e = db.users[z].afkReason;
-                  let caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:* ${clockString(new Date() - d)}`
-                  let tag = [z];
-                  let m_tag = [m.sender];
-                  let tags = conn.parseMention(e) || [`@${m.sender.split('@')[0]}`];
-                  let isTags = m_tag.concat(tag).concat(tags) || m_tag;
+                  const d = db.users[z].afkTime
+                  const e = db.users[z].afkReason;
+                  const caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:*\n${clockString(new Date() - d)}`
+                  const tag = [z];
+                  const m_tag = [m.sender];
+                  const tags = conn.parseMention(e) || [`@${m.sender.split('@')[0]}`];
+                  const isTags = m_tag.concat(tag).concat(tags) || m_tag;
                   conn.adReply(m.chat, caption, cover, m, {
                      mentions: isTags           
                   });
@@ -83,11 +90,4 @@ module.exports = {
          })
       }
    }
-};
-function clockString(ms) {
-   let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
-   let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
-   let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
-   let toString = [`*${h} Jam*`, `*${m} Menit*`, `*${s} Detik*`].map(v => v.toString().padStart(2, 0)).join(': ')
-   return `${toString}`
 }

@@ -3,8 +3,8 @@ const assert = require('assert');
 const syntaxError = require('syntax-error');
 exports.default = {
    names: ['Owner'],
-   tags: ['simpan'],
-   command: ['sf', 'simpan'],
+   tags: ['simpan', 'addplugin'],
+   command: ['sf', 'simpan', 'addplugin'],
    start: async (m, {
       text,
       prefix,
@@ -27,7 +27,7 @@ exports.default = {
             throw assert.ok(error.length < 1, code + '\n' + error);
          }
          fs.writeFileSync(path, code);
-         m.reply(`Tersimpan di ${path}`);
+         return m.reply(`Tersimpan di ${path}`);
       }
    },
    owner: true

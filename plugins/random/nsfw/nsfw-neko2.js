@@ -1,4 +1,3 @@
-const fetch = require('node-fetch');
 exports.default = {
    names: ['Anime Nsfw'],
    tags: ['neko2'],
@@ -6,7 +5,7 @@ exports.default = {
    start: async (m, {
       conn
    }) => {
-      const data = await (await fetch('https://nekos.life/api/v2/img/waifu')).json();      
+      const data = await JSON_URL('https://nekos.life/api/v2/img/waifu'); 
       const neko2 = data.url
       conn.adReply(m.chat, loading, cover, m);
       conn.sendFile(m.chat, neko2, {

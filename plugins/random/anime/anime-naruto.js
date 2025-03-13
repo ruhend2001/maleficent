@@ -1,4 +1,3 @@
-const fetch = require('node-fetch');
 exports.default = {
    names: ['Anime'],
    tags: ['naruto'],
@@ -6,7 +5,7 @@ exports.default = {
    start: async (m, {
       conn
    }) => {
-      const data = await (await fetch('https://raw.githubusercontent.com/ruhend2001/database/main/random/naruto.json')).json();
+      const data = await JSON_URL('https://raw.githubusercontent.com/ruhend2001/database/main/random/naruto.json');
       const naruto = pickRandom(data);
       conn.adReply(m.chat, loading, cover, m);
       conn.sendFile(m.chat, naruto, {

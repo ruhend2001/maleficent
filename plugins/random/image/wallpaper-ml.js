@@ -1,4 +1,3 @@
-const fetch = require('node-fetch');
 exports.default = {
    names: ['Image'],
    tags: ['walml', 'wallpaperml'],
@@ -6,7 +5,7 @@ exports.default = {
    start: async (m, {
       conn
    }) => {
-      const data = await (await fetch('https://raw.githubusercontent.com/ruhend2001/database/main/random/walml.json')).json();
+      const data = await JSON_URL('https://raw.githubusercontent.com/ruhend2001/database/main/random/walml.json');
       const walml = pickRandom(data);
       conn.adReply(m.chat, loading, cover, m);
       conn.sendFile(m.chat, walml, {

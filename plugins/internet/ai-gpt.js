@@ -11,12 +11,12 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
       m.react('🕒');
-      const data = await JSON_URL('https://api.riskimivan.my.id/api/ai?prompt=' + text);
+      const data = await JSON_URL('https://apizell.web.id/ai/blackbox?prompt='+text);
       conn.adReply(m.chat, loading, cover, m).then(() => {
-         conn.adReply(m.chat, data, cover, m, {
+         conn.adReply(m.chat, data.result.replace(/\*/g, ''), cover, m, {
             showAds: true
-         });
-      });
+         })
+      })
    },
-   limit: 2
+   limit: true
 }
