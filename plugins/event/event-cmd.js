@@ -7,7 +7,7 @@ module.exports = {
    }) => {
       const event = db.users[m.sender].event_cmd
       if (event.pinterest && event.pinterest.status) {
-         if (budy.match(/^\s*1\s*$/)) {
+         if (word(budy, '1')) {
             if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
             const text = event.pinterest.search;
             const images = await Format.Scraper.pinterest(text);      
@@ -18,12 +18,12 @@ module.exports = {
             m.reply(limit_message.replace('%limit', 1)).then(() => {
                db.users[m.sender].limit -= 1
                conn.sendFile(m.chat, pickRandom(images), pinterest.trim(), m);
-            });
-         } else if (budy.match(/^\s*2\s*$/)) {
+            })
+         } else if (word(budy, '2')) {
             return m.reply('OK 👍').then(() => delete event.pinterest);
          }
       } else if (event.gimage && event.gimage.status) {
-         if (budy.match(/^\s*1\s*$/)) {
+         if (word(budy, '1')) {
             if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
             const text = event.gimage.search;
             const res = await googleImage(text);
@@ -36,11 +36,11 @@ module.exports = {
             m.reply(limit_message.replace('%limit', 1)).then(() => {
                db.users[m.sender].limit -= 1
                conn.sendFile(m.chat, image, gimage.trim(), m);
-            });
-         } else if (budy.match(/^\s*2\s*$/)) {
+            })
+         } else if (word(budy, '2')) {
             return m.reply('OK 👍').then(() => delete event.gimage);
          }
-      };
+      }
    }
 };
 async function googleImage(query) {

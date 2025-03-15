@@ -5,14 +5,13 @@ module.exports = {
       command,
       Format
    }) => {
-      const is_mean = await Format.command_plugins();
-      if (command && is_mean && !m.isBaileys) {
-         const mean = await Format.command_mean(command, is_mean);
+      if (command && !m.isBaileys) {
+         const mean = Format.command_mean(command, cmd_plugins);
          if (mean && !(mean === command)) {
             if (prefix === undefined || prefix === '') {
                return false
             } else if (!(prefix === '')) {
-               return conn.adReply(m.chat, `*❗mungkin maksud kamu:*\n ${java} *${prefix+mean}*`, cover, m);
+               return await conn.adReply(m.chat, `*❗mungkin maksud kamu:*\n ${java} *${prefix+mean}*`, cover, m);
             }      
          }
       }

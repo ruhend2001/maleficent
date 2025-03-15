@@ -3,7 +3,7 @@ module.exports = {
       conn,
       budy
    }) => {
-      if (budy.match(/^\s*hadir\s*$/) && db.chats[m.chat].absen) {                   
+      if (word(budy, 'hadir') && db.chats[m.chat].absen) {                   
          if (db.chats[m.chat].absen_user.includes(m.sender)) {
             return m.reply('kamu sudah absen ketik .cekabsen')
          } else if (!(db.chats[m.chat].absen_user.includes(m.sender))) {
