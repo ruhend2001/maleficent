@@ -1,5 +1,5 @@
 const search = require("yt-search");
-const { ytmp3 } = require('ruhend-scraper');
+const savetube = require('../../lib/src/scraper/savetube.js');
 exports.default = {
    names: ['Downloader'],
    tags: ['play', 'song', 'lagu'],
@@ -22,8 +22,8 @@ exports.default = {
       result += `*⭔ URL Video:* ${url.url}\n\n`
       result += ` *Loading audio sedang dikirim...*`      
       conn.adReply(m.chat, result, thumb, m);
-      const { audio } = await ytmp3(url.url);      
-      const pretty = await Format.mp3Play(await BUFFER_URL(audio));
+      const audio = await savetube.download(url.url, 'mp3');
+      const pretty = await Format.mp3Play(await BUFFER_URL(audio.result.download));
       conn.sendFile(m.chat, pretty, url.title, m, {
          mimetype: 'audio/mp4',
          fileName: url.title,

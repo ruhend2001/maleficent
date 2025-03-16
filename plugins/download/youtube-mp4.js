@@ -1,4 +1,4 @@
-const { ytmp4 } = require('ruhend-scraper');
+const savetube = require('../../lib/src/scraper/savetube.js');
 exports.default = {
    names: ['Downloader'],
    tags: ['ytmp4', 'ytmp4doc'],
@@ -10,21 +10,17 @@ exports.default = {
       command
    }) => {
       if (!text) return m.reply(`Masukan Link Youtubenya contoh:\n${prefix+command} https://youtu.be/MvsAesQ-4zA`);
-      const { title, video, author, description, duration, views, quality, upload, thumbnail } = await ytmp4(text);            
+      const video = await savetube.download(text, '720').catch(async () => await savetube.download(text, '1080')).catch(async () => await savetube.download(text, '480')).catch(async () => await savetube.download(text, '360'));
       let caption = `${head("𝐘𝐎𝐔𝐓𝐔𝐁𝐄")} \n`
-      caption += `⭔ *Title:* ${title}\n`
-      caption += `⭔ *Author:* ${author}\n`
-      caption += `⭔ *Description:* ${description}\n`
-      caption += `⭔ *Duration:* ${duration}\n`
-      caption += `⭔ *Views:* ${views}\n`
-      caption += `⭔ *Upload:* ${upload}\n\n`
+      caption += `⭔ *Title:* ${video.result.title}\n`     
+      caption += `⭔ *Duration:* ${video.result.duration}\n\n`
       caption += `*Loading video sedang di kirim*`
-      conn.adReply(m.chat, caption, thumbnail, m, {
+      conn.adReply(m.chat, caption, video.result.thumbnail || cover, m, {
          showAds: true
       }).then(() => {
-         conn.sendFile(m.chat, video, '', m, {
+         conn.sendFile(m.chat, video.result.download, '', m, {
             document: true,
-            fileName: `${title}-${quality}~Ruhend-MD.mp4`,
+            fileName: `${video.result.title}-${video.result.quality || ''}~Ruhend-MD.mp4`,
             mimetype: 'video/mp4'
          })
       })

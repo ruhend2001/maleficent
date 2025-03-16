@@ -1,5 +1,4 @@
-const fetch = require('node-fetch');
-const { ytmp3 } = require('ruhend-scraper');
+const savetube = require('../../lib/src/scraper/savetube.js');
 exports.default = {
    names: ['Downloader'],
    tags: ['ytmp3'],
@@ -12,13 +11,13 @@ exports.default = {
       Format
    }) => {
       if (!text) return m.reply(`Masukan kontolnya! \nContoh: ${prefix+command} https://youtu.be/MvsAesQ-4zA`);
-      m.react("🕗");
-      const { title, audio, thumbnail } = await ytmp3(text);      
-      conn.adReply(m.chat, loading, thumbnail || cover, m);
-      const media = await Format.mp3(await (await fetch (audio)).buffer());   
+      m.react("🕗")
+      const audio = await savetube.download(text, 'mp3');
+      conn.adReply(m.chat, loading, audio.result.thumbnail || cover, m);
+      const media = await Format.mp3(await BUFFER_URL(audio.result.download));   
       conn.sendFile(m.chat, media, '', m, {
          document: true,
-         fileName: `${title}~Ruhend-MD.mp3`,
+         fileName: `${audio.result.title}~Ruhend-MD.mp3`,
          mimetype: 'audio/mpeg'
       })
    },
