@@ -41,14 +41,14 @@ exports.default = {
       if (type === 1) {
          m.react('🐽');
          const all_menu = await Format.Menu(header, middle, pointer, bottom, prefix, top_1);
-         conn.adReply(m.chat, `${info}\n\n${all_menu}`, cover, m, {
+         conn.adReply(m.chat, `${info}\n${all_menu}`, cover, m, {
             showAds: true
          });
          audio();
       } else if (type === 2) {
          m.react('🖕');
          const sub_menu = await Format.Menu(header, middle, pointer, bottom, prefix, top_1);
-         conn.adReply(m.chat, `${info}\n\n${sub_menu}`, cover, m, {
+         conn.adReply(m.chat, `${info}\n${sub_menu}`, cover, m, {
             showAds: true
          });
          audio();
@@ -75,8 +75,16 @@ exports.default = {
                }
             });
          } else if (text || text.toLowerCase() === 'all') {
-            conn.adReply(m.chat, `${info}\n\n${menu}`, cover, m);
-            audio();
+            //conn.adReply(m.chat, `${info}\n${menu}`, cover, m);
+            conn.sendList(m.chat, `${info}\n${menu}`, message, m, {
+               isMedia: true,
+               media: {
+                  image: {
+                     url: cover
+                  }
+               }
+            });
+           // audio();
          }
       }
    }
