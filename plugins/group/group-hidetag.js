@@ -1,15 +1,16 @@
 exports.default = {
    names: ['Group Menu'],
    tags: ['hidetag'],
-   command: ['ht', 'hidetag'],
+   command: ['ht', 'h', 'hidetag'],
    start: async (m, {
       conn,
       text,
+      quoted,
       participants
    }) => {
       let mem = [];
       participants.map(i => mem.push(i.id))
-      await conn.adReply(m.chat, text ? text : '', cover, m, {
+      conn.adReply(m.chat, m?.quoted?.text ? m?.quoted?.text : text ? text : '', cover, m, {
          showAds: true,
          mentions: mem
       })

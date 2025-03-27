@@ -26,6 +26,8 @@ const { caller } = require('./lib/system.js');
 const startWhatsApp = async () => {
    const { state, saveCreds } = await useMultiFileAuthState('./sessions');
    const conn = await signalGroup(state, store);
+   store.bind(conn.ev), caller(conn);
+   conn.ev.on('creds.update', () => saveCreds());
    conn.ev.on('connection.update', (update) => {
       const { connection, lastDisconnect } = update;
       if (connection === 'open') {
@@ -34,11 +36,8 @@ const startWhatsApp = async () => {
          console.log(`🟡 Reconnecting`);
       } else if (connection === 'close') {
          console.log(`🔴 Disconnected`);
-         if (lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut) startWhatsApp();
+         if (lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut) return startWhatsApp();
       }
-   });
-   caller(conn);   
-   store.bind(conn.ev);
-   conn.ev.on('creds.update', saveCreds);
+   })  
 };
 startWhatsApp();

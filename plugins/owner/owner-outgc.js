@@ -10,6 +10,7 @@ exports.default = {
       Format
    }) => {
       if (/outgc|outlistgc/.test(command)) {
+         if (m.isGroup) return m.reply('Gunakan Di Private Chat Saja Agar Lebih Flexibel');
          return await Format.leave_group(m, { conn, prefix, command, text, Format }); 
       } else if (/out|keluar/.test(command)) {
          return m.reply('Bye').then(async () => await conn.groupLeave(m.chat));
