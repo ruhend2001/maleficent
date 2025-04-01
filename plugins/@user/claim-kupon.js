@@ -24,5 +24,5 @@ exports.default = {
          return m.reply(`Kamu sudah melakukan claim kupon sebelumnya. Tunggu ${remainingTime} jam lagi sebelum dapat melakukan claim kupon kembali.`);
       }
    },
-   register: true
+   register: false
 };

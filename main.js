@@ -38,6 +38,6 @@ const startWhatsApp = async () => {
          console.log(`🔴 Disconnected`);
          if (lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut) return startWhatsApp();
       }
-   })  
+   })
 };
 startWhatsApp();

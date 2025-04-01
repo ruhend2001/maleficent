@@ -22,5 +22,5 @@ exports.default = {
          return m.reply(`Kamu sudah melakukan claim dalam 1 jam terakhir. Tunggu ${remainingTime} menit lagi sebelum dapat melakukan claim kembali.\nkamu juga bisa claim uang  ketik .claimuang`);
       }
    },
-   register: true
+   register: false
 };
