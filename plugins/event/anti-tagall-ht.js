@@ -7,7 +7,7 @@ module.exports = {
       if (m.mentionedJid) {             
          const hide = m.mentionedJid.length > 10
          if (hide) {
-            if (isAdmins && isOwner && conn.decodeJid(conn.user.id)) return false
+            if (isAdmins || isOwner) return false
             return m.reply(`Hidetag or Tagall Detected`).then(async () => {      
                return await conn.sendMessage(m.chat, {
                   delete: {

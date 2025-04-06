@@ -11,7 +11,7 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
       m.react('🕐');
-      const data = await Format.gemini(text);
+      const data = await Format.Scraper.gemini(text);
       conn.adReply(m.chat, loading, cover, m).then(() => {
          conn.adReply(m.chat, data, cover, m, {
             showAds: true

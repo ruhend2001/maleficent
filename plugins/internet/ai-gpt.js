@@ -11,7 +11,7 @@ exports.default = {
    }) => {
       if (!text) return m.reply(`contoh ${prefix+command} apa kabar?`);
       m.react('🕒');
-      const data = await JSON_URL('https://apizell.web.id/ai/blackbox?prompt='+text);
+      const data = await JSON_URL('https://apizell.web.id/ai/blackbox?text='+text);
       conn.adReply(m.chat, loading, cover, m).then(() => {
          conn.adReply(m.chat, data.result.replace(/\*/g, ''), cover, m, {
             showAds: true
