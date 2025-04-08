@@ -1,3 +1,4 @@
+const { ttp } = require('../../lib/src/scraper/ttp.js');
 exports.default = {
    names: ['Maker'],
    tags: ['attp', 'ttp'],
@@ -6,19 +7,16 @@ exports.default = {
       conn,
       prefix,
       text,
-      command,
-      Format
+      command
    }) => {
-      let pack = setting.botName
-      let own = setting.footer
       if (!text) return m.reply(`Kirim perintah ${prefix+command} text\ncontoh: ${prefix+command} ${setting.botName}`);
-      let result = await Format.attp(text);
+      const result = await ttp(text);
       conn.adReply(m.chat, loading, cover, m).then(() => {            
-         conn.sendImageAsSticker(m.chat, result, m, {
-           packname: pack,
-           author: `${own}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
+         conn.sendImageAsSticker(m.chat, result.url, m, {
+           packname: setting.botName,
+           author: `${setting.footer}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
          })
       })
    },
    limit: true
-};
+}

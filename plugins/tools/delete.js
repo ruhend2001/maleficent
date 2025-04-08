@@ -5,7 +5,8 @@ exports.default = {
    start: async (m, {
       conn,
    }) => {
-      await conn.removeMessage(m)
+      if (!m.quoted) return m.reply('Balas pesan yang mau di hapus! \n\nreply to the message you want to delete!');		
+      return await conn.removeMessage(m)
    },
    premium: true
 };
