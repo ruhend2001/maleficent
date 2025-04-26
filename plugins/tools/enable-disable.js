@@ -23,6 +23,8 @@ exports.default = {
       caption += v + `autodl / autodown \n`
       caption += v + `autobackup \n`
       caption += v + `antitoxic / toxic \n`
+      caption += v + `antiphoto \n`
+      caption += v + `antibot \n`
       caption += v + `anticall \n`
       caption += v + `autoreadsw / readsw\n`
       caption += v + `autobio / bio\n`
@@ -113,6 +115,30 @@ exports.default = {
             } else if (cmd_off.includes(command)) {
                db.chats[m.chat].antiToxic = false
                m.reply(`Anti Toxic berhasil dimatikan di grup ${groupName}`);
+            }
+         }
+         break
+         case 'antiphoto': {
+            if (!m.isGroup) return m.reply(mess.OnlyGroup);
+            if (!owner_admin) return m.reply(mess.GrupAdmin);
+            if (cmd_on.includes(command)) {
+               db.chats[m.chat].antiPhoto = true
+               m.reply(`Anti Photo berhasil diaktifkan di grup ${groupName}`);
+            } else if (cmd_off.includes(command)) {
+               db.chats[m.chat].antiPhoto = false
+               m.reply(`Anti Photo berhasil dimatikan di grup ${groupName}`);
+            }
+         }
+         break
+         case 'antibot': {
+            if (!m.isGroup) return m.reply(mess.OnlyGroup);
+            if (!owner_admin) return m.reply(mess.GrupAdmin);
+            if (cmd_on.includes(command)) {
+               db.chats[m.chat].antiBot = true
+               m.reply(`Anti Bot berhasil diaktifkan di grup ${groupName}`);
+            } else if (cmd_off.includes(command)) {
+               db.chats[m.chat].antiBot = false
+               m.reply(`Anti Bot berhasil dimatikan di grup ${groupName}`);
             }
          }
          break
