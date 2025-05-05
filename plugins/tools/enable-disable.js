@@ -1,3 +1,4 @@
+const { Restore } = require('../../lib/src/mongo/mongo-info.js');
 exports.default = {
    names: ['Tools'],
    tags: ['on', 'off'],
@@ -72,9 +73,14 @@ exports.default = {
          case 'autobackup': {         
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
-               save.global('global.auto_backup = false', 'global.auto_backup = true');
-               await m.reply('auto backup database berhasil di aktifkan\nrestarting...')
-               reset()
+               const response = await Restore();
+               if (!response) {
+                  return response
+               } else {
+                  save.global('global.auto_backup = false', 'global.auto_backup = true');
+                  await m.reply('auto backup database berhasil di aktifkan\nrestarting...')
+                  reset()
+               }
             } else if (cmd_off.includes(command)) {
                save.global('global.auto_backup = true', 'global.auto_backup = false');
                await m.reply('auto backup database berhasil di matikan\nrestarting...')
