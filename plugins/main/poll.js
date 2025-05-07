@@ -5,11 +5,7 @@ exports.default = {
    start: async (m, {
       conn
    }) => {
-      /**
-       * example simple send poll message
-       * for poll command will be available soon this is just for an example
-       */
-      const poll = ['1', '2', '3']
-      conn.sendPoll(m.chat, 'Ini adalah contoh sendPoll', poll)
+      const poll = ['ya', 'menu', 'tes']
+      conn.sendPoll(m.chat, 'Ini adalah contoh poll', poll, m)
    }
-};
+}

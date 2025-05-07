@@ -2,7 +2,7 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 process.on('uncaughtException', (e) => { 
    const error = String(e);
    if (error.includes('rate-overlimit')) return false
-   else return console.error(e);
+   else console.error(e);
 });
 const pino = require('pino');
 const {

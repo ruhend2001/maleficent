@@ -20,7 +20,7 @@ exports.default = {
          conn.sendImageAsSticker(m.chat, data, m, {
             packname: setting.botName,
             author: setting.footer
-         });
+         })
       } else {
          return m.reply(`Balas Atau Kirim Gambar dengan caption ${prefix + command} text1 | text2`)
       }
