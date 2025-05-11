@@ -19,7 +19,7 @@ exports.default = {
             count += 1            
          } catch {
             delete db.chats[i]   
-            await Format.sleep(3000)       
+            await Format.sleep(4000)       
          }
       };      
       let teks_gc = `*Total Data Chat ${setting.botName}*\nTotal Group: ${count} group\n\n`            
