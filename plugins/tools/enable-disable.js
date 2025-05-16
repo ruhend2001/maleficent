@@ -32,6 +32,7 @@ exports.default = {
       caption += v + `autobio / bio\n`
       caption += v + `antispam / spam\n`
       caption += v + `chat_ai / ai`
+      caption += v + `hd / remini`
       if (!text) return m.reply(caption);
       switch (text.toLowerCase()) {
          case 'welcome': {
@@ -146,6 +147,18 @@ exports.default = {
             } else if (cmd_off.includes(command)) {
                db.chats[m.chat].antiBot = false
                m.reply(`Anti Bot berhasil dimatikan di grup ${groupName}`);
+            }
+         }
+         case 'hd':
+         case 'remini': {
+            if (!m.isGroup) return m.reply(mess.OnlyGroup);
+            if (!isOwner) return m.reply(mess.OnlyOwner);
+            if (cmd_on.includes(command)) {
+               db.chats[m.chat].hd = true
+               m.reply(`HD / Remini berhasil diaktifkan di grup ${groupName}`);
+            } else if (cmd_off.includes(command)) {
+               db.chats[m.chat].hd = false
+               m.reply(`HD / Remini berhasil dimatikan di grup ${groupName}`);
             }
          }
          break
