@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Maker'],
    tags: ['bratvid'],
-   command: ['bratvid', 'bratvideo'],
+   command: ['bratvid', 'bratvideo', 'bratg'],
    start: async (m, {
       conn,
       text,

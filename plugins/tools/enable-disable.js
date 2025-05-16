@@ -7,7 +7,8 @@ exports.default = {
       conn,
       text,
       prefix,      
-      command,      
+      command,
+      Format,   
       isOwner,
       isAdmins,
       isPremium,
@@ -168,6 +169,7 @@ exports.default = {
                m.reply(`auto bio/status berhasil diaktifkan`);
             } else if (cmd_off.includes(command)) {
                db.settings.autobio = false
+               await Format.sleep(3000);
                await conn.updateProfileStatus(' ‎');
                m.reply(`auto bio/status berhasil dimatikan`);
             }

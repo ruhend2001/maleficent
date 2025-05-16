@@ -4,10 +4,11 @@ exports.default = {
    command: ['setppbot', 'setpp'],
    start: async (m, {
       conn,
-      command,
       prefix,
+      command,
       mime,
-      quoted
+      quoted,
+      Format
    }) => {
       if (/image/.test(mime) || m.mtype === 'imageMessage') {
          try {

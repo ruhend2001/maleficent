@@ -22,9 +22,7 @@ exports.default = {
       conn,
       text,
       prefix,
-      command,
-      User,
-      Format
+      command
    }) => {
       //kode kamu or your code
    },
