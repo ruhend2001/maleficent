@@ -4,7 +4,7 @@ module.exports = {
       isAdmins,
       isOwner
    }) => {
-      if (!m.fromMe && !isAdmins && !isOwner && db.chats[m.chat].antiBot && m.isBaileys) {
+      if (!m.fromMe && !isAdmins && !isOwner && db.chats[m.chat]?.antiBot && m.isBaileys) {
          return await m.reply('Maaf Kak Admin Mengaktifkan Anti Bot Lain Dan Kau Akan Segera Di Usir'), await conn.sendMessage(m.chat, {
             delete: {
                remoteJid: m.chat,
