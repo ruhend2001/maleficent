@@ -5,7 +5,7 @@ module.exports = {
       isAdmins,
       isOwner
    }) => {
-      if (!m.fromMe && !isAdmins && !isOwner && db.chats[m.chat].antiPhoto && (m.mtype === 'imageMessage' || /image/.test(mime))) {
+      if (!m.fromMe && !isAdmins && !isOwner && db.chats[m.chat]?.antiPhoto && (m.mtype === 'imageMessage' || /image/.test(mime))) {
          return await m.reply('Maaf Kak Anti Photo Aktif'), await conn.sendMessage(m.chat, {
             delete: {
                remoteJid: m.chat,
