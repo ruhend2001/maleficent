@@ -5,7 +5,7 @@ module.exports = {
       isOwner
    }) => {
       try {
-         if (!isAdmins && !isOwner && Object?.keys(statusMentions)?.length > 1) {
+         if (db.chats[m.chat].tagsw && !isAdmins && !isOwner && Object?.keys(statusMentions)?.length > 1) {
             conn.reply(statusMentions.key.remoteJid, `Terdeteksi Pansos Caper Tag Status Ke Group`, statusMentions)
             conn.sendMessage(m.chat, {
               delete: statusMentions.key

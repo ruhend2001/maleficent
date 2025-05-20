@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Setting Owner'],
-   tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setprefix', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc', 'setadreply', 'settyping_gc', 'settyping_group', 'settyping_pc', 'settyping_private', 'setrecording_gc', 'setrecording_group', 'setrecording_pc', 'setrecording_private', 'setread_gc', 'setread_group', 'setread_pc', 'setread_private'],
-   command: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setprefix', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc', 'setadreply', 'settyping_gc', 'settyping_group', 'settyping_pc', 'settyping_private', 'setrecording_gc', 'setrecording_group', 'setrecording_pc', 'setrecording_private', 'setread_gc', 'setread_group', 'setread_pc', 'setread_private'],
+   tags: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setprefix', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc', 'setadreply', 'settyping_gc', 'settyping_group', 'settyping_pc', 'settyping_private', 'setrecording_gc', 'setrecording_group', 'setrecording_pc', 'setrecording_private', 'setread_gc', 'setread_group', 'setread_pc', 'setread_private', 'setmystery', 'setmisteri'],
+   command: ['set', 'setnamebot', 'setbotname', 'setnameowner', 'setmenu', 'setprefix', 'setnameown', 'setfooter', 'setwm', 'setsosmed', 'setmusic', 'setram', 'ram', 'setlink', 'setgroupmode', 'setgcmode', 'setrespononlygroup', 'setrespononlygc', 'setadreply', 'settyping_gc', 'settyping_group', 'settyping_pc', 'settyping_private', 'setrecording_gc', 'setrecording_group', 'setrecording_pc', 'setrecording_private', 'setread_gc', 'setread_group', 'setread_pc', 'setread_private', 'setmystery', 'setmisteri'],
    start: async (m, {
       text,
       prefix,
@@ -28,7 +28,8 @@ exports.default = {
          caption += '16 .setrecording_gc atau setrecording_group\nUntuk mematikan dan mengaktifkan recording atau merekam di group\n\n'
          caption += '17 .setrecording_pc atau setrecording_private\nUntuk mematikan dan mengaktifkan recording atau merekam di private chat\n\n'
          caption += '18 .setread_gc atau setread_group\nUntuk mematikan dan mengaktifkan read atau membaca chat di group\n\n'
-         caption += '19 .setread_pc atau setread_private\nUntuk mematikan dan mengaktifkan read atau membaca chat di private chat\n'
+         caption += '19 .setread_pc atau setread_private\nUntuk mematikan dan mengaktifkan read atau membaca chat di private chat\n\n'
+         caption += '20 .setmystery atau setmisteri\nUntuk mematikan dan mengaktifkan misteri box\n'
          return m.reply(caption);
       } else if (/setnamebot|setbotname/.test(command)) {
          if (!text) return m.reply(`Masukan Nama Bot nya! \nContoh\n${prefix+command} Maleficent-bot`);         
@@ -92,6 +93,19 @@ exports.default = {
          } else if (text.toLowerCase() == 'off') {
             save.global('global.typing_private = true', 'global.typing_private = false');        
             m.reply(`Typing Private / Mengetik Di Private Chat Berhasil Di Matikan`);            
+         } else {
+            return m.reply(`Masukan parameter yang valid on/off \nContoh\n${prefix+command} on\nAtau\n${prefix+command} off`);                
+         }         
+      } else if (/setmystery|setmisteri/.test(command)) {
+         if (!text) return m.reply(`masukan parameternya contoh \n${prefix+command} on atau off`);
+         if (text.toLowerCase() == 'on') {
+            save.global('global.mystery_box = false', 'global.mystery_box = true');        
+            await m.reply(`Mystery Box Berhasil Di Aktifkan\nRestarting...`);       
+            reset()
+         } else if (text.toLowerCase() == 'off') {
+            save.global('global.mystery_box = true', 'global.mystery_box = false');        
+            await m.reply(`Mystery Box Berhasil Di Matikan\nRestarting...`);  
+            reset()
          } else {
             return m.reply(`Masukan parameter yang valid on/off \nContoh\n${prefix+command} on\nAtau\n${prefix+command} off`);                
          }         

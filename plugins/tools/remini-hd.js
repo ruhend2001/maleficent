@@ -18,7 +18,7 @@ exports.default = {
          conn.adReply(m.chat, loading, cover, m);
          /** 
           * untuk nyalain ketik .on hd
-          * biar ga di spam hd ke enakan dia nantinya
+          * biar ga di spam hd ke enakan dia nantinya udh gratis g tau diri
           * matiin lagi .off hd
           * soalnya kalo koid nih fitur agak susah kalo di spam hd
          **/

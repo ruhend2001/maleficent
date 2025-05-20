@@ -29,10 +29,11 @@ exports.default = {
       caption += v + `antibot \n`
       caption += v + `anticall \n`
       caption += v + `autoreadsw / readsw\n`
-      caption += v + `autobio / bio\n`
-      caption += v + `antispam / spam\n`
-      caption += v + `chat_ai / ai`
-      caption += v + `hd / remini`
+      caption += v + `autobio / bio \n`
+      caption += v + `antispam / spam \n`
+      caption += v + `antitagsw \n`
+      caption += v + `chat_ai / ai \n`
+      caption += v + `hd / remini`      
       if (!text) return m.reply(caption);
       switch (text.toLowerCase()) {
          case 'welcome': {
@@ -149,6 +150,19 @@ exports.default = {
                m.reply(`Anti Bot berhasil dimatikan di grup ${groupName}`);
             }
          }
+         break
+         case 'antitagsw': {
+            if (!m.isGroup) return m.reply(mess.OnlyGroup);
+            if (!owner_admin) return m.reply(mess.GrupAdmin);
+            if (cmd_on.includes(command)) {
+               db.chats[m.chat].tagsw = true
+               m.reply(`Anti Tag SW berhasil diaktifkan di grup ${groupName}`);
+            } else if (cmd_off.includes(command)) {
+               db.chats[m.chat].tagsw = false
+               m.reply(`Anti Tag SW berhasil dimatikan di grup ${groupName}`);
+            }
+         }
+         break
          case 'hd':
          case 'remini': {
             if (!m.isGroup) return m.reply(mess.OnlyGroup);
