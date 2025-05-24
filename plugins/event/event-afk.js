@@ -51,7 +51,7 @@ module.exports = {
                   if (m.isBaileys) return
                   const d = db.users[z].afkTime
                   const e = db.users[z].afkReason;
-                  const caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:*\n${clockString(new Date() - d)}`
+                  const caption = `*Jangan Tag* *@${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:*\n${clockString(new Date() - d)}`
                   const tag = [z];
                   const m_tag = [m.sender];
                   const tags = conn.parseMention(e) || [`@${m.sender.split('@')[0]}`];
@@ -77,7 +77,7 @@ module.exports = {
                   if (m.isBaileys) return            
                   const d = db.users[z].afkTime
                   const e = db.users[z].afkReason;
-                  const caption = `*Jangan Tag @${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:*\n${clockString(new Date() - d)}`
+                  const caption = `*Jangan Tag* *@${z.split('@')[0]}*\n*Dia Sedang Afk*\n*Dengan Alasan:* ${e === "" ? "" : `*${e}*`}\n*Selama:*\n${clockString(new Date() - d)}`
                   const tag = [z];
                   const m_tag = [m.sender];
                   const tags = conn.parseMention(e) || [`@${m.sender.split('@')[0]}`];

@@ -8,22 +8,24 @@ exports.default = {
       Format,
       isOwner
    }) => {  
-      m.reply('Obtaining data please wait...');
+      m.reply('Obtaining data please wait\nMaybe this takes a long time ...');
       let group = Object.keys(db.chats);      
       let count = 0;      
       let caption = '';
       for await (let i of group) {
          try {            
+            if (i === 'community') continue
             const accept = await conn.groupMetadata(i);
             if (!accept) continue
             count += 1            
          } catch {
-            delete db.chats[i]   
-            await Format.sleep(4000)       
+            if (i !== 'community') delete db.chats[i]
+            await Format.sleep(5000)       
          }
       };      
       let teks_gc = `*Total Data Chat ${setting.botName}*\nTotal Group: ${count} group\n\n`            
-      for await (let i of Object.keys(db.chats)) {  
+      for await (let i of Object.keys(db.chats)) {
+         if (i === 'community') continue  
          const data = await conn.groupMetadata(i)    
          const nama = data.subject
          const desc = data.desc || 'No Description'

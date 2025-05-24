@@ -46,7 +46,7 @@ exports.default = {
          return m.reply(`Balas Media Atau Kirim Media Dengan Caption ${prefix}upload atau ${prefix}tourl`);
       }
    },
-   limit: 5,
-   register: true,
+   limit: 3,
+   register: false,
    premium: false
-};
+}
