@@ -1,6 +1,6 @@
 {
   "name": "maemunah",
-  "version": "10.0.17",
+  "version": "10.0.18",
   "description": "Bot WhatsApp Simple Mudah Di Gunakan",
   "main": "index.js",
   "scripts": {
@@ -31,6 +31,6 @@
     "node-webpmux": "3.0.0",
     "ruhend-scraper": "*",
     "syntax-error": "^1.4.0",
-    "utils-mf": "^10.0.17"
+    "utils-mf": "^10.0.18"
   }
 }

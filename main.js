@@ -10,7 +10,7 @@ const {
    useMultiFileAuthState,
    DisconnectReason
 } = require('@adiwajshing/baileys');
-const { Format, Connect, signalGroup } = require('utils-mf'); 
+const { Format, Connect, Signal } = require('utils-mf'); 
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' })});
 Object.assign(global, {   
    default_db: { users: {}, chats: {}, settings: {}, stores: {}, menfess: {} },   
@@ -25,7 +25,7 @@ require('./lib/src/mongo/mongo-info.js');
 const { caller } = require('./lib/system.js');
 const startWhatsApp = async () => {
    const { state, saveCreds } = await useMultiFileAuthState('./sessions');
-   const conn = await signalGroup(state, store);
+   const conn = await Signal(state, store);
    store.bind(conn.ev), caller(conn);
    conn.ev.on('creds.update', () => saveCreds());
    conn.ev.on('connection.update', (update) => {
