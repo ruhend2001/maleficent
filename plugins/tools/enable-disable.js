@@ -33,7 +33,8 @@ exports.default = {
       caption += v + `antispam / spam \n`
       caption += v + `antitagsw \n`
       caption += v + `chat_ai / ai \n`
-      caption += v + `hd / remini`      
+      caption += v + `hd / remini\n` 
+      caption += v + `sholat / autosholat`    
       if (!text) return m.reply(caption);
       switch (text.toLowerCase()) {
          case 'welcome': {
@@ -99,6 +100,18 @@ exports.default = {
             } else if (cmd_off.includes(command)) {
                save.global('global.anticall = true', 'global.anticall = false');
                m.reply('anti call database berhasil di matikan')
+            }
+         }
+         break
+         case 'sholat':
+         case 'autosholat': {         
+            if (!isOwner) return m.reply(mess.OnlyOwner);
+            if (cmd_on.includes(command)) {
+               save.global('global.auto_sholat = false', 'global.auto_sholat = true');
+               m.reply('auto sholat berhasil di aktifkan')
+            } else if (cmd_off.includes(command)) {
+               save.global('global.auto_sholat = true', 'global.auto_sholat = false');
+               m.reply('auto sholat berhasil di matikan')
             }
          }
          break

@@ -2,7 +2,7 @@ module.exports = {
    start: async (m, {
       budy
    }) => {
-      if (budy.match('assalamualaikum') || budy.match('assalamu\'alaikum')) {
+      if (budy.toLowerCase().includes('assalamualaikum') || budy.toLowerCase().includes('assalamu\'alaikum')) {
          return m.reply('Waalaikumsalam')
       }
    }
