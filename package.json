@@ -1,6 +1,6 @@
 {
   "name": "maemunah",
-  "version": "10.0.19",
+  "version": "10.0.20",
   "description": "Bot WhatsApp Simple Mudah Di Gunakan",
   "main": "index.js",
   "scripts": {
@@ -15,8 +15,8 @@
     "whiskeysockets",
     "whatsapp bot md"
   ],
-  "author": "Ruly Henderson",
-  "license": "ISC",
+  "author": "Ruly Henderson Swatabanan",
+  "license": "GNU",
   "dependencies": {
     "@adiwajshing/baileys": "npm:@baileys-md/stable",
     "axios": "^1.3.2",
@@ -31,6 +31,6 @@
     "node-webpmux": "3.0.0",
     "ruhend-scraper": "*",
     "syntax-error": "^1.4.0",
-    "utils-mf": "^10.0.19"
+    "utils-mf": "^10.0.20"
   }
 }
