@@ -86,13 +86,9 @@ support termux, vps, panel , panel butut bisa minimal ram 500MB<br>
 <br>
 <br>
 
-# support yarn
+# support yarn with node 21
 <img src="https://small.fileditchstuff.me/s12/PvybFjPSFPHQExNAGAo.jpg" alt="Maleficent Bot-Md" width="500"/>
 <br>
-
-request fitur, fix, bug atau lain lain <br>
-email ke rulihenderson@gmail.com
-<br> just click or copy
 
 
 # Requirements
