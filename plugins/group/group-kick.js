@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Group Menu'],
    tags: ['kick', 'tendang'],
-   command: ['kick', 'tendang', '-'],
+   command: ['kick', 'tendang', '-', 'dor', 'door'],
    start: async (m, {
       conn,
       mentionUser,

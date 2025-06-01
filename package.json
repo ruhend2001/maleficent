@@ -1,12 +1,22 @@
 {
   "name": "maemunah",
-  "version": "10.0.21",
+  "version": "10.0.22",
   "description": "Bot WhatsApp Simple Mudah Di Gunakan Dan Cepat",
   "main": "index.js",
   "scripts": {
     "start": "node index.js --pairing"
   },
-  "keywords": ["baileys","whatsapp bot","whatsapp-bot","js whatsapp","games wabot","whatsapp bot","simple whatsapp bot","whiskeysockets","whatsapp bot md"],
+  "keywords": [
+    "baileys",
+    "whatsapp bot",
+    "whatsapp-bot",
+    "js whatsapp",
+    "games wabot",
+    "whatsapp bot",
+    "simple whatsapp bot",
+    "whiskeysockets",
+    "whatsapp bot md"
+  ],
   "author": "Ruly Henderson Swatabanan",
   "license": "GNU",
   "dependencies": {
@@ -23,6 +33,6 @@
     "node-webpmux": "3.0.0",
     "ruhend-scraper": "*",
     "syntax-error": "^1.4.0",
-    "utils-mf": "^10.0.21"
+    "utils-mf": "^10.0.22"
   }
 }
