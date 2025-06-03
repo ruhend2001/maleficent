@@ -12,7 +12,7 @@ module.exports = {
          m.sender.startsWith('95') || 
          m.sender.startsWith('94') || 
          m.sender.startsWith('256')) {
-         await conn.updateBlockStatus(m.sender, 'block');
+         conn.updateBlockStatus(m.sender, 'block');
       }
    }
 };

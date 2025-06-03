@@ -15,13 +15,13 @@ exports.default = {
       m.reply(loading);
       let caption = `${head("𝐓𝐈𝐊𝐓𝐎𝐊")} \n`
       caption += `⭔ *Author:* ${author}\n`
-      caption += `⭔ *Username:* ${username}\n`
-      caption += `⭔ *Description:* ${title}\n`
+      caption += `⭔ *Username:* ${username}\n`      
       caption += `⭔ *Published:* ${published}\n`
       caption += `⭔ *Like:* ${like}\n`
       caption += `⭔ *Comment:* ${comment}\n`
       caption += `⭔ *Views:* ${views}\n`
       caption += `⭔ *Bookmark:* ${bookmark}\n`
+      caption += `⭔ *Description:* ${title}\n`
       caption += `${zw} ${namebot}\n ${wm}`
       conn.adReply(m.chat, author, picture, m).then(() => {
          conn.sendFile(m.chat, video, {

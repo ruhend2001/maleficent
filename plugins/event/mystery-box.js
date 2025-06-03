@@ -8,9 +8,9 @@ module.exports = {
          await m.reply('Tunggu Sedang Membuka Kotak');
          // untuk bisa di ganti kostum hadiah nanti menyusul update nya
          const caption = `🎁 *Selamat @${m.sender.split('@')[0]} Kamu Mendapatkan* 🎉\n` +
-            `*+${gift[m.chat].hadiah.limit} Limit* 🎟\n` +
-            `*+${gift[m.chat].hadiah.uang} Uang* 💰\n` +
-            `*Mystery Box Akan Ada Lagi Selanjutnya* ♻`;
+         `*+${gift[m.chat].hadiah.limit} Limit* 🎟\n` +
+         `*+${gift[m.chat].hadiah.uang} Uang* 💰\n` +
+         `*Mystery Box Akan Ada Lagi Selanjutnya* ♻`;
          conn.reply(m.chat, caption, gift[m.chat].msg, {
             contextInfo: {
                mentionedJid: [m.sender]

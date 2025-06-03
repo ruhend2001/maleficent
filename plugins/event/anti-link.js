@@ -18,34 +18,20 @@ module.exports = {
                   if (isBotAdmins) {
                      const url = await conn.groupInviteCode(m.chat);                  
                      if (!budy.includes(url)) {
-                        conn.sendMessage(m.chat, {
-                           delete: {
-                              remoteJid: m.chat,
-                              fromMe: false,
-                              id: m.key.id,
-                              participant: m.sender
-                           }
-                        });
-                        // await Format.sleep(2000);
-                        // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');                  
+                        m.delete(m.key)
+                       // await Format.sleep(2000);
+                       // conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');                  
                      } else if (budy.includes(url)) {
                         return m.reply('Oh Ternyata Link Group Ini Hampir Ajh Aku Delete and Kick');
                      } 
                   }
-               });            
+               })    
             } else if (m.msg?.contextInfo?.externalAdReply?.sourceUrl.match('https://chat.whatsapp.com') && !m.fromMe) {
-               conn.sendMessage(m.chat, {
-                  delete: {
-                     remoteJid: m.chat,
-                     fromMe: false,
-                     id: m.key.id,
-                     participant: m.sender
-                  }
-               });
+               return m.delete(m.key)
             }
          } 
       } catch {
          return false
       }
    }
-};
+}
