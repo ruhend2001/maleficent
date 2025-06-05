@@ -13,6 +13,7 @@ exports.default = {
       caption += `Auto Status Bio: ${db.settings.autobio ? Y : T}\n`
       caption += `Auto Read Story: ${db.settings.readsw ? Y : T}\n`      
       caption += `Anti Call: ${global.anticall ? Y : T}\n`
+      caption += `Auto Block PC: ${db.settings.auto_block_pc ? Y : T}\n`
       caption += `Group Mode: ${global.group_mode ? Y : T}\n`
       caption += `Mess Group Only: ${global.group_only_message ? Y : T}\n`
       caption += `AdReply: ${global.adReply ? Y : T}\n`
