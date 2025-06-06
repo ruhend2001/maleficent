@@ -11,13 +11,15 @@ const {
    DisconnectReason
 } = require('@adiwajshing/baileys');
 const { Format, Connect, Signal } = require('utils-mf'); 
-const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' })});
 Object.assign(global, {   
    default_db: { users: {}, chats: {}, settings: {}, stores: {}, menfess: {} },   
    setting: require('./config.json'),
    mess: require('./lib/message.json'),
    Connect: Connect, Format: Format
 });
+const path = './sessions/baileys-store.json';
+const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' })});
+store.readFromFile(path), setInterval(() => store.writeToFile(path), 120_000);
 require('./lib/settings.js');
 require('utils-mf/index.js');
 require('./lib/system.js');
