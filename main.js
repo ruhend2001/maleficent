@@ -20,7 +20,6 @@ Object.assign(global, {
    mess: require('./lib/message.json'),
    Connect: Connect, Format: Format
 });
-const path = './sessions/baileys-store.json';
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' })});      
 require('./lib/settings.js');
 require('utils-mf/index.js');

@@ -17,7 +17,7 @@
     "whiskeysockets",
     "whatsapp bot md"
   ],
-  "author": "Ruly Henderson Swatabanan",
+  "author": "Ruhend Swatabanan",
   "license": "GNU",
   "dependencies": {
     "@adiwajshing/baileys": "npm:whatsapp-scraper",    
