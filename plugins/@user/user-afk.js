@@ -7,7 +7,7 @@ exports.default = {
       conn
    }) => {
       const reason = text ? text : 'Ngewe'     
-      const caption = `*Kamu Sekarang AFK Dengan Alasan: ${reason}*`
+      const caption = `*Kamu Sekarang AFK Dengan Alasan:* *${reason}*`
       const tag = [m.sender]
       const tags = conn.parseMention(text) || [`@${m.sender.split('@')[0]}`];
       const isTags = tag.concat(tags) || tag;      

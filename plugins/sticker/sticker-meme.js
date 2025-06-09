@@ -19,7 +19,7 @@ exports.default = {
          const data = await BUFFER_URL(`https://api.memegen.link/images/custom/${encodeURIComponent(up ? up : '')}/${encodeURIComponent(down ? down : '')}.png?background=${media}`);
          conn.sendImageAsSticker(m.chat, data, m, {
             packname: setting.botName,
-            author: setting.footer
+            author: `${setting.footer === '' ? '© Ruhend' : setting.footer}\ncreated: \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
          })
       } else {
          return m.reply(`Balas Atau Kirim Gambar dengan caption ${prefix + command} text1 | text2`)

@@ -9,15 +9,15 @@ exports.default = {
       mime,
       quoted
    }) => {
-      let pack = setting.botName;
-      let own = setting.footer;
-      if (/image|video/.test(mime) || m.mtype === 'imageMessage' || m.mtype === 'videoMessage') {
-         let buffer = await quoted.download();
+      const pack = setting.botName;
+      const own = setting.footer;
+      if (/webp|image|video/.test(mime) || m.mtype === 'imageMessage' || m.mtype === 'videoMessage') {
+         const buffer = await quoted.download();
          conn.adReply(m.chat, loading, cover, m);
          conn.sendImageAsSticker(m.chat, buffer, m, {
             packname: pack,
-            author: `${own}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
-         });
+            author: `${own === '' ? '© Ruhend' : own}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
+         })
       } else {
          return m.reply(`Kirim gambar atau video dengan caption ${prefix + command} atau balas gambar yang sudah dikirim`);
       }

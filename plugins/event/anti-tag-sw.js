@@ -8,7 +8,7 @@ module.exports = {
    }) => {
       try {
          if (!isAdmins && !isOwner && Object?.keys(statusMentions)?.length > 1 && db.chats[statusMentions?.key?.remoteJid]?.tagsw) {
-            conn.reply(statusMentions.key.remoteJid, `*Terdeteksi Pansos Caper Tag Status Ke Group*\n*Silahkan Klik Laporkan dan Blokir Orang Ini*\n*@${statusMentions.key.participant.split("@")[0]}*\n*Agar Status Sampahnya Dia Tidak Muncul Di Menu Status Pembaruan Kalian*`, statusMentions, { contextInfo: { mentionedJid: [statusMentions.key.participant] }});           
+            conn.reply(statusMentions.key.remoteJid, `*Terdeteksi Pansos Caper Tag Status Ke Group Atau Ngemis Penonton*\n*Silahkan Klik Laporkan dan Blokir Orang Ini*\n*@${statusMentions.key.participant.split("@")[0]}*\n*Agar Status Gak Guna atau Sampahnya Dia Tidak Muncul Di Menu Status Pembaruan Kalian*`, statusMentions, { contextInfo: { mentionedJid: [statusMentions.key.participant] }});           
             if (isBotAdmins) {
                conn.sendMessage(m.chat, {
                   delete: statusMentions.key
