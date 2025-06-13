@@ -5,10 +5,10 @@ exports.default = {
    start: async (m, {
       conn
    }) => {
-      let give = 30;
-      let currentTime = new Date().getTime();
-      let lastClaim = new Date(db.users[m.sender].lastClaim).getTime();
-      let timeDiff = Math.floor((currentTime - lastClaim) / (1000 * 60 * 60));
+      const give = 15
+      const currentTime = new Date().getTime();
+      const lastClaim = new Date(db.users[m.sender].lastClaim).getTime();
+      const timeDiff = Math.floor((currentTime - lastClaim) / (1000 * 60 * 60));
       let remainingTime;
       if (timeDiff < 24) {
          remainingTime = 24 - timeDiff

@@ -9,5 +9,3 @@ exports.default = {
       conn.sendCopy(m.chat, 'Silahkan Copy ', 'Salin', 'tes salin', cover , m)   
    }
 }
-
-

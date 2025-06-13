@@ -1,10 +1,10 @@
-
 ## Maleficent Bot
 
 <p align="center">
 <img src="https://files.catbox.moe/ku30iz.jpeg" alt="Maleficent Bot-Md" width="500"/><br>
 
-
+this script will be continuously update to ensure it remains optimized<br>
+script ini akan terus di update ya untuk memastikan tetap optimal<br>
 if you wanna use input number to get pairing code use npm start<br>
 or node index.js --pairing<br><br>
 If you want to get the paring, setting code directly in the botNumber section first<br>

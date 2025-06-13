@@ -4,11 +4,12 @@ exports.default = {
    command: ['totalgroup', 'totalgc', 'listpc', 'listgc'],
    start: async (m, {
       conn,
+      text,
       store,
       Format,
       isOwner
    }) => {  
-      m.reply('Obtaining data please wait\nMaybe this takes a long time ...');
+      m.reply(`Obtaining data please wait \n${text.includes('--desc') ? '' : 'use --desc to see description (optional)'}\nMaybe this takes a long time ...`);
       let group = Object.keys(db.chats);      
       let count = 0;      
       let caption = '';
@@ -29,7 +30,7 @@ exports.default = {
          const data = await conn.groupMetadata(i)    
          const nama = data.subject
          const desc = data.desc || 'No Description'
-         teks_gc += `*ID:* ${i}\n*Name:* ${nama}\n${isOwner ? `*Description:* ${desc}` : ''}\n\n`         
+         teks_gc += `*ID:* ${i}\n*Name:* ${nama}\n${text.includes('--desc') && isOwner ? `*Description:* ${desc}` : ''}\n\n`         
       };
       const pc = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
       let teks_pc = `*List Personal Chat*\nTotal Chat : ${pc.length} Chat\n\n`
