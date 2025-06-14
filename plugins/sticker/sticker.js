@@ -16,7 +16,7 @@ exports.default = {
          conn.adReply(m.chat, loading, cover, m);
          conn.sendImageAsSticker(m.chat, buffer, m, {
             packname: pack,
-            author: `${own === '' ? '© Ruhend' : own}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
+            author: `${own === '' ? sticker_wm : own}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
          })
       } else {
          return m.reply(`Kirim gambar atau video dengan caption ${prefix + command} atau balas gambar yang sudah dikirim`);

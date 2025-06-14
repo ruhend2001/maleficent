@@ -17,7 +17,7 @@ exports.default = {
          conn.adReply(m.chat, loading, cover, m);
          conn.sendImageAsSticker(m.chat, buffer, m, {
             packname: pack,
-            author: own === undefined ? '© Ruhend' : own + '\n© Ruhend' //u can change yours 
+            author: own === undefined ? sticker_wm : own + '\n© Ruhend' //u can change yours 
          });
       } else {
          return m.reply(`Balas stiker dengan caption ${prefix + command}\ngunakan | sebagai pemisahan (optional)`);

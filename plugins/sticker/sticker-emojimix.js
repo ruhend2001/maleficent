@@ -20,7 +20,7 @@ exports.default = {
       conn.adReply(m.chat, loading, cover, m).then(() => {
          conn.sendImageAsSticker(m.chat, emix, m, {
             packname: pack,
-            author: `${setting.footer === '' ? '© Ruhend' : setting.footer}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
+            author: `${setting.footer === '' ? sticker_wm : setting.footer}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
          });      
       })
    },
