@@ -17,7 +17,7 @@ const { Format, Connect, Signal } = require('utils-mf');
 Object.assign(global, {   
    default_db: { users: {}, chats: {}, settings: {}, stores: {}, menfess: {}, contacts: {} },   
    setting: require('./config.json'),
-   mess: require('./lib/message.json'),
+   mess: require('./lib/message.js'),
    Connect: Connect, Format: Format
 });
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' })});      
@@ -38,7 +38,7 @@ const startWhatsApp = async () => {
          console.log(`🟡 Reconnecting`);
       } else if (connection === 'close') {
          console.log(`🔴 Disconnected`);
-         return startWhatsApp();
+         startWhatsApp();
       }
    })
 };
