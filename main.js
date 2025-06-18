@@ -28,8 +28,9 @@ require('./lib/src/mongo/mongo-info.js');
 const { caller } = require('./lib/system.js');
 const startWhatsApp = async () => {
    const { state, saveCreds } = await useMultiFileAuthState('./sessions');
-   const conn = await Signal(state, store); caller(conn);
-   conn.ev.on('creds.update', () => saveCreds());   
+   const conn = await Signal(state, store); 
+   store.bind(conn.ev); caller(conn);
+   conn.ev.on('creds.update', () => saveCreds());
    conn.ev.on('connection.update', (update) => {
       const { connection, lastDisconnect } = update;
       if (connection === 'open') {

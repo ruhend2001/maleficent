@@ -7,9 +7,8 @@ exports.default = {
       conn
    }) => {
       const reason = text ? text : 'Ngewe'     
-      const caption = `*Kamu Sekarang AFK Dengan Alasan:* *${reason}*`
-      const tag = [m.sender]
-      const tags = conn.parseMention(text) || [`@${m.sender.split('@')[0]}`];
+      const caption = `*Kamu Sekarang AFK Dengan Alasan: ${reason}*`;
+      const tag = [m.sender], tags = conn.parseMention(text) || [`@${m.sender.split('@')[0]}`];
       const isTags = tag.concat(tags) || tag;      
       conn.adReply(m.chat, caption, cover, m, {
          mentions: isTags,
