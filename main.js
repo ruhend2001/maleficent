@@ -39,7 +39,7 @@ const startWhatsApp = async () => {
          console.log(`🟡 Reconnecting`);
       } else if (connection === 'close') {
          console.log(`🔴 Disconnected`);
-         startWhatsApp();
+         return startWhatsApp();
       }
    })
 };
