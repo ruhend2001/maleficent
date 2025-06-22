@@ -21,7 +21,7 @@ exports.default = {
       };
       if (Object.keys(contacts).length === 0) {
          try {
-            const data = fs.readFileSync('./lib/contacts.json', 'utf8');
+            const data = await fs.promises.readFile('./lib/contacts.json', 'utf8');
             contacts = JSON.parse(data);
          } catch (e) {
             console.error('Error reading contacts.json:', e);
@@ -30,7 +30,7 @@ exports.default = {
       };
       const contactKeys = Object.keys(contacts);
       if (contactKeys.length === 0) throw 'Tidak ada kontak yang ditemukan, tidak bisa mengirim status!';
-      const statusJidList = contactKeys;      
+      const statusJidList = contactKeys.map(v => `${v}@s.whatsapp.net`);
       if (/image|video|audio/.test(mime)) {
          const media = await quoted.download();
          if (/audio/.test(mime)) {

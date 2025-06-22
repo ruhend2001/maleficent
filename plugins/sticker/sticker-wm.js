@@ -12,7 +12,7 @@ exports.default = {
    }) => {
       const pack = text.split('|')[0] ? text.split('|')[0] : undefined
       const own = text.split('|')[1] ? text.split('|')[1] : undefined
-      if (/webp|image/.test(mime) || m.mtype === 'stickerMessage' || m.mtype === 'imageMessage') {
+      if (/webp|image|video/.test(mime) || m.mtype === 'stickerMessage' || m.mtype === 'imageMessage') {
          const buffer = await quoted.download();
          conn.adReply(m.chat, loading, cover, m);
          conn.sendImageAsSticker(m.chat, buffer, m, {
