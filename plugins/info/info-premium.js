@@ -22,5 +22,6 @@ exports.default = {
       text += `Total : ${premiumUsers.length}\n`;
       text += `User: ${premiumList ? '\n' + premiumList : ''}`;
       conn.adReply(m.chat, text, cover, m);
-   }
+   },
+   owner: true
 };

@@ -18,10 +18,9 @@ exports.default = {
          m.react('🕒');
          const media = await conn.download(quoted);
          const tmp = await Format.upload4(media);    
-         const url = 'https://flowfalcon.dpdns.org/imagecreator/remini?url=' + tmp;
+         const image = `https://fastrestapis.fasturl.link/aiimage/upscale?imageUrl=${tmp}&resize=4`;
          conn.adReply(m.chat, loading, cover, m);
-         const data = await JSON_URL(url);
-         conn.sendFile(m.chat, await toBuffer(data.result), `${star} Berhasil`, m);         
+         conn.sendFile(m.chat, await toBuffer(image), `${star} Berhasil`, m);         
       } else {
         return m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
       }
