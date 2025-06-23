@@ -4,7 +4,7 @@ process.on('uncaughtException', (e) => {
    if (error.includes('rate-overlimit')) {
       return false   
    } else if (error.includes('internal-server-error')) {
-      return false  
+      return false
    } else console.error(e);
 });
 const pino = require('pino');

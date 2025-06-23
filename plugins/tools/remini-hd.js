@@ -18,7 +18,7 @@ exports.default = {
          m.react('🕒');
          const media = await conn.download(quoted);
          const tmp = await Format.upload4(media);    
-         const image = `https://fastrestapis.fasturl.link/aiimage/upscale?imageUrl=${tmp}&resize=4`;
+         const image = `https://fastrestapis.fasturl.link/aiimage/upscale?imageUrl=${tmp}&resize=2`;
          conn.adReply(m.chat, loading, cover, m);
          conn.sendFile(m.chat, await toBuffer(image), `${star} Berhasil`, m);         
       } else {
