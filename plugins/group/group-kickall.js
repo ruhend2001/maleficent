@@ -1,10 +1,11 @@
 exports.default = {
    names: ['Group Menu'],
-   tags: ['kickall'],
-   command: ['kickall'],
+   tags: ['kickall', 'ttes'],
+   command: ['kickall', 'ttes'],
    start: async (m, {
       conn,
       Format,
+      isAdmins,
       participants
    }) => {
       const member = participants.map(a => a.id);
