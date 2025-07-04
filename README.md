@@ -66,7 +66,6 @@ module.exports = {
    start: async (m, {
       conn,
       budy,
-      User,
       Format
    }) => {
        //your kode or kode kamu
@@ -86,7 +85,7 @@ support termux, vps, panel , panel butut bisa minimal ram 500MB<br>
 <br>
 <br>
 
-# support yarn with node 21
+# support with node 18
 <img src="https://small.fileditchstuff.me/s12/PvybFjPSFPHQExNAGAo.jpg" alt="Maleficent Bot-Md" width="500"/>
 <br>
 

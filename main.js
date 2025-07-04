@@ -14,12 +14,8 @@ const {
    DisconnectReason
 } = require('@adiwajshing/baileys');
 const { Format, Connect, Signal } = require('utils-mf'); 
-Object.assign(global, {   
-   default_db: { users: {}, chats: {}, settings: {}, stores: {}, menfess: {}, contacts: {} },   
-   setting: require('./config.json'),
-   mess: require('./lib/message.js'),
-   Connect: Connect, Format: Format
-});
+Object.assign(global, { default_db: { users: {}, chats: {}, settings: {}, stores: {}, menfess: {}, contacts: {} }, setting: require('./config.json'), mess: require('./lib/message.js'), Connect: Connect, Format: Format, moment: require("moment-timezone") });
+moment.tz.setDefault("Asia/Jakarta").locale("id");
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' })});      
 require('./lib/settings.js');
 require('utils-mf/index.js');

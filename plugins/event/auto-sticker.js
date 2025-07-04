@@ -4,18 +4,19 @@ module.exports = {
       quoted,
       command
    }) => {
-      if (autodl && m.mtype === 'imageMessage') {
+      if (db.settings?.auto_sticker && m.mtype === 'imageMessage') {
          const ignore = ['remini', 'hd', 'sticker', 's', 'stiker', 'smeme'];
          if (ignore.includes(command) && !m.fromMe) return m.react('❎');
          if (!m.fromMe && db.users[m.sender].limit < 0) return m.reply(mess.limit);
          m.react('🐽');
-         const buffer = await quoted.download();
-         conn.sendImageAsSticker(m.chat, buffer, m, {
+         conn.sendImageAsSticker(m.chat, await quoted.download(), m, {
             packname: setting.botName,
-            author: setting.footer
+            author: `${setting.footer === '' ? sticker_wm : setting.footer}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
          }).then(() => {
-            db.users[m.sender].limit -= 2
-            m.reply(limit_message.replace('%limit', 2))
+            if (!m.fromMe) {
+               db.users[m.sender].limit -= 2
+               m.reply(limit_message.replace('%limit', 2))
+            }
          })
       }
    }

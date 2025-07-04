@@ -30,6 +30,7 @@ exports.default = {
       caption += v + `anticall \n`
       caption += v + `autoreadsw / readsw\n`
       caption += v + `autobio / bio \n`
+      caption += v + `autosticker / sticker\n`
       caption += v + `antispam / spam \n`
       caption += v + `antitagsw \n`
       caption += v + `chat_ai / ai \n`
@@ -133,11 +134,24 @@ exports.default = {
          case 'autodown': {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
-               save.global('global.autodl = false', 'global.autodl = true');
+               db.settings.auto_down = true
                m.reply(`auto download berhasil diaktifkan`);               
             } else if (cmd_off.includes(command)) {
-               save.global('global.autodl = true', 'global.autodl = false');
+               db.settings.auto_down = false
                m.reply(`auto download berhasil matikan`);
+            }
+         }
+         break
+         case 'autosticker':
+         case 'sticker':
+         case 'stiker': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
+            if (cmd_on.includes(command)) {
+               db.settings.auto_sticker = true
+               m.reply(`auto sticker berhasil diaktifkan\nsekarang kamu dapat membuat stiker hanya dengan mengirim foto`);               
+            } else if (cmd_off.includes(command)) {
+               db.settings.auto_sticker = false
+               m.reply(`auto sticker berhasil matikan`);
             }
          }
          break
