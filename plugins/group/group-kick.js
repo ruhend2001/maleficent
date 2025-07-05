@@ -3,16 +3,20 @@ exports.default = {
    tags: ['kick', 'tendang'],
    command: ['kick', 'tendang', '-', 'dor', 'door'],
    start: async (m, {
-      conn,
-      mentionUser,
-      mentionByReply
+      conn, 
+      text
    }) => {
-      if (mentionUser.length !== 0 || mentionByReply) {
-         await conn.groupParticipantsUpdate(m.chat, [mentionUser[0]], "remove");
-         m.reply(`Berhasil Menghapus ${mentionUser} Dari Grup Ini`)
-      };
+      if (m?.quoted) {
+         await conn.groupParticipantsUpdate(m.chat, [m.quoted.sender], "remove");
+         return m.reply(`Berhasil Menghapus @${m.quoted.sender.split("@")[0]} Dari Grup Ini`, { mentions: [m.quoted.sender] });
+      } else if (text) {
+         const user = conn.parseMention(text);
+         await conn.groupParticipantsUpdate(m.chat, [...user], "remove");
+         return m.reply(`Berhasil Menghapus @${user[0].split("@")[0]} Dari Grup Ini`, { mentions: [...user] });
+      } else {
+         return m.reply(`Tag atau Balas Orangnya Yang Mau Di Keluarkan`);
+      }
    },
    group: true,
-   admin: true,
-   botAdmin: true
+   admin: true
 };

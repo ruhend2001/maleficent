@@ -3,14 +3,18 @@ exports.default = {
    tags: ['jadiadmin', 'promote'],
    command: ['jadiadmin', 'promote'],
    start: async (m, {
-      conn,
-      mentionUser
+      conn, 
+      text
    }) => {
-      if (mentionUser.length !== 0) {
-         await conn.groupParticipantsUpdate(m.chat, [mentionUser[0]], "promote");
-         m.reply(`Sekarang ${mentionUser} Jadi Admin`)
+      if (m?.quoted) {
+         await conn.groupParticipantsUpdate(m.chat, [m.quoted.sender], "promote");
+         return m.reply(`Sekarang @${m.quoted.sender.split("@")[0]} Jadi Admin`, { mentions: [m.quoted.sender] });
+      } else if (text) {
+         const user = conn.parseMention(text);
+         await conn.groupParticipantsUpdate(m.chat, [...user], "promote");
+         return m.reply(`Sekarang @${user[0].split("@")[0]} Jadi Admin`, { mentions: [...user] });
       } else {
-         return m.reply(`Tag Yang Mau Di Promote`)
+         return m.reply(`Tag atau Balas Orangnya Yang Mau Di Promote`)
       }
    },
    group: true,
