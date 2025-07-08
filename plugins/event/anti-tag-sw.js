@@ -4,7 +4,7 @@ module.exports = {
       Format
    }) => {
       try {
-         if (Object?.keys(statusMentions)?.length > 1 && db.chats[statusMentions?.key?.remoteJid]?.tagsw) {
+         if (Object?.keys(statusMentions)?.length > 1 && db.chats[statusMentions?.key?.remoteJid]?.tagsw && !db.chats[statusMentions?.key?.remoteJid].mute) {
             const participants = (await conn.groupMetadata(statusMentions.key.remoteJid)).participants;
             const groupAdmins = participants?.filter(v => v.admin !== null).map(v => v.id);
             const isAdmins = groupAdmins?.includes(statusMentions.key.participant);
@@ -13,6 +13,7 @@ module.exports = {
             if (isOwner) return console.log('Owner sending status mentions');
             if (isAdmins) return console.log('Admin sending status mentions');
             conn.reply(statusMentions.key.remoteJid, `*Terdeteksi Pansos Caper Tag Status Ke Group Atau Ngemis Penonton*\n*Silahkan Klik Laporkan dan Blokir Orang Ini*\n*@${statusMentions.key.participant.split("@")[0]}*\n*Agar Status Gak Guna atau Sampahnya Dia Tidak Muncul Di Menu Status Pembaruan Kalian*`, statusMentions, { contextInfo: { mentionedJid: [statusMentions.key.participant] }});           
+            await Format.sleep(3000);
             if (isBotAdmins) {
                conn.sendMessage(m.chat, {
                   delete: statusMentions.key
