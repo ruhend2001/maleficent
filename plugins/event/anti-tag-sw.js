@@ -13,7 +13,7 @@ module.exports = {
             if (isAdmins) return console.log('Admin sending status mentions');                        
             conn.reply(statusMentions.key.remoteJid, `*Terdeteksi Pansos Caper Tag Status Ke Group Atau Ngemis Penonton*\n*Silahkan Klik Laporkan dan Blokir Orang Ini*\n*@${statusMentions.key.participant.split("@")[0]}*\n*Agar Status Gak Guna atau Sampahnya Dia Tidak Muncul Di Menu Status Pembaruan Kalian*`, statusMentions, { contextInfo: { mentionedJid: [statusMentions.key.participant] }});
             if (isBotAdmins) {
-               conn.sendMessage(m.chat, {
+               conn.sendMessage(statusMentions.key.remoteJid, {
                   delete: statusMentions.key
                }), conn.groupParticipantsUpdate(statusMentions.key.remoteJid, [statusMentions.key.participant], 'remove');               
             }         
