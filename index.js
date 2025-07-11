@@ -1,8 +1,8 @@
 console.log('🕒 Starting Maleficent . . .');
-const path = require('path');
+const { join } = require('path');
 const { spawn } = require('child_process');
 const start = () => {
-    const p = spawn(process.argv[0], [path.join(__dirname, 'main.js'), ...process.argv.slice(2)], {
+    const p = spawn(process.argv[0], [join(__dirname, 'main.js'), ...process.argv.slice(2)], {
             stdio: ['inherit', 'inherit', 'inherit', 'ipc']
         })
         .on('message', data => {

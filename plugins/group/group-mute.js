@@ -28,5 +28,5 @@ exports.default = {
          m.reply('Berhasil unmute semua group');
       }
    },
-   admin: true
+   owner: true
 };

@@ -5,7 +5,7 @@ exports.default = {
    start: async (m, {
       conn
    }) => {
-      const give = 20
+      const give = 25
       const currentTime = new Date().getTime();
       const lastClaim = new Date(db.users[m.sender].lastClaim).getTime();
       const timeDiff = Math.floor((currentTime - lastClaim) / (1000 * 60 * 60));

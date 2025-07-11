@@ -5,10 +5,10 @@ exports.default = {
    start: async (m, {
       conn
    }) => {
-      let hourly = 15;
-      let currentTime = new Date().getTime();
-      let lastHourTime = new Date(db.users[m.sender].lastHour).getTime();
-      let timeDiff = Math.floor((currentTime - lastHourTime) / (1000 * 60 * 60));
+      const hourly = 10
+      const currentTime = new Date().getTime();
+      const lastHourTime = new Date(db.users[m.sender].lastHour).getTime();
+      const timeDiff = Math.floor((currentTime - lastHourTime) / (1000 * 60 * 60));
       let remainingTime;
       if (timeDiff < 1) {
          remainingTime = 60 - (Math.floor((currentTime - lastHourTime) / (1000 * 60)) % 60);

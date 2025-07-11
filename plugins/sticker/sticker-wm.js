@@ -8,17 +8,27 @@ exports.default = {
       prefix,
       command,
       mime,
-      quoted
+      quoted,
+      isPremium
    }) => {
-      const pack = text.split('|')[0] ? text.split('|')[0] : undefined
-      const own = text.split('|')[1] ? text.split('|')[1] : undefined
+      const pack = text.split('|')[0] ? text.split('|')[0] : undefined;
+      const own = text.split('|')[1] ? text.split('|')[1] : undefined; 
+      let author; if (own === undefined) author = isPremium ? undefined : sticker_wm;
+      else author = isPremium ? own : `${own}\n${sticker_wm}`;
       if (/webp|image|video/.test(mime) || m.mtype === 'stickerMessage' || m.mtype === 'imageMessage') {
          const buffer = await quoted.download();
          conn.adReply(m.chat, loading, cover, m);
-         conn.sendImageAsSticker(m.chat, buffer, m, {
-            packname: pack,
-            author: own === undefined ? sticker_wm : own + '\n© Ruhend' //u can change yours 
-         });
+         if (text) {
+            conn.sendSticker(m.chat, buffer, m, {
+               packname: pack,
+               author: author
+            })
+         } else {
+            conn.sendSticker(m.chat, buffer, m, {
+               packname: setting.botName,
+               author: `${setting.footer === '' || setting.footer === undefined ? sticker_wm : setting.footer}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
+            })
+         }
       } else {
          return m.reply(`Balas stiker dengan caption ${prefix + command}\ngunakan | sebagai pemisahan (optional)`);
       }
