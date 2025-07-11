@@ -12,7 +12,7 @@ const {
    makeInMemoryStore,
    useMultiFileAuthState,
    DisconnectReason
-} = require('@adiwajshing/baileys');
+} = require('@baileys-md/baileys');
 const { Format, Connect, Signal } = require('utils-mf'); 
 Object.assign(global, { default_db: { users: {}, chats: {}, settings: {}, stores: {}, menfess: {}, contacts: {} }, setting: require('./config.json'), mess: require('./lib/message.js'), Connect: Connect, Format: Format, moment: require("moment-timezone") });
 moment.tz.setDefault("Asia/Jakarta").locale("id");
@@ -31,9 +31,11 @@ const startWhatsApp = async () => {
       const { connection, lastDisconnect } = update;
       if (connection === 'open') {
          console.log(`🟢 Online`);
-      } else if (connection === 'connecting') {
+      }
+      else if (connection === 'connecting') {
          console.log(`🟡 Reconnecting`);
-      } else if (connection === 'close') {
+      } 
+      else if (connection === 'close') {
          console.log(`🔴 Disconnected`);
          return startWhatsApp();
       }
