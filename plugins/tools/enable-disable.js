@@ -110,10 +110,10 @@ exports.default = {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                if (global.group_mode) return m.reply('Mode group sedang aktif tidak bisa menyalakan, matikan terlebih dahulu .setgcmode off');
-               db.settings.auto_block_pc = true
+               db.settings.block_pc = true
                m.reply('auto block private chat berhasil di aktifkan')
             } else if (cmd_off.includes(command)) {
-               db.settings.auto_block_pc = false
+               db.settings.block_pc = false
                m.reply('auto block private chat berhasil di matikan')
             }
          }
