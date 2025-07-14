@@ -1,5 +1,5 @@
 const search = require("yt-search");
-const ocean = require('../../lib/src/scraper/ocean.js');
+const savetube = require('../../lib/src/scraper/savetube.js');
 exports.default = {
    names: ['Downloader'],
    tags: ['play', 'song', 'lagu'],
@@ -22,11 +22,9 @@ exports.default = {
       result += `*⭔ URL Video:* ${url.url}\n\n`
       result += ` *Loading audio sedang dikirim...*`      
       conn.adReply(m.chat, result, thumb, m);
-      const audio = await ocean(url.url, 'mp3');
-      const pretty = await Format.mp3Play(await toBuffer(audio.link));
+      const audio = await savetube.download(url.url, '144');
+      const pretty = await Format.mp3Play(await toBuffer(audio.result.download));
       conn.sendFile(m.chat, pretty, url.title, m, {
-         mimetype: 'audio/mp4',
-         fileName: url.title,
          contextInfo: {
             externalAdReply: {
                mediaType: 2,
@@ -34,7 +32,7 @@ exports.default = {
                title: url.title,
                body: setting.botName,
                sourceUrl: url.title,
-               thumbnail: await BUFFER_URL(thumb)
+               thumbnail: await toBuffer(thumb)
             }
          }
       })
