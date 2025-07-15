@@ -14,7 +14,7 @@ exports.default = {
       const num = number.replace(/[@+\s-]/g, '') + '@s.whatsapp.net'; 
       db.users[num].banned = true
       db.users[num].bannedReason = reason
-      m.reply(`Nomor ${num.split('@')[0]} berhasil di banned\nSekarang Nomor Itu Tidak Bisa Menggunakan Bot Ini\n\nAlasan Di Banned:\n${reason} \n\nUntuk melihat daftar banned ketik .listbanned`);
+      m.reply(`Nomor ${num.split('@')[0]} berhasil di banned\nSekarang Nomor Itu Tidak Bisa Menggunakan Bot Ini\n\nAlasan Di Banned:\n${reason}\n\nUntuk melihat daftar banned ketik .listbanned`);
    },   
-   admin: true //admins and owners can ban members group who are spamming if needed
+   owner: true 
 }

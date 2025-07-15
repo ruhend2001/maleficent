@@ -1,8 +1,8 @@
 console.log('🕒 Starting Maleficent . . .');
 const { join } = require('path');
-const { spawn } = require('child_process');
+const { fork } = require('child_process');
 const start = () => {
-    const p = spawn(process.argv[0], [join(__dirname, 'main.js'), ...process.argv.slice(2)], {
+    const p = fork(join(__dirname, 'main.js'), process.argv.slice(2), {
             stdio: ['inherit', 'inherit', 'inherit', 'ipc']
         })
         .on('message', data => {
@@ -11,7 +11,7 @@ const start = () => {
                 p.kill()
             }
             if (data === 'uptime') {
-                p.send(process.uptime())
+                p.send(process.uptime());
             }
         })
         .on('exit', code => {
