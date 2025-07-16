@@ -86,6 +86,9 @@ support termux, vps, panel , panel butut bisa minimal ram 500MB<br>
 <br>
 
 # support with node 18
+
+# Jangan Gunakan Node 24 Tapi Pake Yang Node 23 Kebawah
+
 <img src="https://small.fileditchstuff.me/s12/PvybFjPSFPHQExNAGAo.jpg" alt="Maleficent Bot-Md" width="500"/>
 <br>
 
