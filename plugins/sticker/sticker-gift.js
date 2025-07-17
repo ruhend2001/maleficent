@@ -9,16 +9,14 @@ exports.default = {
       mime,
       quoted
    }) => {
-      let pack = setting.botName
-      let own = setting.footer
-      if (/video/.test(mime) || m.mtype === 'videoMessage') {
+      if (/video|image/.test(mime) || m.mtype === 'videoMessage') {
          if (!quoted) return
          let buffer = await quoted.download();
          conn.adReply(m.chat, loading, cover, m);
-         conn.sendImageAsSticker(m.chat, buffer, m, {
-            packname: pack,
-            author: own
-         });
+         conn.sendSticker(m.chat, buffer, m, {
+            packname: setting.botName,
+            author: setting.footer
+         })
       } else {
          return m.reply(`Kirim video dengan caption ${prefix+command} atau balas video yang sudah dikirim`);
       }

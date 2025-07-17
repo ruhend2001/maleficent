@@ -15,7 +15,7 @@ exports.default = {
       const own = text.split('|')[1] ? text.split('|')[1] : undefined; 
       let author; if (own === undefined) author = isPremium ? undefined : sticker_wm;
       else author = isPremium ? own : `${own}\n${sticker_wm}`;
-      if (/webp|image|video/.test(mime) || m.mtype === 'stickerMessage' || m.mtype === 'imageMessage') {
+      if (/webp|sticker|image|video/.test(mime) || m.mtype === 'stickerMessage' || m.mtype === 'imageMessage') {
          const buffer = await quoted.download();
          conn.adReply(m.chat, loading, cover, m);
          if (text) {
@@ -29,6 +29,8 @@ exports.default = {
                author: `${setting.footer === '' || setting.footer === undefined ? sticker_wm : setting.footer}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
             })
          }
+      } else if (/lottie/.test(mime)) {
+         throw 'Tidak support sticker animasi dari WhatsApp resmi';
       } else {
          return m.reply(`Balas stiker dengan caption ${prefix + command}\ngunakan | sebagai pemisahan (optional)`);
       }

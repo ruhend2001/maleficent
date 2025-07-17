@@ -18,7 +18,7 @@ exports.default = {
       if (res.results[0] == undefined) throw 'Kombinasi Tidak Ditemukan'
       const emix = res.results[0].media_formats.png_transparent.url;
       conn.adReply(m.chat, loading, cover, m).then(() => {
-         conn.sendImageAsSticker(m.chat, emix, m, {
+         conn.sendSticker(m.chat, emix, m, {
             packname: pack,
             author: `${setting.footer === '' ? sticker_wm : setting.footer}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
          });      

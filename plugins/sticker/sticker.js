@@ -14,7 +14,7 @@ exports.default = {
       if (/webp|image|video/.test(mime) || m.mtype === 'imageMessage' || m.mtype === 'videoMessage') {
          const buffer = await quoted.download();
          conn.adReply(m.chat, loading, cover, m);
-         conn.sendImageAsSticker(m.chat, buffer, m, {
+         conn.sendSticker(m.chat, buffer, m, {
             packname: pack,
             author: `${own === '' ? sticker_wm : own}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
          })

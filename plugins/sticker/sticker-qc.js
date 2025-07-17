@@ -44,7 +44,7 @@ exports.default = {
       });
       const buffer = await Buffer.from(json.data.result.image, 'base64')
       conn.adReply(m.chat, loading, cover, m).then(() => {
-         conn.sendImageAsSticker(m.chat, buffer, m, {
+         conn.sendSticker(m.chat, buffer, m, {
             packname: pack,
             author: `${setting.footer === '' ? sticker_wm : setting.footer}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
          })
