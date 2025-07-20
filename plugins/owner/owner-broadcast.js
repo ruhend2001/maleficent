@@ -13,10 +13,10 @@ exports.default = {
       let group = Object.keys(db.chats);
       m.reply(`Ok tunggu sedang broadcast ke group`);
       for (let jid of group) {
-         if (!jid) continue
+         if (!jid || jid === 'community') continue
          await Format.sleep(3000);
          //atur ajh sndri disini model pesan nya mau kek mana
-         conn.sendMessage(jid, { text: text });
+         conn.reply(jid, text, fake_wa);
       }
    },
    owner: true

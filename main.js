@@ -20,7 +20,8 @@ const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream
 require('./lib/settings.js');
 require('utils-mf/index.js');
 require('./lib/system.js');
-require('./lib/src/mongo/mongo-info.js');
+require('./lib/src/cloud/mongo-db.js');
+require('./lib/src/cloud/github-db.js');
 const { caller } = require('./lib/system.js');
 const startWhatsApp = async () => {
    const { state, saveCreds } = await useMultiFileAuthState('./sessions');

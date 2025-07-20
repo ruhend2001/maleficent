@@ -1,4 +1,5 @@
-const { Restore } = require('../../lib/src/mongo/mongo-info.js');
+const { restoreMongo } = require('../../lib/src/cloud/mongo-db.js');
+const { restoreGithub } = require('../../lib/src/cloud/github-db.js');
 exports.default = {
    names: ['Tools'],
    tags: ['on', 'off'],
@@ -6,9 +7,9 @@ exports.default = {
    start: async (m, {
       conn,
       text,
-      prefix,      
+      prefix,
       command,
-      Format,   
+      Format,
       isOwner,
       isAdmins,
       isPremium,
@@ -34,9 +35,9 @@ exports.default = {
       caption += v + `antispam / spam \n`
       caption += v + `antitagsw \n`
       caption += v + `chat_ai / ai \n`
-      caption += v + `hd / remini\n` 
+      caption += v + `hd / remini\n`
       caption += v + `sholat / autosholat\n`
-      caption += v + `blockpc / autoblockpc`   
+      caption += v + `blockpc / autoblockpc`
       if (!text) return m.reply(caption);
       switch (text.toLowerCase()) {
          case 'welcome': {
@@ -76,25 +77,7 @@ exports.default = {
             }
          }
          break
-         case 'autobackup': {         
-            if (!isOwner) return m.reply(mess.OnlyOwner);
-            if (cmd_on.includes(command)) {
-               const response = await Restore();
-               if (!response) {
-                  return response
-               } else {
-                  save.global('global.auto_backup = false', 'global.auto_backup = true');
-                  await m.reply('auto backup database berhasil di aktifkan\nrestarting...')
-                  reset()
-               }
-            } else if (cmd_off.includes(command)) {
-               save.global('global.auto_backup = true', 'global.auto_backup = false');
-               await m.reply('auto backup database berhasil di matikan\nrestarting...')
-               reset()
-            }
-         }
-         break
-         case 'anticall': {         
+         case 'anticall': {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.anticall = false', 'global.anticall = true');
@@ -106,7 +89,7 @@ exports.default = {
          }
          break
          case 'blockpc':
-         case 'autoblockpc': {         
+         case 'autoblockpc': {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                if (global.group_mode) return m.reply('Mode group sedang aktif tidak bisa menyalakan, matikan terlebih dahulu .setgcmode off');
@@ -119,7 +102,7 @@ exports.default = {
          }
          break
          case 'sholat':
-         case 'autosholat': {         
+         case 'autosholat': {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.auto_sholat = false', 'global.auto_sholat = true');
@@ -135,7 +118,7 @@ exports.default = {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                db.settings.auto_down = true
-               m.reply(`auto download berhasil diaktifkan`);               
+               m.reply(`auto download berhasil diaktifkan`);
             } else if (cmd_off.includes(command)) {
                db.settings.auto_down = false
                m.reply(`auto download berhasil matikan`);
@@ -148,7 +131,7 @@ exports.default = {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                db.settings.auto_sticker = true
-               m.reply(`auto sticker berhasil diaktifkan\nsekarang kamu dapat membuat stiker hanya dengan mengirim foto`);               
+               m.reply(`auto sticker berhasil diaktifkan\nsekarang kamu dapat membuat stiker hanya dengan mengirim foto`);
             } else if (cmd_off.includes(command)) {
                db.settings.auto_sticker = false
                m.reply(`auto sticker berhasil matikan`);
@@ -250,7 +233,7 @@ exports.default = {
                db.settings.antispam = true
                m.reply(`anti spam berhasil diaktifkan`);
             } else if (cmd_off.includes(command)) {
-               db.settings.antispam = false               
+               db.settings.antispam = false
                m.reply(`anti spam berhasil dimatikan`);
             }
          }
@@ -266,14 +249,55 @@ exports.default = {
                db.chats[m.chat].chat_ai = true
                m.reply(`Auto Chat AI Berhasil Di Nyalakan Di Group ${groupName}`);
             } else if (!m.isGroup && cmd_off.includes(command)) {
-               db.users[m.sender].chat_ai = false              
+               db.users[m.sender].chat_ai = false
                m.reply(`Auto Chat AI Berhasil Di Matikan`);
             } else if (m.isGroup && cmd_off.includes(command)) {
-               db.chats[m.chat].chat_ai = false              
+               db.chats[m.chat].chat_ai = false
                m.reply(`Auto Chat AI Berhasil Di Matikan Di Group ${groupName}`);
             }
          }
          break
-      }
+      };
+      if (cmd_on.includes(command) || cmd_off.includes(command)) {
+         if (!isOwner) return m.reply(mess.OnlyOwner);
+         const pick = text.split(" ")[1];
+         if (!pick) throw `masukan tempat database yang di gunakan contoh ${prefix+command} mongo \nbaru tersedia mongo dan github`;
+         if (!['mongo', 'github'].includes(pick)) throw 'hanya baru ada mongo dan github saja sekarang';
+         if (cmd_on.includes(command) && pick === 'mongo') {
+            if (backup_mongo) throw 'autobackup monggo audah di aktifkan atau di nyalakan sebelum nya untuk cek ketik .status';
+            m.reply('menyalakan auto backup db ke mongo...')
+            const response = await restoreMongo();
+            if (!response) {
+               return response
+            } else {
+               save.global('global.backup_mongo = false', 'global.backup_mongo = true');
+               await m.reply('auto backup monggo database berhasil di aktifkan\nrestarting...')
+               reset()
+            }
+         } else if (cmd_off.includes(command) && pick === 'mongo') {
+            if (!backup_mongo) throw 'autobackup monggo audah di nonaktifkan atau dimatikan sebelumnya\nuntuk cek ketik .status';
+            m.reply('menyalakan auto backup db ke mongo...')
+            save.global('global.backup_mongo = true', 'global.backup_mongo = false');
+            await m.reply('auto backup monggo database berhasil di matikan\nrestarting...')
+            reset()
+         } else if (cmd_on.includes(command) && pick === 'github') {
+            if (backup_github) throw 'autobackup github sudah di aktifkan atau di nyalakan sebelum nya untuk cek ketik .status';
+            m.reply('menyalakan auto backup db ke cloud github...')
+            const data = await restoreGithub();
+            if (!data.status) {
+               await m.reply('Gagal Menyalakan autobackup github')
+               throw data
+            } else if (data.status) {
+               await save.global('global.backup_github = false', 'global.backup_github = true')
+               return await m.reply('auto backup github database berhasil di aktifkan\nrestarting...'), reset()  
+            };         
+         } else if (cmd_off.includes(command) && pick === 'github') {
+            if (!backup_github) throw 'autobackup github sudah di nonaktifkan atau dimatikan sebelumnya\nuntuk cek ketik .status';
+            await m.reply('mematikan auto backup db ke cloud github...')
+            save.global('global.backup_github = true', 'global.backup_github = false');
+            return m.reply('auto backup database github berhasil di matikan')
+         }
+      } 
    }
 }
+

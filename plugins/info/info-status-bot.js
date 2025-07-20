@@ -9,7 +9,9 @@ exports.default = {
       let caption = `*${zw} STATUS BOT 🤖*\n*${setting.botName}*\n`
       caption += `Self: ${global.self ? Y : T}\n`
       caption += `Auto Download: ${global.autodl ? Y : T}\n`
-      caption += `Auto Backup DB: ${global.auto_backup ? Y : T}\n`
+      caption += `Auto Backup DB: ${global.backup_mongo || global.backup_github ? Y : T}\n`
+      caption += `Cloud: ${global.backup_mongo ? 'Monggo DB Aktif' : 'Monggo DB Tidak Aktif'}\n`
+      caption += `Cloud: ${global?.backup_github ? 'Github DB Aktif' : 'Github DB Tidak Aktif'}\n\n`      
       caption += `Auto Status Bio: ${db.settings.autobio ? Y : T}\n`
       caption += `Auto Read Story: ${db.settings.readsw ? Y : T}\n`      
       caption += `Anti Call: ${global.anticall ? Y : T}\n`
@@ -28,7 +30,7 @@ exports.default = {
       caption += `Ram Set: ${setting.ram}\n`
       caption += `Prefix: ${db.settings.prefix}\n\n`
       caption += `Untuk mengubah pengaturan langsung dari bot owner bisa cek di menu .set atau ada juga di menu .on .off`      
-      conn.adReply(m.chat, caption, cover, m)
+      conn.reply(m.chat, caption, m)
    },
    owner: true
 }
