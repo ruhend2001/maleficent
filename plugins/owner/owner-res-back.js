@@ -23,14 +23,14 @@ exports.default = {
          return await m.reply(response.log + '\nRestarting...'), reset()    
       } else if (command == 'backup' && text == 'github') {
          m.reply('Tunggu sedang backup to gitHub...');
-         const response = await backupGithub();         
-         if (!response.status) m.reply('Gagal Backup Database')
-         return await m.reply(response)
+         const response = await backupGithub();
+         if (!response.status) return await m.reply('Gagal Backup Database'), m.reply(response);
+         return await m.reply(obj(response))
       } else if (command == 'restore' && text == 'github') {
          m.reply('Tunggu sedang restore from github...');
          const response = await restoreGithub();
-         if (!response.status) m.reply('Gagal Restore Database')
-         await m.reply(response)
+         if (!response.status) return await m.reply('Gagal Restore Database'), m.reply(response);
+         await m.reply(obj(response))
          if (response.status) return await m.reply('Restarting...'), reset();      
       } 
    },
