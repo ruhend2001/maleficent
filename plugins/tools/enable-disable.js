@@ -1,4 +1,4 @@
-const { restoreMongo } = require('../../lib/src/cloud/mongo-db.js');
+const { Restore } = require('../../lib/src/cloud/mongo-db.js');
 const { restoreGithub } = require('../../lib/src/cloud/github-db.js');
 exports.default = {
    names: ['Tools'],
@@ -258,7 +258,7 @@ exports.default = {
          }
          break
       };
-      if (cmd_on.includes(command) || cmd_off.includes(command)) {
+      if (text == 'autobackup' || text == 'backup' || text.split(" ")[1]) {
          if (!isOwner) return m.reply(mess.OnlyOwner);
          const pick = text.split(" ")[1];
          if (!pick) throw `masukan tempat database yang di gunakan contoh ${prefix+command} mongo \nbaru tersedia mongo dan github`;
@@ -266,18 +266,18 @@ exports.default = {
          if (cmd_on.includes(command) && pick === 'mongo') {
             if (backup_mongo) throw 'autobackup monggo audah di aktifkan atau di nyalakan sebelum nya untuk cek ketik .status';
             m.reply('menyalakan auto backup db ke mongo...')
-            const response = await restoreMongo();
+            const response = await Restore();
             if (!response) {
                return response
             } else {
-               save.global('global.backup_mongo = false', 'global.backup_mongo = true');
+               await save.global('global.backup_mongo = false', 'global.backup_mongo = true');
                await m.reply('auto backup monggo database berhasil di aktifkan\nrestarting...')
                reset()
             }
          } else if (cmd_off.includes(command) && pick === 'mongo') {
             if (!backup_mongo) throw 'autobackup monggo audah di nonaktifkan atau dimatikan sebelumnya\nuntuk cek ketik .status';
-            m.reply('menyalakan auto backup db ke mongo...')
-            save.global('global.backup_mongo = true', 'global.backup_mongo = false');
+            await m.reply('mematikan auto backup db ke mongo...')
+            await save.global('global.backup_mongo = true', 'global.backup_mongo = false');
             await m.reply('auto backup monggo database berhasil di matikan\nrestarting...')
             reset()
          } else if (cmd_on.includes(command) && pick === 'github') {
@@ -300,4 +300,3 @@ exports.default = {
       } 
    }
 }
-
