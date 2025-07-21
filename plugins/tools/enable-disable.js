@@ -1,4 +1,4 @@
-const { Restore } = require('../../lib/src/cloud/mongo-db.js');
+const { restoreMongo } = require('../../lib/src/cloud/mongo-db.js');
 const { restoreGithub } = require('../../lib/src/cloud/github-db.js');
 exports.default = {
    names: ['Tools'],
@@ -266,7 +266,7 @@ exports.default = {
          if (cmd_on.includes(command) && pick === 'mongo') {
             if (backup_mongo) throw 'autobackup monggo audah di aktifkan atau di nyalakan sebelum nya untuk cek ketik .status';
             m.reply('menyalakan auto backup db ke mongo...')
-            const response = await Restore();
+            const response = await restoreMongo();
             if (!response) {
                return response
             } else {
