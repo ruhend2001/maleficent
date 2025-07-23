@@ -14,6 +14,6 @@
   "thumbnail": "https://telegra.ph/file/0aa662111090f4a70c8f4.jpg",
   "music": "https://qu.ax/Ajdr.mp3",
   "ram": 950,
-  "readme2": "botNumber adalah nomor yang mau di jadikan bot",
+  "readme2": "botNumber adalah nomor yang mau di jadikan bot dan ram penjelasannya ada di plugins/owner/owner-set.js",
   "botNumber": "6285819119006"
 }
