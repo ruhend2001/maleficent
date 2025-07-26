@@ -22,8 +22,8 @@ exports.default = {
       result += `*⭔ Channel:* ${url.author.url}\n`
       result += `*⭔ URL Video:* ${url.url}\n\n`
       result += ` *Loading audio sedang dikirim...*`
+      conn.adReply(m.chat, result, thumb || cover, m);
       const audio = await savetube.download(link, '144').catch(async () => await ocean(link, 'mp3'));
-      conn.adReply(m.chat, result, audio?.result?.thumbnail || audio?.thumbnail || cover, m);
       const pretty = await Format.mp3Play(await toBuffer(audio?.result?.download || audio?.link));      
       conn.sendFile(m.chat, pretty, url.title, m, {
          contextInfo: {

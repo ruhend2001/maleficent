@@ -1,7 +1,7 @@
 exports.default = {
    names: ['Internet'],
-   tags: ['gemini', 'gem'],
-   command: ['gemini', 'gem'],
+   tags: ['gemini', 'gem', 'ai', 'chatgpt', 'openai'],
+   command: ['gemini', 'gem', 'ai', 'chatgpt', 'openai'],
    start: async (m, {
       conn,
       text,

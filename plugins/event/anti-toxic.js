@@ -11,7 +11,7 @@ module.exports = {
          if ((!m.isGroup || db.chats[m.chat].antiToxic) && toxic.some(word => budy.toLowerCase().includes(word))) {
             if (agree.some(v => budy.toLowerCase().includes(v))) return
             if (m.fromMe || m.isBaileys || isAdmins || isOwner) return
-            conn.adReply(m.chat, `Hey Ketikannya!`, cover, m);
+            conn.adReply(m.chat, `Hey Ketikannya! Di Jaga Ya Monyet`, cover, m);
          }
       } catch (e) {
          return false

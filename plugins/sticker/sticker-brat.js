@@ -10,7 +10,7 @@ exports.default = {
       Format
    }) => {
       if (!text) return m.reply(`Kirim perintah ${prefix+command} text\ncontoh: ${prefix+command} ${setting.botName}`);
-      const result = await BUFFER_URL(`https://aqul-brat.hf.space/?text=${text}`);
+      const result = await toBuffer(`https://api.nekorinn.my.id/maker/brat-v2?text=${text}`);
       conn.adReply(m.chat, loading, cover, m).then(() => {            
          conn.sendImageAsSticker(m.chat, result, m, {
            packname: setting.botName,
