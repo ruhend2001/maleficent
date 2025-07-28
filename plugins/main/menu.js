@@ -13,7 +13,6 @@ exports.default = {
       const side = '' //'*┆*'
       const top = '' //'┏⭓'
       const bot = '' //'*└*⭓'
-      const { Upload, Download } = await Format.statistic();
       const title = `${setting.botName}\n${setting.footer}`;
       const music = setting.music
       const lolim = logo_limit || 'Ⓛ';
@@ -28,7 +27,8 @@ exports.default = {
       const right = `』`;
       const bigHeader = false;
       const type = db.settings.menu_type; //to change example type .setmenu 1 or .setmenu 2 or .setmenu 3 untuk ganti type menu ketik .setmenu 1 2 atau 3
-      const top_1 = { left, right, bigHeader, text, header_sub, select, type, command };
+      const top_1 = { left, right, bigHeader, text, header_sub, select, type, command, conn };
+      const { Upload, Download } = await Format.statistic();
       const sosmed = setting.sosmed.toLowerCase().replace('https://', '')
       const audio = () => conn.sendFile(m.chat, setting.music, '', m, { ptt: true });
       let info = `${top}${garis}${side} ${star} Menu ${setting.botName}\n${side} Simple WhatsApp Bot \n${side} By ${setting.footer}\n${side}${garis}\n`;
