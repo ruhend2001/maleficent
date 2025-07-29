@@ -11,7 +11,7 @@ module.exports = {
       conn,
       Format
    }) => {
-      if (+new Date() - db.settings.status > 1000 && db.settings.autobio) {
+      if (+ new Date() - db.settings.status > 1000 && db.settings.auto_bio) {
          let uptime;
          if (process.send) {
             process.send('uptime')
@@ -26,8 +26,8 @@ module.exports = {
          const emot3 = `${pickRandom(['⎔', '◈▻', '✦', '⭑', 'ᯬ', '⭔', '◉', '⬟', '᭻', '»', '〆', '々', '⛥', '✗', '⛊', '⚜', '⚝', '⚚', '♪'])}`
          const emot4 = `${pickRandom(['⎔', '◈▻', '✦', '⭑', 'ᯬ', '⭔', '◉', '⬟', '᭻', '»', '〆', '々', '⛥', '✗', '⛊', '⚜', '⚝', '⚚', '♪'])}`
          const emot5 = `${pickRandom(['😨','😅','😂','😳','😎', '🥵', '😱', '🐦', '🙄', '🐤','❤️','🐦','🤨','🥴','😐','👆','😔', '👀','👎'])}`
-         const bio = `${emot1} Halo ${m.pushName || conn.authState.creds.me.name} ${emot2} Aktif Selama [ ${muptime} ] ${emot3} | Mode: ${global.group_mode ? 'Group' : 'Public'} | Self: ${setting.self ? 'Aktif' : 'Tidak'} | ${emot4} Platform: ${os.platform()} | 🟢 RAM Usage: ${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)} MB | ${emot5} ${wm}`;
-         return conn.updateProfileStatus(bio).then(() => db.settings.status = +new Date());         
+         const bio = `${emot1} Halo ${m?.pushName || conn.authState.creds.me.name} ${emot2} Aktif Selama [ ${muptime} ] ${emot3} | Mode: ${global.group_mode ? 'Group' : 'Public'} | Self: ${setting.self ? 'Aktif' : 'Tidak'} | ${emot4} Platform: ${os.platform()} | 🟢 RAM Usage: ${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)} MB | ${emot5} ${wm}`;
+         return conn.updateProfileStatus(bio).then(() => db.settings.status = + new Date());         
       }
    }
 }

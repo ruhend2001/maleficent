@@ -2,9 +2,8 @@
 
 <p align="center">
 <img src="https://files.catbox.moe/ku30iz.jpeg" alt="Maleficent Bot-Md" width="500"/><br>
-# support with node 18
 
-# Jangan Gunakan Node 24 Tapi Pake Yang Node 23 Kebawah Ga Jelas Tuh Node 24
+# support Node 18 Jangan Gunakan Node 24 Tapi Pake Yang Node 23 Kebawah Ajh Masih Stabil
 
 this script will be continuously update to ensure it remains optimized<br>
 script ini akan terus di update ya untuk memastikan tetap optimal<br>

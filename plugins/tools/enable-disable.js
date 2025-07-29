@@ -18,27 +18,40 @@ exports.default = {
       const cmd_on = ['on', 'enable']
       const cmd_off = ['off', 'disable']
       const owner_admin = isOwner || isAdmins
-      const v = `${prefix + command} `
-      let caption = `*List Options ${command}*\n*Contoh:* \n\n`
-      caption += v + `welcome \n`
-      caption += v + `antilink \n`
-      caption += v + `viewonce / once \n`
-      caption += v + `autodl / autodown \n`
-      caption += v + `autobackup \n`
-      caption += v + `antitoxic / toxic \n`
-      caption += v + `antiphoto \n`
-      caption += v + `antibot \n`
-      caption += v + `anticall \n`
-      caption += v + `autoreadsw / readsw\n`
-      caption += v + `autobio / bio \n`
-      caption += v + `autosticker / sticker\n`
-      caption += v + `antispam / spam \n`
-      caption += v + `antitagsw \n`
-      caption += v + `chat_ai / ai \n`
-      caption += v + `hd / remini\n`
-      caption += v + `sholat / autosholat\n`
-      caption += v + `blockpc / autoblockpc`
-      if (!text) return m.reply(caption);
+      const $ = `${prefix + command} `
+      let caption = `*List Options ${command}*\n*contoh:* \n\n`
+      caption += $ + `welcome \n`
+      caption += $ + `antilink \n`
+      caption += $ + `viewonce / once \n`
+      caption += $ + `antitoxic / toxic \n`
+      caption += $ + `antiphoto \n`
+      caption += $ + `antibot \n`
+      caption += $ + `autosticker / sticker\n`      
+      caption += $ + `antitagsw \n\n`; 
+      if (isOwner) {
+         caption += zw + ` *OWNER* \n`
+         caption += $ + `antispam / spam \n`
+         caption += $ + `hd / remini\n`
+         caption += $ + `sholat / autosholat\n`
+         caption += $ + `blockpc / autoblockpc\n`
+         caption += $ + `autodl / autodown \n`
+         caption += $ + `autobackup \n`
+         caption += $ + `anticall \n`
+         caption += $ + `autoreadsw / readsw\n`
+         caption += $ + `autobio / bio \n`
+         caption += $ + `chat_ai / ai \n\n`
+         caption += $ + `*grouponly / gconly*\nUntuk mengganti akses bot ke mode group atau keduanya private and group\n\n`
+         caption += $ + `*respononlygroup / respononlygc*\nUntuk mematikan dan mengaktifkan respon message groupOnly\n\n`
+         caption += $ + '*adreply*\nUntuk mengaktifkan mode pesan dengan thumbnail atau photo\n\n'
+         caption += $ + '*mystery / misteri*\nUntuk mematikan dan mengaktifkan misteri box\n\n'
+         caption += $ + '*typinggc / typinggroup*\nUntuk mematikan dan mengaktifkan typing atau mengetik di group\n\n'
+         caption += $ + '*typingpc / typingprivate*\nUntuk mematikan dan mengaktifkan typing atau mengetik di private chat\n\n'
+         caption += $ + '*recordinggc / recordinggroup*\nUntuk mematikan dan mengaktifkan recording atau merekam di group\n\n'
+         caption += $ + '*recordingpc / recordingprivate*\nUntuk mematikan dan mengaktifkan recording atau merekam di private chat\n\n'
+         caption += $ + '*readgc / readgroup*\nUntuk mematikan dan mengaktifkan read atau membaca chat di group\n\n'
+         caption += $ + '*readpc / readprivate*\nUntuk mematikan dan mengaktifkan read atau membaca chat di private chat\n\n'                   
+      };
+      if (!text) return m.reply(caption.trim());
       switch (text.toLowerCase()) {
          case 'welcome': {
             if (!m.isGroup) return m.reply(mess.OnlyGroup);
@@ -257,6 +270,116 @@ exports.default = {
             }
          }
          break
+         case 'grouponly':
+         case 'gconly': {         
+            if (cmd_on.includes(command)) {
+               save.global('global.group_mode = false', 'global.group_mode = true');
+               m.reply(`Sukses Mengubah Ke Group Mode \nPrivate Chat Tidak Bisa Di Akses Kecuali Aku , Owner Dan Premium`);            
+            } else if (cmd_off.includes(command)) {
+               save.global('global.group_mode = true', 'global.group_mode = false');
+               m.reply(`Sukses Mematikan Group Mode Sekarang Private Chat Dapat Diakses Semua Orang`);            
+            }
+         }
+         break
+         case 'respononlygroup':
+         case 'respononlygc': {         
+            if (cmd_on.includes(command)) {
+               save.global('global.group_only_message = false', 'global.group_only_message = true');            
+               m.reply(`Sukses Mengaktifkan Respon ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Akan Merespon ${mess.groupOnly}\n`);            
+            } else if (cmd_off.includes(command)) {
+               save.global('global.group_only_message = true', 'global.group_only_message = false');            
+               m.reply(`Sukses Mematikan Respon Pesan ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Sama Sekali Tidak Akan Merespon Apapun\n`);
+            }
+         }
+         break
+         case 'adreply': {         
+            if (cmd_on.includes(command)) {
+               save.global('global.adReply = false', 'global.adReply = true');
+               m.reply(`adReply Berhasil Di Aktifkan`);
+            } else if (cmd_off.includes(command)) {
+               save.global('global.adReply = true', 'global.adReply = false');
+               m.reply(`adReply Berhasil Di Matifkan`);
+            } 
+         }
+         break
+         case 'mystery':
+         case 'misteri': {
+            if (cmd_on.includes(command)) {
+               save.global('global.mystery_box = false', 'global.mystery_box = true');        
+               m.reply(`Mystery Box Berhasil Di Aktifkan`);
+            } else if (cmd_off.includes(command)) {
+               save.global('global.mystery_box = true', 'global.mystery_box = false');        
+               m.reply(`Mystery Box Berhasil Di Matikan`);
+            }   
+         }
+         break
+         case 'typinggc':
+         case 'typinggroup': {
+            if (cmd_on.includes(command)) {
+               save.global('global.typing_group = false', 'global.typing_group = true');        
+               m.reply(`Typing Group / Mengetik Di Group Berhasil Di Aktifkan`);         
+            } else if (cmd_off.includes(command)) {
+               save.global('global.typing_group = true', 'global.typing_group = false');        
+               m.reply(`Typing Group / Mengetik Di Group Berhasil Di Matikan`);            
+            }
+         }
+         break
+         case 'typingpc':
+         case 'typingprivate': {
+            if (cmd_on.includes(command)) {
+               save.global('global.typing_private = false', 'global.typing_private = true');        
+               m.reply(`Typing Private / Mengetik Di Private Chat Berhasil Di Aktifkan`);         
+            } else if (cmd_off.includes(command)) {
+               save.global('global.typing_private = true', 'global.typing_private = false');        
+               m.reply(`Typing Private / Mengetik Di Private Chat Berhasil Di Matikan`);            
+            }   
+         }
+         break
+         case 'recordinggc':
+         case 'recordinggroup': {
+            if (cmd_on.includes(command)) {
+               save.global('global.recording_group = false', 'global.recording_group = true');        
+               m.reply(`Recording Group / Merekam Di Group Berhasil Di Aktifkan`);         
+            } else if (cmd_off.includes(command)) {
+               save.global('global.recording_group = true', 'global.recording_group = false');        
+               m.reply(`Recording Group / Merekam Di Group Berhasil Di Matikan`);            
+            }
+         }
+         break
+         case 'recordingpc':
+         case 'recordingprivate': {
+            if (cmd_on.includes(command)) {
+               save.global('global.recording_private = false', 'global.recording_private = true');        
+               m.reply(`Recording Private / Merekam Di Private Chat Berhasil Di Aktifkan`);         
+            } else if (cmd_off.includes(command)) {
+               save.global('global.recording_private = true', 'global.recording_private = false');        
+               m.reply(`Recording Private / Merekam Di Private Chat Berhasil Di Matikan`);            
+            }     
+         }
+         break
+         case 'readgc':
+         case 'readgroup': {         
+            if (cmd_on.includes(command)) {
+               save.global('global.read_group = false', 'global.read_group = true');
+               m.reply(`Read Group / Membaca Di Group Berhasil Di Aktifkan`);          
+            } else if (cmd_off.includes(command)) {
+               save.global('global.read_group = true', 'global.read_group = false');
+               m.reply(`Read Group / Membaca Di Group Berhasil Di Matikan`); 
+            }
+         }
+         break
+         case 'readpc':
+         case 'readprivate': {         
+            if (cmd_on.includes(command)) {
+               save.global('global.read_private = false', 'global.read_private = true');
+               m.reply(`Read Private / Membaca Di Private Chat Berhasil Di Aktifkan`);          
+            } else if (cmd_off.includes(command)) {
+               save.global('global.read_private = true', 'global.read_private = false');
+               m.reply(`Read Private / Membaca Di Private Chat Berhasil Di Matikan`); 
+            }
+         }
+         break
+        // default: return m.reply(`pala bapak kau, mana ada ${text} cobalah yang benar`)
       };
       if (text == 'autobackup' || text == 'backup' || text.split(" ")[1]) {
          if (!isOwner) return m.reply(mess.OnlyOwner);
@@ -290,7 +413,7 @@ exports.default = {
             } else if (data.status) {
                await save.global('global.backup_github = false', 'global.backup_github = true')
                return await m.reply('auto backup github database berhasil di aktifkan\nrestarting...'), reset()  
-            };         
+            }
          } else if (cmd_off.includes(command) && pick === 'github') {
             if (!backup_github) throw 'autobackup github sudah di nonaktifkan atau dimatikan sebelumnya\nuntuk cek ketik .status';
             await m.reply('mematikan auto backup db ke cloud github...')
