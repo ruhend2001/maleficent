@@ -49,7 +49,8 @@ exports.default = {
          caption += $ + '*recordinggc / recordinggroup*\nUntuk mematikan dan mengaktifkan recording atau merekam di group\n\n'
          caption += $ + '*recordingpc / recordingprivate*\nUntuk mematikan dan mengaktifkan recording atau merekam di private chat\n\n'
          caption += $ + '*readgc / readgroup*\nUntuk mematikan dan mengaktifkan read atau membaca chat di group\n\n'
-         caption += $ + '*readpc / readprivate*\nUntuk mematikan dan mengaktifkan read atau membaca chat di private chat\n\n'                   
+         caption += $ + '*readpc / readprivate*\nUntuk mematikan dan mengaktifkan read atau membaca chat di private chat\n\n'
+         caption += 'Untuk mengubah pengaturan lain ada juga di menu .set'
       };
       if (!text) return m.reply(caption.trim());
       switch (text.toLowerCase()) {
