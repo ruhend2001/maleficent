@@ -106,7 +106,7 @@ exports.default = {
          case 'autoblockpc': {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
-               if (global.group_mode) return m.reply('Mode group sedang aktif tidak bisa menyalakan, matikan terlebih dahulu .setgcmode off');
+               if (global.group_mode) return m.reply('Mode group sedang aktif tidak bisa menyalakan, matikan terlebih dahulu .off gconly');
                db.settings.block_pc = true
                m.reply('auto block private chat berhasil di aktifkan')
             } else if (cmd_off.includes(command)) {
