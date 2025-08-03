@@ -6,16 +6,14 @@ exports.default = {
       conn,
       text,
       prefix,
-      command
+      command,
+      Format
    }) => {
-      if (!text) return m.reply(`Kirim perintah ${prefix+command} text\ncontoh: ${prefix+command} ${setting.botName}`);
-      const result = await BUFFER_URL(`https://fastrestapis.fasturl.cloud/maker/brat/animated?text=${text}&mode=animated`);
-      conn.adReply(m.chat, loading, cover, m).then(() => {            
-         conn.sendImageAsSticker(m.chat, result, m, {
-           packname: setting.botName,
-           author: `${setting.footer === '' ? sticker_wm : setting.footer}\ncreated: \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
-         })
+      if (!text) return m.reply(`Kirim perintah ${prefix + command} text\ncontoh: ${prefix + command} ${setting.botName}`);      
+      conn.sendSticker(m.chat, await Format.bratvid(text), m, {
+         packname: setting.botName,
+         author: `${setting.footer === '' ? sticker_wm : setting.footer}\ncreated : \n${waktu.tanggal}\n${waktu.time} ${waktu.suasana}`
       })
    },
-   limit: 2
+   limit: 4
 }

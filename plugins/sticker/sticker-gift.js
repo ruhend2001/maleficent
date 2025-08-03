@@ -11,7 +11,7 @@ exports.default = {
    }) => {
       if (/video|image/.test(mime) || m.mtype === 'videoMessage') {
          if (!quoted) return
-         let buffer = await quoted.download();
+         const buffer = await quoted.download();
          conn.adReply(m.chat, loading, cover, m);
          conn.sendSticker(m.chat, buffer, m, {
             packname: setting.botName,
