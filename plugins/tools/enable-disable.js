@@ -230,12 +230,11 @@ exports.default = {
          case 'bio': {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
-               db.settings.autobio = true
+               db.settings.auto_bio = true
                m.reply(`auto bio/status berhasil diaktifkan`);
             } else if (cmd_off.includes(command)) {
-               db.settings.autobio = false
-               await Format.sleep(3000);
-               await conn.updateProfileStatus(' ‎');
+               db.settings.auto_bio = false               
+               await conn.updateProfileStatus(' ‎'), await sleep(3000), await conn.updateProfileStatus(' ‎');
                m.reply(`auto bio/status berhasil dimatikan`);
             }
          }
