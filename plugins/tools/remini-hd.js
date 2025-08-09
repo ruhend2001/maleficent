@@ -18,13 +18,13 @@ exports.default = {
          m.react('🕒');
          const media = await conn.download(quoted);
          const tmp = await Format.upload4(media);    
-         const data = await toJSON('https://fastapi.alifproject.cloud/api/ai/upscalev2?url='+tmp);
+         const data = await toJSON('https://api.nekorinn.my.id/tools/pxpic-upscale?imageUrl='+tmp);
          conn.adReply(m.chat, loading, cover, m);
-         conn.sendFile(m.chat, await toBuffer(data.data.result_url), `${star} Berhasil`, m);         
+         conn.sendFile(m.chat, await toBuffer(data.result), `${star} Berhasil`, m);         
       } else {
         return m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
       }
    },
-   limit: 2.5,
+   limit: 3,
    disable: false
 };
