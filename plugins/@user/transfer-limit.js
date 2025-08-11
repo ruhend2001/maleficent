@@ -13,7 +13,7 @@ exports.default = {
       let number = text.split(" ")[0]
       let limit = text.split(" ")[1]
       if (!limit) return m.reply(`Masukkan nilai limit yang mau di transfer\ncontoh: ${prefix+command} 62xxxx 5\nAtau\ncontoh: ${prefix+command} @tag 5`);      
-      let num = `${number.replace("@", "").trim()}@s.whatsapp.net`      
+      let num = m.isLid ? `${number.replace("@", "").trim()}@lid` : `${number.replace("@", "").trim()}@s.whatsapp.net`      
       let give = parseInt(limit);
       db.users[m.sender].limit -= give
       db.users[num].limit += give

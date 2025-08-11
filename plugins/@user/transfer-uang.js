@@ -13,7 +13,7 @@ exports.default = {
       let number = text.split(" ")[0]
       let uang = text.split(" ")[1]
       if (!uang) return m.reply(`Masukkan nilai uang yang mau di transfer\ncontoh: ${prefix+command} 62xxxx 50\nAtau\ncontoh: ${prefix+command} @tag 50`);
-      let num = `${number.replace("@", "").trim()}@s.whatsapp.net`      
+      let num = m.isLid ? `${number.replace("@", "").trim()}@lid` : `${number.replace("@", "").trim()}@s.whatsapp.net`;     
       let give = parseInt(uang);
       db.users[m.sender].uang -= give
       db.users[num].uang += give
