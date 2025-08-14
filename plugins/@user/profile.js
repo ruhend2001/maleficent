@@ -19,9 +19,8 @@ exports.default = {
       m.react('😂')
       if (tag) {
          try {
-            const numTag = text.replace(/[@+\s-]/g, '');
-            const num_1 = m.jid(numTag+'@lid')               
-            const mention = num_1.endsWith('@s.whatsapp.net') ? num_1 : Number + '@lid';
+            const tags = conn.decodeNum(text)                
+            const mention = m.isLid ? tags + '@lid' : tags + '@whatsapp.net';
             const pictureTag = await conn.profilePictureUrl(mention, 'image').catch(_ => cover);
             const userTag = db.users[mention]
             const isRegisterTag = db.users[mention].registered
@@ -30,7 +29,7 @@ exports.default = {
             const isPremiumTag = db.users[mention].premium
             const premTag = isPremiumTag ? 'Aktif' : 'Tidak';
             const _regtime = `${userTag.registeredTime === "" ? "" : '\n ‎ ‎ ‎ ‎ ‎ ‎ ' + userTag.registeredTime}`;
-            let Other = `👤 *User Profile* @${numTag}\n`
+            let Other = `👤 *User Profile* @${tags}\n`
             Other += `📝 Total Penggunaan Perintah\n ‎ ‎ ‎ ‎ ‎ ‎ Bot: ${userTag.hitCmd} Kali\n`
             Other += `🏷 Terdaftar: ${regTag}\n`
             Other += `🗓 Waktu Daftar:${_regtime}\n`
@@ -42,7 +41,7 @@ exports.default = {
             Other += `💰 Uang: ${userTag.uang}\n`
             Other += `🛍 Kupon: ${userTag.kupon}\n`
             conn.adReply(m.chat, Other, pictureTag, m, {
-               mentions: [m.isLid ? numTag + '@lid' : mention]
+               mentions: [mention]
             });
          } catch {
             throw 'Profile Not Active'

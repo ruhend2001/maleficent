@@ -8,7 +8,7 @@ exports.default = {
       command
    }) => {
       if (/addowner|addown/.test(command)) {
-         if (!text) return m.reply(`Masukkan Nomornya contoh\n${prefix+command} 62xxxx atau tag nomornya`);
+         if (!text) return m.reply(`Masukkan Nomornya atau ID nya contoh\n${prefix+command} 62xxxx atau tag nomornya \n\nketik .getlid atau balas .getlid ke pesan dia untuk mendapatkan ID whatsapp jika gagal atau belum terdeteksi sebagai owner!`);
          const num = `${text.replace(/[@+\s-]/g, '').trim()}`;
          setting.ownerNumber.push(num);
          save_setting()

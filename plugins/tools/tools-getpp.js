@@ -10,12 +10,13 @@ exports.default = {
    }) => {
       if (m?.quoted?.sender) {
          m.react('🕒')
-         const data = await conn.profilePictureUrl(m.quoted.sender, 'image').catch(() => 'https://qu.ax/KfPtl.jpeg')
+         const data = await conn.profilePictureUrl(m.quoted.sender, 'image').catch(() => 'https://files.catbox.moe/a9911x.jpg')
          conn.sendFile(m.chat, data, '', m);
       } else if (text) {
          m.react('🕒')
-         const num = `${text.replace("@", "").replace("-", "").replace("-", "").replace("+62 ", "62").trim()}@s.whatsapp.net`
-         const data = await conn.profilePictureUrl(num, 'image').catch(() => 'https://qu.ax/KfPtl.jpeg')
+         const num = conn.decodeNum(text)
+         const number = m.isLid ? num + '@lid' : num + '@s.whatsapp.net';
+         const data = await conn.profilePictureUrl(number, 'image').catch(() => 'https://files.catbox.moe/a9911x.jpg')
          conn.sendFile(m.chat, data, '', m);
       } else if (!text || !m?.quoted?.sender) {
          return m.reply(`balas salah satu pesan dia jika ingin pp getpp dia atau tag atau masukan nomor nya \ncontoh: ${prefix+command} @tag\natau: ${prefix+command} 62xxxx`);
