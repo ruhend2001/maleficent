@@ -10,8 +10,8 @@ exports.default = {
       if (db.users[m.sender].kupon < 0) return m.reply(`Kupon kamu tidak cukup atau habis untuk menukar kupon ke limit\nsilahkan bayar hutang kupon kalo minus punya hutang\nketik .claimkupon untuk mendapatkan kupon\natau Ketik .my untuk cek sisa kupon`);
       let deduct, upgrade;
       if (/^[1-9]\d*$/.test(text)) {
-         let jumlahKupon = parseInt(text);
-         let jumlahLimit = jumlahKupon * 20 //20 limit per 1 kupon
+         const jumlahKupon = parseInt(text);
+         const jumlahLimit = jumlahKupon * 20 //20 limit per 1 kupon
          db.users[m.sender].kupon -= jumlahKupon
          db.users[m.sender].limit += jumlahLimit
          conn.adReply(m.chat, `Kamu berhasil mendapat ${jumlahLimit} limit dengan menukar ${jumlahKupon} kupon`, cover, m);
@@ -19,5 +19,5 @@ exports.default = {
          return m.reply(`Masukkan parameter angka yang valid`);
       }
    },
-   register: true
-};
+   register: false
+}
