@@ -1,3 +1,4 @@
+/**
 exports.default = {
    names: ['Main Menu'],
    tags: ['sendpoll'],
@@ -10,3 +11,5 @@ exports.default = {
       conn.sendPoll(m.chat, 'Ini adalah contoh poll', poll, m)
    }
 }
+
+**/
