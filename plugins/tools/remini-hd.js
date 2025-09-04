@@ -17,10 +17,10 @@ exports.default = {
          if (m.isGroup && !db.chats[m.chat].hd) return conn.reply(m.chat, 'Ups HD Masih Di Nonaktifkan Owner Untuk Group Ini\nUntuk Mengaktifkan Ketik .on hd', m, { contextInfo: { mentionedJid: [...setting.ownerNumber, setting.botNumber].map(num => `${num}@s.whatsapp.net`)}});
          m.react('🕒');
          const media = await conn.download(quoted);
-         const tmp = await Format.upload4(media);    
-         const data = await toJSON('https://api.nekorinn.my.id/tools/pxpic-upscale?imageUrl='+tmp);
          conn.adReply(m.chat, loading, cover, m);
-         conn.sendFile(m.chat, await toBuffer(data.result), `${star} Berhasil`, m);         
+         const tmp = await Format.upload4(media);    
+         const data = await toBuffer('https://api.siputzx.my.id/api/iloveimg/upscale?image='+tmp);         
+         conn.sendFile(m.chat, data, `${star} Berhasil`, m);         
       } else {
         return m.reply(`Balas Atau Kirim image dengan caption ${prefix+command}`)
       }
