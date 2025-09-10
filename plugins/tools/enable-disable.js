@@ -43,6 +43,7 @@ exports.default = {
          caption += $ + `*grouponly / gconly*\nUntuk mengganti akses bot ke mode group atau keduanya private and group\n\n`
          caption += $ + `*respononlygroup / respononlygc*\nUntuk mematikan dan mengaktifkan respon message groupOnly\n\n`
          caption += $ + '*adreply*\nUntuk mengaktifkan mode pesan dengan thumbnail atau photo\n\n'
+         caption += $ + '*limitpesan*\nUntuk mengaktifkan pesan limit yang di gunakan\n\n'
          caption += $ + '*mystery / misteri*\nUntuk mematikan dan mengaktifkan misteri box\n\n'
          caption += $ + '*typinggc / typinggroup*\nUntuk mematikan dan mengaktifkan typing atau mengetik di group\n\n'
          caption += $ + '*typingpc / typingprivate*\nUntuk mematikan dan mengaktifkan typing atau mengetik di private chat\n\n'
@@ -299,6 +300,16 @@ exports.default = {
             } else if (cmd_off.includes(command)) {
                save.global('global.adReply = true', 'global.adReply = false');
                m.reply(`adReply Berhasil Di Matifkan`);
+            } 
+         }
+         break
+         case 'limitpesan': {         
+            if (cmd_on.includes(command)) {
+               save.global('global.use_limit_message = false', 'global.use_limit_message = true');
+               m.reply(`Limit Pesan Berhasil Di Aktifkan`);
+            } else if (cmd_off.includes(command)) {
+               save.global('global.use_limit_message = true', 'global.use_limit_message = false');
+               m.reply(`Limit Pesan Berhasil Di Matifkan`);
             } 
          }
          break
