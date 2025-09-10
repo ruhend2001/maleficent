@@ -8,13 +8,11 @@ exports.default = {
       prefix,
       command      
    }) => {
-      if (!text) throw `gunakan : .iqc jam|batre|pesan\ncontoh : ${prefix+command} 18:00|40|hai hai`;
-      let [time, battery, ...msg] = text.split('|')
-      if (!time||!battery||msg.length === 0) throw 'format salahh gunakan :\n.iqc jam|batre|pesan\nContoh:\n.iqc 18:00|40|hai hai'
+      if (!text) throw `gunakan : .iqc pesan\ncontoh : ${prefix+command} hai`;
       m.reply(loading)
-      const messageText = encodeURIComponent(msg.join('|').trim())
-      const image = await toBuffer(`https://brat.siputzx.my.id/iphone-quoted?time=${encodeURIComponent(time)}&batteryPercentage=${battery}&carrierName=INDOSAT&messageText=${messageText}&emojiStyle=apple`);
+      const battery = Math.floor(Math.random() * 100) + 1;     
+      const image = await toBuffer(`https://brat.siputzx.my.id/iphone-quoted?time=${encodeURIComponent(waktu.time)}&batteryPercentage=${battery}&carrierName=Smartfren&messageText=${text}&emojiStyle=apple`);
       conn.sendFile(m.chat, image, '', m);
    },
-   limit: 2
+   limit: 3
 }

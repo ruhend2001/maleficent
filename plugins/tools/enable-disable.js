@@ -26,7 +26,6 @@ exports.default = {
       caption += $ + `antitoxic / toxic \n`
       caption += $ + `antiphoto \n`
       caption += $ + `antibot \n`
-      caption += $ + `autosticker / sticker\n`      
       caption += $ + `antitagsw \n\n`; 
       if (isOwner) {
          caption += zw + ` *OWNER* \n`
@@ -39,7 +38,8 @@ exports.default = {
          caption += $ + `anticall \n`
          caption += $ + `autoreadsw / readsw\n`
          caption += $ + `autobio / bio \n`
-         caption += $ + `chat_ai / ai \n\n`
+         caption += $ + `chat_ai / ai \n`
+         caption += $ + `autosticker / sticker\n\n` 
          caption += $ + `*grouponly / gconly*\nUntuk mengganti akses bot ke mode group atau keduanya private and group\n\n`
          caption += $ + `*respononlygroup / respononlygc*\nUntuk mematikan dan mengaktifkan respon message groupOnly\n\n`
          caption += $ + '*adreply*\nUntuk mengaktifkan mode pesan dengan thumbnail atau photo\n\n'
@@ -272,7 +272,8 @@ exports.default = {
          }
          break
          case 'grouponly':
-         case 'gconly': {         
+         case 'gconly': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.group_mode = false', 'global.group_mode = true');
                m.reply(`Sukses Mengubah Ke Group Mode \nPrivate Chat Tidak Bisa Di Akses Kecuali Aku , Owner Dan Premium`);            
@@ -283,7 +284,8 @@ exports.default = {
          }
          break
          case 'respononlygroup':
-         case 'respononlygc': {         
+         case 'respononlygc': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);     
             if (cmd_on.includes(command)) {
                save.global('global.group_only_message = false', 'global.group_only_message = true');            
                m.reply(`Sukses Mengaktifkan Respon ${mess.groupOnly} Pada Chat Pribadi\nJika Mode Group Aktif Dan Jika Ada Pesan Datang Di Pribadi Chat, Kecuali Aku, Owner, Dan Premium Maka Akan Merespon ${mess.groupOnly}\n`);            
@@ -293,7 +295,8 @@ exports.default = {
             }
          }
          break
-         case 'adreply': {         
+         case 'adreply': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.adReply = false', 'global.adReply = true');
                m.reply(`adReply Berhasil Di Aktifkan`);
@@ -303,7 +306,8 @@ exports.default = {
             } 
          }
          break
-         case 'limitpesan': {         
+         case 'limitpesan': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.use_limit_message = false', 'global.use_limit_message = true');
                m.reply(`Limit Pesan Berhasil Di Aktifkan`);
@@ -315,6 +319,7 @@ exports.default = {
          break
          case 'mystery':
          case 'misteri': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.mystery_box = false', 'global.mystery_box = true');        
                m.reply(`Mystery Box Berhasil Di Aktifkan`);
@@ -326,6 +331,7 @@ exports.default = {
          break
          case 'typinggc':
          case 'typinggroup': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.typing_group = false', 'global.typing_group = true');        
                m.reply(`Typing Group / Mengetik Di Group Berhasil Di Aktifkan`);         
@@ -337,6 +343,7 @@ exports.default = {
          break
          case 'typingpc':
          case 'typingprivate': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.typing_private = false', 'global.typing_private = true');        
                m.reply(`Typing Private / Mengetik Di Private Chat Berhasil Di Aktifkan`);         
@@ -348,6 +355,7 @@ exports.default = {
          break
          case 'recordinggc':
          case 'recordinggroup': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.recording_group = false', 'global.recording_group = true');        
                m.reply(`Recording Group / Merekam Di Group Berhasil Di Aktifkan`);         
@@ -359,6 +367,7 @@ exports.default = {
          break
          case 'recordingpc':
          case 'recordingprivate': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.recording_private = false', 'global.recording_private = true');        
                m.reply(`Recording Private / Merekam Di Private Chat Berhasil Di Aktifkan`);         
@@ -369,7 +378,8 @@ exports.default = {
          }
          break
          case 'readgc':
-         case 'readgroup': {         
+         case 'readgroup': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.read_group = false', 'global.read_group = true');
                m.reply(`Read Group / Membaca Di Group Berhasil Di Aktifkan`);          
@@ -380,7 +390,8 @@ exports.default = {
          }
          break
          case 'readpc':
-         case 'readprivate': {         
+         case 'readprivate': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
                save.global('global.read_private = false', 'global.read_private = true');
                m.reply(`Read Private / Membaca Di Private Chat Berhasil Di Aktifkan`);          
