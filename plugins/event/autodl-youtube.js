@@ -6,7 +6,7 @@ module.exports = {
    }) => {
       const Links = /(http(?:s)?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^\s&]+)/g;
       const ShortsLinks = /(http(?:s)?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([^\s&]+)/g;
-      const ExLyt = budy.includes('.ytv') || budy.includes('.ytmp4') || budy.includes('.yta') || budy.includes('.ytmp3') || budy.includes('.play') || budy.includes('ytv') || budy.includes('ytmp4') || budy.includes('yta') || budy.includes('ytmp3') || budy.includes('play') || budy.includes('ytmp4doc') || budy.includes('ytvdoc');
+      const ExLyt = budy.includes('.ytv') || budy.includes('.ytmp4') || budy.includes('.yta') || budy.includes('.ytmp3') || budy.includes('.play') || budy.includes('ytv') || budy.includes('ytmp4') || budy.includes('yta') || budy.includes('ytmp3') || budy.includes('play') || budy.includes('ytmp4doc') || budy.includes('ytvdoc') || budy.startsWith('>') || budy.startsWith('=>');
       if (db.settings?.auto_down && Links.test(budy) || ShortsLinks.test(budy)) {
          if (m.isBaileys || ExLyt) return false
          if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
