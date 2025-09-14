@@ -1,8 +1,8 @@
-const ocean = require('../../lib/src/scraper/ocean.js');
 module.exports = {
    start: async (m, {
       conn,
-      budy
+      budy,
+      Format
    }) => {
       const Links = /(http(?:s)?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^\s&]+)/g;
       const ShortsLinks = /(http(?:s)?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([^\s&]+)/g;
@@ -11,10 +11,10 @@ module.exports = {
          if (m.isBaileys || ExLyt) return false
          if (db.users[m.sender].limit < 0) return m.reply(mess.limit);
          const youtubeLinks = budy.match(Links) || budy.match(ShortsLinks);
-         m.react('🕙')
-         const data = await ocean(youtubeLinks, 'mp4', 720);
+         m.react('🕙');
+         const data = await Format.Scraper.ocean(youtubeLinks, 'mp4', 720);
          const caption = `🍌 Youtube Video\n${java} Judul : ${data.title}`
-         conn.sendFile(m.chat, data.link, caption, m);
+         conn.sendFile(m.chat, data.media, caption, m);
          db.users[m.sender].limit -= 3;
          m.reply(limit_message.replace('%limit', 3));
       }
