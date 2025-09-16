@@ -11,8 +11,8 @@ exports.default = {
       Format
    }) => {
       if (!text) return m.reply(`Masukan kontolnya! \nContoh: ${prefix+command} https://youtu.be/MvsAesQ-4zA`);
-      m.react("🕗")
-      const audio = await savetube.download(text, '144').catch(async () => await Format.Scraper.ocean(text, 'mp3'));
+      m.react('🎵')
+      const audio = await savetube.download(text, '144').catch(async () => await savetube.download(text, '360')).catch(async () => await Scraper.ocean(text, 'mp3'));
       conn.adReply(m.chat, loading, audio?.result?.thumbnail || audio?.thumbnail || cover, m);
       const media = await Format.mp3(await toBuffer(audio?.result?.download) || audio.media);   
       conn.sendFile(m.chat, media, '', m, {

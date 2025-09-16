@@ -23,7 +23,7 @@ exports.default = {
       result += `*⭔ URL Video:* ${url.url}\n\n`
       result += ` *Loading audio sedang dikirim...*`
       conn.adReply(m.chat, result, thumb || cover, m);
-      const audio = await savetube.download(link, '144').catch(async () => await Format.Scraper.ocean(link, 'mp3'));
+      const audio = await savetube.download(link, '144').catch(async () => await savetube.download(link, '360')).catch(async () => await Scraper.ocean(link, 'mp3'));
       const pretty = await Format.mp3Play(await toBuffer(audio?.result?.download) || audio.media);      
       conn.sendFile(m.chat, pretty, url.title, m, {
          contextInfo: {
@@ -38,5 +38,5 @@ exports.default = {
          }
       })
    },
-   limit: 2
+   limit: 3
 }

@@ -6,11 +6,10 @@ exports.default = {
       conn,
       text,
       prefix,
-      command,
-      Format
+      command
    }) => {
       if (!text) return m.reply(`contoh: ${prefix+command} Input Query`)
-      const image = await Format.Scraper.pinterest(text);   
+      const image = await Scraper.pinterest(text);   
       if (image.length == 0) return m.reply('Tidak di temukan');
       conn.adReply(m.chat, loading, cover, m);
       const caption = `${head('𝐏𝐈𝐍𝐓𝐄𝐑𝐄𝐒𝐓')}\n` +

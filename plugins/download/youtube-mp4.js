@@ -6,13 +6,12 @@ exports.default = {
       conn,
       text,
       prefix,
-      command,
-      Format
+      command
    }) => {
       if (!text) return m.reply(`Masukan Link Youtubenya contoh:\n${prefix+command} https://youtu.be/MvsAesQ-4zA`);
       m.react('📥')
       let caption = `${head("𝐘𝐎𝐔𝐓𝐔𝐁𝐄")}\n`
-      const data = await Format.Scraper.ocean(text, 'mp4', command == 'ytmp4_1080' || command == 'ytv_1080' ? 1080 : 720);       
+      const data = await Scraper.ocean(text, 'mp4', command == 'ytmp4_1080' || command == 'ytv_1080' ? 1080 : 720).catch(async () => await Scraper.ocean(text, 'mp4', 480)).catch(async () => await Scraper.ocean(text, 'mp4', 360)); 
       caption += `*Title:* ${data.title}\n\n`
       caption += `*Loading video sedang di kirim*`
       conn.adReply(m.chat, caption, data.thumbnail || cover, m, {
