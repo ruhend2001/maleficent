@@ -32,7 +32,7 @@ exports.default = {
          caption += $ + `antispam / spam \n`
          caption += $ + `hd / remini\n`
          caption += $ + `sholat / autosholat\n`
-         caption += $ + `blockpc / autoblockpc\n`
+         caption += $ + `blockpc / autoblockpc\n`         
          caption += $ + `autodl / autodown \n`
          caption += $ + `autobackup \n`
          caption += $ + `anticall \n`
@@ -51,6 +51,7 @@ exports.default = {
          caption += $ + '*recordingpc / recordingprivate*\nUntuk mematikan dan mengaktifkan recording atau merekam di private chat\n\n'
          caption += $ + '*readgc / readgroup*\nUntuk mematikan dan mengaktifkan read atau membaca chat di group\n\n'
          caption += $ + '*readpc / readprivate*\nUntuk mematikan dan mengaktifkan read atau membaca chat di private chat\n\n'
+         caption += $ + `*autoclearchat / clearchat*\nUntuk mengaktifkan dan mematikan clear chat (membersihkan chat ke group)\n\n`
          caption += 'Untuk mengubah pengaturan lain ada juga di menu .set'
       };
       if (!text) return m.reply(caption.trim());
@@ -113,6 +114,19 @@ exports.default = {
             } else if (cmd_off.includes(command)) {
                db.settings.block_pc = false
                m.reply('auto block private chat berhasil di matikan')
+            }
+         }
+         break
+         case 'clearchat':
+         case 'autoclearchat': {
+            if (!isOwner) return m.reply(mess.OnlyOwner);
+            if (cmd_on.includes(command)) {
+               if (!session_state) return m.reply('auto clear chat gagal di aktifkan karena file state di folder sessions hilang atau tidak ada');
+               db.settings.auto_clear_chat = true
+               m.reply('auto clear chat berhasil di aktifkan')
+            } else if (cmd_off.includes(command)) {            
+               db.settings.auto_clear_chat = false
+               m.reply('auto clear chat berhasil di matikan')
             }
          }
          break
