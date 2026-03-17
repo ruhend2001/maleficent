@@ -20,9 +20,16 @@ const startWhatsApp = async () => {
    require('./lib/system.js').caller(conn);
    conn.ev.on('connection.update', (update) => {
       const { connection, lastDisconnect } = update;
-      if (connection === 'open') console.log(`🟢 Online`);
-      else if (connection === 'connecting') console.log(`🟡 Reconnecting`);
-      else if (connection === 'close') console.log(`🔴 Disconnected`), startWhatsApp();
+      if (connection === 'open') {
+         console.log(`🟢 Online`);
+      }
+      else if (connection === 'connecting') {
+         console.log(`🟡 Reconnecting`);
+      } 
+      else if (connection === 'close') {
+         console.log(`🔴 Disconnected`);
+         return startWhatsApp();
+      }
    })
 };
 startWhatsApp()

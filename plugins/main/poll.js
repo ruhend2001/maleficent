@@ -1,8 +1,8 @@
 /**
 exports.default = {
    names: ['Main Menu'],
-   tags: ['sendpoll'],
-   command: ['sendpoll'],
+   tags: ['sendpoll', 'poll'],
+   command: ['sendpoll', 'poll'],
    start: async (m, {
       conn
    }) => {
