@@ -121,7 +121,8 @@ exports.default = {
          case 'autoclearchat': {
             if (!isOwner) return m.reply(mess.OnlyOwner);
             if (cmd_on.includes(command)) {
-               if (!session_state) return m.reply('auto clear chat gagal di aktifkan karena file state di folder sessions hilang atau tidak ada');
+               const status = await checkState();
+               if (!status) return m.reply('auto clear chat gagal di aktifkan karena file state di folder sessions hilang atau tidak ada');
                db.settings.auto_clear_chat = true
                m.reply('auto clear chat berhasil di aktifkan')
             } else if (cmd_off.includes(command)) {            

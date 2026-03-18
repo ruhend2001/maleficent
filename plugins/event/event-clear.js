@@ -3,7 +3,7 @@ module.exports = {
       conn
    }) => {
       if (db.settings.auto_clear_chat && session_state) {
-         // if u wanna do both private and group just delete if (m.isGroup) 
+         // if you wanna do both private and group just delete if (m.isGroup) 
          if (m.isGroup) await conn.deleteMessage(m, m.chat);
       }           
    }
